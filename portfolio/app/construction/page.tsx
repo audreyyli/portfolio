@@ -12,7 +12,7 @@ const theme = createTheme({
   },
 });
 
-export default function construction() {
+export default function Construction() {
   const router = useRouter(); // Initialize useRouter for navigation
 
   const handleGoBack = () => {

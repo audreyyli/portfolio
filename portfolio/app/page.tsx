@@ -255,7 +255,7 @@ function MyApp({}) {
               title="Simplifying Your Moving Quote Journey"
               company="Two Small Men with Big Hearts"
               description="A streamlined quoting system enhancing estimation accuracy and user experience for scalable efficiency."
-              link="/Construction"
+              link="/construction"
               flip={false}
               width={{ xs: "100%", sm: "600px", md: "700px" }}
               height={{ xs: "100%", sm: "600px", md: "700px" }}
@@ -275,7 +275,7 @@ function MyApp({}) {
               title="A Companion for Dietary Restrictions"
               company="EpiPlan"
               description="A mobile app empowering individuals with dietary restrictions to easily navigate food choices and find suitable options through intuitive, research-driven solutions."
-              link="/Construction"
+              link="/construction"
               flip={true}
               width="700px"
               height="700px"
@@ -295,7 +295,7 @@ function MyApp({}) {
               title="Crafting a Bold New Identity"
               company="WesternU Korean Student Association"
               description="Re-envisioning WUKSA's brand to bring a fresh, modern identity across all platforms."
-              link="/Construction"
+              link="/construction"
               flip={false}
               width="550px"
               height="550px"

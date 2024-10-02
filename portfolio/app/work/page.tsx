@@ -63,7 +63,7 @@ function work({}) {
             blurImage="/images/TSMBlur.png"
             title="Junior Developer"
             company="Two Small Men with Big Hearts"
-            link="/Construction"
+            link="/construction"
             time="June 2023 - Present"
             skills={["Web development", "SEO", "Figma", "React", "Next.js"]}
             flip={false}
@@ -85,7 +85,7 @@ function work({}) {
             blurImage="/images/bubbliBlur.png"
             title="Owner/Founder"
             company="bubbli"
-            link="/Construction"
+            link="/construction"
             time="May 2022 - Present"
             skills={["Web development", "SEO", "Figma", "React", "Next.js", "Social Media Management"]}
             flip={true}
