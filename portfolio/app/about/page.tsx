@@ -21,7 +21,7 @@ const theme = createTheme({
   },
 });
 
-export default function AboutMe() {
+export default function about() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />

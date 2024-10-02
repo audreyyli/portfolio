@@ -30,7 +30,7 @@ const fadeInUpVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 1 } },
 };
 
-export default function GraphicsPage() {
+export default function graphics() {
   const wuksaPictures = [
     {
       image: "/images/clubsWeek.png",

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { AppBar, Toolbar, Box, Button, IconButton, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import CustomButton from "../../MUI/Button.js"; // Import your custom button component
+import CustomButton from "../../MUI/button.js"; // Import your custom button component
 
-export default function header() {
+export default function Header() {
   const [anchorEl, setAnchorEl] = useState(null); // State to manage menu
   const [hovered, setHovered] = useState(false); // State to track hover over the logo
 
@@ -121,16 +121,16 @@ export default function header() {
 
         {/* Center: Navigation buttons for Desktop (hidden on mobile) */}
         <Box sx={{ display: { xs: 'none', md: 'flex' }, justifyContent: 'center', gap: '20px', flexGrow: 2 }}>
-          <Link href="/WorkPage" passHref>
+          <Link href="/work" passHref>
             <CustomButton variantType="header" sx={{ textTransform: 'none' }}>Work</CustomButton>
           </Link>
-          <Link href="/ProjectsPage" passHref>
+          <Link href="/projects" passHref>
             <CustomButton variantType="header" sx={{ textTransform: 'none' }}>Projects</CustomButton>
           </Link>
-          <Link href="/GraphicsPage" passHref>
+          <Link href="/graphics" passHref>
             <CustomButton variantType="header" sx={{ textTransform: 'none' }}>Graphics</CustomButton>
           </Link>
-          <Link href="/AboutMe" passHref>
+          <Link href="/about" passHref>
             <CustomButton variantType="header" sx={{ textTransform: 'none' }}>About Me</CustomButton>
           </Link>
         </Box>
