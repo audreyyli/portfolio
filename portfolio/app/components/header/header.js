@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { AppBar, Toolbar, Box, Button, IconButton, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import CustomButton from "../../mui/button.js"; // Import your custom button component
+import CustomButton from "../../mui/button.js";
 
 export default function Header() {
-  const [anchorEl, setAnchorEl] = useState(null); // State to manage menu
-  const [hovered, setHovered] = useState(false); // State to track hover over the logo
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [hovered, setHovered] = useState(false);
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -75,21 +75,26 @@ export default function Header() {
                 About Me
               </Link>
             </MenuItem>
+            <MenuItem onClick={handleMenuClose}>
+                <Link href="https://drive.google.com/file/d/14twAB9mIQ9TBQth6yLCh9OF9hvbNvMjq/view?usp=sharing" passHref target="_blank" rel="noopener noreferrer">
+                    Resume
+                </Link>
+            </MenuItem>
           </Menu>
         </Box>
 
         {/* Center: Logo with hover effect */}
         <Box
-          sx={{ flexGrow: { xs: 1, md: 1 }, display: 'flex', justifyContent: 'center', alignItems: 'center' }} // Center logo for mobile
-          onMouseEnter={() => setHovered(true)} // Trigger hover state
-          onMouseLeave={() => setHovered(false)} // Remove hover state
+          sx={{ flexGrow: { xs: 1, md: 1 }, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
           <Link href="/" passHref>
             <Box
               component="img"
-              src={hovered ? "/images/logoHover.png" : "/images/logo.png"} // Switch images based on hover state
+              src={hovered ? "/images/logoHover.png" : "/images/logo.png"}
               alt="Logo"
-              sx={{ width: { xs: '50px', md: '60px' }, height: 'auto', cursor: 'pointer' }} // Adjust size for mobile
+              sx={{ width: { xs: '50px', md: '60px' }, height: 'auto', cursor: 'pointer' }}
             />
           </Link>
         </Box>
@@ -99,14 +104,14 @@ export default function Header() {
           <Button 
             variant="contained" 
             sx={{ 
-              fontSize: "14px", // Smaller font for mobile
+              fontSize: "14px",
               textTransform: 'none', 
               backgroundColor: "#002366", 
               borderRadius: "22px", 
-              paddingX: "15px", // Adjust padding for mobile
+              paddingX: "15px",
               boxShadow: "none",
               '&:hover': {
-                backgroundColor: 'rgba(0, 35, 102, 0.7)', // Same background color on hover
+                backgroundColor: 'rgba(0, 35, 102, 0.7)',
                 color: '#fff',
                 boxShadow: "0px 0px 8px rgba(0, 0, 0, 0.2)",
               },
@@ -132,6 +137,9 @@ export default function Header() {
           </Link>
           <Link href="/about" passHref>
             <CustomButton variantType="header" sx={{ textTransform: 'none' }}>About Me</CustomButton>
+          </Link>
+          <Link href="https://drive.google.com/file/d/14twAB9mIQ9TBQth6yLCh9OF9hvbNvMjq/view?usp=sharing" passHref target="_blank" rel="noopener noreferrer">
+            <CustomButton variantType="header" sx={{ textTransform: 'none' }}>Resume</CustomButton>
           </Link>
         </Box>
 

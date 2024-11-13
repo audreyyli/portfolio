@@ -65,7 +65,7 @@ function projects({}) {
                 image="/images/TSMHeader.png"
                 title="Junior Developer"
                 company="Two Small Men with Big Hearts"
-                link="/construction"
+                link="/projects/twoSmallMen"
                 time="June 2023 - Present"
                 skills={["Web development", "SEO", "Figma", "React", "Next.js"]}
               />
@@ -75,10 +75,10 @@ function projects({}) {
             <Grid item xs={12} sm={6} md={6}>
               <Projects
                 image="/images/EpiPlanHeader.png"
-                title="Owner/Founder"
-                company="bubbli"
-                link="/construction"
-                time="May 2022 - Present"
+                title="Product Designer"
+                company="EpiPlan"
+                link="/projects/epiPlan"
+                time="March 2024"
                 skills={["Figma", "UI/UX", "Product Design"]}
               />
             </Grid>
@@ -89,7 +89,7 @@ function projects({}) {
                 image="/images/WUKSAHeader.png"
                 title="VP Of Graphics"
                 company="WesternU KSA"
-                link="/construction"
+                link="/projects/wuksa"
                 time="March 2023 - April 2024"
                 skills={["Figma", "Graphic Design", "Social Media Management", "Content Creation"]}
               />
