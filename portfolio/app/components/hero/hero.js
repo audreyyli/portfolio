@@ -14,7 +14,6 @@ const Hero = ({
   projectType,
   description,
   mainColour,
-  hoverColour,
 }) => {
 
     const pageAnimation = {

@@ -28,7 +28,7 @@ const theme = createTheme({
   },
 });
 
-export default function epiPlan() {
+export default function EpiPlan() {
   const router = useRouter();
 
   const handleGoBack = () => {
@@ -104,7 +104,6 @@ export default function epiPlan() {
           projectType="Design Sprint"
           description="Empowering individuals with dietary restrictions to easily navigate food choices."
           mainColour="#FFB35A"
-          hoverColour="#FFEED9"
         />
         </Box>
         <Box sx={{margin: "auto", }}>

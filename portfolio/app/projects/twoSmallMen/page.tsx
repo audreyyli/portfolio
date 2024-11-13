@@ -28,7 +28,7 @@ const theme = createTheme({
   },
 });
 
-export default function twosmallmen() {
+export default function TwoSmallMen() {
   const router = useRouter();
 
   const handleGoBack = () => {
@@ -43,7 +43,7 @@ export default function twosmallmen() {
       Obtaining a moving quote is a critical step within this journey. However, the process can be <b>long, cumbersome, and tedious</b>, pushing people towards faster competitors.
     </>,
     <>
-      Understanding that a move is about supporting clients through life's transitions, Two Small Men aimed to transform the quoting experience. The mission was clear: <b>simplify the quoting process</b> and create a moving experience that starts with trust and ends with satisfaction.
+      Understanding that a move is about supporting clients through life&apos;s transitions, Two Small Men aimed to transform the quoting experience. The mission was clear: <b>simplify the quoting process</b> and create a moving experience that starts with trust and ends with satisfaction.
     </>
   ];
 
@@ -105,7 +105,6 @@ export default function twosmallmen() {
             projectType="Work Project"
             description="A system to enhance the estimation accuracy and user experience of obtaining a moving quote."
             mainColour="#77A5FF"
-            hoverColour="#D9E6FF"
           />
         </Box>
 

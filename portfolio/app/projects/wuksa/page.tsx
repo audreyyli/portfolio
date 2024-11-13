@@ -28,7 +28,7 @@ const theme = createTheme({
   },
 });
 
-export default function wuksa() {
+export default function Wuksa() {
   const router = useRouter();
 
   const handleGoBack = () => {
@@ -43,7 +43,7 @@ export default function wuksa() {
       In a campus filled with numerous clubs, <b>standing out and capturing attention</b> is a challenge. This meant that creating an <b>eye-catching</b> brand identity was crucial.
     </>,
     <>
-      WUKSA wanted to move beyond being seen as just the "Korean club" and aspired to be a community where all cultures felt welcomed. The goal was clear: <b>design a modern brand identity</b> that resonated with students from all backgrounds.
+      WUKSA wanted to move beyond being seen as just the &#34;Korean club&#34; and aspired to be a community where all cultures felt welcomed. The goal was clear: <b>design a modern brand identity</b> that resonated with students from all backgrounds.
     </>
   ];
 
@@ -104,7 +104,6 @@ export default function wuksa() {
             projectType="Rebrand"
             description="Re-envisioning WUKSA's brand to bring a fresh, modern identity across all platforms."
             mainColour="#D2A7FD"
-            hoverColour="#ECD9FF"
           />
         </Box>
           {/* Project Overview */}
