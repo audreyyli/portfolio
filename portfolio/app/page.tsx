@@ -1,13 +1,63 @@
 "use client";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme, ThemeProvider, keyframes } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Header from "./components/header/header.js";
 import Aside from "./components/projects/aside.js";
-import { Typography, Box } from "@mui/material";
 import { motion } from "framer-motion";
+import { Typography, Box, Button } from "@mui/material";
 import React from "react";
 import Footer from "./components/footer/footer.js";
+import { Typewriter } from "react-simple-typewriter";
+import ArrowOutward from "@mui/icons-material/ArrowOutward";
+import Link from "next/link";
 
+// Define floating orb animation
+const rotateAnimation = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+const floatAnimation1 = keyframes`
+  0% {
+    transform: translateX(-40%) translateY(20%) scale(1);
+  }
+  50% {
+    transform: translateX(-60%) translateY(10%) scale(1.05);
+  }
+  100% {
+    transform: translateX(-40%) translateY(20%) scale(1);
+  }
+`;
+
+const floatAnimation2 = keyframes`
+  0% {
+    transform: translateX(-30%) translateY(-10%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) translateY(5%) scale(1.05);
+  }
+  100% {
+    transform: translateX(-30%) translateY(-10%) scale(1);
+  }
+`;
+
+const floatAnimation3 = keyframes`
+  0% {
+    transform: translateX(-40%) translateY(20%) scale(1);
+  }
+  50% {
+    transform: translateX(-20%) translateY(35%) scale(1.05);
+  }
+  100% {
+    transform: translateX(-40%) translateY(20%) scale(1);
+  }
+`;
+
+// Create the theme
 const theme = createTheme({
   typography: {
     fontFamily:
@@ -29,202 +79,212 @@ const fadeInUpVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 1 } },
 };
 
-function MyApp({}) {
+function MyApp() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
       <Box
         sx={{
-          maxWidth: "1200px",
-          margin: "0 auto",
-          padding: { xs: "15px", sm: "20px" },
+          width: "100vw",
+          overflow: "hidden",
+          position: "relative",
         }}
       >
-        {/* Main section to take full viewport height */}
         <Box
           sx={{
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "start-left",
-            textAlign: "start-left",
-            marginTop: "-55px",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            overflow: "hidden",
+            padding: { xs: "15px", sm: "20px" },
           }}
         >
-          <Typography
-            variant="h4"
-            sx={{ 
-              fontWeight: "bold", 
-              textTransform: "none", 
-              color: "#444",
-              fontSize: { xs: "30px", md: "40px" },
-            }}
-          >
-            👋 Hi there! I&apos;m Audrey Li!
-          </Typography>
-
+          {/* Gradient 1 (Foreground Orb) */}
           <Box
             sx={{
-              display: "inline-block",
-              position: "relative",
-              "&:hover .bubble": {
-                opacity: 1,
-                animationPlayState: "running",
-              },
+              position: "absolute",
+              transform: "translateX(50%) translateY(60%)",
+              left: 0,
+              zIndex: -1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              animation: `${floatAnimation1} 10s ease-in-out infinite`,
             }}
           >
             <Box
-              className="bubble"
               sx={{
-                position: "absolute",
-                bottom: "80px",
-                left: "50%",
-                width: "100px",
-                height: "100px",
-                background:
-                  "radial-gradient(circle at 30% 30%, rgba(115, 194, 251, 0.5), rgba(0, 35, 102, 0.3))",
-                borderRadius: "50%",
-                animation: "bubble1 3s infinite ease-in-out",
-                animationPlayState: "paused",
-                boxShadow:
-                  "10px 10px 30px rgba(0, 0, 0, 0.15), -10px -10px 20px rgba(255, 255, 255, 0.2)",
-                transform: "translateX(-50%)",
-                opacity: 0,
+                "--size": "650px",
+                "--speed": "50s",
+                "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
+                width: "var(--size)",
+                height: "var(--size)",
+                filter: "blur(calc(var(--size) / 5))",
+                backgroundImage:
+                  "linear-gradient(hsl(222, 84%, 80%), hsl(164, 79%, 85%))",
+                animation: `${rotateAnimation} var(--speed) var(--easing) alternate infinite`,
+                borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
               }}
             />
-            <Box
-              className="bubble"
-              sx={{
-                position: "absolute",
-                bottom: "0px",
-                left: "57%",
-                width: "150px",
-                height: "150px",
-                background: "radial-gradient(circle at 30% 30%, rgba(21, 96, 189, 0.5), rgba(0, 35, 102, 0.3))",
-                borderRadius: "50%",
-                animation: "bubble2 4s infinite ease-in-out",
-                animationPlayState: "paused",
-                boxShadow:
-                  "15px 15px 40px rgba(0, 0, 0, 0.15), -15px -15px 25px rgba(255, 255, 255, 0.2)",
-                transform: "translateX(-50%)",
-                opacity: 0,
-              }}
-            />
-            <Box
-              className="bubble"
-              sx={{
-                position: "absolute",
-                bottom: "20px",
-                left: "65%",
-                width: "120px",
-                height: "120px",
-                background: "radial-gradient(circle at 30% 30%, rgba(115, 194, 251, 0.5), rgba(15, 82, 186, 0.3))",
-                borderRadius: "50%",
-                animation: "bubble3 2.5s infinite ease-in-out",
-                animationPlayState: "paused",
-                boxShadow:
-                  "12px 12px 35px rgba(0, 0, 0, 0.15), -12px -12px 20px rgba(255, 255, 255, 0.2)",
-                transform: "translateX(-50%)",
-                opacity: 0,
-              }}
-            />
-            <Box
-              className="bubble"
-              sx={{
-                position: "absolute",
-                bottom: "-10px",
-                left: "55%",
-                width: "80px",
-                height: "80px",
-                background: "radial-gradient(circle at 30% 30%, rgba(21, 96, 189, 0.5), rgba(15, 82, 186, 0.3))",
-                borderRadius: "50%",
-                animation: "bubble4 3.5s infinite ease-in-out",
-                animationPlayState: "paused",
-                boxShadow:
-                  "8px 8px 25px rgba(0, 0, 0, 0.15), -8px -8px 15px rgba(255, 255, 255, 0.2)",
-                transform: "translateX(-50%)",
-                opacity: 0,
-              }}
-            />
-            <Box
-              className="bubble"
-              sx={{
-                position: "absolute",
-                bottom: "-20px",
-                left: "50%",
-                width: "90px",
-                height: "90px",
-                background: "radial-gradient(circle at 30% 30%, rgba(115, 194, 251, 0.5), rgba(0, 35, 102, 0.3))",
-                borderRadius: "50%",
-                animation: "bubble5 3.8s infinite ease-in-out",
-                animationPlayState: "paused",
-                boxShadow:
-                  "9px 9px 30px rgba(0, 0, 0, 0.15), -9px -9px 18px rgba(255, 255, 255, 0.2)",
-                transform: "translateX(-50%)",
-                opacity: 0,
-              }}
-            />
-            <Box
-              className="bubble"
-              sx={{
-                position: "absolute",
-                bottom: "-30px",
-                left: "52%",
-                width: "110px",
-                height: "110px",
-                background: "radial-gradient(circle at 30% 30%, rgba(21, 96, 189, 0.5), rgba(15, 82, 186, 0.3))",
-                borderRadius: "50%",
-                animation: "bubble6 3.2s infinite ease-in-out",
-                animationPlayState: "paused",
-                boxShadow:
-                  "10px 10px 35px rgba(0, 0, 0, 0.15), -10px -10px 20px rgba(255, 255, 255, 0.2)",
-                transform: "translateX(-50%)",
-                opacity: 0,
-              }}
-            />
+          </Box>
 
+          {/* Gradient 2 (Background Orb) */}
+          <Box
+            sx={{
+              position: "absolute",
+              transform: "translateX(-100%) translateY(-90%)",
+              left: "100%",
+              zIndex: -2,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              animation: `${floatAnimation2} 15s ease-in-out infinite`,
+            }}
+          >
+            <Box
+              sx={{
+                "--size": "680px",
+                "--speed": "60s",
+                "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
+                width: "var(--size)",
+                height: "var(--size)",
+                filter: "blur(calc(var(--size) / 6))",
+                backgroundImage:
+                  "linear-gradient(rgb(245, 239, 255), rgb(205, 193, 255))",
+                animation: `${rotateAnimation} var(--speed) var(--easing) alternate infinite`,
+                borderRadius: "50% 50% 70% 70% / 40% 40% 60% 60%",
+              }}
+            />
+          </Box>
+
+          {/* Gradient 3 (Background Orb) */}
+          <Box
+            sx={{
+              position: "absolute",
+              transform: "translateX(-100%) translateY(-10%)",
+              left: "20%",
+              zIndex: -2,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              animation: `${floatAnimation3} 15s ease-in-out infinite`,
+            }}
+          >
+            <Box
+              sx={{
+                "--size": "400px",
+                "--speed": "60s",
+                "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
+                width: "var(--size)",
+                height: "var(--size)",
+                filter: "blur(calc(var(--size) / 6))",
+                backgroundImage:
+                  "linear-gradient(hsl(280, 84%, 85%), hsl(340, 79%, 90%))",
+                animation: `${rotateAnimation} var(--speed) var(--easing) alternate infinite`,
+                borderRadius: "50% 50% 70% 70% / 40% 40% 60% 60%",
+              }}
+            />
+          </Box>
+
+          {/* Main Section */}
+          <Box
+            sx={{
+              height: "100vh",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "flex-start",
+              marginTop: "-55px",
+            }}
+          >
             <Typography
-              variant="h1"
-                sx={{
-                  fontSize: { xs: "110px", md: "185px" },
-                  fontWeight: "bold",
-                  textTransform: "none",
-                  color: "#444",
-                  display: "inline-block",
-                  marginRight: "10px",
-                }}
-              >
-                Simple,
-              </Typography>
-              <Typography
-                variant="h1"
-                sx={{
-                  fontSize: { xs: "110px", md: "185px" },
-                  fontWeight: "bold",
-                  textTransform: "none",
-                  color: "#444",
-                  display: "inline-block",
-                }}
-              >
-                Bubbly.
-              </Typography>
-            </Box>
+              variant="h4"
+              sx={{
+                fontWeight: "bold",
+                textTransform: "none",
+                color: "#222",
+                fontSize: { xs: "60px", md: "110px" },
+              }}
+            >
+              <Typewriter
+                words={[
+                  "I'm Audrey",
+                  "I'm a product designer",
+                  "I'm a developer",
+                ]}
+                loop={true}
+                cursor
+                cursorStyle="|"
+                typeSpeed={70}
+                deleteSpeed={70}
+                delaySpeed={2000}
+              />
+            </Typography>
 
             <Typography
               variant="h6"
               sx={{
-                fontSize: { xs: "18px", md: "20px" },
+                fontSize: { xs: "18px", md: "24px" },
                 textTransform: "none",
                 color: "#666",
-                marginTop: "20px",
+                marginTop: "24px",
               }}
             >
-              That&apos;s my approach to design. I&apos;m a product designer & developer
+              Simple & bubbly. That&apos;s my approach to design. I&apos;m a product designer & developer
               with a deep passion for creating user-centered solutions that bridge
               aesthetics and functionality.
             </Typography>
+
+            {/* Learn More Button */}
+            <Link href="/about" passHref>
+              <Button
+                variant="contained"
+                endIcon={<ArrowOutward />}
+                sx={{
+                  marginTop: "20px",
+                  fontSize: "24px",
+                  textTransform: "none",
+                  backgroundColor: "transparent",
+                  color: "#666",
+                  border: "2px solid #666",
+                  borderRadius: "50px",
+                  paddingX: "20px",
+                  paddingBottom: "10px",
+                  boxShadow: "none",
+                  position: "relative",
+                  overflow: "hidden",
+                  transition: "all 0.3s ease-in-out",
+                  "& .MuiButton-endIcon": {
+                    transition: "transform 0.3s ease-in-out",
+                  },
+                  "&:hover": {
+                    color: "#111",
+                    boxShadow: "none",
+                    borderColor: "#111",
+                    "& .MuiButton-endIcon": {
+                      transform: "rotate(45deg)",
+                    },
+                    "&::after": {
+                      width: "100%",
+                    },
+                  },
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    bottom: "15px",
+                    left: "0",
+                    height: "2px",
+                    backgroundColor: "#111",
+                    width: "0%",
+                    transition: "width 0.4s ease",
+                    marginX: "20px",
+                    maxWidth: "65%",
+                  },
+                }}
+              >
+                Learn More
+              </Button>
+            </Link>
           </Box>
 
           {/* Other content */}
@@ -306,81 +366,7 @@ function MyApp({}) {
             <Footer />
           </Box>
         </Box>
-
-      {/* Keyframe animations */}
-      <style jsx>{`
-        @keyframes bubble1 {
-          0% {
-            transform: translateY(0) translateX(0) scale(0);
-          }
-          50% {
-            transform: translateY(-150px) translateX(20px) scale(0.8);
-          }
-          100% {
-            transform: translateY(-300px) translateX(-20px) scale(0);
-          }
-        }
-
-        @keyframes bubble2 {
-          0% {
-            transform: translateY(0) translateX(0) scale(0);
-          }
-          50% {
-            transform: translateY(-120px) translateX(30px) scale(0.9);
-          }
-           100% {
-            transform: translateY(-300px) translateX(-30px) scale(0);
-          }
-        }
-
-        @keyframes bubble3 {
-          0% {
-            transform: translateY(0) translateX(0) scale(0);
-          }
-          50% {
-            transform: translateY(-200px) translateX(-20px) scale(0.9);
-          }
-          100% {
-            transform: translateY(-300px) translateX(-40px) scale(0);
-          }
-        }
-
-        @keyframes bubble4 {
-          0% {
-            transform: translateY(0) translateX(0) scale(0);
-          }
-          50% {
-            transform: translateY(-180px) translateX(40px) scale(0.9);
-          }
-          100% {
-            transform: translateY(-280px) translateX(-40px) scale(0);
-          }
-        }
-
-        @keyframes bubble5 {
-          0% {
-            transform: translateY(0) translateX(0) scale(0);
-          }
-          50% {
-            transform: translateY(-100px) translateX(50px) scale(0.9);
-          }
-          100% {
-            transform: translateY(-300px) translateX(-50px) scale(0);
-          }
-        }
-
-        @keyframes bubble6 {
-          0% {
-            transform: translateY(0) translateX(0) scale(0);
-          }
-          50% {
-            transform: translateY(-130px) translateX(60px) scale(0.9);
-          }
-          100% {
-            transform: translateY(-300px) translateX(-60px) scale(0);
-          }
-        }
-      `}</style>
+        </Box>
     </ThemeProvider>
   );
 }

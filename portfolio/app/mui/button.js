@@ -22,17 +22,31 @@ const CustomButton = styled(Button)(({ variantType }) => ({
         },
     }),
     ...(variantType === 'header' && {
-        padding: '8px 18px',  // Smaller padding for the header buttons
-        fontSize: '20px',      // Smaller font size for header buttons
+        padding: '8px 18px', 
+        fontSize: '20px', 
         backgroundColor: 'transparent',
-        color: "black",
+        color: "#666",
         fontWeight: "400",
-        transition: 'transform 0.03s, background-color 0.06s', // Faster transition
+        position: 'relative',
+        overflow: 'hidden',
+        textAlign: 'center',
+        transition: 'transform 0.03s, background-color 0.06s',
         '&:hover': {
-            backgroundColor: '#F8F8F8', // Light grey background
-            color: '#002366',
-            transform: 'scale(1.1)',  // Slight pop effect
-            fontWeight: "300",
+            color: '#111',
+            fontWeight: "400",
+            '&::after': {
+                width: '100%',
+            },
+        },
+        '&::after': {
+            content: '""',
+            position: 'absolute',
+            bottom: '10px',
+            left: '0',
+            height: '2px',
+            backgroundColor: '#111',
+            width: '0%',
+            transition: 'width 0.4s ease',
         },
     }),
 }));
