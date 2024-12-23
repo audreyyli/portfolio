@@ -7,9 +7,9 @@ import { motion } from "framer-motion";
 import { Typography, Box, Button } from "@mui/material";
 import React from "react";
 import Footer from "./components/footer/footer.js";
-import { Typewriter } from "react-simple-typewriter";
 import ArrowOutward from "@mui/icons-material/ArrowOutward";
 import Link from "next/link";
+import "./globals.css"
 
 // Define floating orb animation
 const rotateAnimation = keyframes`
@@ -60,8 +60,16 @@ const floatAnimation3 = keyframes`
 // Create the theme
 const theme = createTheme({
   typography: {
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    fontFamily: "Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+  },
+  components: {
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Lato, sans-serif',
+        },
+      },
+    },
   },
   breakpoints: {
     values: {
@@ -87,15 +95,17 @@ function MyApp() {
       <Box
         sx={{
           width: "100vw",
+          maxHeight: "100vh",
+          height: "100vh",
           overflow: "hidden",
           position: "relative",
+          marginTop: "-90px",
         }}
       >
         <Box
           sx={{
             maxWidth: "1200px",
             margin: "0 auto",
-            overflow: "hidden",
             padding: { xs: "15px", sm: "20px" },
           }}
         >
@@ -194,32 +204,120 @@ function MyApp() {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "flex-start",
-              marginTop: "-55px",
+              marginTop: "25px",
             }}
           >
             <Typography
-              variant="h4"
+              variant="h6"
               sx={{
-                fontWeight: "bold",
+                fontSize: { xs: "18px", md: "24px" },
                 textTransform: "none",
-                color: "#222",
-                fontSize: { xs: "60px", md: "110px" },
+                color: "#666",
+                marginTop: "35px",
+                fontFamily: "Lato",
+                margin: "0 auto",
+                marginBottom: "60px",
               }}
             >
-              <Typewriter
-                words={[
-                  "I'm Audrey",
-                  "I'm a product designer",
-                  "I'm a developer",
-                ]}
-                loop={true}
-                cursor
-                cursorStyle="|"
-                typeSpeed={70}
-                deleteSpeed={70}
-                delaySpeed={2000}
-              />
+              Hi! I&apos;m Audrey!
             </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                gap: "110px",
+                margin: "0 auto",
+                position: "relative",
+              }}
+            >
+              {/* Ampersand */}
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: "bold",
+                  position: "absolute",
+                  color: "#EEE",
+                  fontSize: { xs: "200px", md: "300px" },
+                  fontFamily: "Lato",
+                  fontStyle: "normal",
+                  zIndex: 0,
+                  transform: "translate(-50%, -50%)",
+                  top: "25%",
+                  left: "53%",
+                }}
+              >
+                &
+              </Typography>
+
+              {/* Simple */}
+              <Box sx={{ display: "flex", alignItems: "baseline", zIndex: 1 }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    textTransform: "none",
+                    color: "#222",
+                    fontSize: { xs: "60px", md: "150px" },
+                    fontFamily: "Amoresa",
+                    fontStyle: "normal",
+                    transform: "rotate(5deg)",
+                    paddingRight: "30px",
+                    display: "inline-block",
+                    position: "relative",
+                    top: "-20px",
+                  }}
+                >
+                  S
+                </Typography>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 900,
+                    textTransform: "none",
+                    color: "#222",
+                    fontSize: { xs: "60px", md: "150px" },
+                    fontFamily: "Lato",
+                    fontStyle: "italic",
+                  }}
+                >
+                  imple
+                </Typography>
+              </Box>
+
+              {/* Bubbly */}
+              <Box sx={{ display: "flex", alignItems: "baseline", zIndex: 1 }}>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    textTransform: "none",
+                    color: "#222",
+                    fontSize: { xs: "60px", md: "220px" },
+                    fontFamily: "Amoresa",
+                    fontStyle: "normal",
+                    paddingRight: "10px",
+                    display: "inline-block",
+                    transform: "rotate(-5deg)",
+                    position: "relative",
+                    top: "20px",
+                  }}
+                >
+                  b
+                </Typography>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontWeight: 900,
+                    textTransform: "none",
+                    color: "#222",
+                    fontSize: { xs: "60px", md: "150px" },
+                    fontFamily: "Lato",
+                    fontStyle: "italic",
+                  }}
+                >
+                  ubbly
+                </Typography>
+              </Box>
+            </Box>
 
             <Typography
               variant="h6"
@@ -227,146 +325,21 @@ function MyApp() {
                 fontSize: { xs: "18px", md: "24px" },
                 textTransform: "none",
                 color: "#666",
-                marginTop: "24px",
+                marginTop: "35px",
+                fontFamily: "Lato",
+                margin: "0 auto",
               }}
             >
-              Simple & bubbly. That&apos;s my approach to design. I&apos;m a product designer & developer
+              That&apos;s my approach to design. I&apos;m a product designer & developer
               with a deep passion for creating user-centered solutions that bridge
               aesthetics and functionality.
             </Typography>
-
-            {/* Learn More Button */}
-            <Link href="/about" passHref>
-              <Button
-                variant="contained"
-                endIcon={<ArrowOutward />}
-                sx={{
-                  marginTop: "20px",
-                  fontSize: "24px",
-                  textTransform: "none",
-                  backgroundColor: "transparent",
-                  color: "#666",
-                  border: "2px solid #666",
-                  borderRadius: "50px",
-                  paddingX: "20px",
-                  paddingBottom: "10px",
-                  boxShadow: "none",
-                  position: "relative",
-                  overflow: "hidden",
-                  transition: "all 0.3s ease-in-out",
-                  "& .MuiButton-endIcon": {
-                    transition: "transform 0.3s ease-in-out",
-                  },
-                  "&:hover": {
-                    color: "#111",
-                    boxShadow: "none",
-                    borderColor: "#111",
-                    "& .MuiButton-endIcon": {
-                      transform: "rotate(45deg)",
-                    },
-                    "&::after": {
-                      width: "100%",
-                    },
-                  },
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    bottom: "15px",
-                    left: "0",
-                    height: "2px",
-                    backgroundColor: "#111",
-                    width: "0%",
-                    transition: "width 0.4s ease",
-                    marginX: "20px",
-                    maxWidth: "65%",
-                  },
-                }}
-              >
-                Learn More
-              </Button>
-            </Link>
-          </Box>
-
-          {/* Other content */}
-          <Typography
-            variant="h4"
-            sx={{
-              textTransform: "none",
-              color: "#444",
-              fontWeight: "bold",
-              marginTop: { xs: "50px", sm: "70px", md: "100px" },
-              textAlign: "center",
-              fontSize: { xs: "30px", sm: "40px", md: "50px" },
-            }}
-          >
-            My Recent Works
-          </Typography>
-
-          {/* Use motion divs for your projects */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUpVariant}
-            viewport={{ once: true }}
-          >
-            <Aside
-              image="/images/TSM.png"
-              blurImage="/images/TSMBlur.png"
-              title="Simplifying Your Moving Quote Journey"
-              company="Two Small Men with Big Hearts"
-              description="A streamlined quoting system enhancing estimation accuracy and user experience for scalable efficiency."
-              link="/projects/twoSmallMen"
-              flip={false}
-              width={{ xs: "100%", sm: "600px", md: "700px" }}
-              height={{ xs: "100%", sm: "600px", md: "700px" }}
-              marginTop={{ xs: "50px", sm: "80px" }}
-            />
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUpVariant}
-            viewport={{ once: true }}
-          >
-            <Aside
-              image="/images/EpiPlan.png"
-              blurImage="/images/epiPlanBlur.png"
-              title="A Companion for Dietary Restrictions"
-              company="EpiPlan"
-              description="A mobile app empowering individuals with dietary restrictions to easily navigate food choices and find suitable options through intuitive, research-driven solutions."
-              link="/projects/epiPlan"
-              flip={true}
-              width="700px"
-              height="700px"
-              marginTop="100px"
-            />
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            variants={fadeInUpVariant}
-            viewport={{ once: true }}
-          >
-            <Aside
-              image="/images/WUKSA.png"
-              blurImage="/images/wuksaBlur.png"
-              title="Crafting a Bold New Identity"
-              company="WesternU Korean Student Association"
-              description="Re-envisioning WUKSA's brand to bring a fresh, modern identity across all platforms."
-              link="/projects/wuksa"
-              flip={false}
-              width="550px"
-              height="550px"
-              marginTop="100px"
-            />
-          </motion.div>
-          <Box sx={{ marginTop: { xs: "80px", sm: "120px" } }}>
-            <Footer />
           </Box>
         </Box>
-        </Box>
+      </Box>
+      <Box sx={{ marginTop: "-125px" }}>
+        <Footer />
+      </Box>
     </ThemeProvider>
   );
 }

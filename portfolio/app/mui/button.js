@@ -23,7 +23,7 @@ const CustomButton = styled(Button)(({ variantType }) => ({
     }),
     ...(variantType === 'header' && {
         padding: '8px 18px', 
-        fontSize: '20px', 
+        fontSize: '18px', 
         backgroundColor: 'transparent',
         color: "#666",
         fontWeight: "400",

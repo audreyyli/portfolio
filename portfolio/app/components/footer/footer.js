@@ -1,78 +1,125 @@
 "use client";
-import React from 'react';
-import { Box, Typography, IconButton } from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import MailIcon from "@mui/icons-material/Mail";
+import React from "react";
+import { Box, Typography, Button } from "@mui/material";
+import ArrowOutward from "@mui/icons-material/ArrowOutward";
 
 const Footer = () => {
   return (
-    <Box 
-      sx={{ 
-        maxWidth: "1200px",
-        width: "100%", // Full width of the screen
-        display: "flex", 
-        alignItems: "center", 
-        justifyContent: "space-between", // Text on the left, icons on the right
-        padding: "20px", 
-        marginTop: "40px", 
+    <Box
+      sx={{
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: { xs: "20px 10px", md: "20px 40px" },
+        marginTop: "40px",
+        background: "none",
       }}
     >
-      {/* Text */}
-      <Typography 
-        variant="body1" 
-        sx={{ 
-          fontSize: { xs: "14px", sm: "16px", md: "20px" }, // Smaller font size for mobile
-          color: "#888" 
+      {/* Footer Text */}
+      <Typography
+        variant="body1"
+        sx={{
+          fontSize: { xs: "14px", sm: "16px", md: "18px" },
+          color: "#888",
         }}
       >
-        Made with ❤️, by Audrey
+        site developed with love by Audrey Li  ·  2024
       </Typography>
 
       {/* Social Media Links */}
-      <Box sx={{ display: "flex", alignItems: "center", gap: { xs: "8px", md: "16px" } }}>        <IconButton
-          href="https://www.linkedin.com/in/audreylii"
-          target="_blank"
-          sx={{
-            "&:hover": {
-              backgroundColor: "transparent", // No background on hover
-              "& .MuiSvgIcon-root": {
-                color: "#002366", // Change icon color on hover
-              },
-            },
-          }}
-        >
-          <LinkedInIcon sx={{ width: { xs: "25px", md: "35px" }, height: "auto", color: "#888" }} />
-        </IconButton>
-
-        <IconButton
-          href="https://github.com/audreyyli"
-          target="_blank"
-          sx={{
-            "&:hover": {
-              backgroundColor: "transparent", // No background on hover
-              "& .MuiSvgIcon-root": {
-                color: "#002366", // Change icon color on hover
-              },
-            },
-          }}
-        >
-          <GitHubIcon sx={{ width: { xs: "25px", md: "35px" }, height: "auto", color: "#888" }} />
-        </IconButton>
-
-        <IconButton
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: { xs: "12px", md: "20px" },
+        }}
+      >
+        {/* Works Button */}
+        <Button
           href="mailto:li.audrey04@gmail.com"
+          disableRipple
           sx={{
+            textTransform: "none",
+            fontWeight: 400,
+            fontSize: { xs: "14px", sm: "16px", md: "18px" },
+            color: "#666",
+            position: "relative",
+            overflow: "hidden",
+            textAlign: "center",
+            padding: "5px 10px",
+            transition: "color 0.3s ease, transform 0.3s ease",
             "&:hover": {
-              backgroundColor: "transparent", // No background on hover
-              "& .MuiSvgIcon-root": {
-                color: "#002366", // Change icon color on hover
+              color: "#111",
+              background: "none",
+              "&::after": {
+                width: "100%",
               },
+            },
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              bottom: "0px",
+              left: "0",
+              height: "2px",
+              backgroundColor: "#111",
+              width: "0%",
+              transition: "width 0.4s ease",
             },
           }}
         >
-          <MailIcon sx={{ width: { xs: "25px", md: "35px" }, height: "auto", color: "#888" }} />
-        </IconButton>
+          email
+        </Button>
+
+        {/* LinkedIn Button */}
+        <Button 
+          variant="contained"
+          endIcon={<ArrowOutward />}
+          sx={{
+            fontSize: "18px",
+            textTransform: "none",
+            backgroundColor: "transparent",
+            color: "#666",
+            border: "2px solid #666",
+            borderRadius: "50px",
+            paddingBottom: "10px",
+            boxShadow: "none",
+            position: "relative",
+            overflow: "hidden",
+            transition: "all 0.3s ease-in-out",
+            "& .MuiButton-endIcon": {
+              transition: "transform 0.3s ease-in-out",
+            },
+            "&:hover": {
+              color: "#111",
+              boxShadow: "none",
+              borderColor: "#111",
+              "& .MuiButton-endIcon": {
+                transform: "rotate(45deg)",
+              },
+              "&::after": {
+                width: "100%",
+              },
+            },
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              bottom: "12px",
+              left: "0",
+              height: "2px",
+              backgroundColor: "#111",
+              width: "0%",
+              transition: "width 0.4s ease",
+              marginX: "15px",
+              maxWidth: "70%",
+            },
+          }} 
+          href="https://www.linkedin.com/in/audreylii/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+        >
+          let&apos;s connect!
+        </Button>
       </Box>
     </Box>
   );
