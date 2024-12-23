@@ -5,13 +5,16 @@ import CustomButton from "../../mui/button.js";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
+    setMenuOpen(true);
   };
 
   const handleMenuClose = () => {
+    setMenuOpen(false);
     setAnchorEl(null);
   };
 
@@ -55,10 +58,13 @@ export default function Header() {
 
           {/* Right: Navigation */}
           <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center', gap: '20px' }}>
-            <Box>
+            <Box
+              onMouseEnter={handleMenuOpen}
+              onMouseLeave={handleMenuClose}
+              sx={{ position: "relative" }}
+            >
               <Button
                 endIcon={<ExpandMoreIcon />}
-                onClick={handleMenuOpen}
                 disableRipple
                 sx={{
                   textTransform: 'none',
@@ -68,33 +74,18 @@ export default function Header() {
                   position: 'relative',
                   overflow: 'hidden',
                   textAlign: 'center',
-                  transition: 'transform 0.03s, background-color 0.06s',
-                  '&:hover': {
-                    color: '#111',
-                    fontWeight: "400",
-                    background: "none",
-                    '&::after': {
-                      width: '100%',
-                    },
-                  },
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: '10px',
-                    left: '0',
-                    height: '2px',
-                    backgroundColor: '#111',
-                    width: '0%',
-                    transition: 'width 0.4s ease',
-                  },
                 }}
               >
                 works
               </Button>
               <Menu
                 anchorEl={anchorEl}
-                open={Boolean(anchorEl)}
+                open={menuOpen}
                 onClose={handleMenuClose}
+                MenuListProps={{
+                  onMouseEnter: () => setMenuOpen(true),
+                  onMouseLeave: handleMenuClose,
+                }}
                 PaperProps={{
                   sx: {
                     backgroundColor: 'transparent',
@@ -114,9 +105,10 @@ export default function Header() {
                     overflow: 'hidden',
                     padding: '8px 16px',
                     transition: 'color 0.3s',
+                    backgroundColor: 'transparent',
                     '&:hover': {
                       color: '#111',
-                      background: "none",
+                      backgroundColor: 'transparent',
                       '&::after': {
                         width: '100%',
                       },
@@ -148,9 +140,10 @@ export default function Header() {
                     overflow: 'hidden',
                     padding: '8px 16px',
                     transition: 'color 0.3s',
+                    backgroundColor: "transparent",
                     '&:hover': {
                       color: '#111',
-                      background: "none",
+                      backgroundColor: "transparent",
                       '&::after': {
                         width: '100%',
                       },
