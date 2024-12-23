@@ -23,13 +23,13 @@ const rotateAnimation = keyframes`
 
 const floatAnimation1 = keyframes`
   0% {
-    transform: translateX(-40%) translateY(20%) scale(1);
+    transform: translateX(-40%) translateY(30%) scale(1);
   }
   50% {
-    transform: translateX(-60%) translateY(10%) scale(1.05);
+    transform: translateX(-60%) translateY(5%) scale(1.05);
   }
   100% {
-    transform: translateX(-40%) translateY(20%) scale(1);
+    transform: translateX(-40%) translateY(30%) scale(1);
   }
 `;
 
@@ -38,7 +38,7 @@ const floatAnimation2 = keyframes`
     transform: translateX(-30%) translateY(-10%) scale(1);
   }
   50% {
-    transform: translateX(-50%) translateY(5%) scale(1.05);
+    transform: translateX(-60%) translateY(10%) scale(1.05);
   }
   100% {
     transform: translateX(-30%) translateY(-10%) scale(1);
@@ -47,13 +47,13 @@ const floatAnimation2 = keyframes`
 
 const floatAnimation3 = keyframes`
   0% {
-    transform: translateX(-40%) translateY(20%) scale(1);
+    transform: translateX(-40%) translateY(-20%) scale(1);
   }
   50% {
-    transform: translateX(-20%) translateY(35%) scale(1.05);
+    transform: translateX(-20%) translateY(0%) scale(1.05);
   }
   100% {
-    transform: translateX(-40%) translateY(20%) scale(1);
+    transform: translateX(-40%) translateY(-20%) scale(1);
   }
 `;
 
@@ -95,11 +95,10 @@ function MyApp() {
       <Box
         sx={{
           width: "100vw",
-          maxHeight: "100vh",
           height: "100vh",
           overflow: "hidden",
           position: "relative",
-          marginTop: "-90px",
+          marginTop: "-80px",
         }}
       >
         <Box
@@ -107,6 +106,11 @@ function MyApp() {
             maxWidth: "1200px",
             margin: "0 auto",
             padding: { xs: "15px", sm: "20px" },
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           {/* Gradient 1 (Foreground Orb) */}
@@ -124,14 +128,14 @@ function MyApp() {
           >
             <Box
               sx={{
-                "--size": "650px",
-                "--speed": "50s",
+                "--size": "700px",
+                "--speed": "10s",
                 "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
                 width: "var(--size)",
                 height: "var(--size)",
                 filter: "blur(calc(var(--size) / 5))",
                 backgroundImage:
-                  "linear-gradient(hsl(222, 84%, 80%), hsl(164, 79%, 85%))",
+                  "linear-gradient(hsl(222, 84%, 80%, 0.7), hsl(164, 79%, 85%, 0.7))",
                 animation: `${rotateAnimation} var(--speed) var(--easing) alternate infinite`,
                 borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
               }}
@@ -154,13 +158,13 @@ function MyApp() {
             <Box
               sx={{
                 "--size": "680px",
-                "--speed": "60s",
+                "--speed": "20s",
                 "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
                 width: "var(--size)",
                 height: "var(--size)",
                 filter: "blur(calc(var(--size) / 6))",
                 backgroundImage:
-                  "linear-gradient(rgb(245, 239, 255), rgb(205, 193, 255))",
+                  "linear-gradient(rgb(245, 239, 255, 0.7), rgb(205, 193, 255, 0.7))",
                 animation: `${rotateAnimation} var(--speed) var(--easing) alternate infinite`,
                 borderRadius: "50% 50% 70% 70% / 40% 40% 60% 60%",
               }}
@@ -171,7 +175,7 @@ function MyApp() {
           <Box
             sx={{
               position: "absolute",
-              transform: "translateX(-100%) translateY(-10%)",
+              transform: "translateX(-100%) translateY(-80%)",
               left: "20%",
               zIndex: -2,
               display: "flex",
@@ -182,14 +186,14 @@ function MyApp() {
           >
             <Box
               sx={{
-                "--size": "400px",
-                "--speed": "60s",
+                "--size": "500px",
+                "--speed": "15s",
                 "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
                 width: "var(--size)",
                 height: "var(--size)",
                 filter: "blur(calc(var(--size) / 6))",
                 backgroundImage:
-                  "linear-gradient(hsl(280, 84%, 85%), hsl(340, 79%, 90%))",
+                  "linear-gradient(hsl(280, 84%, 85%, 0.7), hsl(340, 79%, 90%, 0.7))",
                 animation: `${rotateAnimation} var(--speed) var(--easing) alternate infinite`,
                 borderRadius: "50% 50% 70% 70% / 40% 40% 60% 60%",
               }}
@@ -208,15 +212,15 @@ function MyApp() {
             }}
           >
             <Typography
-              variant="h6"
               sx={{
                 fontSize: { xs: "18px", md: "24px" },
+                fontWeight: 100,
                 textTransform: "none",
                 color: "#666",
-                marginTop: "35px",
                 fontFamily: "Lato",
                 margin: "0 auto",
                 marginBottom: "60px",
+                textAlign: "center",
               }}
             >
               Hi! I&apos;m Audrey!
@@ -237,7 +241,7 @@ function MyApp() {
                 sx={{
                   fontWeight: "bold",
                   position: "absolute",
-                  color: "#EEE",
+                  color: "#DDD",
                   fontSize: { xs: "200px", md: "300px" },
                   fontFamily: "Lato",
                   fontStyle: "normal",
@@ -256,12 +260,12 @@ function MyApp() {
                   variant="h4"
                   sx={{
                     textTransform: "none",
-                    color: "#222",
-                    fontSize: { xs: "60px", md: "150px" },
+                    color: "#666",
+                    fontSize: { xs: "60px", md: "180px" },
                     fontFamily: "Amoresa",
                     fontStyle: "normal",
                     transform: "rotate(5deg)",
-                    paddingRight: "30px",
+                    paddingRight: "15px",
                     display: "inline-block",
                     position: "relative",
                     top: "-20px",
@@ -274,7 +278,7 @@ function MyApp() {
                   sx={{
                     fontWeight: 900,
                     textTransform: "none",
-                    color: "#222",
+                    color: "#666",
                     fontSize: { xs: "60px", md: "150px" },
                     fontFamily: "Lato",
                     fontStyle: "italic",
@@ -290,8 +294,8 @@ function MyApp() {
                   variant="h4"
                   sx={{
                     textTransform: "none",
-                    color: "#222",
-                    fontSize: { xs: "60px", md: "220px" },
+                    color: "#666",
+                    fontSize: { xs: "60px", md: "270px" },
                     fontFamily: "Amoresa",
                     fontStyle: "normal",
                     paddingRight: "10px",
@@ -308,10 +312,12 @@ function MyApp() {
                   sx={{
                     fontWeight: 900,
                     textTransform: "none",
-                    color: "#222",
+                    color: "#666",
                     fontSize: { xs: "60px", md: "150px" },
                     fontFamily: "Lato",
                     fontStyle: "italic",
+                    position: "relative",
+                    top: "-18px",
                   }}
                 >
                   ubbly
@@ -320,14 +326,15 @@ function MyApp() {
             </Box>
 
             <Typography
-              variant="h6"
               sx={{
                 fontSize: { xs: "18px", md: "24px" },
+                fontWeight: 100,
                 textTransform: "none",
                 color: "#666",
                 marginTop: "35px",
                 fontFamily: "Lato",
                 margin: "0 auto",
+                textAlign: "center",
               }}
             >
               That&apos;s my approach to design. I&apos;m a product designer & developer
@@ -337,7 +344,7 @@ function MyApp() {
           </Box>
         </Box>
       </Box>
-      <Box sx={{ marginTop: "-125px" }}>
+      <Box sx={{ position: "absolute", bottom: 0, width: "100%" }}>
         <Footer />
       </Box>
     </ThemeProvider>

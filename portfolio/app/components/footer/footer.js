@@ -59,7 +59,7 @@ const Footer = () => {
             "&::after": {
               content: '""',
               position: "absolute",
-              bottom: "0px",
+              bottom: "8px",
               left: "0",
               height: "2px",
               backgroundColor: "#111",
