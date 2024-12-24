@@ -12,8 +12,10 @@ const Footer = () => {
         alignItems: "center",
         justifyContent: "space-between",
         padding: { xs: "20px 10px", md: "20px 40px" },
-        marginTop: "40px",
         background: "none",
+        position: "sticky",
+        bottom: 0,
+        zIndex: 1000,
       }}
     >
       {/* Footer Text */}
@@ -35,7 +37,7 @@ const Footer = () => {
           gap: { xs: "12px", md: "20px" },
         }}
       >
-        {/* Works Button */}
+        {/* Email Button */}
         <Button
           href="mailto:li.audrey04@gmail.com"
           disableRipple
@@ -72,7 +74,7 @@ const Footer = () => {
         </Button>
 
         {/* LinkedIn Button */}
-        <Button 
+        <Button
           variant="contained"
           endIcon={<ArrowOutward />}
           sx={{
@@ -113,9 +115,9 @@ const Footer = () => {
               marginX: "15px",
               maxWidth: "70%",
             },
-          }} 
-          href="https://www.linkedin.com/in/audreylii/" 
-          target="_blank" 
+          }}
+          href="https://www.linkedin.com/in/audreylii/"
+          target="_blank"
           rel="noopener noreferrer"
         >
           let&apos;s connect!
