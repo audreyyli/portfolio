@@ -1,24 +1,23 @@
 "use client";
-import React, { useRef } from "react";
-import { motion, useTransform, useScroll } from "framer-motion";
+import React from "react";
+import { motion, useSpring, useTransform } from "framer-motion";
+import Aside from "../projects/aside"
 
-const Carousel = ({ triggerScroll, itemWidth = "400px", gap = "20px" }) => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
+const Carousel = ({ triggerScroll, items, itemWidth = "400px", gap = "40px" }) => {
+  // Map triggerScroll to desired x positions
+  const mappedX = useTransform(triggerScroll, [0, 1], ["0%", "-4000%"]);
+
+  // Use spring for smooth, non-bouncy scrolling
+  const x = useSpring(mappedX, {
+    stiffness: 2000,
+    damping: 300,
+    mass: 3,
   });
-
-  const x = useTransform(triggerScroll, [false, true], ["0%", "-100%"]);
 
   return (
     <div
-      ref={containerRef}
       style={{
         position: "relative",
-        width: "100%",
-        overflow: "hidden",
-        height: "400px",
         margin: "0 auto",
       }}
     >
@@ -27,27 +26,21 @@ const Carousel = ({ triggerScroll, itemWidth = "400px", gap = "20px" }) => {
           display: "flex",
           x,
           gap,
-          transition: "all 0.5s ease-out",
         }}
       >
-        {Array.from({ length: 4 }).map((_, index) => (
-          <div
+        {items.map((item, index) => (
+          <Aside
             key={index}
-            style={{
-              width: itemWidth,
-              height: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              background: index % 2 === 0 ? "#EEE" : "#CCC",
-              color: "#666",
-              fontSize: "24px",
-              fontWeight: "bold",
-              flexShrink: 0,
-            }}
-          >
-            Project {index + 1}
-          </div>
+            image={item.image}
+            company={item.company}
+            title={item.title}
+            type={item.type}
+            category={item.category}
+            year={item.year}
+            link={item.link}
+            width={itemWidth}
+            color={item.color}
+          />
         ))}
       </motion.div>
     </div>

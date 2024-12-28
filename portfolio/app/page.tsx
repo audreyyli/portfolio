@@ -9,6 +9,49 @@ import Footer from "./components/footer/footer.js";
 import Carousel from "./components/carousel/carousel.js"
 import "./globals.css";
 
+const items = [
+  {
+    image: "/images/test.png",
+    company: "Tech Corp",
+    title: "Innovative Project 1",
+    type: "Web App",
+    category: "Technology",
+    year: "2023",
+    link: "/project1",
+    color: "#FFBCEA"
+  },
+  {
+    image: "/path/to/image2.jpg",
+    company: "Creative Inc",
+    title: "Creative Design 2",
+    type: "Mobile App",
+    category: "Design",
+    year: "2022",
+    link: "/project2",
+    color: "#FFBCEA"
+  },
+  {
+    image: "/path/to/image3.jpg",
+    company: "Build Studio",
+    title: "Architecture Project 3",
+    type: "Architecture",
+    category: "Construction",
+    year: "2021",
+    link: "/project3",
+    color: "#FFBCEA"
+  },
+  {
+    image: "/path/to/image4.jpg",
+    company: "Eco Solutions",
+    title: "Sustainable Design 4",
+    type: "Eco Design",
+    category: "Environment",
+    year: "2024",
+    link: "/project4",
+    color: "#FFBCEA"
+  },
+];
+
 // Define floating orb animation
 const rotateAnimation = keyframes`
   0% {
@@ -70,9 +113,9 @@ function MyApp() {
 
   const section1Opacity = useTransform(scrollYProgress, [0, 0.4, 0.5], [1, 1, 0]);
   const section2Opacity = useTransform(scrollYProgress, [0.5, 0.6, 1], [0, 1, 1]);
-  const section3Opacity = useTransform(scrollYProgress, [0.7, 0.8, 1], [0, 1, 1]);
+  const section3Opacity = useTransform(scrollYProgress, [0.5, 0.6, 1], [0, 1, 1]);
 
-  const triggerScroll = useTransform(scrollYProgress, [0.8, 1], [false, true]);
+  const triggerScroll = useTransform(scrollYProgress, [0.7, 1], [0, 1]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -84,7 +127,7 @@ function MyApp() {
       <Box
         ref={containerRef}
         sx={{
-          height: "300vh",
+          height: "400vh",
           overflow: "hidden",
           position: "relative",
         }}
@@ -438,7 +481,7 @@ function MyApp() {
 
         <Typography
           sx={{
-            fontSize: { xs: "18px", md: "20px" },
+            fontSize: { xs: "18px", md: "24px" },
             maxWidth: "1200px",
             fontWeight: 100,
             textTransform: "none",
@@ -457,7 +500,7 @@ function MyApp() {
               <motion.div
           style={{
             position: "fixed",
-            top: 0,
+            top: "90px",
             left: 0,
             width: "100%",
             height: "100vh",
@@ -475,7 +518,7 @@ function MyApp() {
               alignItems: "center",
             }}
           >
-            <Carousel triggerScroll={triggerScroll} />
+            <Carousel triggerScroll={triggerScroll} items={items} />
           </Box>
         </motion.div>
       </Box>
