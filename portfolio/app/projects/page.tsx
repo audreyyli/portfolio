@@ -6,7 +6,7 @@ import Footer from "../components/footer/footer.js";
 import Carousel from "../components/carousel/carousel.js";
 import { Typography, Box } from "@mui/material";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform } from "framer-motion";
 
 const items = [
   {

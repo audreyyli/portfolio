@@ -4,7 +4,7 @@ import { Box, Typography, Button, Card, CardMedia, CardContent } from "@mui/mate
 import Link from "next/link";
 import ArrowOutward from "@mui/icons-material/ArrowOutward";
 
-const Aside = ({ image, company, title, type, category, year, link, width, color }) => {
+const Aside = ({ image, company, title, type, category, year, link, width }) => {
   return (
     <Link href={link} passHref>
       <Card

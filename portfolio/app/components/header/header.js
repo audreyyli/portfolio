@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { AppBar, Toolbar, Box, Button, Menu, MenuItem } from '@mui/material';
 import CustomButton from "../../mui/button.js";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Link as ScrollLink } from "react-scroll";
+//import { Link as ScrollLink } from "react-scroll";
 
 export default function Header() {
   const [isHovered, setIsHovered] = useState(false);
