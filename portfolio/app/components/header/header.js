@@ -3,8 +3,10 @@ import Link from 'next/link';
 import { AppBar, Toolbar, Box, Button, Menu, MenuItem } from '@mui/material';
 import CustomButton from "../../mui/button.js";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Link as ScrollLink } from "react-scroll";
 
 export default function Header() {
+  const [isHovered, setIsHovered] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -45,11 +47,13 @@ export default function Header() {
           {/* Left: Logo */}
           <Box
             sx={{ flexGrow: 0, display: 'flex', alignItems: 'center' }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             <Link href="/" passHref>
               <Box
                 component="img"
-                src="/images/logo.png"
+                src={isHovered ? '/images/logoHover.png' : '/images/logo.png'}
                 alt="Logo"
                 sx={{ width: '60px', height: 'auto', cursor: 'pointer' }}
               />
@@ -94,41 +98,42 @@ export default function Header() {
                   },
                 }}
               >
-                <MenuItem
-                  onClick={handleMenuClose}
-                  sx={{
-                    fontSize: '16px',
-                    fontWeight: 400,
-                    color: '#666',
-                    textTransform: 'none',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    padding: '8px 16px',
-                    transition: 'color 0.3s',
+                              
+              {/* <MenuItem
+                onClick={handleMenuClose}
+                sx={{
+                  fontSize: '16px',
+                  fontWeight: 400,
+                  color: '#666',
+                  textTransform: 'none',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  padding: '8px 16px',
+                  transition: 'color 0.3s',
+                  backgroundColor: 'transparent',
+                  '&:hover': {
+                    color: '#111',
                     backgroundColor: 'transparent',
-                    '&:hover': {
-                      color: '#111',
-                      backgroundColor: 'transparent',
-                      '&::after': {
-                        width: '100%',
-                      },
-                    },
                     '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: '0px',
-                      left: '0',
-                      height: '2px',
-                      backgroundColor: '#111',
-                      width: '0%',
-                      transition: 'width 0.4s ease',
+                      width: '100%',
                     },
-                  }}
-                >
-                  <Link href="/projects" passHref>
-                    case studies
-                  </Link>
-                </MenuItem>
+                  },
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: '0px',
+                    left: '0',
+                    height: '2px',
+                    backgroundColor: '#111',
+                    width: '0%',
+                    transition: 'width 0.4s ease',
+                  },
+                }}
+              >
+                <ScrollLink to="section2" smooth={true} duration={500}>
+                  projects
+                </ScrollLink>
+              </MenuItem> */}
                 <MenuItem
                   onClick={handleMenuClose}
                   sx={{
@@ -169,7 +174,7 @@ export default function Header() {
             <Link href="/about" passHref>
               <CustomButton variantType="header" sx={{ textTransform: 'none' }}>about me</CustomButton>
             </Link>
-            <Link href="https://drive.google.com/file/d/14twAB9mIQ9TBQth6yLCh9OF9hvbNvMjq/view?usp=sharing" passHref target="_blank" rel="noopener noreferrer">
+            <Link href="https://drive.google.com/file/d/1T9rz24Lk_VVmbJu8VPyuUEPD3zT7-ujs/view?usp=sharing" passHref target="_blank" rel="noopener noreferrer">
               <CustomButton variantType="header" sx={{ textTransform: 'none' }}>resume</CustomButton>
             </Link>
           </Box>

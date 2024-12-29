@@ -4,51 +4,51 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Header from "./components/header/header.js";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Typography, Box } from "@mui/material";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Footer from "./components/footer/footer.js";
 import Carousel from "./components/carousel/carousel.js"
 import "./globals.css";
 
 const items = [
   {
-    image: "/images/test.png",
-    company: "Tech Corp",
-    title: "Innovative Project 1",
-    type: "Web App",
-    category: "Technology",
-    year: "2023",
-    link: "/project1",
-    color: "#FFBCEA"
-  },
-  {
-    image: "/path/to/image2.jpg",
-    company: "Creative Inc",
-    title: "Creative Design 2",
-    type: "Mobile App",
-    category: "Design",
-    year: "2022",
-    link: "/project2",
-    color: "#FFBCEA"
-  },
-  {
-    image: "/path/to/image3.jpg",
-    company: "Build Studio",
-    title: "Architecture Project 3",
-    type: "Architecture",
-    category: "Construction",
-    year: "2021",
-    link: "/project3",
-    color: "#FFBCEA"
-  },
-  {
-    image: "/path/to/image4.jpg",
-    company: "Eco Solutions",
-    title: "Sustainable Design 4",
-    type: "Eco Design",
-    category: "Environment",
+    image: "/images/instagram.png",
+    company: "Instagram",
+    title: "Improving personalization for Instagram's explore page",
+    type: "Product Strategy",
+    category: "Fellowship Project",
     year: "2024",
-    link: "/project4",
-    color: "#FFBCEA"
+    link: "/projects/instagram",
+    color: "#FFC7DE"
+  },
+  {
+    image: "/images/twoSmallMen.png",
+    company: "Two Small Men with Big Hearts",
+    title: "Simplifying your moving quote journey",
+    type: "Design & Front-End",
+    category: "Internship",
+    year: "2024",
+    link: "/projects/twoSmallMen",
+    color: "#D9E6FF"
+  },
+  {
+    image: "/images/epiPlan.png",
+    company: "EpiPlan",
+    title: "Designing a companion for dietary needs",
+    type: "Product Design",
+    category: "Mobile App",
+    year: "2023",
+    link: "/projects/epiPlan",
+    color: "#FFEED9"
+  },
+  {
+    image: "/images/wuksa.png",
+    company: "Western university korean student association",
+    title: "Re-envisioning WUKSA's brand identity",
+    type: "Brand Design",
+    category: "Design Strategy",
+    year: "2023",
+    link: "/projects/wuksa",
+    color: "#ECD9FF"
   },
 ];
 
@@ -116,6 +116,15 @@ function MyApp() {
   const section3Opacity = useTransform(scrollYProgress, [0.5, 0.6, 1], [0, 1, 1]);
 
   const triggerScroll = useTransform(scrollYProgress, [0.7, 1], [0, 1]);
+
+  const [isSection3Active, setIsSection3Active] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = section3Opacity.onChange((value) => {
+      setIsSection3Active(value === 1);
+    });
+    return () => unsubscribe();
+  }, [section3Opacity]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -380,13 +389,14 @@ function MyApp() {
         </Box>
 
         {/* Section 2 */}
+        <Box is="section2" sx={{ position: "relative"}}>
         <motion.div
           style={{
             position: "fixed",
-            top: 0,
+            top: "-8%",
             left: 0,
             width: "100%",
-            height: "100vh",
+            height: "50vh",
             opacity: section2Opacity,
           }}
         >
@@ -418,13 +428,13 @@ function MyApp() {
               sx={{
                 textTransform: "none",
                 color: "#666",
-                fontSize: { xs: "60px", md: "90px" },
+                fontSize: { xs: "60px", md: "70px" },
                 fontFamily: "Amoresa",
                 fontStyle: "normal",
                 transform: "rotate(5deg)",
                 display: "inline-block",
                 position: "relative",
-                top: "-20px",
+                top: "-10px",
               }}
             >
               S
@@ -435,7 +445,7 @@ function MyApp() {
                 fontWeight: 900,
                 textTransform: "none",
                 color: "#666",
-                fontSize: { xs: "60px", md: "50px" },
+                fontSize: { xs: "60px", md: "40px" },
                 fontFamily: "Lato",
                 fontStyle: "italic",
               }}
@@ -451,7 +461,7 @@ function MyApp() {
               sx={{
                 textTransform: "none",
                 color: "#666",
-                fontSize: { xs: "60px", md: "85px" },
+                fontSize: { xs: "60px", md: "65px" },
                 fontFamily: "Amoresa",
                 fontStyle: "normal",
                 display: "inline-block",
@@ -468,7 +478,7 @@ function MyApp() {
                 fontWeight: 900,
                 textTransform: "none",
                 color: "#666",
-                fontSize: { xs: "60px", md: "50px" },
+                fontSize: { xs: "60px", md: "40px" },
                 fontFamily: "Lato",
                 fontStyle: "italic",
                 position: "relative",
@@ -500,11 +510,13 @@ function MyApp() {
               <motion.div
           style={{
             position: "fixed",
-            top: "90px",
+            top: "55px",
             left: 0,
             width: "100%",
-            height: "100vh",
+            height: "50vh",
             opacity: section3Opacity,
+            zIndex: isSection3Active ? 2 : -1,
+            pointerEvents: isSection3Active ? "auto" : "none",
           }}
         >
           <Box
@@ -521,6 +533,7 @@ function MyApp() {
             <Carousel triggerScroll={triggerScroll} items={items} />
           </Box>
         </motion.div>
+      </Box>
       </Box>
 
       <Box sx={{ position: "fixed", bottom: 0, zIndex: 10, width: "100%" }}>

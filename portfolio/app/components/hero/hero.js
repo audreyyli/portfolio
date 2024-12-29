@@ -32,7 +32,7 @@ const Hero = ({
           {/* Left Section - Text */}
           <Grid item xs={12} md={6}>
             <Typography variant="h6" sx={{ fontWeight: "bold", fontSize: "24px" }} gutterBottom>{title}</Typography>
-            <Typography variant="h3" sx={{ fontWeight: "bold", fontSize: "50px" }} gutterBottom>{header}</Typography>
+            <Typography variant="h3" sx={{ fontWeight: "bold", fontSize: "40px" }} gutterBottom>{header}</Typography>
 
             {/* Company Pill */}
             <Box

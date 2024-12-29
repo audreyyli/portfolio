@@ -94,7 +94,7 @@ export default function TwoSmallMen() {
           }}
         >
           <Hero
-            headerImage="/images/TSM.png"
+            headerImage="/images/TSMMock.png"
             blurImage="/images/TSMBlur.png"
             title="QUOTE ESTIMATOR"
             timeline="Aug 2024 - Present"
@@ -140,7 +140,6 @@ export default function TwoSmallMen() {
       {/* Footer Section */}
       <Box
         sx={{
-          maxWidth: "1200px",
           margin: "auto",
           width: "100%",
         }}

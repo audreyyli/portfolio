@@ -93,9 +93,9 @@ export default function EpiPlan() {
           }}
         >
         <Hero
-          headerImage="/images/EpiPlan.png"
+          headerImage="/images/EpiPlanMock.png"
           blurImage="/images/epiPlanBlur.png"
-          title="EPIPLAN"
+          title="MOBILE APP"
           timeline="March 2024"
           role="Product Designer"
           toolsSkills="Figma, Visual Design, User Research"
@@ -137,7 +137,6 @@ export default function EpiPlan() {
       {/* Footer Section */}
       <Box
         sx={{
-          maxWidth: "1200px",
           margin: "auto",
           width: "100%",
         }}

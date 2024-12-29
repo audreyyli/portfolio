@@ -3,12 +3,54 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Header from "../components/header/header.js";
 import Footer from "../components/footer/footer.js";
-import Projects from "../components/projects/project.js";
-import { Typography, Box, Grid } from "@mui/material";
-import { motion } from "framer-motion"; // Import Framer Motion for animations
-import React from "react";
+import Carousel from "../components/carousel/carousel.js";
+import { Typography, Box } from "@mui/material";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-// Create a custom theme with Apple system fonts
+const items = [
+  {
+    image: "/images/instagram.png",
+    company: "Instagram",
+    title: "Improving personalization for Instagram's explore page",
+    type: "Product Strategy",
+    category: "Fellowship Project",
+    year: "2024",
+    link: "/projects/instagram",
+    color: "#FFC7DE",
+  },
+  {
+    image: "/images/twoSmallMen.png",
+    company: "Two Small Men with Big Hearts",
+    title: "Simplifying your moving quote journey",
+    type: "Design & Front-End",
+    category: "Internship",
+    year: "2024",
+    link: "/projects/twoSmallMen",
+    color: "#D9E6FF",
+  },
+  {
+    image: "/images/epiPlan.png",
+    company: "EpiPlan",
+    title: "Designing a companion for dietary needs",
+    type: "Product Design",
+    category: "Mobile App",
+    year: "2023",
+    link: "/projects/epiPlan",
+    color: "#FFEED9",
+  },
+  {
+    image: "/images/wuksa.png",
+    company: "Western university korean student association",
+    title: "Re-envisioning WUKSA's brand identity",
+    type: "Brand Design",
+    category: "Design Strategy",
+    year: "2023",
+    link: "/projects/wuksa",
+    color: "#ECD9FF",
+  },
+];
+
 const theme = createTheme({
   typography: {
     fontFamily:
@@ -16,94 +58,68 @@ const theme = createTheme({
   },
 });
 
-// Animation variants for fading in and rising up
-const fadeInUpVariant = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-};
+function Projects() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-function projects({}) {
+  const triggerScroll = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Box sx={{ position: "fixed", top: 0, zIndex: 10, width: "100%" }}>
         <Header />
-        {/* Page Wrapper with max-width 1000px and centered content */}
-        <Box
+      </Box>
+      <Box
+        ref={containerRef}
+        sx={{
+          minHeight: "100vh",
+          padding: "20px",
+          margin: "0 auto",
+          maxWidth: "1200px",
+        }}
+      >
+        <Typography
+          variant="h3"
           sx={{
-            maxWidth: "1200px", // Restrict the page to 1200px width
-            margin: "0 auto", // Center the content horizontally
-            padding: "20px", // Optional padding
+            fontWeight: 700,
+            fontSize: { xs: "30px", md: "50px" },
+            marginBottom: "20px",
+            textAlign: "center",
           }}
         >
-          {/* Page Title */}
-          <Typography
-            variant="h2"
-            sx={{ marginTop: "50px", fontWeight: "bold", textTransform: "none", color: "#444" }}
-          >
-            Project Library
-          </Typography>
-          <Typography
-            variant="h6"
-            sx={{
-              textTransform: "none",
-              color: "#888",
-            }}
-          >
-            All projects made by Audrey throughout the years.
-          </Typography>
-
-        <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUpVariant}
+          Project Library
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: { xs: "16px", md: "20px" },
+            color: "#666",
+            marginBottom: "50px",
+            textAlign: "center",
+          }}
         >
-          {/* Grid Layout for Projects */}
-          <Grid container spacing={3} sx={{ marginTop: "30px" }}>
-            {/* Project 1 */}
-            <Grid item xs={12} sm={6} md={6}>
-              <Projects
-                image="/images/TSMHeader.png"
-                title="Junior Developer"
-                company="Two Small Men with Big Hearts"
-                link="/projects/twoSmallMen"
-                time="June 2023 - Present"
-                skills={["Web development", "SEO", "Figma", "React", "Next.js"]}
-              />
-            </Grid>
-
-            {/* Project 2 */}
-            <Grid item xs={12} sm={6} md={6}>
-              <Projects
-                image="/images/EpiPlanHeader.png"
-                title="Product Designer"
-                company="EpiPlan"
-                link="/projects/epiPlan"
-                time="March 2024"
-                skills={["Figma", "UI/UX", "Product Design"]}
-              />
-            </Grid>
-
-            {/* Project 3 */}
-            <Grid item xs={12} sm={6} md={6}>
-              <Projects
-                image="/images/WUKSAHeader.png"
-                title="VP Of Graphics"
-                company="WesternU KSA"
-                link="/projects/wuksa"
-                time="March 2023 - April 2024"
-                skills={["Figma", "Graphic Design", "Social Media Management", "Content Creation"]}
-              />
-            </Grid>
-          </Grid>
-          </motion.div>
-
-          {/* Footer */}
-          <Box sx={{ marginTop: "120px" }}>
-            <Footer />
-          </Box>
+          Projects where I&apos;ve helped move the needle, designing impactful
+          products that customers love.
+        </Typography>
+        <Box
+          sx={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+            overflow: "hidden", // Ensures the carousel doesn't spill outside the container
+          }}
+        >
+          <Carousel triggerScroll={triggerScroll} items={items} />
         </Box>
+      </Box>
+      <Box sx={{ position: "fixed", bottom: 0, zIndex: 10, width: "100%" }}>
+        <Footer />
+      </Box>
     </ThemeProvider>
   );
 }
 
-export default projects;
+export default Projects;

@@ -93,7 +93,7 @@ export default function Wuksa() {
           }}
         >
           <Hero
-            headerImage="/images/WUKSA.png"
+            headerImage="/images/WUKSAMock.png"
             blurImage="/images/wuksaBlur.png"
             title="REBRANDING"
             timeline="August 2023"
@@ -138,7 +138,6 @@ export default function Wuksa() {
       {/* Footer Section */}
       <Box
         sx={{
-          maxWidth: "1200px",
           margin: "auto",
           width: "100%",
         }}
