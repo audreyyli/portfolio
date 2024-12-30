@@ -1,11 +1,41 @@
 "use client";
 import React from "react";
 import { motion, useSpring, useTransform } from "framer-motion";
+import { useTheme, useMediaQuery } from "@mui/material";
 import Aside from "../projects/aside";
 
-const Carousel = ({ triggerScroll, items, itemWidth = "650px", gap = "40px" }) => {
-  // Map triggerScroll to desired x positions
-  const mappedX = useTransform(triggerScroll, [0, 1], ["0%", "-4400%"]);
+const Carousel = ({ triggerScroll, items }) => {
+  const theme = useTheme();
+
+  // Determine screen size with Material-UI breakpoints
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
+  const isSm = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
+
+  // Responsive itemWidth based on screen size
+  const itemWidth = isXs
+    ? "480px"
+    : isSm
+    ? "500px"
+    : "650px";
+
+  // Responsive gap based on screen size
+  const gap = isXs
+    ? "20px"
+    : isSm
+    ? "40px"
+    : "40px";
+
+  // Adjust mappedX values based on screen size
+  const mappedX = useTransform(
+    triggerScroll,
+    [0, 1],
+    isXs
+      ? ["0%", "-4510%"]
+      : isSm
+      ? ["0%", "-3400%"]
+      : ["0%", "-4400%"]
+  );
 
   // Use spring for smooth, non-bouncy scrolling
   const x = useSpring(mappedX, {
@@ -19,7 +49,7 @@ const Carousel = ({ triggerScroll, items, itemWidth = "650px", gap = "40px" }) =
       style={{
         position: "relative",
         margin: "0 auto",
-        maxWidth: "1200px", // Limit carousel width
+        maxWidth: "1200px",
       }}
     >
       {/* Scrollable container */}

@@ -145,7 +145,7 @@ function MyApp() {
           sx={{
             maxWidth: "1200px",
             margin: "0 auto",
-            padding: { xs: "15px", sm: "20px" },
+            padding: { xs: "15px", md: "18px", lg: "20px" },
             height: "100%",
             display: "flex",
             flexDirection: "column",
@@ -157,7 +157,7 @@ function MyApp() {
           <Box
             sx={{
               position: "fixed",
-              top: "20%",
+              top: { xs: "45%", lg: "20%" },
               left: 0,
               zIndex: -5,
               animation: `${floatAnimation1} 10s ease-in-out infinite`,
@@ -165,7 +165,11 @@ function MyApp() {
           >
             <Box
               sx={{
-                "--size": "700px",
+                "--size": {
+                  xs: "500px",
+                  md: "700px",
+                  lg: "700px",
+                },
                 "--speed": "10s",
                 "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
                 width: "var(--size)",
@@ -191,7 +195,11 @@ function MyApp() {
           >
             <Box
               sx={{
-                "--size": "680px",
+                "--size": {
+                  xs: "480px",
+                  md: "680px",
+                  lg: "680px",
+                },
                 "--speed": "20s",
                 "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
                 width: "var(--size)",
@@ -217,7 +225,11 @@ function MyApp() {
           >
             <Box
               sx={{
-                "--size": "500px",
+                "--size": {
+                  xs: "300px",
+                  md: "500px",
+                  lg: "500px",
+                },
                 "--speed": "15s",
                 "--easing": "cubic-bezier(0.8, 0.2, 0.2, 0.8)",
                 width: "var(--size)",
@@ -251,18 +263,18 @@ function MyApp() {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "flex-start",
-                marginTop: "10px",
+                marginTop: { xs: "-30px", lg: "10px" } ,
               }}
             >
               <Typography
                 sx={{
-                  fontSize: { xs: "18px", md: "24px" },
+                  fontSize: { xs: "20px", md: "22px", lg: "24px" },
                   fontWeight: 100,
                   textTransform: "none",
                   color: "#666",
                   fontFamily: "Lato",
                   margin: "0 auto",
-                  marginBottom: "60px",
+                  marginBottom: { xs: "30px", md: "60px" },
                   textAlign: "center",
                 }}
               >
@@ -282,36 +294,37 @@ function MyApp() {
                 <Typography
                   variant="h4"
                   sx={{
-                    fontWeight: "bold",
+                    fontWeight: 900,
                     position: "absolute",
-                    color: "#DDD",
-                    fontSize: { xs: "200px", md: "300px" },
+                    color: "#BBB",
+                    fontSize: { xs: "180px", md: "300px" },
                     fontFamily: "Lato",
                     fontStyle: "normal",
                     zIndex: 0,
                     transform: "translate(-50%, -50%)",
-                    top: "25%",
-                    left: "53%",
+                    top: { xs: "70%", md: "25%" },
+                    left: { xs: "55%", md: "53%" },
                   }}
                 >
                   &
                 </Typography>
 
                 {/* Simple */}
-                <Box sx={{ display: "flex", alignItems: "baseline", zIndex: 1 }}>
+                <Box sx={{ display: "flex", alignItems: "baseline", zIndex: 1, }}>
                   <Typography
                     variant="h4"
                     sx={{
                       textTransform: "none",
                       color: "#666",
-                      fontSize: { xs: "60px", md: "180px" },
+                      fontSize: { xs: "110px", md: "180px" },
                       fontFamily: "Amoresa",
                       fontStyle: "normal",
                       transform: "rotate(5deg)",
-                      paddingRight: "15px",
+                      paddingRight: { xs: "0px", md: "15px" },
                       display: "inline-block",
-                      position: "relative",
+                      position: { xs: "relative", md: undefined },
                       top: "-20px",
+                      left: { xs: "20%", md: "0" }
                     }}
                   >
                     S
@@ -322,9 +335,11 @@ function MyApp() {
                       fontWeight: 900,
                       textTransform: "none",
                       color: "#666",
-                      fontSize: { xs: "60px", md: "150px" },
+                      fontSize: { xs: "80px", md: "150px" },
                       fontFamily: "Lato",
                       fontStyle: "italic",
+                      position: { xs: "relative", md: undefined },
+                      left: { xs: "20%", md: "0" }
                     }}
                   >
                     imple
@@ -338,14 +353,15 @@ function MyApp() {
                     sx={{
                       textTransform: "none",
                       color: "#666",
-                      fontSize: { xs: "60px", md: "270px" },
+                      fontSize: { xs: "150px", md: "270px" },
                       fontFamily: "Amoresa",
                       fontStyle: "normal",
                       paddingRight: "10px",
                       display: "inline-block",
                       transform: "rotate(-5deg)",
                       position: "relative",
-                      top: "20px",
+                      top: { xs: "130px", md: "20px" },
+                      left: { xs: "-80%", md: "0" }
                     }}
                   >
                     b
@@ -356,11 +372,12 @@ function MyApp() {
                       fontWeight: 900,
                       textTransform: "none",
                       color: "#666",
-                      fontSize: { xs: "60px", md: "150px" },
+                      fontSize: { xs: "80px", md: "150px" },
                       fontFamily: "Lato",
                       fontStyle: "italic",
                       position: "relative",
-                      top: "-18px",
+                      top: { xs: "105px", md: "-18px" },
+                      left: { xs: "-80%", md: "0" }
                     }}
                   >
                     ubbly
@@ -370,11 +387,11 @@ function MyApp() {
 
               <Typography
                 sx={{
-                  fontSize: { xs: "18px", md: "24px" },
+                  fontSize: { xs: "20px", md: "22px", lg: "24px" },
                   fontWeight: 100,
                   textTransform: "none",
                   color: "#666",
-                  marginTop: "35px",
+                  marginTop: { xs: "90px", md: "5px" },
                   fontFamily: "Lato",
                   margin: "0 auto",
                   textAlign: "center",
@@ -408,7 +425,7 @@ function MyApp() {
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          marginTop: "180px",
+          marginTop: { xs: "210px", md: "180px" },
         }}
       >
         <Box
@@ -416,7 +433,7 @@ function MyApp() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            gap: "50px",
+            gap: { xs: "30px", md: "50px" },
             margin: "0 auto",
             position: "relative",
           }}
@@ -445,7 +462,7 @@ function MyApp() {
                 fontWeight: 900,
                 textTransform: "none",
                 color: "#666",
-                fontSize: { xs: "60px", md: "40px" },
+                fontSize: { xs: "40px", md: "40px" },
                 fontFamily: "Lato",
                 fontStyle: "italic",
               }}
@@ -461,7 +478,7 @@ function MyApp() {
               sx={{
                 textTransform: "none",
                 color: "#666",
-                fontSize: { xs: "60px", md: "65px" },
+                fontSize: { xs: "55px", md: "65px" },
                 fontFamily: "Amoresa",
                 fontStyle: "normal",
                 display: "inline-block",
@@ -478,7 +495,7 @@ function MyApp() {
                 fontWeight: 900,
                 textTransform: "none",
                 color: "#666",
-                fontSize: { xs: "60px", md: "40px" },
+                fontSize: { xs: "40px", md: "40px" },
                 fontFamily: "Lato",
                 fontStyle: "italic",
                 position: "relative",
@@ -491,7 +508,7 @@ function MyApp() {
 
         <Typography
           sx={{
-            fontSize: { xs: "18px", md: "24px" },
+            fontSize: { xs: "20px", md: "22px", lg: "24px" },
             maxWidth: "1200px",
             fontWeight: 100,
             textTransform: "none",
@@ -510,7 +527,7 @@ function MyApp() {
               <motion.div
           style={{
             position: "fixed",
-            top: "55px",
+            top: "65px",
             left: 0,
             width: "100%",
             height: "50vh",
@@ -528,6 +545,8 @@ function MyApp() {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
+              paddingLeft: { xs: "10px", lg: "0"},
+              marginTop: { xs: "30px", md: "0"},
             }}
           >
             <Carousel triggerScroll={triggerScroll} items={items} />

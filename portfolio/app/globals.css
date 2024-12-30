@@ -65,6 +65,14 @@ body {
   font-style: normal;
 }
 
+/* Lato Bold */
+@font-face {
+  font-family: 'Lato';
+  src: url('/fonts/Lato/Lato-Black.ttf') format('truetype');
+  font-weight: 900; /* Bold weight */
+  font-style: normal;
+}
+
 /* Lato Italic */
 @font-face {
   font-family: 'Lato';
@@ -84,7 +92,7 @@ body {
 /* Define the Amoresa font */
 @font-face {
   font-family: 'Amoresa';
-  src: url('/fonts/amoresa/Andrey Sharonov - Amoresa Regular.otf') format('opentype');
+  src: url('/fonts/Amoresa/Andrey Sharonov - Amoresa Regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }

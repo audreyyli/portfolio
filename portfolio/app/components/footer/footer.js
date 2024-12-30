@@ -34,7 +34,8 @@ const Footer = () => {
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: { xs: "12px", md: "20px" },
+          gap: { xs: "10px", md: "20px" },
+          marginLeft: { xs: "100px", md: "0" },
         }}
       >
         {/* Email Button */}
@@ -78,7 +79,7 @@ const Footer = () => {
           variant="contained"
           endIcon={<ArrowOutward />}
           sx={{
-            fontSize: "18px",
+            fontSize: { xs: "14px", sm: "16px", md: "18px" },
             textTransform: "none",
             backgroundColor: "transparent",
             color: "#666",
@@ -89,6 +90,7 @@ const Footer = () => {
             position: "relative",
             overflow: "hidden",
             transition: "all 0.3s ease-in-out",
+            width: { xs: "150px", sm: "170px", md: "auto" },
             "& .MuiButton-endIcon": {
               transition: "transform 0.3s ease-in-out",
             },

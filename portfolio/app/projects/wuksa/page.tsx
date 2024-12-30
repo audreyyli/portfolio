@@ -125,6 +125,7 @@ export default function Wuksa() {
           sx={{
             maxWidth: "1200px",
             margin: "0 auto",
+            padding: { xs: "10px", sm: "20px" },
           }}
           >
             <Problem

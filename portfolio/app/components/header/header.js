@@ -55,13 +55,13 @@ export default function Header() {
                 component="img"
                 src={isHovered ? '/images/logoHover.png' : '/images/logo.png'}
                 alt="Logo"
-                sx={{ width: '60px', height: 'auto', cursor: 'pointer' }}
+                sx={{ width: { xs: "50px", md: "60px" }, height: 'auto', cursor: 'pointer' }}
               />
             </Link>
           </Box>
 
           {/* Right: Navigation */}
-          <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center', gap: '20px' }}>
+          <Box sx={{ display: 'flex', flexGrow: 1, justifyContent: 'flex-end', alignItems: 'center', gap: { xs: "2px", md: '20px' } }}>
             <Box
               onMouseEnter={handleMenuOpen}
               onMouseLeave={handleMenuClose}
@@ -73,7 +73,7 @@ export default function Header() {
                 sx={{
                   textTransform: 'none',
                   fontWeight: 400,
-                  fontSize: '18px',
+                  fontSize: { xs: "14px", sm: "16px", md: "18px" },
                   color: '#666',
                   position: 'relative',
                   overflow: 'hidden',
@@ -137,7 +137,7 @@ export default function Header() {
                 <MenuItem
                   onClick={handleMenuClose}
                   sx={{
-                    fontSize: '16px',
+                    fontSize: { xs: "14px", sm: "16px", md: "18px" },
                     fontWeight: 400,
                     color: '#666',
                     textTransform: 'none',
@@ -172,10 +172,10 @@ export default function Header() {
               </Menu>
             </Box>
             <Link href="/about" passHref>
-              <CustomButton variantType="header" sx={{ textTransform: 'none' }}>about me</CustomButton>
+              <CustomButton variantType="header" sx={{ textTransform: 'none', fontSize: { xs: "14px", sm: "16px", md: "18px" }, }}>about me</CustomButton>
             </Link>
             <Link href="https://drive.google.com/file/d/1T9rz24Lk_VVmbJu8VPyuUEPD3zT7-ujs/view?usp=sharing" passHref target="_blank" rel="noopener noreferrer">
-              <CustomButton variantType="header" sx={{ textTransform: 'none' }}>resume</CustomButton>
+              <CustomButton variantType="header" sx={{ textTransform: 'none', fontSize: { xs: "14px", sm: "16px", md: "18px" }, }}>resume</CustomButton>
             </Link>
           </Box>
         </Toolbar>
