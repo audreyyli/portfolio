@@ -198,8 +198,9 @@ export default function graphics() {
           <Typography
             variant="h2"
             sx={{
+              fontFamily: "Lato",
               marginTop: { xs: "30px", sm: "50px" },
-              fontWeight: "bold",
+              fontWeight: 900,
               fontSize: { xs: "50px", sm: "60px" }, // Adjust font size for mobile
               textTransform: "none",
               color: "#444",
@@ -210,6 +211,8 @@ export default function graphics() {
           <Typography
             variant="h6"
             sx={{
+              fontFamily: "Lato",
+              fontWeight: 400,
               textTransform: "none",
               color: "#888",
               fontSize: { xs: "18px", sm: "20px" }, // Adjust font size for mobile

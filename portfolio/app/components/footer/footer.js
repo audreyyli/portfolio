@@ -35,7 +35,7 @@ const Footer = () => {
           display: "flex",
           alignItems: "center",
           gap: { xs: "10px", md: "20px" },
-          marginLeft: { xs: "100px", md: "0" },
+          marginLeft: { xs: "25px", md: "0" },
         }}
       >
         {/* Email Button */}
@@ -46,7 +46,7 @@ const Footer = () => {
             textTransform: "none",
             fontWeight: 400,
             fontSize: { xs: "14px", sm: "16px", md: "18px" },
-            color: "#666",
+            color: "#888",
             position: "relative",
             overflow: "hidden",
             textAlign: "center",
@@ -82,15 +82,15 @@ const Footer = () => {
             fontSize: { xs: "14px", sm: "16px", md: "18px" },
             textTransform: "none",
             backgroundColor: "transparent",
-            color: "#666",
-            border: "2px solid #666",
+            color: "#888",
+            border: "2px solid #888",
             borderRadius: "50px",
             paddingBottom: "10px",
             boxShadow: "none",
             position: "relative",
             overflow: "hidden",
             transition: "all 0.3s ease-in-out",
-            width: { xs: "150px", sm: "170px", md: "auto" },
+            width: { xs: "155px", sm: "170px", md: "auto" },
             "& .MuiButton-endIcon": {
               transition: "transform 0.3s ease-in-out",
             },

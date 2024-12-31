@@ -297,13 +297,13 @@ function MyApp() {
                     fontWeight: 900,
                     position: "absolute",
                     color: "#BBB",
-                    fontSize: { xs: "180px", md: "300px" },
+                    fontSize: { xs: "180px", md: "250px" },
                     fontFamily: "Lato",
                     fontStyle: "normal",
                     zIndex: 0,
                     transform: "translate(-50%, -50%)",
-                    top: { xs: "70%", md: "25%" },
-                    left: { xs: "55%", md: "53%" },
+                    top: { xs: "70%", md: "35%" },
+                    left: { xs: "49%", md: "53%" },
                   }}
                 >
                   &
@@ -316,7 +316,7 @@ function MyApp() {
                     sx={{
                       textTransform: "none",
                       color: "#666",
-                      fontSize: { xs: "110px", md: "180px" },
+                      fontSize: { xs: "110px", md: "200px" },
                       fontFamily: "Amoresa",
                       fontStyle: "normal",
                       transform: "rotate(5deg)",
@@ -324,7 +324,7 @@ function MyApp() {
                       display: "inline-block",
                       position: { xs: "relative", md: undefined },
                       top: "-20px",
-                      left: { xs: "20%", md: "0" }
+                      left: { xs: "10%", md: "0" }
                     }}
                   >
                     S
@@ -339,7 +339,7 @@ function MyApp() {
                       fontFamily: "Lato",
                       fontStyle: "italic",
                       position: { xs: "relative", md: undefined },
-                      left: { xs: "20%", md: "0" }
+                      left: { xs: "10%", md: "0" }
                     }}
                   >
                     imple
@@ -353,15 +353,15 @@ function MyApp() {
                     sx={{
                       textTransform: "none",
                       color: "#666",
-                      fontSize: { xs: "150px", md: "270px" },
+                      fontSize: { xs: "150px", md: "290px" },
                       fontFamily: "Amoresa",
                       fontStyle: "normal",
                       paddingRight: "10px",
                       display: "inline-block",
                       transform: "rotate(-5deg)",
                       position: "relative",
-                      top: { xs: "130px", md: "20px" },
-                      left: { xs: "-80%", md: "0" }
+                      top: { xs: "130px", md: "30px" },
+                      left: { xs: "-100%", md: "0" }
                     }}
                   >
                     b
@@ -377,7 +377,7 @@ function MyApp() {
                       fontStyle: "italic",
                       position: "relative",
                       top: { xs: "105px", md: "-18px" },
-                      left: { xs: "-80%", md: "0" }
+                      left: { xs: "-100%", md: "0" }
                     }}
                   >
                     ubbly
@@ -406,14 +406,14 @@ function MyApp() {
         </Box>
 
         {/* Section 2 */}
-        <Box is="section2" sx={{ position: "relative"}}>
+        <Box id="section2" sx={{ position: "relative"}}>
         <motion.div
           style={{
             position: "fixed",
             top: "-8%",
             left: 0,
             width: "100%",
-            height: "50vh",
+            height: "100vh",
             opacity: section2Opacity,
           }}
         >
@@ -421,11 +421,11 @@ function MyApp() {
         sx={{
           maxWidth: "1200px",
           margin: "0 auto",
-          minHeight: "30vh",
+          minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          marginTop: { xs: "210px", md: "180px" },
+          marginTop: { xs: "250px", md: "180px" },
         }}
       >
         <Box
@@ -508,7 +508,7 @@ function MyApp() {
 
         <Typography
           sx={{
-            fontSize: { xs: "20px", md: "22px", lg: "24px" },
+            fontSize: { xs: "18px", sm: "20px", md: "22px" },
             maxWidth: "1200px",
             fontWeight: 100,
             textTransform: "none",
@@ -517,6 +517,7 @@ function MyApp() {
             fontFamily: "Lato",
             margin: "0 auto",
             textAlign: "center",
+            paddingX: { xs: "10px", sm: "0" },
           }}
         >
           Projects where I&apos;ve helped move the needle, designing impactful products that customers love.
@@ -530,7 +531,7 @@ function MyApp() {
             top: "65px",
             left: 0,
             width: "100%",
-            height: "50vh",
+            height: "100vh",
             opacity: section3Opacity,
             zIndex: isSection3Active ? 2 : -1,
             pointerEvents: isSection3Active ? "auto" : "none",
@@ -546,7 +547,7 @@ function MyApp() {
               justifyContent: "center",
               alignItems: "center",
               paddingLeft: { xs: "10px", lg: "0"},
-              marginTop: { xs: "30px", md: "0"},
+              marginTop: { xs: "30px", md: "15px"},
             }}
           >
             <Carousel triggerScroll={triggerScroll} items={items} />

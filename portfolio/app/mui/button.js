@@ -25,7 +25,7 @@ const CustomButton = styled(Button)(({ variantType }) => ({
         padding: '8px 18px', 
         fontSize: '18px', 
         backgroundColor: 'transparent',
-        color: "#666",
+        color: "#888",
         fontWeight: "400",
         position: 'relative',
         overflow: 'hidden',

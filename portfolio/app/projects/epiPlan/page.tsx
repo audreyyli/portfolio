@@ -6,7 +6,7 @@ import Footer from "@/app/components/footer/footer.js";
 import Hero from "../../components/hero/hero.js";
 import ProjectOverview from "../../components/overview/overview.js"
 import Problem from "../../components/problem/problem.js"
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -106,7 +106,7 @@ export default function EpiPlan() {
           mainColour="#FFB35A"
         />
         </Box>
-        <Box sx={{margin: "auto", }}>
+        <Box sx={{margin: "auto", marginTop: { xs: "350px", sm: "0" } }}>
           <ProjectOverview paragraphs={paragraphs} />
         </Box>
       </Box>
@@ -134,6 +134,23 @@ export default function EpiPlan() {
             />
           </Box>
       </Box>
+
+      <Typography
+          sx={{
+            fontFamily: "Lato",
+            fontSize: "42px",
+            textTransform: "uppercase",
+            fontWeight: 100,
+            color: "#888",
+            margin: "0 auto",
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+            marginTop: "100px",
+          }}
+        >
+          More coming soon...
+        </Typography>
 
       {/* Footer Section */}
       <Box
