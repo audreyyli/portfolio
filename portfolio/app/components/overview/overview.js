@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Box, Typography, Divider } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const ProjectOverview = ({ paragraphs }) => {
   return (
@@ -14,9 +14,6 @@ const ProjectOverview = ({ paragraphs }) => {
         paddingTop: "40px",
       }}
     >
-      {/* Top Divider */}
-      <Divider sx={{ width: "100%", maxWidth: "1200px", marginBottom: "80px" }} />
-
       {/* Main Content */}
       <Box
         sx={{

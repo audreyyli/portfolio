@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import Header from "@/app/components/header/header.js";
 import Footer from "@/app/components/footer/footer.js";
 import Hero from "../../components/hero/hero.js";
 import ProjectOverview from "../../components/overview/overview.js"
 import Problem from "../../components/problem/problem.js"
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, Divider } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -50,70 +49,110 @@ export default function EpiPlan() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header />
 
       {/* Main Content */}
       <Box
         sx={{
           flexGrow: 1,
-          maxWidth: "1200px", // Max width for content area
+          maxWidth: "1300px",
           margin: "0 auto",
-          padding: { xs: "10px", sm: "20px" }, // Smaller padding for mobile
+          padding: { xs: "10px", sm: "20px" },
         }}
       >
-        <Button 
+        <Button
           startIcon={<ArrowBackIcon />} 
           onClick={handleGoBack}
+          disableRipple
           sx={{
-            marginTop: "20px",
-            color: "#FFB35A",
-            backgroundColor: 'transparent',
-            fontSize: "18px",
-            boxShadow: 'none', 
-            textTransform: 'none',
-            transition: 'color 0.3s ease', 
-            '&:hover': {
-              backgroundColor: 'transparent',
-              color: "#FFEED9",
+            textTransform: "none",
+            fontWeight: 400,
+            fontSize: { xs: "14px", sm: "16px", md: "18px" },
+            color: "#888",
+            position: "relative",
+            overflow: "hidden",
+            textAlign: "center",
+            padding: "5px 10px",
+            transition: "color 0.3s ease, transform 0.3s ease",
+            "&:hover": {
+              color: "#111",
+              background: "none",
+              "&::after": {
+                width: "100%",
+              },
             },
-            '&:active': {
-              boxShadow: 'none', 
-              backgroundColor: "transparent",
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              bottom: "8px",
+              left: "0",
+              height: "2px",
+              backgroundColor: "#111",
+              width: "0%",
+              transition: "width 0.4s ease",
             },
           }}
         >
-          Back
+          BACK
         </Button>
+
         <Box
           sx={{
-            marginTop: "-30px",
+            marginTop: "20px",
+            position: 'relative',
+            width: '100vw',
+            height: '45vh',
+            overflow: 'hidden',
+            backgroundColor: '#FFEED9',
+            left: '50%',
+            transform: 'translateX(-50%)',
+          }}
+        >
+          {/* Main Image */}
+          <Box
+            component="img"
+            src="/images/epiPlanMock.png"
+            alt="EpiPlan Mock"
+            sx={{
+              maxWidth: "1300px",
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              margin: "0 auto",
+            }}
+          />
+        </Box>
+
+        <Box
+          sx={{
+            marginTop: "-80px",
             height: "85vh",
             justifyContent: "center",
             alignContent: "center",
           }}
         >
         <Hero
-          headerImage="/images/EpiPlanMock.png"
-          blurImage="/images/epiPlanBlur.png"
-          title="MOBILE APP"
+          title="EPIPLAN"
           timeline="March 2024"
           role="Product Designer"
           toolsSkills="Figma, Visual Design, User Research"
-          company="EpiPlan"
+          company="Product Design"
           header="A Companion for Dietary Restrictions"
-          projectType="Design Sprint"
+          projectType="Mobile App"
           description="Empowering individuals with dietary restrictions to easily navigate food choices."
-          mainColour="#FFB35A"
+          mainColour="#FFEED9"
+          subColour="#FF8506"
         />
+
+        <Divider sx={{ width: "100%", maxWidth: "1300px", marginTop: "70px", }} />
         </Box>
-        <Box sx={{margin: "auto", marginTop: { xs: "350px", sm: "0" } }}>
+        <Box sx={{margin: "auto", marginTop: { xs: "350px", sm: "0", lg: "-220px" } }}>
           <ProjectOverview paragraphs={paragraphs} />
         </Box>
       </Box>
 
       <Box
         sx={{
-          backgroundColor: "rgba(255, 238, 217, 0.5)",
+          backgroundColor: "#FFEED9",
           justifyContent: "center",
           flexDirection: "column",
           alignContent: "center",
@@ -122,14 +161,14 @@ export default function EpiPlan() {
       >
         <Box
           sx={{
-            maxWidth: "1200px",
+            maxWidth: "1300px",
             margin: "0 auto",
             padding: { xs: "10px", sm: "20px" },
           }}
           >
             <Problem
               intro="AND SO, I ASKED:"
-              introColour="#FFB35A"
+              introColour="#FF8506"
               problemStatement="How might we help individuals with dietary restrictions confidently navigate shopping, dining, and social experiences?"
             />
           </Box>

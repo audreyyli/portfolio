@@ -81,6 +81,14 @@ body {
   font-style: italic;
 }
 
+/* Lato Light Italic */
+@font-face {
+  font-family: 'Lato';
+  src: url('/fonts/Lato/Lato-LightItalic.ttf') format('truetype');
+  font-weight: 100; /* Regular weight */
+  font-style: italic;
+}
+
 /* Lato Bold Italic */
 @font-face {
   font-family: 'Lato';

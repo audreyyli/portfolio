@@ -7,15 +7,15 @@ const Problem = ({ intro, introColour, problemStatement }) => {
     <Box
       sx={{
         width: "100%",
-        maxWidth: "1200px",
+        maxWidth: "1300px",
         margin: "0 auto",
-        paddingY: "60px",
+        paddingY: "50px",
       }}
     >
       {/* Intro Sentence */}
       <Typography
         variant="h6"
-        sx={{ fontWeight: "bold", fontSize: "16px", color: introColour, marginBottom: "16px" }}
+        sx={{ fontWeight: 100, fontFamily: "Lato", fontSize: "18px", color: introColour }}
       >
         {intro}
       </Typography>
