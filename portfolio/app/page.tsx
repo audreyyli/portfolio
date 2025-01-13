@@ -102,6 +102,15 @@ const theme = createTheme({
   typography: {
     fontFamily: "Lato, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 380,
+      md: 1180,
+      lg: 1280,
+      xl: 1350,
+    },
+  },
 });
 
 function MyApp() {
@@ -143,7 +152,7 @@ function MyApp() {
       >
         <Box
           sx={{
-            maxWidth: "1200px",
+            maxWidth: "1300px",
             margin: "0 auto",
             padding: { xs: "15px", md: "18px", lg: "20px" },
             height: "100%",
@@ -256,7 +265,7 @@ function MyApp() {
           >
             <Box
               sx={{
-                maxWidth: "1200px",
+                maxWidth: "1300px",
                 margin: "0 auto",
                 height: "100vh",
                 display: "flex",
@@ -303,7 +312,7 @@ function MyApp() {
                     zIndex: 0,
                     transform: "translate(-50%, -50%)",
                     top: { xs: "70%", md: "35%" },
-                    left: { xs: "49%", md: "53%" },
+                    left: { xs: "43%", md: "53%" },
                   }}
                 >
                   &
@@ -324,7 +333,7 @@ function MyApp() {
                       display: "inline-block",
                       position: { xs: "relative", md: undefined },
                       top: "-20px",
-                      left: { xs: "10%", md: "0" }
+                      left: { xs: "6%", md: "0" }
                     }}
                   >
                     S
@@ -339,7 +348,7 @@ function MyApp() {
                       fontFamily: "Lato",
                       fontStyle: "italic",
                       position: { xs: "relative", md: undefined },
-                      left: { xs: "10%", md: "0" }
+                      left: { xs: "6%", md: "0" }
                     }}
                   >
                     imple
@@ -361,7 +370,7 @@ function MyApp() {
                       transform: "rotate(-5deg)",
                       position: "relative",
                       top: { xs: "130px", md: "30px" },
-                      left: { xs: "-100%", md: "0" }
+                      left: { xs: "-115%", md: "0" }
                     }}
                   >
                     b
@@ -377,7 +386,7 @@ function MyApp() {
                       fontStyle: "italic",
                       position: "relative",
                       top: { xs: "105px", md: "-18px" },
-                      left: { xs: "-100%", md: "0" }
+                      left: { xs: "-115%", md: "0" }
                     }}
                   >
                     ubbly
@@ -395,6 +404,7 @@ function MyApp() {
                   fontFamily: "Lato",
                   margin: "0 auto",
                   textAlign: "center",
+                  padding: { xs: "10px", md: "0px", }
                 }}
               >
                 That&apos;s my approach to design. I&apos;m a product designer & developer
@@ -406,7 +416,7 @@ function MyApp() {
         </Box>
 
         {/* Section 2 */}
-        <Box id="section2" sx={{ position: "relative"}}>
+        <Box id="section2" sx={{ position: "relative", }}>
         <motion.div
           style={{
             position: "fixed",
@@ -419,13 +429,13 @@ function MyApp() {
         >
           <Box
         sx={{
-          maxWidth: "1200px",
+          maxWidth: "1300px",
           margin: "0 auto",
           minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          marginTop: { xs: "250px", md: "180px" },
+          marginTop: { xs: "180px", sm: "170px", md: "180px" },
         }}
       >
         <Box
@@ -509,7 +519,7 @@ function MyApp() {
         <Typography
           sx={{
             fontSize: { xs: "18px", sm: "20px", md: "22px" },
-            maxWidth: "1200px",
+            maxWidth: "1300px",
             fontWeight: 100,
             textTransform: "none",
             color: "#666",
@@ -539,7 +549,7 @@ function MyApp() {
         >
           <Box
             sx={{
-              maxWidth: "1200px",
+              maxWidth: "1300px",
               margin: "0 auto",
               minHeight: "100vh",
               display: "flex",

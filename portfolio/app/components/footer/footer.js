@@ -26,7 +26,7 @@ const Footer = () => {
           color: "#888",
         }}
       >
-        site developed with love by Audrey Li  ·  2024
+        site developed by Audrey Li  ·  2024
       </Typography>
 
       {/* Social Media Links */}
