@@ -10,11 +10,14 @@ const Carousel = ({ triggerScroll, items }) => {
   // Determine screen size with Material-UI breakpoints
   const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isMd = useMediaQuery(theme.breakpoints.between("md", "lg"));
 
   // Responsive itemWidth based on screen size
   const itemWidth = isXs
-    ? "380px"
+    ? "350px"
     : isSm
+    ? "420px"
+    : isMd
     ? "420px"
     : "650px";
 
