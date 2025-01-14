@@ -14,11 +14,11 @@ const Carousel = ({ triggerScroll, items }) => {
 
   // Responsive itemWidth based on screen size
   const itemWidth = isXs
-    ? "350px"
+    ? "280px"
     : isSm
-    ? "420px"
+    ? "350px"
     : isMd
-    ? "420px"
+    ? "400px"
     : "650px";
 
   // Responsive gap based on screen size

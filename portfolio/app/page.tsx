@@ -277,13 +277,13 @@ function MyApp() {
             >
               <Typography
                 sx={{
-                  fontSize: { xs: "20px", md: "22px", lg: "24px" },
+                  fontSize: { xs: "16px", md: "22px", lg: "24px" },
                   fontWeight: 100,
                   textTransform: "none",
                   color: "#666",
                   fontFamily: "Lato",
                   margin: "0 auto",
-                  marginBottom: { xs: "30px", md: "60px" },
+                  marginBottom: { xs: "30px", lg: "60px" },
                   textAlign: "center",
                 }}
               >
@@ -312,7 +312,7 @@ function MyApp() {
                     zIndex: 0,
                     transform: "translate(-50%, -50%)",
                     top: { xs: "70%", md: "35%" },
-                    left: { xs: "43%", md: "53%" },
+                    left: { xs: "45%", md: "53%" },
                   }}
                 >
                   &
@@ -333,7 +333,7 @@ function MyApp() {
                       display: "inline-block",
                       position: { xs: "relative", md: undefined },
                       top: "-20px",
-                      left: { xs: "6%", md: "0" }
+                      left: { xs: "6%", md: "3%", lg: "0" }
                     }}
                   >
                     S
@@ -348,7 +348,7 @@ function MyApp() {
                       fontFamily: "Lato",
                       fontStyle: "italic",
                       position: { xs: "relative", md: undefined },
-                      left: { xs: "6%", md: "0" }
+                      left: { xs: "6%", md: "3%", lg: "0" }
                     }}
                   >
                     imple
@@ -370,7 +370,7 @@ function MyApp() {
                       transform: "rotate(-5deg)",
                       position: "relative",
                       top: { xs: "130px", md: "30px" },
-                      left: { xs: "-115%", md: "0" }
+                      left: { xs: "-107%", md: "6%", lg: "0" }
                     }}
                   >
                     b
@@ -386,7 +386,7 @@ function MyApp() {
                       fontStyle: "italic",
                       position: "relative",
                       top: { xs: "105px", md: "-18px" },
-                      left: { xs: "-115%", md: "0" }
+                      left: { xs: "-107%", md: "6%", lg: "0" }
                     }}
                   >
                     ubbly
@@ -396,7 +396,7 @@ function MyApp() {
 
               <Typography
                 sx={{
-                  fontSize: { xs: "20px", md: "22px", lg: "24px" },
+                  fontSize: { xs: "16px", md: "22px", lg: "24px" },
                   fontWeight: 100,
                   textTransform: "none",
                   color: "#666",
@@ -404,7 +404,7 @@ function MyApp() {
                   fontFamily: "Lato",
                   margin: "0 auto",
                   textAlign: "center",
-                  padding: { xs: "10px", md: "0px", }
+                  padding: { xs: "10px", lg: "0px", }
                 }}
               >
                 That&apos;s my approach to design. I&apos;m a product designer & developer
@@ -518,7 +518,7 @@ function MyApp() {
 
         <Typography
           sx={{
-            fontSize: { xs: "18px", sm: "20px", md: "22px" },
+            fontSize: { xs: "16px", sm: "20px", md: "22px" },
             maxWidth: "1300px",
             fontWeight: 100,
             textTransform: "none",
