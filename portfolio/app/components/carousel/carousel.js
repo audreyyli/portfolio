@@ -14,7 +14,7 @@ const Carousel = ({ triggerScroll, items }) => {
 
   // Responsive itemWidth based on screen size
   const itemWidth = isXs
-    ? "280px"
+    ? "260px"
     : isSm
     ? "350px"
     : isMd

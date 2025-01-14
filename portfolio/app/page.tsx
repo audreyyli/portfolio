@@ -518,7 +518,7 @@ function MyApp() {
 
         <Typography
           sx={{
-            fontSize: { xs: "16px", sm: "20px", md: "22px" },
+            fontSize: { xs: "14px", sm: "20px", md: "22px" },
             maxWidth: "1300px",
             fontWeight: 100,
             textTransform: "none",

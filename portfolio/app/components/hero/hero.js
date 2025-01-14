@@ -25,7 +25,7 @@ const Hero = ({
         <Typography sx={{ fontWeight: 100, fontFamily: "Lato", fontSize: '24px' }}>
           {title}
         </Typography>
-        <Typography sx={{ fontWeight: 900, fontFamily: "Lato", fontSize: '40px', marginTop: "-10px", }} >
+        <Typography sx={{ fontWeight: 900, fontFamily: "Lato", fontSize: { xs: "30px", md: '40px' }, marginTop: "-10px", }} >
           {header}
         </Typography>
 

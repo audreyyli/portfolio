@@ -139,6 +139,7 @@ export default function Instagram() {
         sx={{
           maxWidth: "1300px",
           margin: "0 auto",
+          padding: { xs: "10px", sm: "20px" },
         }}>
         <Summary
           context={{
@@ -170,6 +171,7 @@ export default function Instagram() {
         sx={{
           maxWidth: "1300px",
           margin: "0 auto",
+          padding: { xs: "10px", sm: "20px" },
         }}>
         <Section
           header="HOW IT STARTED"
@@ -193,6 +195,7 @@ export default function Instagram() {
           flexDirection: "column",
           alignContent: "center",
           marginTop: "25px",
+          padding: { xs: "10px", sm: "20px" },
         }}
       >
         <Box
@@ -214,6 +217,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}>
         <Section
           header="EXPLORING THE PROBLEM"
@@ -237,6 +241,7 @@ export default function Instagram() {
           marginTop: "20px",
           borderRadius: "25px",
           border: "1px solid black",
+          padding: { xs: "10px", sm: "20px" },
         }}
       />
 
@@ -245,6 +250,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}>
           <Typography
             sx={{
@@ -269,6 +275,7 @@ export default function Instagram() {
           marginTop: "20px",
           borderRadius: "25px",
           border: "1px solid black",
+          padding: { xs: "10px", sm: "20px" },
         }}
       />
 
@@ -277,6 +284,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}>
           <Typography
             sx={{
@@ -294,6 +302,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}>
         <Section
           header="USER RESEARCH"
@@ -320,6 +329,7 @@ export default function Instagram() {
           marginTop: "20px",
           borderRadius: "25px",
           border: "1px solid black",
+          padding: { xs: "10px", sm: "20px" },
         }}
       />
 
@@ -328,6 +338,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}>
           <Typography
             sx={{
@@ -345,6 +356,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}
       >
         {/* Subtitle */}
@@ -419,6 +431,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}>
         <Section
           header="SOLUTION"
@@ -439,6 +452,7 @@ export default function Instagram() {
           marginTop: "20px",
           borderRadius: "25px",
           border: "1px solid black",
+          padding: { xs: "10px", sm: "20px" },
         }}
       />
 
@@ -447,6 +461,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}>
           <Typography
             sx={{
@@ -464,6 +479,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}
       >
         {/* Subtitle */}
@@ -488,6 +504,7 @@ export default function Instagram() {
           marginTop: "40px",
           border: "1px solid black",
           borderRadius: "25px",
+          padding: { xs: "10px", sm: "20px" },
         }}
       >
         {[
@@ -530,7 +547,7 @@ export default function Instagram() {
                 sx={{
                   width: "70%",
                   height: "auto",
-                  borderRadius: "80px",
+                  borderRadius: { xs: "30px", lg: "80px" },
                 }}
               />
             </Box>
@@ -560,6 +577,7 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
         }}>
         <Section
           header="REFLECTION"
