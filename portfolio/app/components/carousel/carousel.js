@@ -11,6 +11,7 @@ const Carousel = ({ triggerScroll, items }) => {
   const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const isMd = useMediaQuery(theme.breakpoints.between("md", "lg"));
+  const isLg = useMediaQuery(theme.breakpoints.between("lg", "xl"));
 
   // Responsive itemWidth based on screen size
   const itemWidth = isXs
@@ -18,6 +19,8 @@ const Carousel = ({ triggerScroll, items }) => {
     : isSm
     ? "350px"
     : isMd
+    ? "380px"
+    : isLg
     ? "400px"
     : "650px";
 

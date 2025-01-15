@@ -237,11 +237,10 @@ export default function Instagram() {
           width: "100%",
           maxWidth: "1300px",
           height: "auto",
-          margin: "0 auto",
+          margin: { xs: "10px auto", sm: "20px auto" },
           marginTop: "20px",
           borderRadius: "25px",
           border: "1px solid black",
-          padding: { xs: "10px", sm: "20px" },
         }}
       />
 
@@ -271,11 +270,10 @@ export default function Instagram() {
           width: "100%",
           maxWidth: "1300px",
           height: "auto",
-          margin: "0 auto",
+          margin: { xs: "10px auto", sm: "20px auto" },
           marginTop: "20px",
           borderRadius: "25px",
           border: "1px solid black",
-          padding: { xs: "10px", sm: "20px" },
         }}
       />
 
@@ -325,11 +323,10 @@ export default function Instagram() {
           width: "100%",
           maxWidth: "1300px",
           height: "auto",
-          margin: "0 auto",
+          margin: { xs: "10px auto", sm: "20px auto" },
           marginTop: "20px",
           borderRadius: "25px",
           border: "1px solid black",
-          padding: { xs: "10px", sm: "20px" },
         }}
       />
 
@@ -448,11 +445,10 @@ export default function Instagram() {
           width: "100%",
           maxWidth: "1300px",
           height: "auto",
-          margin: "0 auto",
+          margin: { xs: "10px auto", sm: "20px auto" },
           marginTop: "20px",
           borderRadius: "25px",
           border: "1px solid black",
-          padding: { xs: "10px", sm: "20px" },
         }}
       />
 
@@ -500,11 +496,10 @@ export default function Instagram() {
       <Box
         sx={{
           maxWidth: "1300px",
-          margin: "0 auto",
+          margin: { xs: "10px auto", sm: "20px auto" },
           marginTop: "40px",
           border: "1px solid black",
           borderRadius: "25px",
-          padding: { xs: "10px", sm: "20px" },
         }}
       >
         {[
