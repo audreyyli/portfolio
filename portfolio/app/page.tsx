@@ -518,7 +518,7 @@ function MyApp() {
 
         <Typography
           sx={{
-            fontSize: { xs: "14px", sm: "20px", md: "22px" },
+            fontSize: { xs: "12px", sm: "16px", md: "22px" },
             maxWidth: "1300px",
             fontWeight: 100,
             textTransform: "none",
@@ -538,7 +538,7 @@ function MyApp() {
               <motion.div
           style={{
             position: "fixed",
-            top: "65px",
+            top: "25px",
             left: 0,
             width: "100%",
             height: "100vh",
