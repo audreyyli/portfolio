@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider, keyframes } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Header from "./components/header/header.js";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, useMediaQuery } from "@mui/material";
 import React, { useRef, useState, useEffect } from "react";
 import Footer from "./components/footer/footer.js";
 import Carousel from "./components/carousel/carousel.js"
@@ -125,6 +125,8 @@ function MyApp() {
   const section3Opacity = useTransform(scrollYProgress, [0.5, 0.6, 1], [0, 1, 1]);
 
   const triggerScroll = useTransform(scrollYProgress, [0.7, 1], [0, 1]);
+
+  const isSm = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const [isSection3Active, setIsSection3Active] = useState(false);
 
@@ -370,7 +372,7 @@ function MyApp() {
                       transform: "rotate(-5deg)",
                       position: "relative",
                       top: { xs: "130px", md: "30px" },
-                      left: { xs: "-107%", md: "6%", lg: "0" }
+                      left: { xs: "-110%", md: "6%", lg: "0" }
                     }}
                   >
                     b
@@ -386,7 +388,7 @@ function MyApp() {
                       fontStyle: "italic",
                       position: "relative",
                       top: { xs: "105px", md: "-18px" },
-                      left: { xs: "-107%", md: "6%", lg: "0" }
+                      left: { xs: "-110%", md: "6%", lg: "0" }
                     }}
                   >
                     ubbly
@@ -423,8 +425,9 @@ function MyApp() {
             top: "-8%",
             left: 0,
             width: "100%",
-            height: "100vh",
+            height: isSm ? "100vh" : "auto",
             opacity: section2Opacity,
+            overflow: isSm ? "hidden" : "visible",
           }}
         >
           <Box

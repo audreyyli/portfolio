@@ -22,11 +22,11 @@ const Footer = () => {
       <Typography
         variant="body1"
         sx={{
-          fontSize: { xs: "14px", sm: "16px", md: "18px" },
+          fontSize: { xs: "14px", md: "18px" },
           color: "#888",
         }}
       >
-        site developed by Audrey Li  ·  2024
+        site developed by Audrey Li  ·  2025
       </Typography>
 
       {/* Social Media Links */}
@@ -45,7 +45,7 @@ const Footer = () => {
           sx={{
             textTransform: "none",
             fontWeight: 400,
-            fontSize: { xs: "14px", sm: "16px", md: "18px" },
+            fontSize: { xs: "14px", md: "18px" },
             color: "#888",
             position: "relative",
             overflow: "hidden",
@@ -79,7 +79,7 @@ const Footer = () => {
           variant="contained"
           endIcon={<ArrowOutward />}
           sx={{
-            fontSize: { xs: "14px", sm: "16px", md: "18px" },
+            fontSize: { xs: "14px", md: "18px" },
             textTransform: "none",
             backgroundColor: "transparent",
             color: "#888",
@@ -90,7 +90,7 @@ const Footer = () => {
             position: "relative",
             overflow: "hidden",
             transition: "all 0.3s ease-in-out",
-            width: { xs: "155px", sm: "170px", md: "auto" },
+            width: { xs: "155px", md: "auto" },
             "& .MuiButton-endIcon": {
               transition: "transform 0.3s ease-in-out",
             },

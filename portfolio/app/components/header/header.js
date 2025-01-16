@@ -66,7 +66,7 @@ export default function Header() {
               flexGrow: 1,
               justifyContent: "flex-end",
               alignItems: "center",
-              gap: { xs: "2px", md: "20px" },
+              gap: { xs: "1px", md: "20px" },
             }}
           >
             <Box
@@ -80,7 +80,7 @@ export default function Header() {
                 sx={{
                   textTransform: "none",
                   fontWeight: 400,
-                  fontSize: { xs: "14px", sm: "16px", md: "18px" },
+                  fontSize: { xs: "14px", md: "18px" },
                   color: "#888",
                   position: "relative",
                   overflow: "hidden",
@@ -143,7 +143,7 @@ export default function Header() {
                 <MenuItem
                   onClick={handleMenuClose}
                   sx={{
-                    fontSize: { xs: "14px", sm: "16px", md: "18px" },
+                    fontSize: { xs: "14px", md: "18px" },
                     fontWeight: 400,
                     color: "#888",
                     textTransform: "none",
@@ -180,7 +180,7 @@ export default function Header() {
             <Link href="/about" passHref>
               <CustomButton
                 variantType="header"
-                sx={{ textTransform: "none", fontSize: { xs: "14px", sm: "16px", md: "18px" } }}
+                sx={{ textTransform: "none", fontSize: { xs: "14px", md: "18px" } }}
               >
                 about me
               </CustomButton>
@@ -193,7 +193,7 @@ export default function Header() {
             >
               <CustomButton
                 variantType="header"
-                sx={{ textTransform: "none", fontSize: { xs: "14px", sm: "16px", md: "18px" } }}
+                sx={{ textTransform: "none", fontSize: { xs: "14px", md: "18px" } }}
               >
                 resume
               </CustomButton>
