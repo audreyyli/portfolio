@@ -90,7 +90,7 @@ const Aside = ({ image, company, title, type, category, year, link, width }) => 
             </Typography>
             <Typography
               sx={{
-                fontSize: "24px",
+                fontSize: { xs: "18px", md: "24px" },
                 fontFamily: "Lato",
                 fontWeight: 400,
                 color: "#000",

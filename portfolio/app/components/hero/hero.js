@@ -22,10 +22,10 @@ const Hero = ({
     >
       <Box sx={{ maxWidth: '1300px', margin: '0 auto', textAlign: 'left' }}>
         {/* Title and Header */}
-        <Typography sx={{ fontWeight: 100, fontFamily: "Lato", fontSize: '24px' }}>
+        <Typography sx={{ fontWeight: 100, fontFamily: "Lato", fontSize: { sm: "20px", md: '24px' } }}>
           {title}
         </Typography>
-        <Typography sx={{ fontWeight: 900, fontFamily: "Lato", fontSize: { xs: "30px", md: '40px' }, marginTop: "-10px", }} >
+        <Typography sx={{ fontWeight: 900, fontFamily: "Lato", fontSize: { sm: "25px", md: '40px' }, marginTop: "-10px", }} >
           {header}
         </Typography>
 

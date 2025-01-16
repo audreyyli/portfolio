@@ -8,15 +8,12 @@ const Carousel = ({ triggerScroll, items }) => {
   const theme = useTheme();
 
   // Determine screen size with Material-UI breakpoints
-  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md"));
   const isMd = useMediaQuery(theme.breakpoints.between("md", "lg"));
   const isLg = useMediaQuery(theme.breakpoints.between("lg", "xl"));
 
   // Responsive itemWidth based on screen size
-  const itemWidth = isXs
-    ? "230px"
-    : isSm
+  const itemWidth = isSm
     ? "320px"
     : isMd
     ? "380px"
@@ -25,21 +22,15 @@ const Carousel = ({ triggerScroll, items }) => {
     : "650px";
 
   // Responsive gap based on screen size
-  const gap = isXs
-    ? "20px"
-    : isSm
-    ? "40px"
-    : "40px";
+  const gap = isSm ? "20px" : "40px";
 
   // Adjust mappedX values based on screen size
   const mappedX = useTransform(
     triggerScroll,
     [0, 1],
-    isXs
-      ? ["0%", "-3900%"]
-      : isSm
-      ? ["0%", "-3400%"]
-      : ["0%", "-4400%"]
+    isSm
+      ? ["0%", `-${items.length * 230}px`]
+      : ["0%", `-4400px`]
   );
 
   // Use spring for smooth, non-bouncy scrolling
@@ -58,36 +49,32 @@ const Carousel = ({ triggerScroll, items }) => {
       }}
     >
       {/* Scrollable container */}
-      <div
+      <motion.div
+        drag={isSm ? "x" : false} // Enable dragging only on mobile
+        dragConstraints={{ left: -((items.length - 1) * 250), right: 0 }} // Constrain drag bounds
         style={{
           display: "flex",
+          x,
           gap,
-          scrollbarWidth: "thin", // Thin scrollbar for Firefox
+          cursor: isSm ? "grab" : "default", // Change cursor for dragging
         }}
+        whileTap={{ cursor: "grabbing" }} // Cursor style while dragging
       >
-        <motion.div
-          style={{
-            display: "flex",
-            x,
-            gap,
-          }}
-        >
-          {items.map((item, index) => (
-            <Aside
-              key={index}
-              image={item.image}
-              company={item.company}
-              title={item.title}
-              type={item.type}
-              category={item.category}
-              year={item.year}
-              link={item.link}
-              width={itemWidth}
-              color={item.color}
-            />
-          ))}
-        </motion.div>
-      </div>
+        {items.map((item, index) => (
+          <Aside
+            key={index}
+            image={item.image}
+            company={item.company}
+            title={item.title}
+            type={item.type}
+            category={item.category}
+            year={item.year}
+            link={item.link}
+            width={itemWidth}
+            color={item.color}
+          />
+        ))}
+      </motion.div>
     </div>
   );
 };

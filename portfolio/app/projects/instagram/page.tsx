@@ -230,19 +230,25 @@ export default function Instagram() {
       </Box>
 
       <Box
-        component="img"
-        src="/images/jobToBeDone.png"
-        alt="Jobs to be Done"
         sx={{
-          width: "100%",
-          maxWidth: "1300px",
-          height: "auto",
-          margin: { xs: "10px auto", sm: "20px auto" },
-          marginTop: "20px",
-          borderRadius: "25px",
-          border: "1px solid black",
+          padding: "10px",
         }}
-      />
+      >
+        <Box
+          component="img"
+          src="/images/jobToBeDone.png"
+          alt="Jobs to be Done"
+          sx={{
+            width: "100%",
+            maxWidth: "1300px",
+            height: "auto",
+            margin: { xs: "10px auto", sm: "20px auto" },
+            marginTop: "20px",
+            borderRadius: "25px",
+            border: "1px solid black",
+          }}
+        />
+      </Box>
 
       <Box
         sx={{
@@ -263,19 +269,25 @@ export default function Instagram() {
       </Box>
 
       <Box
-        component="img"
-        src="/images/userJourney.png"
-        alt="User Journey"
         sx={{
-          width: "100%",
-          maxWidth: "1300px",
-          height: "auto",
-          margin: { xs: "10px auto", sm: "20px auto" },
-          marginTop: "20px",
-          borderRadius: "25px",
-          border: "1px solid black",
+          padding: "10px",
         }}
-      />
+      >
+        <Box
+          component="img"
+          src="/images/userJourney.png"
+          alt="User Journey"
+          sx={{
+            width: "100%",
+            maxWidth: "1300px",
+            height: "auto",
+            margin: { xs: "10px auto", sm: "20px auto" },
+            marginTop: "20px",
+            borderRadius: "25px",
+            border: "1px solid black",
+          }}
+        />
+      </Box>
 
       <Box
         sx={{
@@ -316,19 +328,25 @@ export default function Instagram() {
       </Box>
 
       <Box
-        component="img"
-        src="/images/userTestimonies.png"
-        alt="User Testimonies"
         sx={{
-          width: "100%",
-          maxWidth: "1300px",
-          height: "auto",
-          margin: { xs: "10px auto", sm: "20px auto" },
-          marginTop: "20px",
-          borderRadius: "25px",
-          border: "1px solid black",
+          padding: "10px",
         }}
-      />
+      >
+        <Box
+          component="img"
+          src="/images/userTestimonies.png"
+          alt="User Testimonies"
+          sx={{
+            width: "100%",
+            maxWidth: "1300px",
+            height: "auto",
+            margin: { xs: "10px auto", sm: "20px auto" },
+            marginTop: "20px",
+            borderRadius: "25px",
+            border: "1px solid black",
+          }}
+        />
+      </Box>
 
       <Box
         sx={{
@@ -438,19 +456,25 @@ export default function Instagram() {
       </Box>
 
       <Box
-        component="img"
-        src="/images/valueProp.png"
-        alt="Value Proposition"
         sx={{
-          width: "100%",
-          maxWidth: "1300px",
-          height: "auto",
-          margin: { xs: "10px auto", sm: "20px auto" },
-          marginTop: "20px",
-          borderRadius: "25px",
-          border: "1px solid black",
+          padding: "10px",
         }}
-      />
+      >
+        <Box
+          component="img"
+          src="/images/valueProp.png"
+          alt="Value Proposition"
+          sx={{
+            width: "100%",
+            maxWidth: "1300px",
+            height: "auto",
+            margin: { xs: "10px auto", sm: "20px auto" },
+            marginTop: "20px",
+            borderRadius: "25px",
+            border: "1px solid black",
+          }}
+        />
+      </Box>
 
       <Box
         sx={{
@@ -542,7 +566,7 @@ export default function Instagram() {
                 sx={{
                   width: "70%",
                   height: "auto",
-                  borderRadius: { xs: "30px", lg: "80px" },
+                  borderRadius: { xs: "45px", lg: "80px" },
                 }}
               />
             </Box>
