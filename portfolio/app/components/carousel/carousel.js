@@ -35,19 +35,19 @@ const Carousel = ({ triggerScroll, items }) => {
     mass: 3,
   });
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  // const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleNext = () => {
-    if (activeIndex < items.length - 1) {
-      setActiveIndex(activeIndex + 1);
-    }
-  };
+  // const handleNext = () => {
+  //   if (activeIndex < items.length - 1) {
+  //     setActiveIndex(activeIndex + 1);
+  //   }
+  // };
 
-  const handlePrev = () => {
-    if (activeIndex > 0) {
-      setActiveIndex(activeIndex - 1);
-    }
-  };
+  // const handlePrev = () => {
+  //   if (activeIndex > 0) {
+  //     setActiveIndex(activeIndex - 1);
+  //   }
+  // };
 
   return (
     <div
