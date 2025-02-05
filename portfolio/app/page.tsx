@@ -121,10 +121,10 @@ function MyApp() {
   });
 
   const section1Opacity = useTransform(scrollYProgress, [0, 0.4, 0.5], [1, 1, 0]);
-  const section2Opacity = useTransform(scrollYProgress, [0.5, 0.6, 1], [0, 1, 1]);
-  const section3Opacity = useTransform(scrollYProgress, [0.5, 0.6, 1], [0, 1, 1]);
+  const section2Opacity = useTransform(scrollYProgress, [0.2, 0.55, 1], [0, 1, 1]);
+  const section3Opacity = useTransform(scrollYProgress, [0.2, 0.55, 1], [0, 1, 1]);
 
-  const triggerScroll = useTransform(scrollYProgress, [0.7, 1], [0, 1]);
+  const triggerScroll = useTransform(scrollYProgress, [0.55, 1], [0, 1]);
 
   const isSm = useMediaQuery(theme.breakpoints.between("sm", "md"));
 

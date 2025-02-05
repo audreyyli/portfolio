@@ -1,7 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion, useSpring, useTransform } from "framer-motion";
-import { useTheme, useMediaQuery } from "@mui/material";
+import { useTheme, useMediaQuery, Box, Button } from "@mui/material";
 import Aside from "../projects/aside";
 
 const Carousel = ({ triggerScroll, items }) => {
@@ -25,8 +25,8 @@ const Carousel = ({ triggerScroll, items }) => {
     triggerScroll,
     [0, 1],
     isSm
-      ? ["0%", `-2900px`]
-      : ["0%", `-4400px`]
+      ? ["0%", `-1750px`]
+      : ["0%", `-2700px`]
   );
 
   const x = useSpring(mappedX, {
@@ -34,6 +34,20 @@ const Carousel = ({ triggerScroll, items }) => {
     damping: 300,
     mass: 3,
   });
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleNext = () => {
+    if (activeIndex < items.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (activeIndex > 0) {
+      setActiveIndex(activeIndex - 1);
+    }
+  };
 
   return (
     <div
@@ -70,6 +84,64 @@ const Carousel = ({ triggerScroll, items }) => {
           />
         ))}
       </motion.div>
+      {/* {isSm && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 2,
+            marginTop: 2,
+            position: "absolute",
+            width: "30%",
+          }}
+        >
+          <Button
+            onClick={handlePrev}
+            disabled={activeIndex === 0}
+            variant="outlined"
+            sx={{
+              borderRadius: "50px", // Makes it a pill shape
+              border: "2px solid black", // 2px black border
+              backgroundColor: "transparent", // No fill
+              fontFamily: "Lato, sans-serif",
+              fontWeight: 100,
+              color: activeIndex === 0 ? "#666" : "black", // Inactive state color
+              "&:hover": {
+                backgroundColor: "rgba(0, 0, 0, 0.1)", // Light gray hover effect
+              },
+              "&.Mui-disabled": {
+                color: "#666", // Gray out text when disabled
+                borderColor: "#666", // Gray out border when disabled
+              },
+            }}
+          >
+            ◀ Prev
+          </Button>
+          <Button
+            onClick={handleNext}
+            disabled={activeIndex === items.length - 1}
+            variant="outlined"
+            sx={{
+              borderRadius: "50px", // Makes it a pill shape
+              border: "2px solid black", // 2px black border
+              backgroundColor: "transparent", // No fill
+              fontFamily: "Lato, sans-serif",
+              fontWeight: 100,
+              color: activeIndex === items.length - 1 ? "#666" : "black", // Inactive state color
+              "&:hover": {
+                backgroundColor: "rgba(0, 0, 0, 0.1)", // Light gray hover effect
+              },
+              "&.Mui-disabled": {
+                color: "#666", // Gray out text when disabled
+                borderColor: "#666", // Gray out border when disabled
+              },
+            }}
+          >
+            Next ▶
+          </Button>
+        </Box>
+      )} */}
     </div>
   );
 };

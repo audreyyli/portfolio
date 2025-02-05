@@ -10,12 +10,12 @@ const pictureGrid = ({ pictures }) => {
         paddingLeft: "25px",
         display: 'grid',
         gridTemplateColumns: {
-          xs: '1fr', // 1 column for extra-small screens (mobile)
-          sm: '1fr 1fr', // 2 columns for small screens
-          md: 'repeat(2, 1fr)', // 2 columns for medium screens
-          lg: 'repeat(3, 1fr)', // 3 columns for large screens
+          xs: '1fr',
+          sm: '1fr',
+          md: 'repeat(2, 1fr)',
+          lg: 'repeat(3, 1fr)',
         },
-        gap: '25px', // Adjust the gap between items
+        gap: '25px',
       }}
     >
       {pictures.map((pic, index) => (

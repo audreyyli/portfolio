@@ -98,7 +98,7 @@ export default function Instagram() {
             {/* Main Image */}
             <Box
               component="img"
-              src="/images/InstagramMock.png"
+              src="/images/Instagram/InstagramMock.png"
               alt="Instagram Mock"
               sx={{
                 maxWidth: "1500px",
@@ -152,13 +152,13 @@ export default function Instagram() {
           }}
           solution={{
             images: [
-              "/images/igSolution.png",
+              "/images/Instagram/igSolution.png",
             ],
             customTitle: "Customizable Explore Pages on Instagram",
           }}
           outcomes={{
             images: [
-              "/images/igOutcome.png",
+              "/images/Instagram/igOutcome.png",
             ],
             customTitle: "Presenting to product leaders on Product Review Day",
           }}
@@ -236,7 +236,7 @@ export default function Instagram() {
       >
         <Box
           component="img"
-          src="/images/jobToBeDone.png"
+          src="/images/Instagram/jobToBeDone.png"
           alt="Jobs to be Done"
           sx={{
             width: "100%",
@@ -275,7 +275,7 @@ export default function Instagram() {
       >
         <Box
           component="img"
-          src="/images/userJourney.png"
+          src="/images/Instagram/userJourney.png"
           alt="User Journey"
           sx={{
             width: "100%",
@@ -334,7 +334,7 @@ export default function Instagram() {
       >
         <Box
           component="img"
-          src="/images/userTestimonies.png"
+          src="/images/Instagram/userTestimonies.png"
           alt="User Testimonies"
           sx={{
             width: "100%",
@@ -462,7 +462,7 @@ export default function Instagram() {
       >
         <Box
           component="img"
-          src="/images/valueProp.png"
+          src="/images/Instagram/valueProp.png"
           alt="Value Proposition"
           sx={{
             width: "100%",
@@ -520,7 +520,7 @@ export default function Instagram() {
       <Box
         sx={{
           maxWidth: "1300px",
-          margin: { xs: "10px auto", sm: "20px auto" },
+          margin: { sm: "10px", md: "20px auto" },
           marginTop: "40px",
           border: "1px solid black",
           borderRadius: "25px",
@@ -528,15 +528,15 @@ export default function Instagram() {
       >
         {[
           {
-            gif: "/images/igRecord1.gif",
+            gif: "/images/Instagram/igRecord1.gif",
             description: "Instagram's explore page now has different tabs.",
           },
           {
-            gif: "/images/igRecord2.gif",
+            gif: "/images/Instagram/igRecord2.gif",
             description: "The \"For You\" page is a general page and works similar to the current explore page. There is now a \"Trending\" page that has preset tabs to show the popular content for each category. The \"Friends\" tab shows the content that your friends have recently interacted with. Lastly, there is a \"+\" or a tab to add a customizable explore page, tailored with specific interests.",
           },
           {
-            gif: "/images/igRecord3.gif",
+            gif: "/images/Instagram/igRecord3.gif",
             description: "The custom explore page takes in selected interests and curate an explore page specifically to those selected interests. No longer interested in those topics? No worries! The page can be easily edited!",
           },
         ].map((item, index) => (
