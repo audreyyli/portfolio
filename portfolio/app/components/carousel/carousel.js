@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion, useSpring, useTransform } from "framer-motion";
-import { useTheme, useMediaQuery, Box, Button } from "@mui/material";
+import { useTheme, useMediaQuery } from "@mui/material";
 import Aside from "../projects/aside";
 
 const Carousel = ({ triggerScroll, items }) => {
