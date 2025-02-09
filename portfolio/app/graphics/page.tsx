@@ -33,13 +33,13 @@ const fadeInUpVariant = {
 export default function graphics() {
   const wuksaPictures = [
     {
-      image: "/images/WUKSA/marketing1.png",
+      image: "/images/WUKSA/marketing1.PNG",
       alt: "Marketing Team Announcement",
       title: "Marketing Team 1",
       type: "2025 / INSTAGRAM POST",
     },
     {
-      image: "/images/WUKSA/marketing2.png",
+      image: "/images/WUKSA/marketing2.PNG",
       alt: "Marketing Team Announcement",
       title: "Marketing Team 2",
       type: "2025 / INSTAGRAM POST",
