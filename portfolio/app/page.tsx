@@ -353,7 +353,7 @@ function MyApp() {
                       transition: "width 0.4s ease",
                     },
                   }}
-                  href="https://www.linkedin.com/in/audreylii/"
+                  href="https://drive.google.com/file/d/1Pegtef-INs67BF3ZbKpugfBfbHUVhzwZ/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
