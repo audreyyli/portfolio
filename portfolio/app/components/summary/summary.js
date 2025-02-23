@@ -17,6 +17,7 @@ const SummarySection = ({ title, customTitle, description, images }) => {
             sx={{
               fontWeight: 700,
               fontFamily: "Lato",
+              fontStyle: "italic",
               fontSize: "32px",
             }}
           >

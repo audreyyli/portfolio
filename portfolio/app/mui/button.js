@@ -1,8 +1,7 @@
 "use client";
-import { styled } from '@mui/material/styles'; // Correct for Material UI v5
+import { styled } from '@mui/material/styles';
 import { Button } from '@mui/material';
 
-// Styled reusable button
 const CustomButton = styled(Button)(({ variantType }) => ({
     padding: '10px 20px',
     fontSize: '8px',

@@ -104,3 +104,22 @@ body {
   font-weight: normal;
   font-style: normal;
 }
+
+.carousel-scroll {
+  padding-bottom: 30px;
+}
+
+.carousel-scroll::-webkit-scrollbar {
+  height: 2px;
+  width: 3px;
+}
+.carousel-scroll::-webkit-scrollbar-track {
+  background-color: rgba(170, 170, 170, 0.2);
+  border-radius: 5px;
+  margin: 0 250px;
+}
+.carousel-scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(68, 68, 68, 0.3);
+  border-radius: 5px;
+  margin: 0 5000px;
+}

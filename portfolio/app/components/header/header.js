@@ -54,7 +54,7 @@ export default function Header() {
                 component="img"
                 src={isHovered ? "/images/logoHover.png" : "/images/logo.png"}
                 alt="Logo"
-                sx={{ width: { xs: "50px", md: "60px" }, height: "auto", cursor: "pointer" }}
+                sx={{ width: { sm: "50px", md: "60px" }, height: "auto", cursor: "pointer" }}
               />
             </Link>
           </Box>
@@ -66,7 +66,7 @@ export default function Header() {
               flexGrow: 1,
               justifyContent: "flex-end",
               alignItems: "center",
-              gap: { xs: "1px", md: "20px" },
+              gap: { sm: "1px", md: "10px" },
             }}
           >
             <Box
@@ -80,7 +80,7 @@ export default function Header() {
                 sx={{
                   textTransform: "none",
                   fontWeight: 400,
-                  fontSize: { xs: "14px", md: "18px" },
+                  fontSize: { xs: "14px", md: "16px" },
                   color: "#888",
                   position: "relative",
                   overflow: "hidden",
@@ -143,7 +143,7 @@ export default function Header() {
                 <MenuItem
                   onClick={handleMenuClose}
                   sx={{
-                    fontSize: { xs: "14px", md: "18px" },
+                    fontSize: { sm: "14px", md: "16px" },
                     fontWeight: 400,
                     color: "#888",
                     textTransform: "none",
@@ -180,7 +180,7 @@ export default function Header() {
             <Link href="/about" passHref>
               <CustomButton
                 variantType="header"
-                sx={{ textTransform: "none", fontSize: { xs: "14px", md: "18px" } }}
+                sx={{ textTransform: "none", fontSize: { sm: "14px", md: "16px" } }}
               >
                 about me
               </CustomButton>
@@ -193,7 +193,7 @@ export default function Header() {
             >
               <CustomButton
                 variantType="header"
-                sx={{ textTransform: "none", fontSize: { xs: "14px", md: "18px" } }}
+                sx={{ textTransform: "none", fontSize: { sm: "14px", md: "16px" } }}
               >
                 resume
               </CustomButton>

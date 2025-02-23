@@ -11,7 +11,7 @@ const Footer = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: { xs: "20px 10px", md: "20px 40px" },
+        padding: { sm: "20px 10px", md: "20px 40px" },
         background: "none",
         position: "sticky",
         bottom: 0,
@@ -22,7 +22,7 @@ const Footer = () => {
       <Typography
         variant="body1"
         sx={{
-          fontSize: { xs: "14px", md: "18px" },
+          fontSize: { sm: "14px", md: "16px" },
           color: "#888",
         }}
       >
@@ -34,8 +34,8 @@ const Footer = () => {
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: { xs: "10px", md: "20px" },
-          marginLeft: { xs: "25px", md: "0" },
+          gap: { sm: "10px", md: "20px" },
+          marginLeft: { sm: "25px", md: "0" },
         }}
       >
         {/* Email Button */}
@@ -45,7 +45,7 @@ const Footer = () => {
           sx={{
             textTransform: "none",
             fontWeight: 400,
-            fontSize: { xs: "14px", md: "18px" },
+            fontSize: { sm: "14px", md: "16px" },
             color: "#888",
             position: "relative",
             overflow: "hidden",
@@ -79,7 +79,7 @@ const Footer = () => {
           variant="contained"
           endIcon={<ArrowOutward />}
           sx={{
-            fontSize: { xs: "14px", md: "18px" },
+            fontSize: { sm: "14px", md: "16px" },
             textTransform: "none",
             backgroundColor: "transparent",
             color: "#888",
@@ -90,7 +90,7 @@ const Footer = () => {
             position: "relative",
             overflow: "hidden",
             transition: "all 0.3s ease-in-out",
-            width: { xs: "155px", md: "auto" },
+            width: { sm: "155px", md: "auto" },
             "& .MuiButton-endIcon": {
               transition: "transform 0.3s ease-in-out",
             },

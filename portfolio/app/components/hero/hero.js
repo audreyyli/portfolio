@@ -25,7 +25,7 @@ const Hero = ({
         <Typography sx={{ fontWeight: 100, fontFamily: "Lato", fontSize: { sm: "20px", md: '24px' } }}>
           {title}
         </Typography>
-        <Typography sx={{ fontWeight: 900, fontFamily: "Lato", fontSize: { sm: "25px", md: '40px' }, marginTop: "-10px", }} >
+        <Typography sx={{ fontWeight: 700, fontFamily: "Lato", fontStyle: "italic", fontSize: { sm: "25px", md: '40px' }, marginTop: "-10px", }} >
           {header}
         </Typography>
 
@@ -82,7 +82,6 @@ const Hero = ({
                 fontWeight: 100,
                 fontFamily: "Lato",
                 textTransform: 'uppercase',
-                color: subColour,
               }}
             >
               Timeline
@@ -100,7 +99,6 @@ const Hero = ({
                 fontWeight: 100,
                 fontFamily: "Lato",
                 textTransform: 'uppercase',
-                color: subColour,
               }}
             >
               Role
@@ -118,7 +116,6 @@ const Hero = ({
                 fontWeight: 100,
                 fontFamily: "Lato",
                 textTransform: 'uppercase',
-                color: subColour,
               }}
             >
               Tools/Skills
