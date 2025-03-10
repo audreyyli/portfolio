@@ -138,7 +138,14 @@ function MyApp() {
     _event: React.MouseEvent<HTMLElement>,
     newView: React.SetStateAction<string> | null
   ) => {
-    if (newView !== null) setView(newView);
+    if (newView === "graphic") {
+      window.open(
+        "https://drive.google.com/drive/folders/11o1Zc3D7-3sTHqD69pxoI-UADxdLoG7c?usp=drive_link",
+        "_blank"
+      );
+    } else if (newView !== null) {
+      setView(newView);
+    }
   };
 
   return (
@@ -497,40 +504,43 @@ function MyApp() {
           >
             Selected Works
           </ToggleButton>
-          <Tooltip title="COMING SOON" arrow>
-            <ToggleButton
-              value="graphic"
-              disableRipple
-              onClick={(e) => e.preventDefault()}
-              sx={{
-                zIndex: 1,
+          <ToggleButton
+            value="graphic"
+            disableRipple
+            onClick={() =>
+              window.open(
+                "https://drive.google.com/drive/folders/11o1Zc3D7-3sTHqD69pxoI-UADxdLoG7c?usp=drive_link",
+                "_blank"
+              )
+            }
+            sx={{
+              zIndex: 1,
+              backgroundColor: "transparent",
+              border: "none",
+              flex: 1,
+              justifyContent: "center",
+              color: "rgba(68, 68, 68, 0.6)",
+              fontWeight: "400",
+              fontFamily: "Lato",
+              fontSize: { xs: "12px", sm: "14px", md: "16px" },
+              cursor: "default",
+              "&:hover": {
+                backgroundColor: "transparent !important",
+                color: "#222",
+                fontWeight: "700",
+              },
+              "&.Mui-selected": {
                 backgroundColor: "transparent",
-                border: "none",
-                flex: 1,
-                justifyContent: "center",
-                color: "rgba(68, 68, 68, 0.6)",
-                fontWeight: "400",
-                fontFamily: "Lato",
-                fontSize: { xs: "12px", sm: "14px", md: "16px" },
-                cursor: "default",
-                "&:hover": {
-                  backgroundColor: "transparent !important",
-                  // color: "#222",
-                  // fontWeight: "700",
-                },
-                // "&.Mui-selected": {
-                //   backgroundColor: "transparent",
-                //   color: "#444",
-                //   fontWeight: "700",
-                // },
-                // "&.Mui-focusVisible": { backgroundColor: "transparent" },
-                // "&:active": { backgroundColor: "transparent" },
-                // "&:focus": { backgroundColor: "transparent" },
-              }}
-            >
-              Graphic Library
-            </ToggleButton>
-          </Tooltip>
+                color: "#444",
+                fontWeight: "700",
+              },
+              "&.Mui-focusVisible": { backgroundColor: "transparent" },
+              "&:active": { backgroundColor: "transparent" },
+              "&:focus": { backgroundColor: "transparent" },
+            }}
+          >
+            Graphic Library
+          </ToggleButton>
         </ToggleButtonGroup>
 
         <Typography
