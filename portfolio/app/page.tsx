@@ -13,7 +13,6 @@ import Image from "next/image";
 import "./globals.css";
 import React from "react";
 import ArrowOutward from "@mui/icons-material/ArrowOutward";
-import Tooltip from "@mui/material/Tooltip";
 
 const items = [
   {
