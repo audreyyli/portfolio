@@ -26,7 +26,7 @@ const Footer = () => {
           color: "#888",
         }}
       >
-        site developed by Audrey Li  ·  2025
+        Site developed with love by Audrey Li · 2025
       </Typography>
 
       {/* Social Media Links */}
@@ -71,7 +71,7 @@ const Footer = () => {
             },
           }}
         >
-          email
+          Email
         </Button>
 
         {/* LinkedIn Button */}
@@ -122,7 +122,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          let&apos;s connect!
+          Let&apos;s connect!
         </Button>
       </Box>
     </Box>

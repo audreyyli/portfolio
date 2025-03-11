@@ -3,13 +3,14 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import Footer from "@/app/components/footer/footer.js";
 import Hero from "../../components/hero/hero.js";
-import Summary from "../../components/summary/summary.js"
-import Section from "../../components/section/section.js"
-import Problem from "../../components/problem/problem.js"
+import Summary from "../../components/summary/summary.js";
+import Section from "../../components/section/section.js";
+import Problem from "../../components/problem/problem.js";
 import { Box, Button, Typography, Divider } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowOutward from "@mui/icons-material/ArrowOutward";
 
 // Create a custom theme with Apple system fonts
 const theme = createTheme({
@@ -32,7 +33,7 @@ export default function Instagram() {
   const router = useRouter();
 
   const handleGoBack = () => {
-      router.back();
+    router.back();
   };
 
   return (
@@ -49,7 +50,7 @@ export default function Instagram() {
         }}
       >
         <Button
-          startIcon={<ArrowBackIcon />} 
+          startIcon={<ArrowBackIcon />}
           onClick={handleGoBack}
           disableRipple
           sx={{
@@ -83,32 +84,32 @@ export default function Instagram() {
         >
           BACK
         </Button>
+        <Box
+          sx={{
+            marginTop: "20px",
+            position: "relative",
+            width: "100vw",
+            height: "45vh",
+            overflow: "hidden",
+            backgroundColor: "#FFDEE7",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
+        >
+          {/* Main Image */}
           <Box
+            component="img"
+            src="/images/Instagram/InstagramMock.png"
+            alt="Instagram Mock"
             sx={{
-              marginTop: "20px",
-              position: 'relative',
-              width: '100vw',
-              height: '45vh',
-              overflow: 'hidden',
-              backgroundColor: '#FFDEE7',
-              left: '50%',
-              transform: 'translateX(-50%)',
+              maxWidth: "1500px",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              margin: "0 auto",
             }}
-          >
-            {/* Main Image */}
-            <Box
-              component="img"
-              src="/images/Instagram/InstagramMock.png"
-              alt="Instagram Mock"
-              sx={{
-                maxWidth: "1500px",
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                margin: "0 auto",
-              }}
-            />
-          </Box>
+          />
+        </Box>
         {/* Hero section */}
         <Box
           sx={{
@@ -132,39 +133,52 @@ export default function Instagram() {
           />
         </Box>
 
-        <Divider sx={{ width: "100%", maxWidth: "1300px", marginTop: "70px", marginBottom: "50px", }} />
+        <Divider
+          sx={{
+            width: "100%",
+            maxWidth: "1300px",
+            marginTop: "70px",
+            marginBottom: "50px",
+          }}
+        />
       </Box>
-      
+
       <Box
         sx={{
           maxWidth: "1300px",
           margin: "0 auto",
           padding: { xs: "10px", sm: "20px" },
-        }}>
+        }}
+      >
         <Summary
           context={{
-            description: "I joined Ivey Product Society\'s fellowship program to tackle a project through a product lens, expanding my expertise in product management and strategy.",
+            description:
+              "I joined Ivey Product Society\'s fellowship program to tackle a project through a product lens, expanding my expertise in product management and strategy.",
             customTitle: "A new challenge",
           }}
           problem={{
-            description: "With so many different creators, genres, and interests, it\'s difficult to find content that suits specific interests.",
+            description:
+              "With so many different creators, genres, and interests, it\'s difficult to find content that suits specific interests.",
             customTitle: "Content discovery isn\'t personalized enough",
           }}
           solution={{
-            images: [
-              "/images/Instagram/igSolution.png",
-            ],
+            images: ["/images/Instagram/igSolution.png"],
             customTitle: "Customizable Explore Pages on Instagram",
           }}
           outcomes={{
-            images: [
-              "/images/Instagram/igOutcome.png",
-            ],
+            images: ["/images/Instagram/igOutcome.png"],
             customTitle: "Presenting to product leaders on Product Review Day",
           }}
         />
 
-        <Divider sx={{ width: "100%", maxWidth: "1300px", marginTop: "70px", marginBottom: "50px", }} />
+        <Divider
+          sx={{
+            width: "100%",
+            maxWidth: "1300px",
+            marginTop: "70px",
+            marginBottom: "50px",
+          }}
+        />
       </Box>
 
       <Box
@@ -172,16 +186,22 @@ export default function Instagram() {
           maxWidth: "1300px",
           margin: "0 auto",
           padding: { xs: "10px", sm: "20px" },
-        }}>
+        }}
+      >
         <Section
           header="HOW IT STARTED"
           description={[
             <>
-              Instagram is a platform that connects over a billion users worldwide. But at its core, Instagram is more than just a social app—it&apos;s a space for people to{" "}
-              <b>explore their passions</b>, <b>build communities</b>, and <b>find content that truly resonates with them</b>.
+              Instagram is a platform that connects over a billion users
+              worldwide. But at its core, Instagram is more than just a social
+              app—it&apos;s a space for people to <b>explore their passions</b>,{" "}
+              <b>build communities</b>, and{" "}
+              <b>find content that truly resonates with them</b>.
             </>,
             <>
-              One of Instagram&apos;s primary goals has always been to help users explore what they love. But while Instagram excels in many ways, there&apos;s a growing gap in its ability to{" "}
+              One of Instagram&apos;s primary goals has always been to help
+              users explore what they love. But while Instagram excels in many
+              ways, there&apos;s a growing gap in its ability to{" "}
               <b>personalize content discovery</b> for its users.
             </>,
           ]}
@@ -203,13 +223,13 @@ export default function Instagram() {
             maxWidth: "1300px",
             margin: "0 auto",
           }}
-          >
-            <Problem
-              intro="AND SO, I ASKED:"
-              introColour="#FF5093"
-              problemStatement="How can Instagram improve its content discovery to create a personalized feed expereince for users?"
-            />
-          </Box>
+        >
+          <Problem
+            intro="AND SO, I ASKED:"
+            introColour="#FF5093"
+            problemStatement="How can Instagram improve its content discovery to create a personalized feed expereince for users?"
+          />
+        </Box>
       </Box>
 
       <Box
@@ -218,12 +238,14 @@ export default function Instagram() {
           margin: "0 auto",
           marginTop: "40px",
           padding: { xs: "10px", sm: "20px" },
-        }}>
+        }}
+      >
         <Section
           header="EXPLORING THE PROBLEM"
           description={[
             <>
-              There are many steps to finding new, personalized content on social media. I broke down the process into 4 main steps.
+              There are many steps to finding new, personalized content on
+              social media. I broke down the process into 4 main steps.
             </>,
           ]}
         />
@@ -256,16 +278,20 @@ export default function Instagram() {
           margin: "0 auto",
           marginTop: "40px",
           padding: { xs: "10px", sm: "20px" },
-        }}>
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 400,
-              fontSize: "18px",
-            }}
-          >
-            Where within the user&apos;s journey would there be an opportunity to make an impact? Taking into consideration how each step creates value for the user and the constraints, I mapped out the user&apos;s journey to make a decision.
-          </Typography>
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: "Lato",
+            fontWeight: 400,
+            fontSize: "18px",
+          }}
+        >
+          Where within the user&apos;s journey would there be an opportunity to
+          make an impact? Taking into consideration how each step creates value
+          for the user and the constraints, I mapped out the user&apos;s journey
+          to make a decision.
+        </Typography>
       </Box>
 
       <Box
@@ -295,16 +321,19 @@ export default function Instagram() {
           margin: "0 auto",
           marginTop: "40px",
           padding: { xs: "10px", sm: "20px" },
-        }}>
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 400,
-              fontSize: "18px",
-            }}
-          >
-            I identified that the scrolling step would allow for the opportunity to make the largest impact. After making a decision on which step, I conducted user research to further help me refine my solution.
-          </Typography>
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: "Lato",
+            fontWeight: 400,
+            fontSize: "18px",
+          }}
+        >
+          I identified that the scrolling step would allow for the opportunity
+          to make the largest impact. After making a decision on which step, I
+          conducted user research to further help me refine my solution.
+        </Typography>
       </Box>
 
       <Box
@@ -313,16 +342,18 @@ export default function Instagram() {
           margin: "0 auto",
           marginTop: "40px",
           padding: { xs: "10px", sm: "20px" },
-        }}>
+        }}
+      >
         <Section
           header="USER RESEARCH"
           description={[
             <>
-              I began by defining the average Instagram user. They are someone who is <b>young and casually</b> uses Instagram. They are looking for <b>personable content</b> that are sources of <b>entertainment or connects them with trends</b>.
+              I began by defining the average Instagram user. They are someone
+              who is <b>young and casually</b> uses Instagram. They are looking
+              for <b>personable content</b> that are sources of{" "}
+              <b>entertainment or connects them with trends</b>.
             </>,
-            <>
-              From here I started conducting user research.
-          </>,
+            <>From here I started conducting user research.</>,
           ]}
         />
       </Box>
@@ -354,16 +385,21 @@ export default function Instagram() {
           margin: "0 auto",
           marginTop: "40px",
           padding: { xs: "10px", sm: "20px" },
-        }}>
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 400,
-              fontSize: "18px",
-            }}
-          >
-            Users feel a disconnect with the content being shown on Instagram, opting for other social platforms that provide more personalized and niche-focused recommendations. Many users struggle to find content aligned with their specific interests, expressing frustration with Instagram&apos;s Explore page and algorithms.
-          </Typography>
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: "Lato",
+            fontWeight: 400,
+            fontSize: "18px",
+          }}
+        >
+          Users feel a disconnect with the content being shown on Instagram,
+          opting for other social platforms that provide more personalized and
+          niche-focused recommendations. Many users struggle to find content
+          aligned with their specific interests, expressing frustration with
+          Instagram&apos;s Explore page and algorithms.
+        </Typography>
       </Box>
 
       <Box
@@ -413,7 +449,8 @@ export default function Instagram() {
                 fontSize: "18px",
               }}
             >
-              Users feel that their explore pages are not tailored to their specific interests.
+              Users feel that their explore pages are not tailored to their
+              specific interests.
             </Typography>
           </Box>
 
@@ -435,7 +472,8 @@ export default function Instagram() {
                 fontSize: "18px",
               }}
             >
-              Users with unique or niche interests struggle to find posts or topics.
+              Users with unique or niche interests struggle to find posts or
+              topics.
             </Typography>
           </Box>
         </Box>
@@ -447,12 +485,9 @@ export default function Instagram() {
           margin: "0 auto",
           marginTop: "40px",
           padding: { xs: "10px", sm: "20px" },
-        }}>
-        <Section
-          header="SOLUTION"
-          description={[
-          ]}
-        />
+        }}
+      >
+        <Section header="SOLUTION" description={[]} />
       </Box>
 
       <Box
@@ -482,16 +517,22 @@ export default function Instagram() {
           margin: "0 auto",
           marginTop: "40px",
           padding: { xs: "10px", sm: "20px" },
-        }}>
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 400,
-              fontSize: "18px",
-            }}
-          >
-            By catering to a broader range of preferences, Instagram can better serve niche interests and enhance user satisfaction, ensuring the platform remains relevant and engaging. This approach benefits users by making it easier to discover content that resonates with their diverse interests, while Instagram gains increased user engagement and retention.
-          </Typography>
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: "Lato",
+            fontWeight: 400,
+            fontSize: "18px",
+          }}
+        >
+          By catering to a broader range of preferences, Instagram can better
+          serve niche interests and enhance user satisfaction, ensuring the
+          platform remains relevant and engaging. This approach benefits users
+          by making it easier to discover content that resonates with their
+          diverse interests, while Instagram gains increased user engagement and
+          retention.
+        </Typography>
       </Box>
 
       <Box
@@ -533,11 +574,13 @@ export default function Instagram() {
           },
           {
             gif: "/images/Instagram/igRecord2.gif",
-            description: "The \"For You\" page is a general page and works similar to the current explore page. There is now a \"Trending\" page that has preset tabs to show the popular content for each category. The \"Friends\" tab shows the content that your friends have recently interacted with. Lastly, there is a \"+\" or a tab to add a customizable explore page, tailored with specific interests.",
+            description:
+              'The "For You" page is a general page and works similar to the current explore page. There is now a "Trending" page that has preset tabs to show the popular content for each category. The "Friends" tab shows the content that your friends have recently interacted with. Lastly, there is a "+" or a tab to add a customizable explore page, tailored with specific interests.',
           },
           {
             gif: "/images/Instagram/igRecord3.gif",
-            description: "The custom explore page takes in selected interests and curate an explore page specifically to those selected interests. No longer interested in those topics? No worries! The page can be easily edited!",
+            description:
+              "The custom explore page takes in selected interests and curate an explore page specifically to those selected interests. No longer interested in those topics? No worries! The page can be easily edited!",
           },
         ].map((item, index) => (
           <Box
@@ -597,15 +640,71 @@ export default function Instagram() {
           margin: "0 auto",
           marginTop: "40px",
           padding: { xs: "10px", sm: "20px" },
-        }}>
+        }}
+      >
         <Section
           header="REFLECTION"
           description={[
             <>
-              Sometimes, the most impactful innovations lie in simplifying what already exists and truly addressing user needs. By providing users with greater control and customization—such as personalized tabs or interest-based filtering—Instagram can bridge the gap between user expectations and platform experience.
-            </>
+              Sometimes, the most impactful innovations lie in simplifying what
+              already exists and truly addressing user needs. By providing users
+              with greater control and customization—such as personalized tabs
+              or interest-based filtering—Instagram can bridge the gap between
+              user expectations and platform experience.
+            </>,
           ]}
         />
+        <Box sx={{ marginTop: "10px" }}>
+          <Button
+            variant="text"
+            endIcon={<ArrowOutward />}
+            sx={{
+              fontSize: { xs: "14px", md: "18px" },
+              backgroundColor: "transparent",
+              color: "#888",
+              fontWeight: "400",
+              position: "relative",
+              overflow: "hidden",
+              textAlign: "center",
+              transition: "transform 0.03s, background-color 0.06s",
+              boxShadow: "none",
+              textTransform: "none",
+              width: "fit-content",
+              minWidth: "180px",
+              whiteSpace: "nowrap",
+              marginBottom: { xs: "0", md: "-20px" },
+              left: "0",
+              "& .MuiButton-endIcon": {
+                transition: "transform 0.3s ease-in-out",
+              },
+              "&:hover": {
+                color: "#222",
+                borderColor: "#222",
+                "& .MuiButton-endIcon": {
+                  transform: "rotate(45deg)",
+                },
+                "&::after": {
+                  width: "100%",
+                },
+              },
+              "&::after": {
+                content: '""',
+                position: "absolute",
+                bottom: "7px",
+                left: "0",
+                height: "1px",
+                backgroundColor: "#222",
+                width: "0%",
+                transition: "width 0.4s ease",
+              },
+            }}
+            href="https://docs.google.com/presentation/d/10iLK3qNu8e8z0LB4sYKqAfZLcNT324Suimsl7A4ktA4/edit?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View My Presentation
+          </Button>
+        </Box>
       </Box>
 
       <Box
@@ -662,13 +761,14 @@ export default function Instagram() {
             fontFamily: "Lato",
             fontSize: "24px",
             fontWeight: 700,
-          }}>
-            |
+          }}
+        >
+          |
         </Typography>
 
         {/* Right Button */}
         <Box>
-        <Button
+          <Button
             href="/#section2"
             disableRipple
             sx={{

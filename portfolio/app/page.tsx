@@ -16,6 +16,16 @@ import ArrowOutward from "@mui/icons-material/ArrowOutward";
 
 const items = [
   {
+    image: "/images/mySpend.png",
+    company: "TD",
+    title: "Improving GenZ's financial well-being with TD MySpend",
+    type: "Product Management",
+    category: "Product Strategy",
+    year: "2025",
+    link: "/projects/mySpend",
+    color: "#D3E9D4",
+  },
+  {
     image: "/images/instagram.png",
     company: "Instagram",
     title: "Improving personalization for Instagram's explore page",
@@ -44,16 +54,6 @@ const items = [
     year: "2023",
     link: "/projects/epiPlan",
     color: "#FFEED9",
-  },
-  {
-    image: "/images/wuksa.png",
-    company: "Western university korean student association",
-    title: "Re-envisioning WUKSA's brand identity",
-    type: "Brand Design",
-    category: "Design Strategy",
-    year: "2023",
-    link: "/projects/wuksa",
-    color: "#ECD9FF",
   },
 ];
 
@@ -321,6 +321,7 @@ function MyApp() {
               >
                 <Button
                   variant="text"
+                  endIcon={<ArrowOutward />}
                   sx={{
                     fontSize: { xs: "14px", md: "18px" },
                     backgroundColor: "transparent",
