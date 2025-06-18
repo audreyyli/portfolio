@@ -14,7 +14,8 @@
   }
 }
 
-html, body {
+html,
+body {
   height: 100vh;
   margin: 0;
   padding: 0;
@@ -43,64 +44,105 @@ body {
 /* Define the Lato font */
 /* Lato Regular */
 @font-face {
-  font-family: 'Lato';
-  src: url('/fonts/Lato/Lato-Regular.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-Regular.ttf") format("truetype");
   font-weight: 400; /* Regular weight */
   font-style: normal;
 }
 
 /* Lato Thin */
 @font-face {
-  font-family: 'Lato';
-  src: url('/fonts/Lato/Lato-Light.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-Light.ttf") format("truetype");
   font-weight: 100; /* Thin weight */
   font-style: normal;
 }
 
 /* Lato Bold */
 @font-face {
-  font-family: 'Lato';
-  src: url('/fonts/Lato/Lato-Bold.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-Bold.ttf") format("truetype");
   font-weight: 700; /* Bold weight */
   font-style: normal;
 }
 
 /* Lato Bold */
 @font-face {
-  font-family: 'Lato';
-  src: url('/fonts/Lato/Lato-Black.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-Black.ttf") format("truetype");
   font-weight: 900; /* Bold weight */
   font-style: normal;
 }
 
 /* Lato Italic */
 @font-face {
-  font-family: 'Lato';
-  src: url('/fonts/Lato/Lato-Italic.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-Italic.ttf") format("truetype");
   font-weight: 400; /* Regular weight */
   font-style: italic;
 }
 
 /* Lato Light Italic */
 @font-face {
-  font-family: 'Lato';
-  src: url('/fonts/Lato/Lato-LightItalic.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-LightItalic.ttf") format("truetype");
   font-weight: 100; /* Regular weight */
   font-style: italic;
 }
 
 /* Lato Bold Italic */
 @font-face {
-  font-family: 'Lato';
-  src: url('/fonts/Lato/Lato-BoldItalic.ttf') format('truetype');
+  font-family: "Lato";
+  src: url("/fonts/Lato/Lato-BoldItalic.ttf") format("truetype");
   font-weight: 700; /* Bold weight */
+  font-style: italic;
+}
+
+/* Urbanist Regular */
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist/Urbanist-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Urbanist Light */
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist/Urbanist-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Urbanist Light Italics */
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist/Urbanist-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Urbanist Bold */
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist/Urbanist-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Urbanist Italic */
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist/Urbanist-Italic.ttf") format("truetype");
+  font-weight: 400;
   font-style: italic;
 }
 
 /* Define the Amoresa font */
 @font-face {
-  font-family: 'Amoresa';
-  src: url('/fonts/Amoresa/Andrey Sharonov - Amoresa Regular.otf') format('opentype');
+  font-family: "Amoresa";
+  src: url("/fonts/Amoresa/Andrey Sharonov - Amoresa Regular.otf")
+    format("opentype");
   font-weight: normal;
   font-style: normal;
 }
