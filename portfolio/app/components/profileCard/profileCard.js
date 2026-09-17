@@ -2,38 +2,6 @@
 
 import React from "react";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import Image from "next/image";
-
-// const career = [
-//   {
-//     year: "2026",
-//     role: "Product Manager Intern",
-//     company: "Kiyoko Beauty",
-//     url: "https://kiyoko.ca/en-ca",
-//     current: true,
-//   },
-//   {
-//     year: "2025–26",
-//     role: "Product Design Intern",
-//     company: "Honeydew Labs",
-//     url: "https://www.honeydewlabs.com/",
-//     current: true,
-//   },
-//   {
-//     year: "2026",
-//     role: "Business System Analyst Intern",
-//     company: "Toronto Dominion Bank",
-//     url: "https://www.td.com",
-//     current: false,
-//   },
-//   {
-//     year: "2024–25",
-//     role: "Technical Product Manager Intern",
-//     company: "Two Small Men With Big Hearts",
-//     url: "https://www.twosmallmen.com",
-//     current: false,
-//   },
-// ];
 
 const AudreyProfileCard = () => {
   const theme = useTheme();

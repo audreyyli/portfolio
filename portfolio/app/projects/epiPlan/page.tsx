@@ -10,7 +10,6 @@ import { Box, Button, Typography, Divider } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowOutward from "@mui/icons-material/ArrowOutward";
 
 // Create a custom theme with Apple system fonts
 const theme = createTheme({
