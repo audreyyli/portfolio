@@ -3,12 +3,14 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import Footer from "@/app/components/footer/footer.js";
 import Hero from "../../components/hero/hero.js";
-import ProjectOverview from "../../components/overview/overview.js"
-import Problem from "../../components/problem/problem.js"
+import Summary from "../../components/summary/summary.js";
+import Section from "../../components/section/section.js";
+import Problem from "../../components/problem/problem.js";
 import { Box, Button, Typography, Divider } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowOutward from "@mui/icons-material/ArrowOutward";
 
 // Create a custom theme with Apple system fonts
 const theme = createTheme({
@@ -31,20 +33,8 @@ export default function EpiPlan() {
   const router = useRouter();
 
   const handleGoBack = () => {
-      router.back();
+    router.back();
   };
-
-  const paragraphs = [
-    <>
-      Navigating daily life with dietary restrictions can be daunting. From grocery shopping to dining out, the uncertainty around food ingredients often leads to <b>axiety and limits freedom of choice</b>.
-    </>,
-    <>
-      The lack of clear ingredient information and the potential for cross-contamination make these situations not only stressful but potentially dangerous.
-    </>,
-    <>
-      A solution was needed to provide a sense of security by allowing individuals to track their dietary needs, find allergen-free products, and confidently identify potentially unsafe items. The vision was simple: enable people with dietary restrictions to <b>enjoy their meals with peace of mind</b>.
-    </>
-  ];
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,7 +50,7 @@ export default function EpiPlan() {
         }}
       >
         <Button
-          startIcon={<ArrowBackIcon />} 
+          startIcon={<ArrowBackIcon />}
           onClick={handleGoBack}
           disableRipple
           sx={{
@@ -98,13 +88,13 @@ export default function EpiPlan() {
         <Box
           sx={{
             marginTop: "20px",
-            position: 'relative',
-            width: '100vw',
-            height: '45vh',
-            overflow: 'hidden',
-            backgroundColor: '#FFEED9',
-            left: '50%',
-            transform: 'translateX(-50%)',
+            position: "relative",
+            width: "100vw",
+            height: "45vh",
+            overflow: "hidden",
+            backgroundColor: "#FFEED9",
+            left: "50%",
+            transform: "translateX(-50%)",
           }}
         >
           {/* Main Image */}
@@ -113,41 +103,121 @@ export default function EpiPlan() {
             src="/images/epiPlanMock.png"
             alt="EpiPlan Mock"
             sx={{
-              maxWidth: "1300px",
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
+              maxWidth: "1500px",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
               margin: "0 auto",
             }}
           />
         </Box>
-
+        {/* Hero section */}
         <Box
           sx={{
-            marginTop: "-80px",
-            height: "85vh",
+            position: "relative",
+            marginTop: "170px",
             justifyContent: "center",
             alignContent: "center",
           }}
         >
-        <Hero
-          title="EPIPLAN"
-          timeline="March 2024"
-          role="Product Designer"
-          toolsSkills="Figma, Visual Design, User Research"
-          company="Product Design"
-          header="A Companion for Dietary Restrictions"
-          projectType="Mobile App"
-          description="Empowering individuals with dietary restrictions to easily navigate food choices."
-          mainColour="#FFEED9"
-          subColour="#FF8506"
+          <Hero
+            title="EpiPlan"
+            timeline="March 2024"
+            role="Product Designer & Researcher"
+            toolsSkills="Figma, Prototyping, Visual Design, User Research, Product Design"
+            company="Product Design"
+            header="Helping individuals with dietary restrictions navigate food choices confidently"
+            projectType="Mobile App Design"
+            description="Empowering people with dietary restrictions by simplifying food discovery, meal planning, and social navigation."
+            mainColour="#FFEED9"
+            subColour="#FF8506"
+          />
+        </Box>
+
+        <Divider
+          sx={{
+            width: "100%",
+            maxWidth: "1300px",
+            marginTop: "70px",
+            marginBottom: "50px",
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          maxWidth: "1300px",
+          margin: "0 auto",
+          padding: { xs: "10px", sm: "20px" },
+        }}
+      >
+        <Summary
+          context={{
+            description: (
+              <>
+                Globally, over <b>220 million people</b> live with food
+                allergies or intolerances, and <b>32 million Americans</b>{" "}
+                report serious allergies. Beyond allergies, rising dietary
+                preferences (vegetarian, vegan, gluten-free, low-FODMAP) have
+                made eating out more complicated than ever.
+              </>
+            ),
+            customTitle: "Redesigning food confidence for restricted diets",
+          }}
+          problem={{
+            description: (
+              <>
+                People with dietary restrictions face daily uncertainty: hidden
+                allergens, unclear menus, and social friction when dining out.
+              </>
+            ),
+            customTitle: "Daily Anxiety Around Every Meal",
+          }}
+          solution={{
+            images: ["/images/EpiPlan/epiPlanSolution.png"],
+            customTitle: "EpiPlan: Your Dietary Companion App",
+          }}
+          outcomes={{
+            images: ["/images/EpiPlan/epiPlanOutcomes.png"],
+            customTitle: "Building confidence, one meal at a time",
+          }}
         />
 
-        <Divider sx={{ width: "100%", maxWidth: "1300px", marginTop: "70px", }} />
-        </Box>
-        <Box sx={{margin: "auto", marginTop: { xs: "350px", sm: "0", lg: "-220px" } }}>
-          <ProjectOverview paragraphs={paragraphs} />
-        </Box>
+        <Divider
+          sx={{
+            width: "100%",
+            maxWidth: "1300px",
+            marginTop: "70px",
+            marginBottom: "50px",
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          maxWidth: "1300px",
+          margin: "0 auto",
+          padding: { xs: "10px", sm: "20px" },
+        }}
+      >
+        <Section
+          header="HOW IT STARTED"
+          description={[
+            <>
+              <b>Dietary restrictions</b> have become a defining part of
+              everyday life for millions of people. Not only do individuals have
+              allergies or intolerances, many lifestyle choices have evolved to
+              include gluten-free or plat-based diets. Yet, most food systems
+              are still build wth the assumption that everyone can eat the same
+              way.
+            </>,
+            <>
+              For many, simple activities like grabbing lunch with friends or
+              shopping for groceries turn into{" "}
+              <b>stressful and time-consuming tasks</b>.
+            </>,
+          ]}
+        />
       </Box>
 
       <Box
@@ -165,31 +235,51 @@ export default function EpiPlan() {
             margin: "0 auto",
             padding: { xs: "10px", sm: "20px" },
           }}
-          >
-            <Problem
-              intro="AND SO, I ASKED:"
-              introColour="#FF8506"
-              problemStatement="How might we help individuals with dietary restrictions confidently navigate shopping, dining, and social experiences?"
-            />
-          </Box>
+        >
+          <Problem
+            intro="AND SO, I ASKED:"
+            introColour="#FF8506"
+            problemStatement="How might we help individuals with dietary restrictions confidently navigate shopping, dining, and social experiences?"
+          />
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          maxWidth: "1300px",
+          margin: "0 auto",
+          marginTop: "40px",
+          padding: { xs: "10px", sm: "20px" },
+        }}
+      >
+        <Section
+          header="EXPLORING THE PROBLEM"
+          description={[
+            <>
+              Canadians spend an average of <b>15 hours</b> per week worrying
+              about money. There are multiple steps in how people manage their
+              finances. We broke the process into 3 main steps.
+            </>,
+          ]}
+        />
       </Box>
 
       <Typography
-          sx={{
-            fontFamily: "Lato",
-            fontSize: "42px",
-            textTransform: "uppercase",
-            fontWeight: 100,
-            color: "#888",
-            margin: "0 auto",
-            display: "flex",
-            justifyContent: "center",
-            textAlign: "center",
-            marginTop: "100px",
-          }}
-        >
-          More coming soon...
-        </Typography>
+        sx={{
+          fontFamily: "Lato",
+          fontSize: "42px",
+          textTransform: "uppercase",
+          fontWeight: 100,
+          color: "#888",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "center",
+          textAlign: "center",
+          marginTop: "100px",
+        }}
+      >
+        More coming soon...
+      </Typography>
 
       {/* Footer Section */}
       <Box

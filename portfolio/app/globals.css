@@ -147,6 +147,15 @@ body {
   font-style: normal;
 }
 
+/* Bootzy */
+@font-face {
+  font-family: "Bootzy";
+  src: url("/fonts/Bootzy/BootzyTM.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 .carousel-scroll {
   padding-bottom: 30px;
 }

@@ -1,542 +1,1397 @@
-import React from "react";
-import { Box, useMediaQuery, useTheme, Typography, Stack } from "@mui/material";
-import { Icon } from "@iconify/react";
-import PhotoSlideshow from "../carousel/photoSlideshow";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+import Image from "next/image";
+
+// ============================================
+// MAIN PHOTO
+// ============================================
+
+const centerPhoto = {
+  src: "/images/MyPics/1.jpg",
+};
+
+// ============================================
+// PHOTO GALLERY STICKERS
+// ============================================
+
+const photoStickers = [
+  // ==========================================
+  // MY PICTURES
+  // ==========================================
+
+  {
+    id: "my-pics",
+
+    title: "Community & Friends",
+
+    description:
+      "Happiest when I’m surrounded by good people. I love spending time with friends, meeting new people, and finding communities that make life a little more fun.",
+
+    images: [
+      "/images/MyPics/4.JPG",
+      "/images/MyPics/3.jpg",
+      "/images/MyPics/5.JPEG",
+      "/images/MyPics/6.JPG",
+      "/images/MyPics/7.JPEG",
+      "/images/MyPics/8.jpg",
+      "/images/MyPics/9.JPG",
+      "/images/MyPics/10.JPG",
+    ],
+
+    desktop: {
+      top: "14%",
+      left: "27%",
+    },
+
+    mobile: {
+      top: "8%",
+      left: "3%",
+    },
+
+    width: {
+      xs: "115px",
+      sm: "145px",
+      md: "175px",
+    },
+
+    rotation: -8,
+
+    tooltipSide: "left",
+  },
+
+  // ==========================================
+  // FOOD
+  // ==========================================
+
+  {
+    id: "food-pics",
+
+    title: "The Way To My Heart",
+
+    description:
+      "I LOVEEE eating and trying new foods and cuisines. One of my life goals is to travel the world and eat my way through as many places as possible.",
+
+    images: [
+      "/images/FoodPics/1.JPG",
+      "/images/FoodPics/2.jpg",
+      "/images/FoodPics/4.JPG",
+      "/images/FoodPics/5.jpg",
+      "/images/FoodPics/6.jpg",
+      "/images/FoodPics/7.jpg",
+    ],
+
+    desktop: {
+      top: "16%",
+      right: "25%",
+    },
+
+    mobile: {
+      top: "11%",
+      right: "2%",
+    },
+
+    width: {
+      xs: "110px",
+      sm: "140px",
+      md: "170px",
+    },
+
+    rotation: 9,
+
+    tooltipSide: "right",
+  },
+
+  // ==========================================
+  // MATCHA
+  // ==========================================
+
+  {
+    id: "matcha-pics",
+
+    title: "Matcha Lover",
+
+    description:
+      "Extremely overcaffeinated. I love cafe hopping, trying new matcha spots, and finding the perfect matcha latte.",
+
+    images: [
+      "/images/MatchaPics/1.jpg",
+      "/images/MatchaPics/2.jpg",
+      "/images/MatchaPics/4.jpg",
+      "/images/MatchaPics/5.jpg",
+      "/images/MatchaPics/6.jpg",
+    ],
+
+    desktop: {
+      bottom: "10%",
+      left: "25%",
+    },
+
+    mobile: {
+      bottom: "6%",
+      left: "2%",
+    },
+
+    width: {
+      xs: "100px",
+      sm: "140px",
+      md: "175px",
+    },
+
+    rotation: 7,
+
+    tooltipSide: "left",
+  },
+
+  // ==========================================
+  // PICKLES
+  // ==========================================
+
+  {
+    id: "pickle-pics",
+
+    title: "Pickle Enthusiast",
+
+    description: "Really love a good pickle.",
+
+    images: ["/images/PicklePics/1.jpg", "/images/PicklePics/2.JPG"],
+
+    desktop: {
+      bottom: "8%",
+      right: "26%",
+    },
+
+    mobile: {
+      bottom: "3%",
+      right: "2%",
+    },
+
+    width: {
+      xs: "120px",
+      sm: "150px",
+      md: "180px",
+    },
+
+    rotation: -7,
+
+    tooltipSide: "right",
+  },
+];
+
+// ============================================
+// VLOG VIDEO STICKERS
+// ============================================
+
+const videoStickers = [
+  // ==========================================
+  // VLOG 1 — LEFT
+  // ==========================================
+
+  {
+    id: "vlog-1",
+
+    src: "/videos/About/vlog1.mp4",
+
+    title: "My Digital Diary",
+
+    description:
+      "I love vlogging about my days. It lets me create a little digital diary to look back on and reminisce.",
+
+    url: "https://www.instagram.com/reys.diiary/",
+
+    desktop: {
+      top: "43%",
+      left: "8%",
+    },
+
+    mobile: {
+      top: "49%",
+      left: "1%",
+    },
+
+    width: {
+      xs: "150px",
+      sm: "190px",
+      md: "240px",
+    },
+
+    rotation: 6,
+
+    tooltipSide: "right",
+  },
+
+  // ==========================================
+  // VLOG 2 — RIGHT
+  // ==========================================
+
+  {
+    id: "vlog-2",
+
+    src: "/videos/About/vlog2.mp4",
+
+    title: "My Digital Diary",
+
+    description:
+      "I love vlogging about my days. It lets me create a little digital diary to look back on and reminisce about the moments, places, and people that made them special.",
+
+    url: "https://www.instagram.com/reys.diiary/",
+
+    desktop: {
+      top: "46%",
+      right: "7%",
+    },
+
+    mobile: {
+      top: "47%",
+      right: "1%",
+    },
+
+    width: {
+      xs: "150px",
+      sm: "190px",
+      md: "240px",
+    },
+
+    rotation: -6,
+
+    tooltipSide: "left",
+  },
+];
+
+// ============================================
+// INTEREST STICKERS
+// ============================================
+
+const interests = [
+  // ==========================================
+  // SMISKI
+  // ==========================================
+
+  {
+    id: "smiski",
+
+    image: "/images/smiski.png",
+
+    title: "Smiski Collector",
+
+    description:
+      "Tiny glowing guys have slowly taken over my desk. Finding a new one is always a little serotonin boost.",
+
+    type: "outline",
+
+    desktop: {
+      top: "28%",
+      right: "12%",
+    },
+
+    mobile: {
+      top: "37%",
+      right: "0%",
+    },
+
+    width: {
+      desktop: 125,
+      mobile: 78,
+    },
+
+    rotation: 8,
+  },
+
+  // ==========================================
+  // SPOTIFY
+  // ==========================================
+
+  {
+    id: "spotify",
+
+    image: "/images/spotifyLogo.png",
+
+    title: "Always Listening",
+
+    description:
+      "There is almost always music playing while I'm designing, coding, commuting, or doing absolutely nothing.",
+
+    type: "normal",
+
+    desktop: {
+      top: "29%",
+      left: "13%",
+    },
+
+    mobile: {
+      top: "35%",
+      left: "1%",
+    },
+
+    width: {
+      desktop: 85,
+      mobile: 55,
+    },
+
+    rotation: -10,
+  },
+
+  // ==========================================
+  // BUBBLI
+  // ==========================================
+
+  {
+    id: "bubbli",
+
+    image: "/images/bubbliLogo.png",
+
+    title: "Making Things",
+
+    description:
+      "Started bubbli as a creative side project and somehow turned making tiny things into a tiny business.",
+
+    type: "circle",
+
+    url: "https://www.instagram.com/shopbubbli/",
+
+    desktop: {
+      bottom: "18%",
+      right: "16%",
+    },
+
+    mobile: {
+      bottom: "20%",
+      right: "1%",
+    },
+
+    width: {
+      desktop: 105,
+      mobile: 70,
+    },
+
+    rotation: 10,
+  },
+];
+
+// ============================================
+// COMPONENT
+// ============================================
 
 const BentoBoxGrid = () => {
   const theme = useTheme();
+
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const myPhotos = [
-    "/images/MyPics/1.jpg",
-    "/images/MyPics/2.jpg",
-    "/images/MyPics/3.JPEG",
-    "/images/MyPics/4.JPG",
-    "/images/MyPics/5.jpg",
-    "/images/MyPics/6.JPG",
-    "/images/MyPics/7.JPG",
-    "/images/MyPics/8.jpg",
-    "/images/MyPics/9.JPG",
-    "/images/MyPics/10.jpg",
-    "/images/MyPics/11.JPEG",
-    "/images/MyPics/12.JPG",
-  ];
+  // ============================================
+  // STATE
+  // ============================================
 
-  const foodPhotos = [
-    "/images/FoodPics/1.jpg",
-    "/images/FoodPics/2.JPG",
-    "/images/FoodPics/3.jpg",
-    "/images/FoodPics/4.JPG",
-    "/images/FoodPics/5.jpg",
-    "/images/FoodPics/6.jpg",
-    "/images/FoodPics/7.jpg",
-    "/images/FoodPics/8.jpg",
-    "/images/FoodPics/9.JPG",
-    "/images/FoodPics/10.JPG",
-    "/images/FoodPics/11.jpg",
-    "/images/FoodPics/12.jpg",
-  ];
+  const [hoveredSticker, setHoveredSticker] = useState(null);
 
-  const columns = isMobile ? 1 : 10;
-  const rows = isMobile ? 9 : 8;
+  const [stickerPhotoIndexes, setStickerPhotoIndexes] = useState({});
+
+  // ============================================
+  // CHANGE GALLERY PHOTO
+  // ============================================
+
+  const cycleStickerPhoto = (sticker) => {
+    setStickerPhotoIndexes((prev) => {
+      const currentIndex = prev[sticker.id] || 0;
+
+      const nextIndex = (currentIndex + 1) % sticker.images.length;
+
+      return {
+        ...prev,
+        [sticker.id]: nextIndex,
+      };
+    });
+  };
+
+  // ============================================
+  // OPEN EXTERNAL LINK
+  // ============================================
+
+  const openExternalLink = (url) => {
+    if (!url) return;
+
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  // ============================================
+  // PRELOAD GALLERY IMAGES
+  // ============================================
+
+  useEffect(() => {
+    const preloadRemainingImages = () => {
+      photoStickers.forEach((sticker) => {
+        sticker.images.slice(1).forEach((src) => {
+          const img = new window.Image();
+
+          img.src = src;
+        });
+      });
+    };
+
+    if (document.readyState === "complete") {
+      preloadRemainingImages();
+    } else {
+      window.addEventListener("load", preloadRemainingImages, {
+        once: true,
+      });
+    }
+
+    return () => {
+      window.removeEventListener("load", preloadRemainingImages);
+    };
+  }, []);
+
+  // ============================================
+  // PAGE
+  // ============================================
 
   return (
     <Box
       sx={{
-        backgroundColor: "transparent",
-        p: 4,
+        position: "relative",
+
+        width: "100%",
+
+        height: "100%",
+
+        minHeight: {
+          xs: "560px",
+          md: "450px",
+        },
+
+        overflow: "hidden",
+
         display: "flex",
-        justifyContent: "center",
+
         alignItems: "center",
+
+        justifyContent: "center",
+
+        background: "transparent",
       }}
     >
+      {/* ============================================
+          INTERACTION HINT
+          ============================================ */}
+
       <Box
         sx={{
-          width: "100%",
-          maxWidth: "1200px",
-          height: isMobile ? "auto" : "75vh",
-          display: "grid",
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
-          gridTemplateRows: isMobile ? "auto" : `repeat(${rows}, 1fr)`,
-          gap: 1,
+          position: "absolute",
+
+          top: {
+            xs: "18px",
+            md: "22px",
+          },
+
+          left: "50%",
+
+          transform: "translateX(-50%)",
+
+          zIndex: 100,
+
+          display: "flex",
+
+          alignItems: "center",
+
+          gap: {
+            xs: "6px",
+            md: "8px",
+          },
+
+          whiteSpace: "nowrap",
+
+          pointerEvents: "none",
         }}
       >
-        {/* Box 1: col2, row2: span 2 columns */}
+        <Typography
+          sx={{
+            fontFamily: "Arial, sans-serif",
+
+            fontSize: {
+              xs: "9px",
+              md: "12px",
+            },
+
+            letterSpacing: "-0.2px",
+
+            color: "#808080",
+          }}
+        >
+          Click the photos to flip through
+        </Typography>
+
         <Box
           sx={{
-            backgroundColor: "transparent",
-            gridColumn: isMobile ? "1 / span 1" : "2 / span 2",
-            gridRow: isMobile ? "7 / span 1" : "2 / span 1",
-            borderRadius: "24px",
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "flex-end",
-            transform: "translateY(30px)",
+            width: "3px",
+
+            height: "3px",
+
+            borderRadius: "50%",
+
+            backgroundColor: "#B8B8B8",
+          }}
+        />
+
+        <Typography
+          sx={{
+            fontFamily: "Arial, sans-serif",
+
+            fontSize: {
+              xs: "9px",
+              md: "12px",
+            },
+
+            letterSpacing: "-0.2px",
+
+            color: "#808080",
+          }}
+        >
+          Hover to learn more
+        </Typography>
+      </Box>
+
+      {/* ============================================
+          MAIN AUDREY PHOTO
+          ============================================ */}
+
+      <Box
+        sx={{
+          position: "relative",
+
+          width: {
+            xs: "230px",
+            sm: "290px",
+            md: "360px",
+          },
+
+          zIndex: 1,
+
+          transform: "rotate(-2deg)",
+
+          userSelect: "none",
+
+          transition: "transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+
+          "&:hover": {
+            transform: "rotate(-1deg) scale(1.015)",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            position: "relative",
+
+            width: "100%",
+
+            aspectRatio: "4 / 5",
+
+            p: {
+              xs: "7px",
+              md: "9px",
+            },
+
+            backgroundColor: "#FFFFFF",
+
+            borderRadius: {
+              xs: "30px",
+              md: "40px",
+            },
+
+            boxShadow: `
+              0 16px 40px rgba(0,0,0,0.11),
+              0 3px 8px rgba(0,0,0,0.05)
+            `,
           }}
         >
           <Box
             sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Box
-              component="a"
-              href="https://open.spotify.com/user/1sa27j0rbpnsx3yundn8bapht?si=ab427a847e5b424a"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                display: "inline-block",
-                ml: isMobile ? 2 : 3,
-                mr: isMobile ? -6 : -8,
-                mb: isMobile ? 2 : 0,
-              }}
-            >
-              <Box
-                component="img"
-                src="/images/spotifyLogo.png"
-                alt="Spotify Logo"
-                sx={{
-                  width: "auto",
-                  height: "auto",
-                  maxWidth: isMobile ? "50%" : "33%",
-                  maxHeight: isMobile ? "50%" : "33%",
-                  cursor: "pointer",
-                }}
-              />
-            </Box>
+              position: "relative",
 
-            <Box
-              component="img"
-              src="/images/tetrisPill.png"
-              alt="Tetris Pill"
-              sx={{
-                width: "auto",
-                height: "auto",
-                maxWidth: "80%",
-                maxHeight: "80%",
-                mr: isMobile ? 0 : -1,
-                mb: isMobile ? 0 : -1.5,
-              }}
-            />
-          </Box>
-        </Box>
-
-        {/* Box 2: col2, row3: span 2 columns */}
-        <Box
-          sx={{
-            backgroundColor: "transparent",
-            gridColumn: isMobile ? "1 / span 1" : "2 / span 2",
-            gridRow: isMobile ? "8 /span 1" : "3 / span 1",
-            borderRadius: "24px",
-            display: "flex",
-            alignItems: "flex-end",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Box
-            component="img"
-            src="/images/nightPill.png"
-            alt="NightOwl Pill"
-            sx={{
-              width: "auto",
-              height: "auto",
-              maxWidth: isMobile ? "100%" : "130%",
-              maxHeight: isMobile ? "100%" : "130%",
-              mr: isMobile ? 0 : -1,
-              mb: isMobile ? 0 : -1.5,
-            }}
-          />
-        </Box>
-
-        {/* Box 3: col1, row4: span 3 columns */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            gridColumn: isMobile ? "1 / span 1" : "1 / span 3",
-            gridRow: isMobile ? "4 / span 1" : "4 / span 1",
-            borderRadius: "24px",
-            p: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Urbanist, sans-serif",
-              fontStyle: "italic",
-              fontWeight: 300,
-              color: "#808080",
-              mb: 1,
-            }}
-          >
-            Places I&apos;ve worked at:
-          </Typography>
-
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Box
-              component="img"
-              src="/images/tsmLogo.png"
-              alt="TwoSmallMen Logo"
-              sx={{
-                width: 40,
-                height: 40,
-                borderRadius: "8px",
-                objectFit: "contain",
-                transform: "rotate(-7deg)",
-              }}
-            />
-            <Box
-              component="img"
-              src="/images/itcLogo.png"
-              alt="IveyTechClub Logo"
-              sx={{
-                width: 40,
-                height: 40,
-                borderRadius: "8px",
-                objectFit: "contain",
-                transform: "rotate(3deg)",
-              }}
-            />
-            <Box
-              component="img"
-              src="/images/ipsLogo.png"
-              alt="IveyProductSociety Logo"
-              sx={{
-                width: 40,
-                height: 40,
-                borderRadius: "8px",
-                objectFit: "contain",
-                transform: "rotate(-5deg)",
-              }}
-            />
-            <Box
-              component="img"
-              src="/images/waiLogo.png"
-              alt="WesternAI Logo"
-              sx={{
-                width: 40,
-                height: 40,
-                borderRadius: "8px",
-                objectFit: "contain",
-                transform: "rotate(-2deg)",
-              }}
-            />
-            <Box
-              component="img"
-              src="/images/wuksaLogo.png"
-              alt="WesternUKSA Logo"
-              sx={{
-                width: 40,
-                height: 40,
-                borderRadius: "8px",
-                objectFit: "contain",
-                transform: "rotate(4deg)",
-              }}
-            />
-          </Box>
-        </Box>
-
-        {/* Box 4: col2, row5: span 2 columns and 3 rows */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            gridColumn: isMobile ? "1 / span 1" : "2 / span 2",
-            gridRow: isMobile ? "6 / span 1" : "5 / span 3",
-            borderRadius: "24px",
-            p: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            height: "100%",
-          }}
-        >
-          <Typography
-            sx={{ fontFamily: "Urbanist, sans-serif", fontWeight: 700 }}
-          >
-            Owner & Founder
-          </Typography>
-
-          <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-            <Box
-              component="img"
-              src="/images/bubbliLogo.png"
-              alt="Bubbli Logo"
-              sx={{
-                width: 20,
-                height: 20,
-                mr: 1,
-              }}
-            />
-            <Typography
-              sx={{
-                fontFamily: "Urbanist, sans-serif",
-                fontWeight: 400,
-              }}
-            >
-              bubbli
-            </Typography>
-          </Box>
-
-          <Box
-            sx={{
               width: "100%",
-              flexGrow: 1,
-              borderRadius: "24px 4px 24px 4px",
+
+              height: "100%",
+
               overflow: "hidden",
+
+              borderRadius: {
+                xs: "24px",
+                md: "32px",
+              },
             }}
           >
-            <Box
-              component="img"
-              src="/images/bubbliPic.png"
-              alt="Bubbli Pic"
-              sx={{
-                width: "100%",
-                height: "100%",
+            <Image
+              src={centerPhoto.src}
+              alt="Audrey"
+              fill
+              priority
+              sizes="
+                (max-width: 600px) 230px,
+                (max-width: 900px) 290px,
+                360px
+              "
+              quality={80}
+              style={{
                 objectFit: "cover",
               }}
             />
           </Box>
         </Box>
+      </Box>
 
-        {/* Box 5: col4, row2: span 3 columns and 3 rows */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            gridColumn: isMobile ? "1 / span 1" : "4 / span 3",
-            gridRow: isMobile ? "1 / span 1" : "2 / span 3",
-            borderRadius: "24px",
-            p: 3,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
+      {/* ============================================
+          PHOTO GALLERY STICKERS
+          ============================================ */}
+
+      {photoStickers.map((sticker) => {
+        const currentIndex = stickerPhotoIndexes[sticker.id] || 0;
+
+        const currentPhoto = sticker.images[currentIndex];
+
+        const hovered = hoveredSticker === sticker.id;
+
+        const tooltipOnLeft = sticker.tooltipSide === "left";
+
+        return (
+          <Box
+            key={sticker.id}
+            onMouseEnter={() => setHoveredSticker(sticker.id)}
+            onMouseLeave={() => setHoveredSticker(null)}
+            onClick={() => {
+              cycleStickerPhoto(sticker);
+
+              if (isMobile) {
+                setHoveredSticker(hovered ? null : sticker.id);
+              }
+            }}
             sx={{
-              fontFamily: "Urbanist, sans-serif",
-              fontWeight: 400,
-              color: "#808080",
-              fontSize: "22px",
-              mb: 2,
+              position: "absolute",
+
+              ...(isMobile ? sticker.mobile : sticker.desktop),
+
+              width: sticker.width,
+
+              backgroundColor: "#FFFFFF",
+
+              p: {
+                xs: "6px",
+                md: "7px",
+              },
+
+              borderRadius: {
+                xs: "25px",
+                md: "32px",
+              },
+
+              boxShadow: hovered
+                ? `
+                      0 18px 35px rgba(0,0,0,0.16),
+                      0 4px 8px rgba(0,0,0,0.05)
+                    `
+                : `
+                      0 10px 25px rgba(0,0,0,0.12),
+                      0 2px 5px rgba(0,0,0,0.04)
+                    `,
+
+              cursor: "pointer",
+
+              transform: `rotate(${sticker.rotation}deg)`,
+
+              zIndex: hovered ? 50 : 10,
+
+              userSelect: "none",
+
+              willChange: "transform",
+
+              transition: `
+                  transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.35s ease
+                `,
+
+              "&:hover": {
+                transform: "rotate(0deg) scale(1.09) translateY(-4px)",
+              },
+
+              "&:active": {
+                transform: "rotate(0deg) scale(1.03)",
+              },
             }}
           >
-            I’m a product designer & developer who is always:
-          </Typography>
+            {/* PHOTO */}
 
-          <Stack spacing={1}>
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Icon
-                icon="material-symbols:star-shine-outline-rounded"
-                width={28}
-                height={28}
-                color="#808080"
-              />
-              <Typography
-                sx={{
-                  fontFamily: "Urbanist, sans-serif",
-                  fontWeight: 400,
-                  color: "#808080",
-                  ml: 1,
-                  fontSize: "18px",
-                }}
-              >
-                Leading student clubs & organizations
-              </Typography>
-            </Box>
+            <Box
+              sx={{
+                position: "relative",
 
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Icon
-                icon="material-symbols:fastfood-outline-rounded"
-                width={24}
-                height={24}
-                color="#808080"
-              />
-              <Typography
-                sx={{
-                  fontFamily: "Urbanist, sans-serif",
-                  fontWeight: 400,
-                  color: "#808080",
-                  ml: 1,
-                  fontSize: "18px",
-                }}
-              >
-                Searching for good eats
-              </Typography>
-            </Box>
+                width: "100%",
 
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <Icon
-                icon="tabler:tools"
-                width={24}
-                height={24}
-                color="#808080"
-              />
-              <Typography
-                sx={{
-                  fontFamily: "Urbanist, sans-serif",
-                  fontWeight: 400,
-                  color: "#808080",
-                  ml: 1,
-                  fontSize: "18px",
-                }}
-              >
-                Tinkering with side projects
-              </Typography>
-            </Box>
-          </Stack>
-        </Box>
+                aspectRatio: "1 / 1",
 
-        {/* Box 6: col4, row5: span 3 columns and 4 rows */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            gridColumn: isMobile ? "1 / span 1" : "4 / span 3",
-            gridRow: isMobile ? "5 / span 1" : "5 / span 4",
-            borderRadius: "24px",
-            overflow: "hidden",
-            p: 2,
-            height: isMobile ? "70%" : "100%",
-          }}
-        >
-          <PhotoSlideshow
-            photos={foodPhotos}
-            autoplaySpeed={4000}
-            speed={1000}
-            borderRadius="4px 24px 4px 24px"
-          />
-        </Box>
+                overflow: "hidden",
 
-        {/* Box 7: col7, row1: span 3 columns and 4 rows */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            gridColumn: isMobile ? "1 / span 1" : "7 / span 3",
-            gridRow: isMobile ? "2 / span 1" : "1 / span 4",
-            borderRadius: "24px",
-            overflow: "hidden",
-            p: 2,
-            height: isMobile ? "70%" : "100%",
-          }}
-        >
-          <PhotoSlideshow
-            photos={myPhotos}
-            autoplaySpeed={5500}
-            speed={1000}
-            borderRadius="24px 4px 24px 4px"
-          />
-        </Box>
-
-        {/* Box 8: col7, row5: span 4 columns */}
-        <Box
-          sx={{
-            backgroundColor: "#fff",
-            gridColumn: isMobile ? "1 / span 1" : "7 / span 4",
-            gridRow: isMobile ? "3 /span 1" : "5 / span 1",
-            borderRadius: "24px",
-            p: 2,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-          }}
-        >
-          <Typography component="div">
-            <span
-              style={{
-                color: "#808080",
-                fontWeight: 300,
-                fontStyle: "italic",
-                fontSize: "16px",
+                borderRadius: {
+                  xs: "19px",
+                  md: "25px",
+                },
               }}
             >
-              Student @{" "}
-            </span>
-            <span
-              style={{ color: "#171717", fontWeight: 400, fontSize: "16px" }}
-            >
-              Ivey Business School & Western University
-            </span>
-          </Typography>
+              <Image
+                src={currentPhoto}
+                alt={sticker.title}
+                fill
+                sizes="
+                    (max-width: 600px) 120px,
+                    (max-width: 900px) 150px,
+                    180px
+                  "
+                quality={70}
+                style={{
+                  objectFit: "cover",
+                }}
+              />
+            </Box>
 
+            {/* ======================================
+                  PHOTO HOVER DESCRIPTION
+                  ====================================== */}
+
+            <Box
+              sx={{
+                position: "absolute",
+
+                top: "50%",
+
+                ...(tooltipOnLeft
+                  ? {
+                      right: "calc(100% + 12px)",
+                    }
+                  : {
+                      left: "calc(100% + 12px)",
+                    }),
+
+                width: {
+                  xs: "155px",
+                  sm: "185px",
+                  md: "210px",
+                },
+
+                p: {
+                  xs: 1.2,
+                  md: 1.5,
+                },
+
+                backgroundColor: "#FFFFFF",
+
+                border: "1px solid rgba(0,0,0,0.05)",
+
+                borderRadius: "14px",
+
+                boxShadow: "0 12px 35px rgba(0,0,0,0.12)",
+
+                opacity: hovered ? 1 : 0,
+
+                visibility: hovered ? "visible" : "hidden",
+
+                transform: hovered
+                  ? "translateY(-50%)"
+                  : tooltipOnLeft
+                    ? "translate(6px, -50%)"
+                    : "translate(-6px, -50%)",
+
+                pointerEvents: "none",
+
+                zIndex: 100,
+
+                transition: `
+                    opacity 0.2s ease,
+                    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                    visibility 0.2s ease
+                  `,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: "Bootzy, sans-serif",
+
+                  fontSize: {
+                    xs: "16px",
+                    md: "18px",
+                  },
+
+                  color: "#464F5B",
+
+                  letterSpacing: "0.4px",
+                }}
+              >
+                {sticker.title}
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 0.5,
+
+                  fontFamily: "Arial, sans-serif",
+
+                  fontSize: {
+                    xs: "9px",
+                    md: "11px",
+                  },
+
+                  lineHeight: 1.2,
+
+                  letterSpacing: "-0.2px",
+
+                  color: "#808080",
+                }}
+              >
+                {sticker.description}
+              </Typography>
+            </Box>
+          </Box>
+        );
+      })}
+
+      {/* ============================================
+          VLOG VIDEO STICKERS
+          ============================================ */}
+
+      {videoStickers.map((sticker) => {
+        const hovered = hoveredSticker === sticker.id;
+
+        const tooltipOnLeft = sticker.tooltipSide === "left";
+
+        return (
           <Box
+            key={sticker.id}
+            onMouseEnter={() => setHoveredSticker(sticker.id)}
+            onMouseLeave={() => setHoveredSticker(null)}
+            onClick={() => {
+              if (isMobile) {
+                if (!hovered) {
+                  setHoveredSticker(sticker.id);
+
+                  return;
+                }
+              }
+
+              openExternalLink(sticker.url);
+            }}
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              mt: 1,
+              position: "absolute",
+
+              ...(isMobile ? sticker.mobile : sticker.desktop),
+
+              width: sticker.width,
+
+              backgroundColor: "#FFFFFF",
+
+              p: {
+                xs: "6px",
+                md: "7px",
+              },
+
+              borderRadius: {
+                xs: "24px",
+                md: "30px",
+              },
+
+              boxShadow: hovered
+                ? `
+                      0 18px 35px rgba(0,0,0,0.15),
+                      0 4px 8px rgba(0,0,0,0.05)
+                    `
+                : `
+                      0 10px 25px rgba(0,0,0,0.12),
+                      0 2px 5px rgba(0,0,0,0.04)
+                    `,
+
+              transform: `rotate(${sticker.rotation}deg)`,
+
+              zIndex: hovered ? 55 : 11,
+
+              cursor: "pointer",
+
+              userSelect: "none",
+
+              willChange: "transform",
+
+              transition: `
+                  transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.35s ease
+                `,
+
+              "&:hover": {
+                transform: "rotate(0deg) scale(1.06) translateY(-3px)",
+              },
+
+              "&:active": {
+                transform: "rotate(0deg) scale(1.02)",
+              },
             }}
           >
-            <Typography
-              sx={{ color: "#808080", fontWeight: 300, fontSize: "16px" }}
+            {/* ======================================
+                  VIDEO
+                  ====================================== */}
+
+            <Box
+              sx={{
+                position: "relative",
+
+                width: "100%",
+
+                aspectRatio: "16 / 9",
+
+                overflow: "hidden",
+
+                borderRadius: {
+                  xs: "14px",
+                  md: "19px",
+                },
+
+                backgroundColor: "#F3F3F3",
+              }}
             >
-              Dual Degree - Computer Science & Business Administration
-            </Typography>
+              <Box
+                component="video"
+                src={sticker.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                disablePictureInPicture
+                sx={{
+                  position: "absolute",
 
-            <Stack direction="row" spacing={1.5} mr={5}>
-              <Box
-                component="img"
-                src="/images/iveyLogo.png"
-                alt="School 1"
-                sx={{
-                  width: isMobile ? 40 : 50,
-                  height: isMobile ? 40 : 50,
-                  borderRadius: "8px",
-                  objectFit: "contain",
-                  transform: "rotate(-5deg)",
+                  inset: 0,
+
+                  width: "100%",
+
+                  height: "100%",
+
+                  objectFit: "cover",
+
+                  display: "block",
+
+                  pointerEvents: "none",
                 }}
               />
-              <Box
-                component="img"
-                src="/images/westernLogo.png"
-                alt="School 2"
+            </Box>
+
+            {/* ======================================
+                  VLOG HOVER DESCRIPTION
+                  ====================================== */}
+
+            <Box
+              sx={{
+                position: "absolute",
+
+                top: "50%",
+
+                ...(tooltipOnLeft
+                  ? {
+                      right: "calc(100% + 12px)",
+                    }
+                  : {
+                      left: "calc(100% + 12px)",
+                    }),
+
+                width: {
+                  xs: "155px",
+                  sm: "185px",
+                  md: "210px",
+                },
+
+                p: {
+                  xs: 1.2,
+                  md: 1.5,
+                },
+
+                backgroundColor: "#FFFFFF",
+
+                border: "1px solid rgba(0,0,0,0.05)",
+
+                borderRadius: "14px",
+
+                boxShadow: "0 12px 35px rgba(0,0,0,0.12)",
+
+                opacity: hovered ? 1 : 0,
+
+                visibility: hovered ? "visible" : "hidden",
+
+                transform: hovered
+                  ? "translateY(-50%)"
+                  : tooltipOnLeft
+                    ? "translate(6px, -50%)"
+                    : "translate(-6px, -50%)",
+
+                pointerEvents: "none",
+
+                zIndex: 100,
+
+                transition: `
+                    opacity 0.2s ease,
+                    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                    visibility 0.2s ease
+                  `,
+              }}
+            >
+              <Typography
                 sx={{
-                  width: isMobile ? 40 : 50,
-                  height: isMobile ? 40 : 50,
-                  borderRadius: "8px",
-                  objectFit: "contain",
-                  transform: "rotate(5deg)",
+                  fontFamily: "Bootzy, sans-serif",
+
+                  fontSize: {
+                    xs: "16px",
+                    md: "18px",
+                  },
+
+                  color: "#464F5B",
+
+                  letterSpacing: "0.4px",
                 }}
-              />
-            </Stack>
+              >
+                {sticker.title}
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 0.5,
+
+                  fontFamily: "Arial, sans-serif",
+
+                  fontSize: {
+                    xs: "9px",
+                    md: "11px",
+                  },
+
+                  lineHeight: 1.2,
+
+                  letterSpacing: "-0.2px",
+
+                  color: "#808080",
+                }}
+              >
+                {sticker.description}
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 0.8,
+
+                  fontFamily: "Arial, sans-serif",
+
+                  fontSize: {
+                    xs: "8px",
+                    md: "10px",
+                  },
+
+                  fontWeight: 600,
+
+                  color: "#464F5B",
+                }}
+              >
+                Click to watch more ↗
+              </Typography>
+            </Box>
           </Box>
-        </Box>
+        );
+      })}
 
-        {/* Box 9: col7, row6: span 2 columns */}
-        <Box
-          sx={{
-            backgroundColor: "transparent",
-            gridColumn: isMobile ? "1 /span 1" : "7 / span 2",
-            gridRow: isMobile ? "9 / span 1" : "6 / span 1",
-            borderRadius: "24px",
-            display: "flex",
-            alignItems: isMobile ? "flex-end" : "flex-start",
-            justifyContent: isMobile ? "flex-end" : "flex-start",
-          }}
-        >
+      {/* ============================================
+          INTEREST STICKERS
+          ============================================ */}
+
+      {interests.map((sticker) => {
+        const hovered = hoveredSticker === sticker.id;
+
+        const stickerWidth = isMobile
+          ? sticker.width.mobile
+          : sticker.width.desktop;
+
+        return (
           <Box
-            component="img"
-            src="/images/cafePill.png"
-            alt="CafeHopper Pill"
-            sx={{
-              width: "auto",
-              height: "auto",
-              maxWidth: isMobile ? "100%" : "120%",
-              maxHeight: isMobile ? "100%" : "120%",
-              ml: isMobile ? 0 : -2,
-              mt: isMobile ? 0 : -1.5,
+            key={sticker.id}
+            onMouseEnter={() => setHoveredSticker(sticker.id)}
+            onMouseLeave={() => setHoveredSticker(null)}
+            onClick={() => {
+              /*
+               * Bubbli has a URL, so clicking
+               * the logo opens Instagram.
+               */
+              if (sticker.url) {
+                if (isMobile && !hovered) {
+                  setHoveredSticker(sticker.id);
+
+                  return;
+                }
+
+                openExternalLink(sticker.url);
+
+                return;
+              }
+
+              /*
+               * Other interest stickers keep
+               * their normal tap interaction.
+               */
+              setHoveredSticker(hovered ? null : sticker.id);
             }}
-          />
-        </Box>
-      </Box>
+            sx={{
+              position: "absolute",
+
+              ...(isMobile ? sticker.mobile : sticker.desktop),
+
+              width: `${stickerWidth}px`,
+
+              zIndex: hovered ? 60 : 15,
+
+              cursor: sticker.url ? "pointer" : "default",
+
+              transform: `rotate(${sticker.rotation}deg)`,
+
+              willChange: "transform",
+
+              transition: "transform 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+
+              "&:hover": {
+                transform:
+                  sticker.type === "outline"
+                    ? `rotate(${sticker.rotation - 2}deg) scale(1.04)`
+                    : `rotate(${sticker.rotation - 3}deg) scale(1.1)`,
+              },
+            }}
+          >
+            {/* ======================================
+                  SMISKI
+                  ====================================== */}
+
+            {sticker.type === "outline" && (
+              <Box
+                sx={{
+                  position: "relative",
+
+                  width: "100%",
+
+                  filter: `
+                      drop-shadow(4px 0 0 #FFFFFF)
+                      drop-shadow(-4px 0 0 #FFFFFF)
+                      drop-shadow(0 4px 0 #FFFFFF)
+                      drop-shadow(0 -4px 0 #FFFFFF)
+                      drop-shadow(0 5px 5px rgba(0,0,0,0.12))
+                    `,
+
+                  transform: "translateZ(0)",
+
+                  backfaceVisibility: "hidden",
+                }}
+              >
+                <Image
+                  src={sticker.image}
+                  alt={sticker.title}
+                  width={300}
+                  height={300}
+                  sizes={`${stickerWidth}px`}
+                  quality={80}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                  }}
+                />
+              </Box>
+            )}
+
+            {/* ======================================
+                  BUBBLI
+                  ====================================== */}
+
+            {sticker.type === "circle" && (
+              <Box
+                sx={{
+                  position: "relative",
+
+                  width: "100%",
+
+                  aspectRatio: "1 / 1",
+
+                  backgroundColor: "#FFFFFF",
+
+                  p: {
+                    xs: "5px",
+                    md: "7px",
+                  },
+
+                  borderRadius: "50%",
+
+                  boxShadow: hovered
+                    ? `
+                          0 15px 30px rgba(0,0,0,0.16),
+                          0 3px 7px rgba(0,0,0,0.05)
+                        `
+                    : `
+                          0 8px 20px rgba(0,0,0,0.12),
+                          0 2px 5px rgba(0,0,0,0.04)
+                        `,
+
+                  transition: "box-shadow 0.3s ease",
+                }}
+              >
+                <Box
+                  sx={{
+                    position: "relative",
+
+                    width: "100%",
+
+                    height: "100%",
+
+                    borderRadius: "50%",
+
+                    overflow: "hidden",
+                  }}
+                >
+                  <Image
+                    src={sticker.image}
+                    alt={sticker.title}
+                    fill
+                    sizes={`${stickerWidth}px`}
+                    quality={80}
+                    style={{
+                      objectFit: "cover",
+                    }}
+                  />
+                </Box>
+              </Box>
+            )}
+
+            {/* ======================================
+                  SPOTIFY
+                  ====================================== */}
+
+            {sticker.type === "normal" && (
+              <Box
+                sx={{
+                  position: "relative",
+
+                  width: "100%",
+
+                  filter: hovered
+                    ? "drop-shadow(0 10px 10px rgba(0,0,0,0.18))"
+                    : "drop-shadow(0 5px 5px rgba(0,0,0,0.13))",
+
+                  transition: "filter 0.3s ease",
+                }}
+              >
+                <Image
+                  src={sticker.image}
+                  alt={sticker.title}
+                  width={300}
+                  height={300}
+                  sizes={`${stickerWidth}px`}
+                  quality={80}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    display: "block",
+                  }}
+                />
+              </Box>
+            )}
+
+            {/* ======================================
+                  INTEREST HOVER DESCRIPTION
+                  ====================================== */}
+
+            <Box
+              sx={{
+                position: "absolute",
+
+                top: "calc(100% + 8px)",
+
+                left: "50%",
+
+                width: {
+                  xs: "155px",
+                  md: "195px",
+                },
+
+                p: {
+                  xs: 1.2,
+                  md: 1.5,
+                },
+
+                backgroundColor: "#FFFFFF",
+
+                border: "1px solid rgba(0,0,0,0.05)",
+
+                borderRadius: "12px",
+
+                boxShadow: "0 12px 35px rgba(0,0,0,0.12)",
+
+                opacity: hovered ? 1 : 0,
+
+                visibility: hovered ? "visible" : "hidden",
+
+                transform: hovered
+                  ? `translate(-50%, 0) rotate(${
+                      sticker.type === "outline"
+                        ? -(sticker.rotation - 2)
+                        : -(sticker.rotation - 3)
+                    }deg)`
+                  : `translate(-50%, -5px) rotate(${-sticker.rotation}deg)`,
+
+                transformOrigin: "top center",
+
+                pointerEvents: "none",
+
+                zIndex: 100,
+
+                transition: `
+                    opacity 0.2s ease,
+                    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                    visibility 0.2s ease
+                  `,
+              }}
+            >
+              <Typography
+                sx={{
+                  fontFamily: "Bootzy, sans-serif",
+
+                  fontSize: {
+                    xs: "16px",
+                    md: "18px",
+                  },
+
+                  color: "#464F5B",
+
+                  letterSpacing: "0.4px",
+                }}
+              >
+                {sticker.title}
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 0.5,
+
+                  fontFamily: "Arial, sans-serif",
+
+                  fontSize: {
+                    xs: "9px",
+                    md: "11px",
+                  },
+
+                  lineHeight: 1.2,
+
+                  letterSpacing: "-0.2px",
+
+                  color: "#808080",
+                }}
+              >
+                {sticker.description}
+              </Typography>
+            </Box>
+          </Box>
+        );
+      })}
     </Box>
   );
 };

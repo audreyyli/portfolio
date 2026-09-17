@@ -7,12 +7,12 @@ const Section = ({ header, description }) => {
       {/* Header */}
       <Typography
         sx={{
-            fontSize: "24px",
-            fontWeight: 100,
-            fontFamily: "Lato",
-            color: "#888",
-            textTransform: "uppercase",
-            marginBottom: "10px",
+          fontSize: "24px",
+          fontWeight: 100,
+          fontFamily: "Lato",
+          color: "#888",
+          textTransform: "uppercase",
+          marginBottom: "10px",
         }}
       >
         {header}
@@ -35,10 +35,11 @@ const Section = ({ header, description }) => {
         ))
       ) : (
         <Typography
-          sx={{ 
-            fontSize: "18px", 
+          sx={{
+            fontSize: "18px",
             fontWeight: 400,
-            fontFamily: "Lato", }}
+            fontFamily: "Lato",
+          }}
         >
           {description}
         </Typography>

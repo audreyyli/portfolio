@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Typography, Grid } from '@mui/material';
+import React from "react";
+import { Box, Typography, Grid } from "@mui/material";
 
 const Hero = ({
   title,
@@ -16,16 +16,30 @@ const Hero = ({
   return (
     <Box
       style={{
-        background: 'white',
-        marginTop: '-150px',
+        background: "white",
+        marginTop: "-150px",
       }}
     >
-      <Box sx={{ maxWidth: '1300px', margin: '0 auto', textAlign: 'left' }}>
+      <Box sx={{ maxWidth: "1300px", margin: "0 auto", textAlign: "left" }}>
         {/* Title and Header */}
-        <Typography sx={{ fontWeight: 100, fontFamily: "Lato", fontSize: { sm: "20px", md: '24px' } }}>
+        <Typography
+          sx={{
+            fontWeight: 100,
+            fontFamily: "Lato",
+            fontSize: { sm: "20px", md: "24px" },
+          }}
+        >
           {title}
         </Typography>
-        <Typography sx={{ fontWeight: 700, fontFamily: "Lato", fontStyle: "italic", fontSize: { sm: "25px", md: '40px' }, marginTop: "-10px", }} >
+        <Typography
+          sx={{
+            fontWeight: 700,
+            fontFamily: "Lato",
+            fontStyle: "italic",
+            fontSize: { sm: "25px", md: "40px" },
+            marginTop: "-10px",
+          }}
+        >
           {header}
         </Typography>
 
@@ -33,16 +47,16 @@ const Hero = ({
         <Box
           component="span"
           sx={{
-            display: 'inline-block',
+            display: "inline-block",
             backgroundColor: mainColour,
             color: subColour,
             fontFamily: "Lato",
             fontWeight: 100,
-            padding: '5px 15px',
-            borderRadius: '50px',
-            marginRight: '10px',
-            fontSize: '18px',
-            marginTop: '10px',
+            padding: "5px 15px",
+            borderRadius: "50px",
+            marginRight: "10px",
+            fontSize: "18px",
+            marginTop: "10px",
           }}
         >
           {company}
@@ -52,23 +66,30 @@ const Hero = ({
         <Box
           component="span"
           sx={{
-            display: 'inline-block',
+            display: "inline-block",
             backgroundColor: mainColour,
             color: subColour,
             fontFamily: "Lato",
             fontWeight: 100,
-            padding: '5px 15px',
-            borderRadius: '50px',
-            marginRight: '10px',
-            fontSize: '18px',
-            marginTop: '10px',
+            padding: "5px 15px",
+            borderRadius: "50px",
+            marginRight: "10px",
+            fontSize: "18px",
+            marginTop: "10px",
           }}
         >
           {projectType}
         </Box>
 
         {/* Description */}
-        <Typography sx={{ fontWeight: 400, fontFamily: "Lato", marginTop: '20px', fontSize: '18px' }}>
+        <Typography
+          sx={{
+            fontWeight: 400,
+            fontFamily: "Lato",
+            marginTop: "20px",
+            fontSize: "18px",
+          }}
+        >
           {description}
         </Typography>
 
@@ -78,15 +99,17 @@ const Hero = ({
             <Typography
               variant="h6"
               sx={{
-                fontSize: '24px',
+                fontSize: "24px",
                 fontWeight: 100,
                 fontFamily: "Lato",
-                textTransform: 'uppercase',
+                textTransform: "uppercase",
               }}
             >
               Timeline
             </Typography>
-            <Typography sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: '18px' }}>
+            <Typography
+              sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: "18px" }}
+            >
               {timeline}
             </Typography>
           </Grid>
@@ -95,15 +118,17 @@ const Hero = ({
             <Typography
               variant="h6"
               sx={{
-                fontSize: '24px',
+                fontSize: "24px",
                 fontWeight: 100,
                 fontFamily: "Lato",
-                textTransform: 'uppercase',
+                textTransform: "uppercase",
               }}
             >
               Role
             </Typography>
-            <Typography sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: '18px' }}>
+            <Typography
+              sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: "18px" }}
+            >
               {role}
             </Typography>
           </Grid>
@@ -112,15 +137,17 @@ const Hero = ({
             <Typography
               variant="h6"
               sx={{
-                fontSize: '24px',
+                fontSize: "24px",
                 fontWeight: 100,
                 fontFamily: "Lato",
-                textTransform: 'uppercase',
+                textTransform: "uppercase",
               }}
             >
               Tools/Skills
             </Typography>
-            <Typography sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: '18px' }}>
+            <Typography
+              sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: "18px" }}
+            >
               {toolsSkills}
             </Typography>
           </Grid>

@@ -1,170 +1,196 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { Box, useMediaQuery, useTheme } from "@mui/material";
-import { motion, useMotionValue, animate } from "framer-motion";
+"use client";
+
+import React, { useState } from "react";
+import { Box } from "@mui/material";
+import Link from "next/link";
+
 import WorkItem from "../workItem/workItem";
 
 const WorksCarousel = ({ items }) => {
-  const router = useRouter();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const containerRef = useRef(null);
-  const totalItems = items.length;
-  const visibleItems = isMobile ? 3 : 5;
+  /*
+   * Split into two independent columns.
+   *
+   * 0 → left
+   * 1 → right
+   * 2 → left
+   * 3 → right
+   */
+  const leftItems = items
+    .map((item, index) => ({
+      ...item,
+      originalIndex: index,
+    }))
+    .filter((_, index) => index % 2 === 0);
 
-  const itemWidth = isMobile ? 320 : 550;
-  const itemSpacing = isMobile ? -40 : -120;
-  const totalItemOffset = itemWidth + itemSpacing;
+  const rightItems = items
+    .map((item, index) => ({
+      ...item,
+      originalIndex: index,
+    }))
+    .filter((_, index) => index % 2 !== 0);
 
-  const [isHovered, setIsHovered] = useState(false);
+  /*
+   * Different heights create
+   * the gallery / masonry feeling.
+   */
+  const getCardHeight = (index) => {
+    const heights = [
+      {
+        xs: "420px",
+        md: "470px",
+        lg: "510px",
+      },
+      {
+        xs: "420px",
+        md: "590px",
+        lg: "380px",
+      },
+      {
+        xs: "420px",
+        md: "570px",
+        lg: "620px",
+      },
+      {
+        xs: "420px",
+        md: "460px",
+        lg: "470px",
+      },
+    ];
 
-  const [currentVirtualIndex, setCurrentVirtualIndex] = useState(0);
-  const isScrollingRef = useRef(false);
-
-  const x = useMotionValue(0);
-
-  const handleWheel = (e) => {
-    e.preventDefault();
-    if (isScrollingRef.current) return;
-
-    const direction = e.deltaY > 0 ? 1 : -1;
-
-    setCurrentVirtualIndex((prev) => {
-      const next = prev + direction;
-      return ((next % totalItems) + totalItems) % totalItems;
-    });
-
-    isScrollingRef.current = true;
-    setTimeout(() => {
-      isScrollingRef.current = false;
-    }, 600);
+    return heights[index % heights.length];
   };
 
-  useEffect(() => {
-    const container = containerRef.current;
-    container.addEventListener("wheel", handleWheel, { passive: false });
-    return () => container.removeEventListener("wheel", handleWheel);
-  }, []);
+  const renderCard = (item) => {
+    const index = item.originalIndex;
 
-  useEffect(() => {
-    const containerWidth = isMobile
-      ? window.innerWidth * 0.95
-      : window.innerWidth * 0.8;
-    const mobileCenterAdjustment = isMobile
-      ? containerWidth / 2 - itemWidth / 2
-      : 0;
-    const centerOffset =
-      -(currentVirtualIndex * totalItemOffset) + mobileCenterAdjustment;
+    return (
+      <Box
+        key={`${item.company}-${item.title}`}
+        component={Link}
+        href={item.link}
+        onMouseEnter={() => setHoveredIndex(index)}
+        onMouseLeave={() => setHoveredIndex(null)}
+        sx={{
+          display: "block",
+          width: "100%",
+          textDecoration: "none",
 
-    animate(x, centerOffset, {
-      type: "tween",
-      duration: 5,
-      ease: "easeInOut",
-    });
-  }, [currentVirtualIndex, totalItemOffset, x, isMobile, itemWidth]);
-
-  const modulo = (n, m) => ((n % m) + m) % m;
+          borderRadius: {
+            xs: "24px",
+            md: "30px",
+          },
+        }}
+      >
+        <WorkItem
+          {...item}
+          cardHeight={getCardHeight(index)}
+          isHovered={hoveredIndex === index}
+        />
+      </Box>
+    );
+  };
 
   return (
     <Box
-      ref={containerRef}
       sx={{
-        height: "91%",
         width: "100%",
-        backgroundColor: "#F1F1F1",
-        display: "flex",
-        alignItems: "flex-end",
-        justifyContent: "center",
+
+        px: {
+          xs: 1.5,
+          sm: 2,
+          md: 2,
+        },
+
+        pb: {
+          xs: 3,
+          md: 6,
+        },
+
+        boxSizing: "border-box",
       }}
     >
+      {/* MOBILE */}
+
       <Box
         sx={{
-          width: isMobile ? "95%" : "80%",
-          display: "flex",
-          justifyContent: "center",
+          display: {
+            xs: "flex",
+            md: "none",
+          },
+
+          flexDirection: "column",
+
+          gap: 1.5,
         }}
       >
-        <motion.div style={{ display: "flex", position: "relative" }}>
-          {Array.from({ length: visibleItems }).map((_, idx) => {
-            const offset = idx - Math.floor(visibleItems / 2);
-            const virtualIdx = currentVirtualIndex + offset;
-            const actualIdx = modulo(virtualIdx, totalItems);
-            const isActive = offset === 0;
-            const translateY = isActive
-              ? isMobile
-                ? -110
-                : -100
-              : isMobile
-                ? 20
-                : 50;
-            const zIndex = isActive ? 2 : 1;
-            const scale = isActive ? 1.1 : 0.9;
-            const opacity = isActive ? 1 : 0.4;
+        {items.map((item, index) =>
+          renderCard({
+            ...item,
+            originalIndex: index,
+          })
+        )}
+      </Box>
 
-            const item = items[actualIdx];
+      {/* DESKTOP MASONRY GALLERY */}
 
-            const handleClick = () => {
-              setTimeout(() => {
-                router.push(item.link);
-              }, 200);
-            };
+      <Box
+        sx={{
+          display: {
+            xs: "none",
+            md: "grid",
+          },
 
-            if (isActive) {
-              return (
-                <motion.div
-                  key={virtualIdx}
-                  animate={{
-                    y: translateY,
-                    scale,
-                    opacity,
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 25,
-                  }}
-                  style={{
-                    zIndex,
-                    position: "relative",
-                    marginLeft: idx === 0 ? 0 : itemSpacing,
-                    width: `${itemWidth}px`,
-                    cursor: "pointer",
-                  }}
-                  onClick={handleClick}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  <WorkItem
-                    {...item}
-                    isActive={isActive}
-                    isHovered={isHovered}
-                  />
-                </motion.div>
-              );
-            }
-            return (
-              <motion.div
-                key={virtualIdx}
-                animate={{ y: translateY, scale, opacity }}
-                transition={{
-                  type: "spring",
-                  stiffness: 500,
-                  damping: 35,
-                  mass: 1.5,
-                }}
-                style={{
-                  zIndex,
-                  position: "relative",
-                  marginLeft: idx === 0 ? 0 : isMobile ? -85 : -120,
-                  cursor: "default",
-                }}
-              >
-                <WorkItem {...item} isActive={isActive} isHovered={false} />
-              </motion.div>
-            );
-          })}
-        </motion.div>
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+
+          gap: {
+            md: 1.5,
+            lg: 2,
+          },
+
+          alignItems: "start",
+        }}
+      >
+        {/* LEFT COLUMN */}
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+
+            gap: {
+              md: 1.5,
+              lg: 2,
+            },
+          }}
+        >
+          {leftItems.map(renderCard)}
+        </Box>
+
+        {/* RIGHT COLUMN */}
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+
+            gap: {
+              md: 1.5,
+              lg: 2,
+            },
+
+            /*
+             * Slight offset for the editorial look.
+             */
+            pt: {
+              md: 5,
+              lg: 7,
+            },
+          }}
+        >
+          {rightItems.map(renderCard)}
+        </Box>
       </Box>
     </Box>
   );

@@ -29,7 +29,7 @@ const theme = createTheme({
   },
 });
 
-export default function Instagram() {
+export default function MySpend() {
   const router = useRouter();
 
   const handleGoBack = () => {

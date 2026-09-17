@@ -1,6 +1,8 @@
+"use client";
+
 import React from "react";
-import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
-import Pill from "../pill/pill";
+import { Box, Typography } from "@mui/material";
+
 import ImageLayout from "../imageLayout/imageLayout";
 
 const WorkItem = ({
@@ -8,133 +10,183 @@ const WorkItem = ({
   layout,
   company,
   title,
-  category,
+  status,
   year,
   colour1,
-  colour2,
-  icon1,
-  icon2,
-  isActive,
   isHovered,
+  cardHeight,
+  gif,
 }) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Box
       sx={{
-        width: isMobile ? "280px" : "550px",
-        height: isMobile ? "380px" : "600px",
-        background: colour1,
-        borderRadius: isMobile ? "24px" : "36px",
+        width: "100%",
+        minWidth: 0,
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
-        padding: isMobile ? "0px" : "20px",
-        boxShadow: isActive ? "0 0 40px rgba(0,0,0,0.4)" : "none",
-        border: isActive
-          ? isHovered
-            ? "1px solid #171717"
-            : "1px solid #fff"
-          : "none",
-        overflow: "hidden",
+        textDecoration: "none",
       }}
     >
-      <Box sx={{ position: "relative", height: isMobile ? "250px" : "400px" }}>
-        <ImageLayout images={images} layout={layout} hovered={isHovered} />
+      {/* IMAGE / GIF */}
+      <Box
+        sx={{
+          width: "100%",
+          height: cardHeight,
+          position: "relative",
+          overflow: "hidden",
+          backgroundColor: colour1,
 
+          borderRadius: {
+            xs: "12px",
+            md: "15px",
+          },
+
+          // No movement or shadow
+          transform: "none",
+          boxShadow: "none",
+        }}
+      >
+        {/* GIF OR NORMAL IMAGE */}
+        {gif ? (
+          <Box
+            component="img"
+            src={gif}
+            alt={title}
+            sx={{
+              position: "absolute",
+              inset: 0,
+
+              width: "100%",
+              height: "100%",
+
+              display: "block",
+
+              objectFit: "cover",
+              objectPosition: "center",
+
+              transform: "none !important",
+              rotate: "0deg",
+
+              borderRadius: "inherit",
+            }}
+          />
+        ) : (
+          <ImageLayout images={images} layout={layout} hovered={isHovered} />
+        )}
+
+        {/* WHITE FADE OVERLAY */}
         <Box
           sx={{
             position: "absolute",
-            top: isMobile ? "90%" : "50%",
-            left: 0,
-            right: 0,
-            height: "100%",
-            background: isMobile
-              ? `linear-gradient(to top, ${colour1} 75%, ${colour1}00 100%)`
-              : `linear-gradient(to top, ${colour1} 30%, ${colour1}00 100%)`,
-            zIndex: 4,
+            inset: 0,
+
+            backgroundColor: "#FFFFFF",
+
+            opacity: isHovered ? 0.5 : 0,
+
+            transition: "opacity 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+
+            pointerEvents: "none",
+
+            zIndex: 10,
           }}
         />
       </Box>
+
+      {/* INFO */}
       <Box
         sx={{
-          textAlign: "left",
-          mt: 2,
-          zIndex: 5,
-          p: isMobile ? 1 : 0,
+          pt: {
+            xs: 1.2,
+            md: 1.5,
+          },
+
+          px: {
+            xs: 0.2,
+            md: 0.2,
+          },
+
+          pb: {
+            xs: 2.5,
+            md: 3,
+          },
+
+          display: "flex",
+
+          flexDirection: {
+            xs: "column",
+            sm: "row",
+          },
+
+          justifyContent: "space-between",
+
+          alignItems: {
+            xs: "flex-start",
+            sm: "baseline",
+          },
+
+          gap: {
+            xs: 0.5,
+            sm: 2,
+          },
         }}
       >
+        {/* TITLE */}
         <Typography
           sx={{
-            color: "#fff",
-            fontFamily: "Lato, sans-serif",
-            fontSize: { xs: "12px", md: "16px" },
-            textTransform: "uppercase",
-            fontWeight: 300,
-          }}
-        >
-          {company}
-        </Typography>
-        <Typography
-          sx={{
-            color: "#fff",
-            fontFamily: "Urbanist, sans-serif",
-            fontWeight: 700,
-            fontSize: { xs: "18px", md: "24px" },
-            lineHeight: 1.1,
+            fontFamily: "Arial, sans-serif",
+
+            fontSize: {
+              xs: "14px",
+              sm: "16px",
+              md: "18px",
+              lg: "20px",
+            },
+
+            lineHeight: 1,
+
+            letterSpacing: "-0.6px",
+
+            color: "#464F5B",
+
+            flexShrink: 0,
           }}
         >
           {title}
         </Typography>
-        <Box
+
+        {/* COMPANY / STATUS / YEAR */}
+        <Typography
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            mt: 0.5,
+            fontFamily: "Arial, sans-serif",
+
+            fontSize: {
+              xs: "9px",
+              sm: "10px",
+              md: "10px",
+            },
+
+            lineHeight: 1.2,
+
+            textTransform: "uppercase",
+
+            color: "#8E9298",
+
+            textAlign: {
+              xs: "left",
+              sm: "right",
+            },
+
+            whiteSpace: {
+              xs: "normal",
+              sm: "nowrap",
+            },
           }}
         >
-          <Box sx={{ display: "flex", gap: 1 }}>
-            <Pill
-              text={category}
-              colour1={colour1}
-              colour2={colour2}
-              icon={icon1}
-            />
-            <Pill
-              text={year}
-              colour1={colour1}
-              colour2={colour2}
-              icon={icon2}
-            />
-          </Box>
-          <Typography
-            sx={{
-              position: "relative",
-              fontSize: { xs: "12px", md: "16px" },
-              fontFamily: "Urbanist, sans-serif",
-              color: isHovered ? "#171717" : "#fff",
-              fontWeight: 300,
-              whiteSpace: "nowrap",
-
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                top: 23,
-                bottom: 0,
-                left: 0,
-                width: "100%",
-                height: "1px",
-                backgroundColor: "#171717",
-                transform: `scaleX(${isHovered ? 1 : 0})`,
-                transformOrigin: "left",
-                transition: "transform 0.5s ease",
-              },
-            }}
-          >
-            View Work ↗
-          </Typography>
-        </Box>
+          {company}
+          {status && <> · {status}</>}
+          {year && <> · {year}</>}
+        </Typography>
       </Box>
     </Box>
   );
