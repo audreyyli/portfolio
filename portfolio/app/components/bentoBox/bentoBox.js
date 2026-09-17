@@ -17,10 +17,6 @@ const centerPhoto = {
 // ============================================
 
 const photoStickers = [
-  // ==========================================
-  // MY PICTURES
-  // ==========================================
-
   {
     id: "my-pics",
 
@@ -37,7 +33,7 @@ const photoStickers = [
       "/images/MyPics/7.JPEG",
       "/images/MyPics/8.jpg",
       "/images/MyPics/9.JPG",
-      "/images/MyPics/10.JPG",
+      "/images/MyPics/10.JPEG",
     ],
 
     desktop: {
@@ -61,10 +57,6 @@ const photoStickers = [
     tooltipSide: "left",
   },
 
-  // ==========================================
-  // FOOD
-  // ==========================================
-
   {
     id: "food-pics",
 
@@ -74,8 +66,8 @@ const photoStickers = [
       "I LOVEEE eating and trying new foods and cuisines. One of my life goals is to travel the world and eat my way through as many places as possible.",
 
     images: [
-      "/images/FoodPics/1.JPG",
-      "/images/FoodPics/2.jpg",
+      "/images/FoodPics/1.JPEG",
+      "/images/FoodPics/2.JPEG",
       "/images/FoodPics/4.JPG",
       "/images/FoodPics/5.jpg",
       "/images/FoodPics/6.jpg",
@@ -102,10 +94,6 @@ const photoStickers = [
 
     tooltipSide: "right",
   },
-
-  // ==========================================
-  // MATCHA
-  // ==========================================
 
   {
     id: "matcha-pics",
@@ -144,10 +132,6 @@ const photoStickers = [
     tooltipSide: "left",
   },
 
-  // ==========================================
-  // PICKLES
-  // ==========================================
-
   {
     id: "pickle-pics",
 
@@ -184,10 +168,6 @@ const photoStickers = [
 // ============================================
 
 const videoStickers = [
-  // ==========================================
-  // VLOG 1 — LEFT
-  // ==========================================
-
   {
     id: "vlog-1",
 
@@ -221,19 +201,12 @@ const videoStickers = [
     tooltipSide: "right",
   },
 
-  // ==========================================
-  // VLOG 2 — RIGHT
-  // ==========================================
-
   {
     id: "vlog-2",
 
     src: "/videos/About/vlog2.mp4",
 
     title: "My Digital Diary",
-
-    description:
-      "I love vlogging about my days. It lets me create a little digital diary to look back on and reminisce about the moments, places, and people that made them special.",
 
     url: "https://www.instagram.com/reys.diiary/",
 
@@ -264,10 +237,6 @@ const videoStickers = [
 // ============================================
 
 const interests = [
-  // ==========================================
-  // SMISKI
-  // ==========================================
-
   {
     id: "smiski",
 
@@ -298,10 +267,6 @@ const interests = [
     rotation: 8,
   },
 
-  // ==========================================
-  // SPOTIFY
-  // ==========================================
-
   {
     id: "spotify",
 
@@ -331,10 +296,6 @@ const interests = [
 
     rotation: -10,
   },
-
-  // ==========================================
-  // BUBBLI
-  // ==========================================
 
   {
     id: "bubbli",
@@ -684,13 +645,13 @@ const BentoBoxGrid = () => {
 
               boxShadow: hovered
                 ? `
-                      0 18px 35px rgba(0,0,0,0.16),
-                      0 4px 8px rgba(0,0,0,0.05)
-                    `
+                    0 18px 35px rgba(0,0,0,0.16),
+                    0 4px 8px rgba(0,0,0,0.05)
+                  `
                 : `
-                      0 10px 25px rgba(0,0,0,0.12),
-                      0 2px 5px rgba(0,0,0,0.04)
-                    `,
+                    0 10px 25px rgba(0,0,0,0.12),
+                    0 2px 5px rgba(0,0,0,0.04)
+                  `,
 
               cursor: "pointer",
 
@@ -703,9 +664,9 @@ const BentoBoxGrid = () => {
               willChange: "transform",
 
               transition: `
-                  transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.35s ease
-                `,
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease
+              `,
 
               "&:hover": {
                 transform: "rotate(0deg) scale(1.09) translateY(-4px)",
@@ -739,10 +700,10 @@ const BentoBoxGrid = () => {
                 alt={sticker.title}
                 fill
                 sizes="
-                    (max-width: 600px) 120px,
-                    (max-width: 900px) 150px,
-                    180px
-                  "
+                  (max-width: 600px) 120px,
+                  (max-width: 900px) 150px,
+                  180px
+                "
                 quality={70}
                 style={{
                   objectFit: "cover",
@@ -750,9 +711,7 @@ const BentoBoxGrid = () => {
               />
             </Box>
 
-            {/* ======================================
-                  PHOTO HOVER DESCRIPTION
-                  ====================================== */}
+            {/* PHOTO HOVER DESCRIPTION */}
 
             <Box
               sx={{
@@ -802,10 +761,10 @@ const BentoBoxGrid = () => {
                 zIndex: 100,
 
                 transition: `
-                    opacity 0.2s ease,
-                    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-                    visibility 0.2s ease
-                  `,
+                  opacity 0.2s ease,
+                  transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 0.2s ease
+                `,
               }}
             >
               <Typography
@@ -896,13 +855,13 @@ const BentoBoxGrid = () => {
 
               boxShadow: hovered
                 ? `
-                      0 18px 35px rgba(0,0,0,0.15),
-                      0 4px 8px rgba(0,0,0,0.05)
-                    `
+                    0 18px 35px rgba(0,0,0,0.15),
+                    0 4px 8px rgba(0,0,0,0.05)
+                  `
                 : `
-                      0 10px 25px rgba(0,0,0,0.12),
-                      0 2px 5px rgba(0,0,0,0.04)
-                    `,
+                    0 10px 25px rgba(0,0,0,0.12),
+                    0 2px 5px rgba(0,0,0,0.04)
+                  `,
 
               transform: `rotate(${sticker.rotation}deg)`,
 
@@ -915,9 +874,9 @@ const BentoBoxGrid = () => {
               willChange: "transform",
 
               transition: `
-                  transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.35s ease
-                `,
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s ease
+              `,
 
               "&:hover": {
                 transform: "rotate(0deg) scale(1.06) translateY(-3px)",
@@ -928,9 +887,7 @@ const BentoBoxGrid = () => {
               },
             }}
           >
-            {/* ======================================
-                  VIDEO
-                  ====================================== */}
+            {/* VIDEO */}
 
             <Box
               sx={{
@@ -978,120 +935,122 @@ const BentoBoxGrid = () => {
             </Box>
 
             {/* ======================================
-                  VLOG HOVER DESCRIPTION
-                  ====================================== */}
+                VLOG 1 HOVER DESCRIPTION ONLY
+                ====================================== */}
 
-            <Box
-              sx={{
-                position: "absolute",
+            {sticker.id === "vlog-1" && (
+              <Box
+                sx={{
+                  position: "absolute",
 
-                top: "50%",
+                  top: "50%",
 
-                ...(tooltipOnLeft
-                  ? {
-                      right: "calc(100% + 12px)",
-                    }
-                  : {
-                      left: "calc(100% + 12px)",
-                    }),
+                  ...(tooltipOnLeft
+                    ? {
+                        right: "calc(100% + 12px)",
+                      }
+                    : {
+                        left: "calc(100% + 12px)",
+                      }),
 
-                width: {
-                  xs: "155px",
-                  sm: "185px",
-                  md: "210px",
-                },
+                  width: {
+                    xs: "155px",
+                    sm: "185px",
+                    md: "210px",
+                  },
 
-                p: {
-                  xs: 1.2,
-                  md: 1.5,
-                },
+                  p: {
+                    xs: 1.2,
+                    md: 1.5,
+                  },
 
-                backgroundColor: "#FFFFFF",
+                  backgroundColor: "#FFFFFF",
 
-                border: "1px solid rgba(0,0,0,0.05)",
+                  border: "1px solid rgba(0,0,0,0.05)",
 
-                borderRadius: "14px",
+                  borderRadius: "14px",
 
-                boxShadow: "0 12px 35px rgba(0,0,0,0.12)",
+                  boxShadow: "0 12px 35px rgba(0,0,0,0.12)",
 
-                opacity: hovered ? 1 : 0,
+                  opacity: hovered ? 1 : 0,
 
-                visibility: hovered ? "visible" : "hidden",
+                  visibility: hovered ? "visible" : "hidden",
 
-                transform: hovered
-                  ? "translateY(-50%)"
-                  : tooltipOnLeft
-                    ? "translate(6px, -50%)"
-                    : "translate(-6px, -50%)",
+                  transform: hovered
+                    ? "translateY(-50%)"
+                    : tooltipOnLeft
+                      ? "translate(6px, -50%)"
+                      : "translate(-6px, -50%)",
 
-                pointerEvents: "none",
+                  pointerEvents: "none",
 
-                zIndex: 100,
+                  zIndex: 100,
 
-                transition: `
+                  transition: `
                     opacity 0.2s ease,
                     transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
                     visibility 0.2s ease
                   `,
-              }}
-            >
-              <Typography
-                sx={{
-                  fontFamily: "Bootzy, sans-serif",
-
-                  fontSize: {
-                    xs: "16px",
-                    md: "18px",
-                  },
-
-                  color: "#464F5B",
-
-                  letterSpacing: "0.4px",
                 }}
               >
-                {sticker.title}
-              </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: "Bootzy, sans-serif",
 
-              <Typography
-                sx={{
-                  mt: 0.5,
+                    fontSize: {
+                      xs: "16px",
+                      md: "18px",
+                    },
 
-                  fontFamily: "Arial, sans-serif",
+                    color: "#464F5B",
 
-                  fontSize: {
-                    xs: "9px",
-                    md: "11px",
-                  },
+                    letterSpacing: "0.4px",
+                  }}
+                >
+                  {sticker.title}
+                </Typography>
 
-                  lineHeight: 1.2,
+                <Typography
+                  sx={{
+                    mt: 0.5,
 
-                  letterSpacing: "-0.2px",
+                    fontFamily: "Arial, sans-serif",
 
-                  color: "#808080",
-                }}
-              >
-                {sticker.description}
-              </Typography>
+                    fontSize: {
+                      xs: "9px",
+                      md: "11px",
+                    },
 
-              <Typography
-                sx={{
-                  mt: 0.8,
+                    lineHeight: 1.2,
 
-                  fontFamily: "Arial, sans-serif",
+                    letterSpacing: "-0.2px",
 
-                  fontSize: {
-                    xs: "8px",
-                    md: "10px",
-                  },
+                    color: "#808080",
+                  }}
+                >
+                  {sticker.description}
+                </Typography>
 
-                  fontWeight: 600,
+                <Typography
+                  sx={{
+                    mt: 0.8,
 
-                  color: "#464F5B",
-                }}
-              >
-                Click to watch more ↗
-              </Typography>
-            </Box>
+                    fontFamily: "Arial, sans-serif",
+
+                    fontSize: {
+                      xs: "8px",
+                      md: "10px",
+                    },
+
+                    fontWeight: 600,
+
+                    color: "#464F5B",
+                  }}
+                >
+                  Click to watch more ↗
+                </Typography>
+              </Box>
+            )}
           </Box>
         );
       })}
@@ -1113,10 +1072,6 @@ const BentoBoxGrid = () => {
             onMouseEnter={() => setHoveredSticker(sticker.id)}
             onMouseLeave={() => setHoveredSticker(null)}
             onClick={() => {
-              /*
-               * Bubbli has a URL, so clicking
-               * the logo opens Instagram.
-               */
               if (sticker.url) {
                 if (isMobile && !hovered) {
                   setHoveredSticker(sticker.id);
@@ -1129,10 +1084,6 @@ const BentoBoxGrid = () => {
                 return;
               }
 
-              /*
-               * Other interest stickers keep
-               * their normal tap interaction.
-               */
               setHoveredSticker(hovered ? null : sticker.id);
             }}
             sx={{
@@ -1160,9 +1111,7 @@ const BentoBoxGrid = () => {
               },
             }}
           >
-            {/* ======================================
-                  SMISKI
-                  ====================================== */}
+            {/* SMISKI */}
 
             {sticker.type === "outline" && (
               <Box
@@ -1172,12 +1121,12 @@ const BentoBoxGrid = () => {
                   width: "100%",
 
                   filter: `
-                      drop-shadow(4px 0 0 #FFFFFF)
-                      drop-shadow(-4px 0 0 #FFFFFF)
-                      drop-shadow(0 4px 0 #FFFFFF)
-                      drop-shadow(0 -4px 0 #FFFFFF)
-                      drop-shadow(0 5px 5px rgba(0,0,0,0.12))
-                    `,
+                    drop-shadow(4px 0 0 #FFFFFF)
+                    drop-shadow(-4px 0 0 #FFFFFF)
+                    drop-shadow(0 4px 0 #FFFFFF)
+                    drop-shadow(0 -4px 0 #FFFFFF)
+                    drop-shadow(0 5px 5px rgba(0,0,0,0.12))
+                  `,
 
                   transform: "translateZ(0)",
 
@@ -1200,9 +1149,7 @@ const BentoBoxGrid = () => {
               </Box>
             )}
 
-            {/* ======================================
-                  BUBBLI
-                  ====================================== */}
+            {/* BUBBLI */}
 
             {sticker.type === "circle" && (
               <Box
@@ -1224,13 +1171,13 @@ const BentoBoxGrid = () => {
 
                   boxShadow: hovered
                     ? `
-                          0 15px 30px rgba(0,0,0,0.16),
-                          0 3px 7px rgba(0,0,0,0.05)
-                        `
+                        0 15px 30px rgba(0,0,0,0.16),
+                        0 3px 7px rgba(0,0,0,0.05)
+                      `
                     : `
-                          0 8px 20px rgba(0,0,0,0.12),
-                          0 2px 5px rgba(0,0,0,0.04)
-                        `,
+                        0 8px 20px rgba(0,0,0,0.12),
+                        0 2px 5px rgba(0,0,0,0.04)
+                      `,
 
                   transition: "box-shadow 0.3s ease",
                 }}
@@ -1262,9 +1209,7 @@ const BentoBoxGrid = () => {
               </Box>
             )}
 
-            {/* ======================================
-                  SPOTIFY
-                  ====================================== */}
+            {/* SPOTIFY */}
 
             {sticker.type === "normal" && (
               <Box
@@ -1296,9 +1241,7 @@ const BentoBoxGrid = () => {
               </Box>
             )}
 
-            {/* ======================================
-                  INTEREST HOVER DESCRIPTION
-                  ====================================== */}
+            {/* INTEREST HOVER DESCRIPTION */}
 
             <Box
               sx={{
@@ -1345,10 +1288,10 @@ const BentoBoxGrid = () => {
                 zIndex: 100,
 
                 transition: `
-                    opacity 0.2s ease,
-                    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-                    visibility 0.2s ease
-                  `,
+                  opacity 0.2s ease,
+                  transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 0.2s ease
+                `,
               }}
             >
               <Typography

@@ -65,7 +65,7 @@ const careerItems = [
 
 const items = [
   {
-    gif: "/images/tsm/TSM.gif",
+    gif: "/images/TSM/TSM.gif",
     layout: "tsm",
     company: "Two Small Men",
     title: "Instant quotes & direct bookings for moving services",

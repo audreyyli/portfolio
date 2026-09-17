@@ -38,23 +38,23 @@ const WorksCarousel = ({ items }) => {
   const getCardHeight = (index) => {
     const heights = [
       {
-        xs: "420px",
-        md: "470px",
-        lg: "510px",
+        xs: "380px",
+        md: "430px",
+        lg: "470px",
       },
       {
-        xs: "420px",
-        md: "590px",
+        xs: "380px",
+        md: "350px",
         lg: "380px",
       },
       {
-        xs: "420px",
+        xs: "380px",
         md: "570px",
         lg: "620px",
       },
       {
-        xs: "420px",
-        md: "460px",
+        xs: "380px",
+        md: "430px",
         lg: "470px",
       },
     ];
