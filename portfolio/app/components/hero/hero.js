@@ -1,157 +1,50 @@
-import React from "react";
-import { Box, Typography, Grid } from "@mui/material";
+"use client";
 
-const Hero = ({
-  title,
-  timeline,
-  role,
-  toolsSkills,
-  company,
-  header,
-  projectType,
-  description,
-  mainColour,
-  subColour,
-}) => {
+import React from "react";
+import { Box } from "@mui/material";
+
+const Hero = ({ image, company, backgroundColor = "#D9E6FF" }) => {
   return (
     <Box
-      style={{
-        background: "white",
-        marginTop: "-150px",
+      component="header"
+      sx={{
+        width: "100%",
+        bgcolor: backgroundColor,
       }}
     >
-      <Box sx={{ maxWidth: "1300px", margin: "0 auto", textAlign: "left" }}>
-        {/* Title and Header */}
-        <Typography
-          sx={{
-            fontWeight: 100,
-            fontFamily: "Lato",
-            fontSize: { sm: "20px", md: "24px" },
-          }}
-        >
-          {title}
-        </Typography>
-        <Typography
-          sx={{
-            fontWeight: 700,
-            fontFamily: "Lato",
-            fontStyle: "italic",
-            fontSize: { sm: "25px", md: "40px" },
-            marginTop: "-10px",
-          }}
-        >
-          {header}
-        </Typography>
+      <Box
+        sx={{
+          width: "100%",
 
-        {/* Company Pill */}
+          height: {
+            xs: "70vh",
+            md: "78vh",
+          },
+
+          minHeight: {
+            xs: "480px",
+            md: "600px",
+          },
+
+          overflow: "hidden",
+
+          bgcolor: backgroundColor,
+        }}
+      >
         <Box
-          component="span"
+          component="img"
+          src={image}
+          alt={`${company} project`}
           sx={{
-            display: "inline-block",
-            backgroundColor: mainColour,
-            color: subColour,
-            fontFamily: "Lato",
-            fontWeight: 100,
-            padding: "5px 15px",
-            borderRadius: "50px",
-            marginRight: "10px",
-            fontSize: "18px",
-            marginTop: "10px",
+            width: "100%",
+            height: "100%",
+
+            objectFit: "cover",
+            objectPosition: "center",
+
+            display: "block",
           }}
-        >
-          {company}
-        </Box>
-
-        {/* Project Type Pill */}
-        <Box
-          component="span"
-          sx={{
-            display: "inline-block",
-            backgroundColor: mainColour,
-            color: subColour,
-            fontFamily: "Lato",
-            fontWeight: 100,
-            padding: "5px 15px",
-            borderRadius: "50px",
-            marginRight: "10px",
-            fontSize: "18px",
-            marginTop: "10px",
-          }}
-        >
-          {projectType}
-        </Box>
-
-        {/* Description */}
-        <Typography
-          sx={{
-            fontWeight: 400,
-            fontFamily: "Lato",
-            marginTop: "20px",
-            fontSize: "18px",
-          }}
-        >
-          {description}
-        </Typography>
-
-        {/* Timeline, Role, and Tools/Skills in 3 Columns */}
-        <Grid container spacing={4} sx={{ marginTop: "35px" }}>
-          <Grid item xs={12} md={4}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: "24px",
-                fontWeight: 100,
-                fontFamily: "Lato",
-                textTransform: "uppercase",
-              }}
-            >
-              Timeline
-            </Typography>
-            <Typography
-              sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: "18px" }}
-            >
-              {timeline}
-            </Typography>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: "24px",
-                fontWeight: 100,
-                fontFamily: "Lato",
-                textTransform: "uppercase",
-              }}
-            >
-              Role
-            </Typography>
-            <Typography
-              sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: "18px" }}
-            >
-              {role}
-            </Typography>
-          </Grid>
-
-          <Grid item xs={12} md={4}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: "24px",
-                fontWeight: 100,
-                fontFamily: "Lato",
-                textTransform: "uppercase",
-              }}
-            >
-              Tools/Skills
-            </Typography>
-            <Typography
-              sx={{ fontWeight: 400, fontFamily: "Lato", fontSize: "18px" }}
-            >
-              {toolsSkills}
-            </Typography>
-          </Grid>
-        </Grid>
+        />
       </Box>
     </Box>
   );

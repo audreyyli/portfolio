@@ -171,7 +171,7 @@ const videoStickers = [
   {
     id: "vlog-1",
 
-    src: "/videos/About/vlog1.mp4",
+    src: "/videos/About/Vlog1.MP4",
 
     title: "My Digital Diary",
 
@@ -204,7 +204,7 @@ const videoStickers = [
   {
     id: "vlog-2",
 
-    src: "/videos/About/vlog2.mp4",
+    src: "/videos/About/Vlog2.MP4",
 
     title: "My Digital Diary",
 

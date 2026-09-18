@@ -1,827 +1,1223 @@
 "use client";
+
 import React from "react";
-import { useRouter } from "next/navigation";
-import Footer from "@/app/components/footer/footer.js";
-import Hero from "../../components/hero/hero.js";
-import Summary from "../../components/summary/summary.js";
-import Section from "../../components/section/section.js";
-import Problem from "../../components/problem/problem.js";
-import { Box, Button, Typography, Divider } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import {
+  Box,
+  Button,
+  Typography,
+  ThemeProvider,
+  CssBaseline,
+} from "@mui/material";
+
+import { createTheme } from "@mui/material/styles";
 import ArrowOutward from "@mui/icons-material/ArrowOutward";
-import { motion } from "framer-motion";
+
+import Footer from "@/app/components/footer/footer.js";
+
+import Hero from "../../components/hero/hero.js";
+import CaseStudyLayout from "../../components/caseStudy/caseStudyLayout.js";
+import CaseStudySection from "../../components/caseStudy/caseStudySection.js";
+import ProjectInfo from "../../components/hero/projectHero.js";
+
+// ============================================================
+// THEME
+// Matches CareerTimeline typography
+// ============================================================
 
 const theme = createTheme({
   typography: {
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    fontFamily: "Arial, sans-serif",
+
+    h1: {
+      fontFamily: "Bootzy, sans-serif",
+      fontWeight: 400,
+      letterSpacing: "1px",
+    },
+
+    h2: {
+      fontFamily: "Bootzy, sans-serif",
+      fontWeight: 400,
+      letterSpacing: "1px",
+    },
+
+    h3: {
+      fontFamily: "Bootzy, sans-serif",
+      fontWeight: 400,
+      letterSpacing: "1px",
+    },
+
+    h4: {
+      fontFamily: "Bootzy, sans-serif",
+      fontWeight: 400,
+      letterSpacing: "1px",
+    },
+
+    h5: {
+      fontFamily: "Bootzy, sans-serif",
+      fontWeight: 400,
+      letterSpacing: "1px",
+    },
+
+    h6: {
+      fontFamily: "Bootzy, sans-serif",
+      fontWeight: 400,
+      letterSpacing: "1px",
+    },
+
+    body1: {
+      fontFamily: "Arial, sans-serif",
+      fontWeight: 400,
+      letterSpacing: "-0.35px",
+    },
+
+    body2: {
+      fontFamily: "Arial, sans-serif",
+      fontWeight: 400,
+      letterSpacing: "-0.3px",
+    },
   },
+
+  palette: {
+    background: {
+      default: "#FFFFFF",
+    },
+
+    text: {
+      primary: "#464F5B",
+      secondary: "#808080",
+    },
+  },
+
   breakpoints: {
     values: {
       xs: 0,
-      sm: 380,
-      md: 1180,
+      sm: 600,
+      md: 1000,
       lg: 1280,
-      xl: 1350,
+      xl: 1536,
+    },
+  },
+
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          fontFamily: "Arial, sans-serif",
+          color: "#464F5B",
+        },
+
+        p: {
+          fontFamily: "Arial, sans-serif",
+          letterSpacing: "-0.35px",
+        },
+
+        "h1, h2, h3, h4, h5, h6": {
+          fontFamily: "Bootzy, sans-serif",
+          fontWeight: 400,
+          letterSpacing: "1px",
+        },
+      },
     },
   },
 });
 
+// ============================================================
+// INSTAGRAM CASE STUDY
+// ============================================================
+
 export default function Instagram() {
-  const router = useRouter();
-
-  const handleGoBack = () => {
-    router.back();
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-      >
+
+      {/* ======================================================
+          HERO
+      ====================================================== */}
+
+      <Hero
+        image="/images/Instagram/InstagramMock.png"
+        company="Instagram"
+        backgroundColor="#FFDEE7"
+      />
+
+      {/* ======================================================
+          CASE STUDY
+      ====================================================== */}
+
+      <CaseStudyLayout>
+        {/* ====================================================
+            PROJECT INFORMATION
+        ==================================================== */}
+
+        <ProjectInfo
+          company="Instagram · Ivey Product Society"
+          title="Improving personalization for Instagram's Explore page"
+          role={
+            <>
+              Product Designer
+              <br />+ Analyst
+            </>
+          }
+          timeline={
+            <>
+              Oct 2024
+              <br />– Dec 2024
+            </>
+          }
+          team={
+            <>
+              Fellowship
+              <br />
+              Project
+            </>
+          }
+          skills={
+            <>
+              Product Strategy
+              <br />
+              User Research
+              <br />
+              Prototyping
+            </>
+          }
+        />
+
+        <SectionDivider />
+
+        {/* ====================================================
+            OVERVIEW
+        ==================================================== */}
+
+        <CaseStudySection
+          id="overview"
+          eyebrow="Overview"
+          title="Making content discovery feel more personal."
+        >
+          <Typography>
+            I joined Ivey Product Society&apos;s fellowship program to explore a
+            product challenge through both a design and product strategy lens.
+          </Typography>
+
+          <Typography>
+            I focused on Instagram&apos;s Explore experience and explored how
+            greater customization could help users discover content that better
+            reflects their interests.
+          </Typography>
+        </CaseStudySection>
+
+        {/* ====================================================
+            PROJECT SNAPSHOT
+        ==================================================== */}
+
+        <ProjectSnapshot />
+
+        <SectionDivider />
+
+        {/* ====================================================
+            PROBLEM
+        ==================================================== */}
+
+        <CaseStudySection
+          id="problem"
+          eyebrow="The Problem"
+          title="Finding content for specific interests can feel unpredictable."
+        >
+          <Typography>
+            Instagram connects users with creators, communities, and trends, but
+            the volume and variety of content can make discovering something
+            specific difficult.
+          </Typography>
+
+          <Typography>
+            I wanted to understand where users experienced the most friction and
+            how the Explore experience could give them greater control over what
+            they discover.
+          </Typography>
+
+          <ProblemStatement>
+            How might Instagram improve content discovery to create a more
+            personalized Explore experience?
+          </ProblemStatement>
+        </CaseStudySection>
+
+        {/* ====================================================
+            JOBS TO BE DONE
+        ==================================================== */}
+
+        <CaseStudyImage
+          src="/images/Instagram/jobToBeDone.png"
+          alt="Instagram content discovery jobs to be done"
+        />
+
+        <SectionDivider />
+
+        {/* ====================================================
+            JOURNEY
+        ==================================================== */}
+
+        <CaseStudySection
+          id="journey"
+          eyebrow="Exploring the Problem"
+          title="Finding where personalization could make the biggest difference."
+        >
+          <Typography>
+            I broke content discovery into four main steps and considered the
+            value and constraints associated with each part of the journey.
+          </Typography>
+
+          <Typography>
+            Mapping the experience helped me identify scrolling and browsing as
+            an opportunity to improve how users discover relevant content.
+          </Typography>
+        </CaseStudySection>
+
+        <CaseStudyImage
+          src="/images/Instagram/userJourney.png"
+          alt="Instagram user journey"
+        />
+
+        <SectionSpacer />
+
+        {/* ====================================================
+            RESEARCH
+        ==================================================== */}
+
+        <CaseStudySection
+          id="research"
+          eyebrow="User Research"
+          title="Users wanted content that felt more relevant to their individual interests."
+        >
+          <Typography>
+            I focused on younger, casual Instagram users who primarily use the
+            platform for entertainment, trends, and content discovery.
+          </Typography>
+
+          <Typography>
+            Research suggested that some users felt disconnected from the
+            recommendations they received and had difficulty discovering more
+            niche content.
+          </Typography>
+        </CaseStudySection>
+
+        <CaseStudyImage
+          src="/images/Instagram/userTestimonies.png"
+          alt="Instagram user research testimonies"
+        />
+
+        {/* ====================================================
+            PAIN POINTS
+        ==================================================== */}
+
         <Box
           sx={{
-            flexGrow: 1,
-            maxWidth: "1300px",
-            margin: "0 auto",
-            padding: { xs: "10px", sm: "20px" },
+            py: {
+              xs: "72px",
+              md: "100px",
+            },
           }}
         >
+          <Eyebrow>Key Pain Points</Eyebrow>
+
+          <PainPointGrid />
+        </Box>
+
+        <SectionDivider />
+
+        {/* ====================================================
+            SOLUTION
+        ==================================================== */}
+
+        <CaseStudySection
+          id="solution"
+          eyebrow="The Solution"
+          title="Give users more control over what appears in Explore."
+        >
+          <Typography>
+            I designed customizable Explore pages that allow users to browse
+            general recommendations, trending content, content their friends
+            engage with, and feeds built around specific interests.
+          </Typography>
+
+          <Typography>
+            The concept gives users more direct control over discovery while
+            preserving the familiar Explore experience.
+          </Typography>
+        </CaseStudySection>
+
+        {/* ====================================================
+            VALUE PROPOSITION
+        ==================================================== */}
+
+        <CaseStudyImage
+          src="/images/Instagram/valueProp.png"
+          alt="Instagram customizable Explore page value proposition"
+        />
+
+        <SectionDivider />
+
+        {/* ====================================================
+            FINAL DESIGN
+        ==================================================== */}
+
+        <Box
+          component="section"
+          id="design"
+          sx={{
+            scrollMarginTop: "80px",
+
+            py: {
+              xs: "80px",
+              md: "120px",
+            },
+          }}
+        >
+          <Eyebrow>Final Design</Eyebrow>
+
+          <Typography
+            component="h2"
+            variant="h2"
+            sx={{
+              maxWidth: "720px",
+
+              fontSize: {
+                xs: "38px",
+                sm: "44px",
+                md: "52px",
+              },
+
+              lineHeight: 1.05,
+
+              color: "#464F5B",
+
+              mb: {
+                xs: "48px",
+                md: "72px",
+              },
+            }}
+          >
+            A more customizable way to explore Instagram.
+          </Typography>
+
+          <DesignFeature
+            number="01"
+            title="Explore by intent"
+            gif="/images/Instagram/igRecord1.gif"
+          >
+            The Explore page introduces separate tabs so users can choose how
+            they want to discover content instead of relying on one general
+            feed.
+          </DesignFeature>
+
+          <DesignFeature
+            number="02"
+            title="Choose how you discover"
+            gif="/images/Instagram/igRecord2.gif"
+            reverse
+          >
+            For You preserves the familiar Explore experience, while Trending
+            surfaces popular categories and Friends shows content recently
+            interacted with by people the user follows.
+          </DesignFeature>
+
+          <DesignFeature
+            number="03"
+            title="Create a custom Explore page"
+            gif="/images/Instagram/igRecord3.gif"
+          >
+            Users can create an Explore page around selected interests and
+            update those interests whenever their preferences change.
+          </DesignFeature>
+        </Box>
+
+        <SectionDivider />
+
+        {/* ====================================================
+            OUTCOME
+        ==================================================== */}
+
+        <Box
+          component="section"
+          id="outcomes"
+          sx={{
+            scrollMarginTop: "80px",
+
+            py: {
+              xs: "80px",
+              md: "120px",
+            },
+          }}
+        >
+          <Eyebrow>Outcome</Eyebrow>
+
+          <Typography
+            component="h2"
+            variant="h2"
+            sx={{
+              maxWidth: "700px",
+
+              fontSize: {
+                xs: "38px",
+                sm: "44px",
+                md: "52px",
+              },
+
+              lineHeight: 1.05,
+
+              color: "#464F5B",
+
+              mb: "24px",
+            }}
+          >
+            Presenting the concept on Product Review Day.
+          </Typography>
+
+          <Typography
+            component="p"
+            variant="body1"
+            sx={{
+              maxWidth: "650px",
+
+              fontSize: {
+                xs: "15px",
+                sm: "16px",
+                md: "17px",
+              },
+
+              lineHeight: 1.65,
+
+              color: "#808080",
+
+              mb: "30px",
+            }}
+          >
+            I presented the concept and product rationale to product leaders as
+            part of the Ivey Product Society fellowship.
+          </Typography>
+
           <Button
-            startIcon={<ArrowBackIcon />}
-            onClick={handleGoBack}
+            variant="text"
+            endIcon={<ArrowOutward />}
+            href="https://docs.google.com/presentation/d/10iLK3qNu8e8z0LB4sYKqAfZLcNT324Suimsl7A4ktA4/edit?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
             disableRipple
             sx={{
+              p: 0,
+
+              minWidth: 0,
+
+              fontFamily: "Arial, sans-serif",
+
+              fontSize: {
+                xs: "14px",
+                md: "15px",
+              },
+
+              fontWeight: 500,
+
+              letterSpacing: "-0.3px",
+
               textTransform: "none",
-              fontWeight: 400,
-              fontSize: { xs: "14px", sm: "16px", md: "18px" },
-              color: "#888",
-              position: "relative",
-              overflow: "hidden",
-              textAlign: "center",
-              padding: "5px 10px",
-              transition: "color 0.3s ease, transform 0.3s ease",
+
+              color: "#464F5B",
+
+              "& .MuiButton-endIcon": {
+                transition: "transform 0.25s ease",
+              },
+
               "&:hover": {
-                color: "#111",
-                background: "none",
-                "&::after": {
-                  width: "100%",
-                },
-              },
-              "&::after": {
-                content: '""',
-                position: "absolute",
-                bottom: "8px",
-                left: "0",
-                height: "2px",
-                backgroundColor: "#111",
-                width: "0%",
-                transition: "width 0.4s ease",
-              },
-            }}
-          >
-            BACK
-          </Button>
-          <Box
-            sx={{
-              marginTop: "20px",
-              position: "relative",
-              width: "100vw",
-              height: "45vh",
-              overflow: "hidden",
-              backgroundColor: "#FFDEE7",
-              left: "50%",
-              transform: "translateX(-50%)",
-            }}
-          >
-            {/* Main Image */}
-            <Box
-              component="img"
-              src="/images/Instagram/InstagramMock.png"
-              alt="Instagram Mock"
-              sx={{
-                maxWidth: "1500px",
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                margin: "0 auto",
-              }}
-            />
-          </Box>
-          {/* Hero section */}
-          <Box
-            sx={{
-              position: "relative",
-              marginTop: "170px",
-              justifyContent: "center",
-              alignContent: "center",
-            }}
-          >
-            <Hero
-              title="INSTAGRAM"
-              timeline="Oct 2024 - Dec 2024"
-              role="Product Designer & Analyst"
-              toolsSkills="Figma, Prototyping, Visual Design, User Research, Product Design"
-              company="Product Strategy"
-              header="Improving personalization for Instagram's explore page"
-              projectType="Fellowship Project"
-              description="A feature to enhance content discovery and provide personalized recommendations through a customizable Instagram Explore page."
-              mainColour="#FFDEE7"
-              subColour="#FF5093"
-            />
-          </Box>
-
-          <Divider
-            sx={{
-              width: "100%",
-              maxWidth: "1300px",
-              marginTop: "70px",
-              marginBottom: "50px",
-            }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Summary
-            context={{
-              description:
-                "I joined Ivey Product Society\'s fellowship program to tackle a project through a product lens, expanding my expertise in product management and strategy.",
-              customTitle: "A new challenge",
-            }}
-            problem={{
-              description:
-                "With so many different creators, genres, and interests, it\'s difficult to find content that suits specific interests.",
-              customTitle: "Content discovery isn\'t personalized enough",
-            }}
-            solution={{
-              images: ["/images/Instagram/igSolution.png"],
-              customTitle: "Customizable Explore Pages on Instagram",
-            }}
-            outcomes={{
-              images: ["/images/Instagram/igOutcome.png"],
-              customTitle:
-                "Presenting to product leaders on Product Review Day",
-            }}
-          />
-
-          <Divider
-            sx={{
-              width: "100%",
-              maxWidth: "1300px",
-              marginTop: "70px",
-              marginBottom: "50px",
-            }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Section
-            header="HOW IT STARTED"
-            description={[
-              <>
-                Instagram is a platform that connects over a billion users
-                worldwide. But at its core, Instagram is more than just a social
-                app—it&apos;s a space for people to{" "}
-                <b>explore their passions</b>, <b>build communities</b>, and{" "}
-                <b>find content that truly resonates with them</b>.
-              </>,
-              <>
-                One of Instagram&apos;s primary goals has always been to help
-                users explore what they love. But while Instagram excels in many
-                ways, there&apos;s a growing gap in its ability to{" "}
-                <b>personalize content discovery</b> for its users.
-              </>,
-            ]}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            backgroundColor: "#FFDEE7",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignContent: "center",
-            marginTop: "25px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Box
-            sx={{
-              maxWidth: "1300px",
-              margin: "0 auto",
-            }}
-          >
-            <Problem
-              intro="AND SO, I ASKED:"
-              introColour="#FF5093"
-              problemStatement="How can Instagram improve its content discovery to create a personalized feed expereince for users?"
-            />
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Section
-            header="EXPLORING THE PROBLEM"
-            description={[
-              <>
-                There are many steps to finding new, personalized content on
-                social media. I broke down the process into 4 main steps.
-              </>,
-            ]}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            padding: "10px",
-          }}
-        >
-          <Box
-            component="img"
-            src="/images/Instagram/jobToBeDone.png"
-            alt="Jobs to be Done"
-            sx={{
-              width: "100%",
-              maxWidth: "1300px",
-              height: "auto",
-              margin: { xs: "10px auto", sm: "20px auto" },
-              marginTop: "20px",
-              borderRadius: "25px",
-              border: "1px solid black",
-            }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 400,
-              fontSize: "18px",
-            }}
-          >
-            Where within the user&apos;s journey would there be an opportunity
-            to make an impact? Taking into consideration how each step creates
-            value for the user and the constraints, I mapped out the user&apos;s
-            journey to make a decision.
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            padding: "10px",
-          }}
-        >
-          <Box
-            component="img"
-            src="/images/Instagram/userJourney.png"
-            alt="User Journey"
-            sx={{
-              width: "100%",
-              maxWidth: "1300px",
-              height: "auto",
-              margin: { xs: "10px auto", sm: "20px auto" },
-              marginTop: "20px",
-              borderRadius: "25px",
-              border: "1px solid black",
-            }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 400,
-              fontSize: "18px",
-            }}
-          >
-            I identified that the scrolling step would allow for the opportunity
-            to make the largest impact. After making a decision on which step, I
-            conducted user research to further help me refine my solution.
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Section
-            header="USER RESEARCH"
-            description={[
-              <>
-                I began by defining the average Instagram user. They are someone
-                who is <b>young and casually</b> uses Instagram. They are
-                looking for <b>personable content</b> that are sources of{" "}
-                <b>entertainment or connects them with trends</b>.
-              </>,
-              <>From here I started conducting user research.</>,
-            ]}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            padding: "10px",
-          }}
-        >
-          <Box
-            component="img"
-            src="/images/Instagram/userTestimonies.png"
-            alt="User Testimonies"
-            sx={{
-              width: "100%",
-              maxWidth: "1300px",
-              height: "auto",
-              margin: { xs: "10px auto", sm: "20px auto" },
-              marginTop: "20px",
-              borderRadius: "25px",
-              border: "1px solid black",
-            }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 400,
-              fontSize: "18px",
-            }}
-          >
-            Users feel a disconnect with the content being shown on Instagram,
-            opting for other social platforms that provide more personalized and
-            niche-focused recommendations. Many users struggle to find content
-            aligned with their specific interests, expressing frustration with
-            Instagram&apos;s Explore page and algorithms.
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          {/* Subtitle */}
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 100,
-              fontStyle: "italic",
-              fontSize: "18px",
-              marginBottom: "20px",
-            }}
-          >
-            PAIN POINTS
-          </Typography>
-
-          {/* Left and Right Sections */}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", md: "row" },
-              gap: "40px",
-            }}
-          >
-            {/* Left Section */}
-            <Box sx={{ flex: 1 }}>
-              <Typography
-                sx={{
-                  fontFamily: "Lato",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                }}
-              >
-                CONTENT MISALIGNMENT
-              </Typography>
-              <Typography
-                sx={{
-                  fontFamily: "Lato",
-                  fontWeight: 400,
-                  fontSize: "18px",
-                }}
-              >
-                Users feel that their explore pages are not tailored to their
-                specific interests.
-              </Typography>
-            </Box>
-
-            {/* Right Section */}
-            <Box sx={{ flex: 1 }}>
-              <Typography
-                sx={{
-                  fontFamily: "Lato",
-                  fontWeight: 700,
-                  fontSize: "20px",
-                }}
-              >
-                LACK OF NICHE CONTENT
-              </Typography>
-              <Typography
-                sx={{
-                  fontFamily: "Lato",
-                  fontWeight: 400,
-                  fontSize: "18px",
-                }}
-              >
-                Users with unique or niche interests struggle to find posts or
-                topics.
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Section header="SOLUTION" description={[]} />
-        </Box>
-
-        <Box
-          sx={{
-            padding: "10px",
-          }}
-        >
-          <Box
-            component="img"
-            src="/images/Instagram/valueProp.png"
-            alt="Value Proposition"
-            sx={{
-              width: "100%",
-              maxWidth: "1300px",
-              height: "auto",
-              margin: { xs: "10px auto", sm: "20px auto" },
-              marginTop: "20px",
-              borderRadius: "25px",
-              border: "1px solid black",
-            }}
-          />
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 400,
-              fontSize: "18px",
-            }}
-          >
-            By catering to a broader range of preferences, Instagram can better
-            serve niche interests and enhance user satisfaction, ensuring the
-            platform remains relevant and engaging. This approach benefits users
-            by making it easier to discover content that resonates with their
-            diverse interests, while Instagram gains increased user engagement
-            and retention.
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          {/* Subtitle */}
-          <Typography
-            sx={{
-              fontFamily: "Lato",
-              fontWeight: 100,
-              fontStyle: "italic",
-              fontSize: "18px",
-              marginBottom: "20px",
-            }}
-          >
-            FINAL DESIGN
-          </Typography>
-        </Box>
-
-        {/* GIF and Text Section */}
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: { sm: "10px", md: "20px auto" },
-            marginTop: "40px",
-            border: "1px solid black",
-            borderRadius: "25px",
-          }}
-        >
-          {[
-            {
-              gif: "/images/Instagram/igRecord1.gif",
-              description: "Instagram's explore page now has different tabs.",
-            },
-            {
-              gif: "/images/Instagram/igRecord2.gif",
-              description:
-                'The "For You" page is a general page and works similar to the current explore page. There is now a "Trending" page that has preset tabs to show the popular content for each category. The "Friends" tab shows the content that your friends have recently interacted with. Lastly, there is a "+" or a tab to add a customizable explore page, tailored with specific interests.',
-            },
-            {
-              gif: "/images/Instagram/igRecord3.gif",
-              description:
-                "The custom explore page takes in selected interests and curate an explore page specifically to those selected interests. No longer interested in those topics? No worries! The page can be easily edited!",
-            },
-          ].map((item, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                alignItems: "center",
-                justifyContent: "space-between",
-                marginBottom: "30px",
-                padding: "30px",
-              }}
-            >
-              {/* GIF on the left */}
-              <Box
-                sx={{
-                  flex: 1,
-                  marginRight: { xs: 0, md: "20px" },
-                  marginBottom: { xs: "20px", md: 0 },
-                }}
-              >
-                <Box
-                  component="img"
-                  src={item.gif}
-                  alt={`GIF ${index + 1}`}
-                  sx={{
-                    width: "70%",
-                    height: "auto",
-                    borderRadius: { xs: "45px", lg: "80px" },
-                  }}
-                />
-              </Box>
-
-              {/* Text on the right */}
-              <Box
-                sx={{
-                  flex: 1,
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontFamily: "Lato",
-                    fontWeight: 400,
-                    fontSize: "18px",
-                  }}
-                >
-                  {item.description}
-                </Typography>
-              </Box>
-            </Box>
-          ))}
-        </Box>
-
-        <Box
-          sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "40px",
-            padding: { xs: "10px", sm: "20px" },
-          }}
-        >
-          <Section
-            header="REFLECTION"
-            description={[
-              <>
-                Sometimes, the most impactful innovations lie in simplifying
-                what already exists and truly addressing user needs. By
-                providing users with greater control and customization—such as
-                personalized tabs or interest-based filtering—Instagram can
-                bridge the gap between user expectations and platform
-                experience.
-              </>,
-            ]}
-          />
-          <Box sx={{ marginTop: "10px" }}>
-            <Button
-              variant="text"
-              endIcon={<ArrowOutward />}
-              sx={{
-                fontSize: { xs: "14px", md: "18px" },
                 backgroundColor: "transparent",
-                color: "#888",
-                fontWeight: "400",
-                position: "relative",
-                overflow: "hidden",
-                textAlign: "center",
-                transition: "transform 0.03s, background-color 0.06s",
-                boxShadow: "none",
-                textTransform: "none",
-                width: "fit-content",
-                minWidth: "180px",
-                whiteSpace: "nowrap",
-                marginBottom: { xs: "0", md: "-20px" },
-                left: "0",
+
+                color: "#2323FF",
+
                 "& .MuiButton-endIcon": {
-                  transition: "transform 0.3s ease-in-out",
+                  transform: "rotate(45deg)",
                 },
-                "&:hover": {
-                  color: "#222",
-                  borderColor: "#222",
-                  "& .MuiButton-endIcon": {
-                    transform: "rotate(45deg)",
-                  },
-                  "&::after": {
-                    width: "100%",
-                  },
-                },
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  bottom: "7px",
-                  left: "0",
-                  height: "1px",
-                  backgroundColor: "#222",
-                  width: "0%",
-                  transition: "width 0.4s ease",
-                },
-              }}
-              href="https://docs.google.com/presentation/d/10iLK3qNu8e8z0LB4sYKqAfZLcNT324Suimsl7A4ktA4/edit?usp=drive_link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View My Presentation
-            </Button>
-          </Box>
+              },
+            }}
+          >
+            View my presentation
+          </Button>
         </Box>
+
+        <SectionDivider />
+
+        {/* ====================================================
+            REFLECTION
+        ==================================================== */}
+
+        <Box
+          component="section"
+          id="reflection"
+          sx={{
+            scrollMarginTop: "80px",
+
+            py: {
+              xs: "80px",
+              md: "130px",
+            },
+          }}
+        >
+          <Eyebrow>Reflection</Eyebrow>
+
+          <Typography
+            component="h2"
+            variant="h2"
+            sx={{
+              fontSize: {
+                xs: "40px",
+                sm: "46px",
+                md: "54px",
+              },
+
+              lineHeight: 1.05,
+
+              color: "#464F5B",
+
+              mb: {
+                xs: "48px",
+                md: "64px",
+              },
+            }}
+          >
+            What I learned
+          </Typography>
+
+          <ReflectionGrid />
+        </Box>
+
+        {/* ====================================================
+            END
+        ==================================================== */}
 
         <Box
           sx={{
-            maxWidth: "1300px",
-            margin: "0 auto",
-            marginTop: "150px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "20px",
+            pt: {
+              xs: "20px",
+              md: "40px",
+            },
+
+            pb: {
+              xs: "80px",
+              md: "120px",
+            },
           }}
         >
-          {/* Left Button */}
-          <Box>
-            <Button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              disableRipple
-              sx={{
-                textTransform: "none",
-                fontWeight: 400,
-                fontSize: { xs: "14px", sm: "16px", md: "18px" },
-                color: "#888",
-                position: "relative",
-                overflow: "hidden",
-                textAlign: "center",
-                padding: "5px 10px",
-                transition: "color 0.3s ease, transform 0.3s ease",
-                "&:hover": {
-                  color: "#111",
-                  background: "none",
-                  "&::after": {
-                    width: "100%",
-                  },
-                },
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  bottom: "8px",
-                  left: "0",
-                  height: "2px",
-                  backgroundColor: "#111",
-                  width: "0%",
-                  transition: "width 0.4s ease",
-                },
-              }}
-            >
-              BACK TO TOP
-            </Button>
-          </Box>
+          <Typography
+            component="h2"
+            variant="h2"
+            sx={{
+              fontSize: {
+                xs: "36px",
+                sm: "42px",
+                md: "48px",
+              },
+
+              lineHeight: 1.05,
+
+              color: "#464F5B",
+            }}
+          >
+            Thanks for reading.
+          </Typography>
+        </Box>
+      </CaseStudyLayout>
+
+      <Footer />
+    </ThemeProvider>
+  );
+}
+
+// ============================================================
+// EYEBROW
+// ============================================================
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <Typography
+      component="p"
+      sx={{
+        fontFamily: "monospace",
+
+        fontSize: {
+          xs: "9px",
+          sm: "10px",
+        },
+
+        fontWeight: 400,
+
+        letterSpacing: "0.4px",
+
+        textTransform: "uppercase",
+
+        color: "#999999",
+
+        mb: "18px",
+      }}
+    >
+      {children}
+    </Typography>
+  );
+}
+
+// ============================================================
+// DIVIDER
+// ============================================================
+
+function SectionDivider() {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        height: "1px",
+        bgcolor: "#E8E8EC",
+      }}
+    />
+  );
+}
+
+// ============================================================
+// SPACER
+// ============================================================
+
+function SectionSpacer() {
+  return (
+    <Box
+      sx={{
+        height: {
+          xs: "24px",
+          md: "40px",
+        },
+      }}
+    />
+  );
+}
+
+// ============================================================
+// PROJECT SNAPSHOT
+// ============================================================
+
+function ProjectSnapshot() {
+  const items = [
+    {
+      label: "Challenge",
+      value: "Content discovery",
+    },
+
+    {
+      label: "Audience",
+      value: "Instagram users",
+    },
+
+    {
+      label: "Focus",
+      value: "Personalization",
+    },
+  ];
+
+  return (
+    <Box
+      sx={{
+        pt: {
+          xs: "12px",
+          md: "20px",
+        },
+
+        pb: {
+          xs: "72px",
+          md: "100px",
+        },
+
+        display: "grid",
+
+        gridTemplateColumns: {
+          xs: "1fr",
+          sm: "repeat(3, 1fr)",
+        },
+
+        gap: {
+          xs: "32px",
+          sm: "40px",
+        },
+      }}
+    >
+      {items.map((item) => (
+        <Box key={item.label}>
+          <Typography
+            sx={{
+              fontFamily: "monospace",
+
+              fontSize: {
+                xs: "9px",
+                sm: "10px",
+              },
+
+              letterSpacing: "0.4px",
+
+              textTransform: "uppercase",
+
+              color: "#999999",
+
+              mb: "8px",
+            }}
+          >
+            {item.label}
+          </Typography>
 
           <Typography
             sx={{
-              fontFamily: "Lato",
-              fontSize: "24px",
-              fontWeight: 700,
+              fontFamily: "Arial, sans-serif",
+
+              fontSize: {
+                xs: "17px",
+                md: "18px",
+              },
+
+              fontWeight: 500,
+
+              letterSpacing: "-0.3px",
+
+              color: "#464F5B",
             }}
           >
-            |
+            {item.value}
+          </Typography>
+        </Box>
+      ))}
+    </Box>
+  );
+}
+
+// ============================================================
+// PROBLEM STATEMENT
+// ============================================================
+
+function ProblemStatement({ children }: { children: React.ReactNode }) {
+  return (
+    <Box
+      sx={{
+        mt: {
+          xs: "48px",
+          md: "60px",
+        },
+
+        p: {
+          xs: "28px",
+          md: "42px",
+        },
+
+        bgcolor: "#FFDEE7",
+
+        borderRadius: {
+          xs: "14px",
+          md: "18px",
+        },
+      }}
+    >
+      <Typography
+        sx={{
+          fontFamily: "monospace",
+
+          fontSize: {
+            xs: "9px",
+            sm: "10px",
+          },
+
+          letterSpacing: "0.4px",
+
+          textTransform: "uppercase",
+
+          color: "#FF5093",
+
+          mb: "20px",
+        }}
+      >
+        How might we
+      </Typography>
+
+      <Typography
+        component="h3"
+        variant="h3"
+        sx={{
+          fontSize: {
+            xs: "28px",
+            sm: "32px",
+            md: "36px",
+          },
+
+          lineHeight: 1.15,
+
+          color: "#D93C78",
+        }}
+      >
+        {children}
+      </Typography>
+    </Box>
+  );
+}
+
+// ============================================================
+// CASE STUDY IMAGE
+// ============================================================
+
+type CaseStudyImageProps = {
+  src: string;
+  alt: string;
+};
+
+function CaseStudyImage({ src, alt }: CaseStudyImageProps) {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+
+        overflow: "hidden",
+
+        borderRadius: {
+          xs: "14px",
+          md: "18px",
+        },
+
+        border: "1px solid rgba(0,0,0,0.06)",
+
+        bgcolor: "#F7F7F7",
+      }}
+    >
+      <Box
+        component="img"
+        src={src}
+        alt={alt}
+        sx={{
+          display: "block",
+
+          width: "100%",
+
+          height: "auto",
+        }}
+      />
+    </Box>
+  );
+}
+
+// ============================================================
+// PAIN POINTS
+// ============================================================
+
+function PainPointGrid() {
+  const items = [
+    {
+      title: "Content misalignment",
+
+      description:
+        "Users felt that their Explore pages were not always tailored closely enough to their specific interests.",
+    },
+
+    {
+      title: "Lack of niche content",
+
+      description:
+        "Users with more specific interests could struggle to discover relevant posts, creators, and topics.",
+    },
+  ];
+
+  return (
+    <Box
+      sx={{
+        display: "grid",
+
+        gridTemplateColumns: {
+          xs: "1fr",
+          md: "1fr 1fr",
+        },
+
+        gap: {
+          xs: "40px",
+          md: "72px",
+        },
+      }}
+    >
+      {items.map((item) => (
+        <Box key={item.title}>
+          <Typography
+            component="h3"
+            variant="h3"
+            sx={{
+              fontSize: {
+                xs: "22px",
+                sm: "25px",
+                md: "28px",
+              },
+
+              lineHeight: 1.05,
+
+              color: "#464F5B",
+
+              mb: "14px",
+            }}
+          >
+            {item.title}
           </Typography>
 
-          {/* Right Button */}
-          <Box>
-            <Button
-              href="/#section2"
-              disableRipple
-              sx={{
-                textTransform: "none",
-                fontWeight: 400,
-                fontSize: { xs: "14px", sm: "16px", md: "18px" },
-                color: "#888",
-                position: "relative",
-                overflow: "hidden",
-                textAlign: "center",
-                padding: "5px 10px",
-                transition: "color 0.3s ease, transform 0.3s ease",
-                "&:hover": {
-                  color: "#111",
-                  background: "none",
-                  "&::after": {
-                    width: "100%",
-                  },
-                },
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  bottom: "8px",
-                  left: "0",
-                  height: "2px",
-                  backgroundColor: "#111",
-                  width: "0%",
-                  transition: "width 0.4s ease",
-                },
-              }}
-            >
-              SEE MORE WORKS
-            </Button>
-          </Box>
-        </Box>
+          <Typography
+            component="p"
+            variant="body1"
+            sx={{
+              fontSize: {
+                xs: "15px",
+                md: "16px",
+              },
 
-        {/* Footer Section */}
+              lineHeight: 1.65,
+
+              color: "#808080",
+            }}
+          >
+            {item.description}
+          </Typography>
+        </Box>
+      ))}
+    </Box>
+  );
+}
+
+// ============================================================
+// DESIGN FEATURE
+// ============================================================
+
+type DesignFeatureProps = {
+  number: string;
+  title: string;
+  gif: string;
+  reverse?: boolean;
+  children: React.ReactNode;
+};
+
+function DesignFeature({
+  number,
+  title,
+  gif,
+  reverse = false,
+  children,
+}: DesignFeatureProps) {
+  return (
+    <Box
+      sx={{
+        display: "grid",
+
+        gridTemplateColumns: {
+          xs: "1fr",
+          md: "1fr 1fr",
+        },
+
+        gap: {
+          xs: "36px",
+          md: "72px",
+        },
+
+        alignItems: "center",
+
+        py: {
+          xs: "48px",
+          md: "72px",
+        },
+      }}
+    >
+      {/* GIF */}
+
+      <Box
+        sx={{
+          order: {
+            xs: 1,
+            md: reverse ? 2 : 1,
+          },
+
+          display: "flex",
+
+          justifyContent: "center",
+
+          alignItems: "center",
+
+          bgcolor: "#FFF2F6",
+
+          borderRadius: {
+            xs: "16px",
+            md: "20px",
+          },
+
+          p: {
+            xs: "24px",
+            md: "36px",
+          },
+        }}
+      >
         <Box
+          component="img"
+          src={gif}
+          alt={title}
           sx={{
-            margin: "auto",
-            width: "100%",
+            display: "block",
+
+            width: {
+              xs: "70%",
+              md: "78%",
+            },
+
+            maxWidth: "300px",
+
+            height: "auto",
+          }}
+        />
+      </Box>
+
+      {/* COPY */}
+
+      <Box
+        sx={{
+          order: {
+            xs: 2,
+            md: reverse ? 1 : 2,
+          },
+        }}
+      >
+        <Typography
+          sx={{
+            fontFamily: "monospace",
+
+            fontSize: {
+              xs: "9px",
+              sm: "10px",
+            },
+
+            letterSpacing: "0.4px",
+
+            color: "#999999",
+
+            mb: "12px",
           }}
         >
-          <Box sx={{ marginTop: "120px" }}>
-            <Footer />
-          </Box>
+          {number}
+        </Typography>
+
+        <Typography
+          component="h3"
+          variant="h3"
+          sx={{
+            fontSize: {
+              xs: "30px",
+              sm: "34px",
+              md: "38px",
+            },
+
+            lineHeight: 1.05,
+
+            color: "#464F5B",
+
+            mb: "18px",
+          }}
+        >
+          {title}
+        </Typography>
+
+        <Typography
+          component="p"
+          variant="body1"
+          sx={{
+            fontSize: {
+              xs: "15px",
+              md: "16px",
+            },
+
+            lineHeight: 1.65,
+
+            color: "#808080",
+          }}
+        >
+          {children}
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
+
+// ============================================================
+// REFLECTION
+// ============================================================
+
+function ReflectionGrid() {
+  const reflections = [
+    {
+      title: "Personalization can also mean giving users control.",
+
+      description:
+        "This project changed how I thought about recommendation systems. Personalization does not have to happen entirely behind the scenes; users can also actively shape what they want to discover.",
+    },
+
+    {
+      title:
+        "The best feature may be a simpler version of what already exists.",
+
+      description:
+        "Rather than redesigning Instagram from the ground up, I focused on extending a familiar interaction model and addressing a specific gap within the existing Explore experience.",
+    },
+  ];
+
+  return (
+    <Box
+      sx={{
+        display: "grid",
+
+        gridTemplateColumns: {
+          xs: "1fr",
+          md: "1fr 1fr",
+        },
+
+        gap: {
+          xs: "48px",
+          md: "72px",
+        },
+      }}
+    >
+      {reflections.map((item) => (
+        <Box key={item.title}>
+          <Typography
+            component="h3"
+            variant="h3"
+            sx={{
+              fontSize: {
+                xs: "26px",
+                sm: "28px",
+                md: "30px",
+              },
+
+              lineHeight: 1.15,
+
+              color: "#464F5B",
+
+              mb: "18px",
+            }}
+          >
+            {item.title}
+          </Typography>
+
+          <Typography
+            component="p"
+            variant="body1"
+            sx={{
+              fontSize: {
+                xs: "15px",
+                md: "16px",
+              },
+
+              lineHeight: 1.7,
+
+              color: "#808080",
+            }}
+          >
+            {item.description}
+          </Typography>
         </Box>
-      </motion.div>
-    </ThemeProvider>
+      ))}
+    </Box>
   );
 }
