@@ -6,9 +6,10 @@ import { Box } from "@mui/material";
 
 import CaseStudySidebar from "./caseStudySidebar";
 
-export default function CaseStudyLayout({ children }) {
+export default function CaseStudyLayout({ children, navItems }) {
   return (
     <Box
+      component="main"
       sx={{
         position: "relative",
 
@@ -16,15 +17,16 @@ export default function CaseStudyLayout({ children }) {
 
         bgcolor: "#FFFFFF",
 
-        // creates the rounded overlap with Hero
         borderRadius: {
-          xs: "24px 24px 0 0",
-          md: "36px 36px 0 0",
+          xs: "20px 20px 0 0",
+          sm: "24px 24px 0 0",
+          md: "32px 32px 0 0",
         },
 
         mt: {
-          xs: "-24px",
-          md: "-36px",
+          xs: "-20px",
+          sm: "-24px",
+          md: "-32px",
         },
 
         zIndex: 2,
@@ -33,43 +35,39 @@ export default function CaseStudyLayout({ children }) {
       <Box
         sx={{
           width: "100%",
-          maxWidth: "1240px",
+
+          maxWidth: "1280px",
 
           mx: "auto",
 
           px: {
-            xs: "24px",
-            sm: "40px",
+            xs: "20px",
+            sm: "32px",
             md: "48px",
+            lg: "56px",
           },
 
           display: "grid",
 
           gridTemplateColumns: {
-            xs: "1fr",
-            md: "140px minmax(0, 800px)",
+            xs: "minmax(0, 1fr)",
+            md: "120px minmax(0, 820px)",
           },
 
           columnGap: {
-            md: "72px",
-            lg: "100px",
+            md: "64px",
+            lg: "88px",
           },
 
           alignItems: "start",
 
           pb: {
-            xs: "80px",
-            md: "140px",
+            xs: "72px",
+            md: "110px",
           },
         }}
       >
-        {/* =====================================
-            ONLY SIDEBAR ON THE PAGE
-
-            Because CaseStudyLayout contains the
-            entire case study, this can remain
-            sticky throughout all sections.
-        ===================================== */}
+        {/* SIDEBAR */}
 
         <Box
           sx={{
@@ -78,22 +76,25 @@ export default function CaseStudyLayout({ children }) {
               md: "block",
             },
 
-            pt: "48px",
+            pt: {
+              md: "64px",
+            },
 
             alignSelf: "stretch",
           }}
         >
-          <CaseStudySidebar />
+          <CaseStudySidebar items={navItems} />
         </Box>
 
-        {/* =====================================
-            EVERYTHING ON THE RIGHT
-        ===================================== */}
+        {/* CONTENT */}
 
         <Box
           sx={{
             minWidth: 0,
+
             width: "100%",
+
+            maxWidth: "820px",
           }}
         >
           {children}

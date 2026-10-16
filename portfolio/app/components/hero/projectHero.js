@@ -14,41 +14,47 @@ export default function ProjectInfo({
 }) {
   return (
     <Box
+      component="header"
       sx={{
         pt: {
-          xs: "40px",
-          md: "48px",
+          xs: "48px",
+          md: "64px",
         },
 
         pb: {
-          xs: "56px",
-          md: "72px",
+          xs: "64px",
+          md: "88px",
         },
       }}
     >
       {/* ======================================================
           COMPANY
-          Small utility typography, matching CareerTimeline
       ====================================================== */}
 
       <Typography
+        component="p"
         sx={{
-          fontFamily: "monospace",
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
           fontSize: {
-            xs: "9px",
-            sm: "10px",
+            xs: "11px",
+            sm: "12px",
           },
 
-          fontWeight: 400,
+          fontWeight: 600,
 
-          letterSpacing: "0.4px",
+          letterSpacing: "0.08em",
 
           textTransform: "uppercase",
 
-          color: "#999999",
+          color: "#8B929A",
 
-          mb: "18px",
+          lineHeight: 1.4,
+
+          mb: {
+            xs: "18px",
+            md: "22px",
+          },
         }}
       >
         {company}
@@ -56,30 +62,35 @@ export default function ProjectInfo({
 
       {/* ======================================================
           PROJECT TITLE
-          Bootzy, matching CareerTimeline company headings
       ====================================================== */}
 
       <Typography
         component="h1"
-        variant="h1"
         sx={{
-          fontFamily: "Bootzy, sans-serif",
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
           fontSize: {
-            xs: "40px",
-            sm: "48px",
-            md: "56px",
+            xs: "42px",
+            sm: "52px",
+            md: "64px",
           },
 
-          lineHeight: 0.9,
+          fontWeight: 500,
 
-          letterSpacing: "1px",
+          letterSpacing: {
+            xs: "-1.4px",
+            sm: "-1.8px",
+            md: "-2.2px",
+          },
 
-          fontWeight: 400,
+          lineHeight: {
+            xs: 1.05,
+            md: 1.02,
+          },
 
           color: "#464F5B",
 
-          maxWidth: "850px",
+          maxWidth: "900px",
 
           m: 0,
         }}
@@ -94,9 +105,16 @@ export default function ProjectInfo({
       <Box
         sx={{
           mt: {
-            xs: "42px",
-            md: "48px",
+            xs: "48px",
+            md: "64px",
           },
+
+          pt: {
+            xs: "24px",
+            md: "28px",
+          },
+
+          borderTop: "1px solid #E4E6E8",
 
           display: "grid",
 
@@ -108,6 +126,7 @@ export default function ProjectInfo({
           columnGap: {
             xs: "24px",
             sm: "32px",
+            md: "48px",
           },
 
           rowGap: {
@@ -137,45 +156,40 @@ export default function ProjectInfo({
 function MetaItem({ label, children }) {
   return (
     <Box>
-      {/* ======================================================
-          META LABEL
-          Same utility style as CareerTimeline year
-      ====================================================== */}
+      {/* META LABEL */}
 
       <Typography
+        component="p"
         sx={{
-          fontFamily: "monospace",
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
           fontSize: {
-            xs: "9px",
-            sm: "10px",
+            xs: "10px",
+            sm: "11px",
           },
 
-          fontWeight: 400,
+          fontWeight: 600,
 
-          letterSpacing: "0.4px",
+          letterSpacing: "0.08em",
 
           textTransform: "uppercase",
 
-          color: "#999999",
+          color: "#969DA6",
 
           lineHeight: 1.4,
 
-          mb: "7px",
+          mb: "8px",
         }}
       >
         {label}
       </Typography>
 
-      {/* ======================================================
-          META VALUE
-          Same Arial treatment as CareerTimeline roles
-      ====================================================== */}
+      {/* META VALUE */}
 
       <Typography
         component="div"
         sx={{
-          fontFamily: "Arial, sans-serif",
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
           fontSize: {
             xs: "14px",
@@ -183,11 +197,11 @@ function MetaItem({ label, children }) {
             md: "16px",
           },
 
-          fontWeight: 500,
+          fontWeight: 450,
 
-          letterSpacing: "-0.3px",
+          letterSpacing: "-0.2px",
 
-          lineHeight: 1.5,
+          lineHeight: 1.55,
 
           color: "#464F5B",
 

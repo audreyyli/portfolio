@@ -7,12 +7,58 @@ import { Box, Typography, ThemeProvider, CssBaseline } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 
 import Hero from "../../components/hero/hero.js";
-
 import CaseStudyLayout from "../../components/caseStudy/caseStudyLayout.js";
-
 import CaseStudySection from "../../components/caseStudy/caseStudySection.js";
-
 import ProjectInfo from "../../components/hero/projectHero.js";
+
+// ============================================================
+// COLORS
+// ============================================================
+
+const COLORS = {
+  primary: "#29323D",
+  body: "#737C87",
+  muted: "#969DA6",
+
+  accent: "#1B56A0",
+  accentSoft: "#E8F1FD",
+
+  border: "#E4E6E8",
+
+  background: "#FFFFFF",
+  softBackground: "#F5F6F7",
+};
+
+// ============================================================
+// SIDEBAR
+// ============================================================
+
+const NAV_ITEMS = [
+  {
+    label: "Overview",
+    id: "overview",
+  },
+
+  {
+    label: "Problem",
+    id: "problem",
+  },
+
+  {
+    label: "Contribution",
+    id: "contribution",
+  },
+
+  {
+    label: "Outcomes",
+    id: "outcomes",
+  },
+
+  {
+    label: "Reflection",
+    id: "reflection",
+  },
+];
 
 // ============================================================
 // THEME
@@ -20,81 +66,82 @@ import ProjectInfo from "../../components/hero/projectHero.js";
 
 const theme = createTheme({
   typography: {
-    // Default
-    fontFamily: "Arial, sans-serif",
-
-    // ========================================================
-    // BOOTZY — DISPLAY / TITLES
-    // Matches CareerTimeline company typography
-    // ========================================================
+    fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
     h1: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-      lineHeight: 0.9,
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+      fontWeight: 500,
+
+      letterSpacing: "-1.5px",
+
+      lineHeight: 1.05,
     },
 
     h2: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-      lineHeight: 0.9,
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+      fontWeight: 500,
+
+      letterSpacing: "-1.3px",
+
+      lineHeight: 1.08,
     },
 
     h3: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-      lineHeight: 0.9,
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+      fontWeight: 500,
+
+      letterSpacing: "-0.7px",
+
+      lineHeight: 1.15,
     },
 
     h4: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-      lineHeight: 0.9,
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+      fontWeight: 500,
     },
 
     h5: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-      lineHeight: 0.9,
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+      fontWeight: 500,
     },
 
     h6: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-      lineHeight: 0.9,
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+      fontWeight: 500,
     },
 
-    // ========================================================
-    // ARIAL — BODY
-    // ========================================================
-
     body1: {
-      fontFamily: "Arial, sans-serif",
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
       fontWeight: 400,
-      letterSpacing: "-0.35px",
+
+      letterSpacing: "-0.2px",
     },
 
     body2: {
-      fontFamily: "Arial, sans-serif",
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
       fontWeight: 400,
-      letterSpacing: "-0.3px",
+
+      letterSpacing: "-0.1px",
     },
   },
 
   palette: {
     background: {
-      default: "#FFFFFF",
+      default: COLORS.background,
     },
 
     text: {
-      primary: "#464F5B",
-      secondary: "#808080",
+      primary: COLORS.primary,
+
+      secondary: COLORS.body,
     },
   },
 
@@ -112,19 +159,15 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          fontFamily: "Arial, sans-serif",
-          color: "#464F5B",
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+          color: COLORS.primary,
+
+          backgroundColor: COLORS.background,
         },
 
-        p: {
-          fontFamily: "Arial, sans-serif",
-          letterSpacing: "-0.35px",
-        },
-
-        "h1, h2, h3, h4, h5, h6": {
-          fontFamily: "Bootzy, sans-serif",
-          fontWeight: 400,
-          letterSpacing: "1px",
+        "h1, h2, h3, h4, h5, h6, p": {
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
         },
       },
     },
@@ -141,20 +184,16 @@ export default function TwoSmallMen() {
       <CssBaseline />
 
       {/* ======================================================
-          HERO IMAGE
+          HERO
       ====================================================== */}
 
       <Hero
-        image="/images/TSMMock.png"
+        image="/images/TSM/TSMMock.png"
         company="Two Small Men with Big Hearts"
         backgroundColor="#D9E6FF"
       />
 
-      {/* ======================================================
-          CASE STUDY
-      ====================================================== */}
-
-      <CaseStudyLayout>
+      <CaseStudyLayout navItems={NAV_ITEMS}>
         {/* ====================================================
             PROJECT INFORMATION
         ==================================================== */}
@@ -210,7 +249,7 @@ export default function TwoSmallMen() {
         </CaseStudySection>
 
         {/* ====================================================
-            TOP OUTCOMES
+            KEY OUTCOMES
         ==================================================== */}
 
         <TopOutcomes />
@@ -249,44 +288,13 @@ export default function TwoSmallMen() {
             CONTRIBUTION
         ==================================================== */}
 
-        <Box
-          component="section"
-          sx={{
-            py: {
-              xs: "72px",
-              md: "110px",
-            },
-          }}
+        <CaseSection
+          id="contribution"
+          eyebrow="My Contribution"
+          title="Designing the experience and helping bring it into production."
         >
-          <Eyebrow>My Contribution</Eyebrow>
-
-          <Typography
-            component="h2"
-            variant="h2"
-            sx={{
-              maxWidth: "720px",
-
-              fontSize: {
-                xs: "38px",
-                sm: "44px",
-                md: "52px",
-              },
-
-              lineHeight: 1.08,
-
-              color: "#202A36",
-
-              mb: {
-                xs: "48px",
-                md: "64px",
-              },
-            }}
-          >
-            Designing the experience and helping bring it into production.
-          </Typography>
-
           <ContributionGrid />
-        </Box>
+        </CaseSection>
 
         <SectionDivider />
 
@@ -294,48 +302,13 @@ export default function TwoSmallMen() {
             OUTCOMES
         ==================================================== */}
 
-        <Box
-          component="section"
+        <CaseSection
           id="outcomes"
-          sx={{
-            scrollMarginTop: "80px",
-
-            py: {
-              xs: "72px",
-              md: "120px",
-            },
-          }}
+          eyebrow="Outcomes"
+          title="Improvements across the experience led to measurable customer and business impact."
         >
-          <Eyebrow>Outcomes</Eyebrow>
-
-          <Typography
-            component="h2"
-            variant="h2"
-            sx={{
-              maxWidth: "720px",
-
-              fontSize: {
-                xs: "38px",
-                sm: "44px",
-                md: "52px",
-              },
-
-              lineHeight: 1.08,
-
-              color: "#202A36",
-
-              mb: {
-                xs: "56px",
-                md: "72px",
-              },
-            }}
-          >
-            Improvements across the experience led to measurable customer and
-            business impact.
-          </Typography>
-
           <OutcomeGrid />
-        </Box>
+        </CaseSection>
 
         <SectionDivider />
 
@@ -343,82 +316,90 @@ export default function TwoSmallMen() {
             REFLECTION
         ==================================================== */}
 
-        <Box
-          component="section"
+        <CaseSection
           id="reflection"
-          sx={{
-            scrollMarginTop: "80px",
-
-            py: {
-              xs: "80px",
-              md: "130px",
-            },
-          }}
+          eyebrow="Reflection"
+          title="What I learned along the way."
         >
-          <Eyebrow>Reflection</Eyebrow>
-
-          <Typography
-            component="h2"
-            variant="h2"
-            sx={{
-              fontSize: {
-                xs: "42px",
-                sm: "50px",
-                md: "60px",
-              },
-
-              lineHeight: 1.05,
-
-              color: "#202A36",
-
-              mb: {
-                xs: "56px",
-                md: "72px",
-              },
-            }}
-          >
-            What I learned
-          </Typography>
-
           <ReflectionGrid />
-        </Box>
+        </CaseSection>
 
         {/* ====================================================
             END
         ==================================================== */}
 
-        <Box
-          sx={{
-            pt: {
-              xs: "40px",
-              md: "80px",
-            },
-
-            pb: {
-              xs: "60px",
-              md: "100px",
-            },
-          }}
-        >
-          <Typography
-            component="h2"
-            variant="h2"
-            sx={{
-              fontSize: {
-                xs: "40px",
-                md: "54px",
-              },
-
-              lineHeight: 1.05,
-
-              color: "#202A36",
-            }}
-          >
-            Thanks for reading.
-          </Typography>
-        </Box>
+        <EndCard />
       </CaseStudyLayout>
     </ThemeProvider>
+  );
+}
+
+// ============================================================
+// CASE SECTION
+// ============================================================
+
+type CaseSectionProps = {
+  id?: string;
+  eyebrow: string;
+  title: string;
+  children: React.ReactNode;
+};
+
+function CaseSection({ id, eyebrow, title, children }: CaseSectionProps) {
+  return (
+    <Box
+      component="section"
+      id={id}
+      sx={{
+        scrollMarginTop: "80px",
+
+        py: {
+          xs: "80px",
+          md: "120px",
+        },
+      }}
+    >
+      <Eyebrow>{eyebrow}</Eyebrow>
+
+      <Typography
+        component="h2"
+        sx={{
+          maxWidth: "780px",
+
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+          fontSize: {
+            xs: "34px",
+            sm: "40px",
+            md: "46px",
+          },
+
+          fontWeight: 500,
+
+          letterSpacing: {
+            xs: "-0.9px",
+            sm: "-1.1px",
+            md: "-1.4px",
+          },
+
+          lineHeight: {
+            xs: 1.12,
+            md: 1.08,
+          },
+
+          color: COLORS.primary,
+
+          mb: {
+            xs: "52px",
+            md: "68px",
+          },
+        }}
+      >
+        {title}
+      </Typography>
+
+      {children}
+    </Box>
   );
 }
 
@@ -430,18 +411,25 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <Typography
       component="p"
-      variant="body2"
       sx={{
-        fontSize: "13px",
+        fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+        fontSize: {
+          xs: "11px",
+          md: "12px",
+        },
+
+        fontWeight: 600,
 
         textTransform: "uppercase",
 
-        // Intentional positive spacing for small uppercase labels
-        letterSpacing: "0.08em",
+        letterSpacing: "0.09em",
 
-        color: "#969DA6",
+        lineHeight: 1.4,
 
-        mb: "22px",
+        color: COLORS.accent,
+
+        mb: "18px",
       }}
     >
       {children}
@@ -461,7 +449,7 @@ function SectionDivider() {
 
         height: "1px",
 
-        bgcolor: "#E8EAED",
+        bgcolor: COLORS.border,
       }}
     />
   );
@@ -476,35 +464,49 @@ function ConfidentialityNote({ children }: { children: React.ReactNode }) {
     <Box
       sx={{
         mt: {
-          xs: "44px",
-          md: "56px",
+          xs: "40px",
+          md: "52px",
         },
+
+        py: "4px",
 
         pl: {
-          xs: "20px",
-          md: "24px",
+          xs: "18px",
+          md: "22px",
         },
 
-        borderLeft: "2px solid #AEB5BD",
+        borderLeft: `3px solid ${COLORS.accent}`,
       }}
     >
       <Typography
         component="p"
-        variant="body1"
         sx={{
+          maxWidth: "650px",
+
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
           fontSize: {
-            xs: "17px",
-            md: "19px",
+            xs: "15px",
+            md: "16px",
           },
 
-          lineHeight: 1.65,
+          lineHeight: 1.7,
 
-          fontStyle: "italic",
-
-          color: "#69727C",
+          color: COLORS.body,
         }}
       >
-        Note: {children}
+        <Box
+          component="span"
+          sx={{
+            fontWeight: 600,
+
+            color: COLORS.primary,
+          }}
+        >
+          Note:{" "}
+        </Box>
+
+        {children}
       </Typography>
     </Box>
   );
@@ -518,31 +520,35 @@ function TopOutcomes() {
   const outcomes = [
     {
       value: "65%+",
+
       label: "faster quote generation",
     },
 
     {
       value: "+20%",
+
       label: "lead-to-sale conversion",
     },
 
     {
       value: "+12%",
+
       label: "quote completion rate",
     },
   ];
 
   return (
     <Box
+      component="section"
       sx={{
         pt: {
-          xs: "16px",
-          md: "24px",
+          xs: "12px",
+          md: "20px",
         },
 
         pb: {
-          xs: "72px",
-          md: "100px",
+          xs: "80px",
+          md: "110px",
         },
       }}
     >
@@ -558,33 +564,51 @@ function TopOutcomes() {
           },
 
           gap: {
-            xs: "36px",
-            sm: "32px",
+            xs: "16px",
+            sm: "16px",
+            md: "20px",
           },
         }}
       >
         {outcomes.map((outcome) => (
-          <Box key={outcome.label}>
-            {/* Metric stays Arial */}
+          <Box
+            key={outcome.label}
+            sx={{
+              minHeight: {
+                sm: "170px",
+              },
 
+              p: {
+                xs: "24px",
+                md: "28px",
+              },
+
+              bgcolor: COLORS.accentSoft,
+
+              border: "1px solid #D5E4F7",
+
+              borderRadius: "12px",
+            }}
+          >
             <Typography
+              component="p"
               sx={{
-                fontFamily: "Arial, Helvetica, sans-serif",
+                fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
                 fontSize: {
-                  xs: "34px",
-                  md: "40px",
+                  xs: "38px",
+                  md: "44px",
                 },
 
                 lineHeight: 1,
 
-                letterSpacing: "-0.6px",
+                letterSpacing: "-1.7px",
 
-                fontWeight: 400,
+                fontWeight: 600,
 
-                color: "#202A36",
+                color: COLORS.accent,
 
-                mb: "12px",
+                mb: "16px",
               }}
             >
               {outcome.value}
@@ -592,16 +616,21 @@ function TopOutcomes() {
 
             <Typography
               component="p"
-              variant="body1"
               sx={{
+                maxWidth: "180px",
+
+                fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
                 fontSize: {
                   xs: "15px",
                   md: "16px",
                 },
 
-                lineHeight: 1.5,
+                fontWeight: 400,
 
-                color: "#89919A",
+                lineHeight: 1.45,
+
+                color: COLORS.body,
               }}
             >
               {outcome.label}
@@ -622,67 +651,78 @@ function ProblemStatement({ children }: { children: React.ReactNode }) {
     <Box
       sx={{
         mt: {
-          xs: "48px",
-          md: "60px",
+          xs: "52px",
+          md: "64px",
         },
 
-        p: {
-          xs: "24px",
-          md: "36px",
+        py: {
+          xs: "36px",
+          md: "46px",
         },
 
-        bgcolor: "#F8FAFC",
+        px: {
+          xs: "28px",
+          md: "42px",
+        },
 
-        border: "1px solid #E4E8EC",
+        bgcolor: COLORS.accentSoft,
+
+        borderRadius: "12px",
+
+        border: "1px solid #D5E4F7",
       }}
     >
       <Typography
         component="p"
-        variant="body1"
         sx={{
-          fontSize: "15px",
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
-          fontStyle: "italic",
-
-          color: "#48515B",
-
-          mb: "24px",
-        }}
-      >
-        The problem statement
-      </Typography>
-
-      <Box
-        sx={{
-          p: {
-            xs: "28px 22px",
-            md: "36px 42px",
+          fontSize: {
+            xs: "11px",
+            md: "12px",
           },
 
-          bgcolor: "#E7F0FC",
+          fontWeight: 600,
 
-          textAlign: "center",
+          letterSpacing: "0.09em",
+
+          textTransform: "uppercase",
+
+          color: COLORS.accent,
+
+          mb: "18px",
         }}
       >
-        {/* This is a statement/title, so Bootzy */}
+        How might we
+      </Typography>
 
-        <Typography
-          component="h3"
-          variant="h3"
-          sx={{
-            fontSize: {
-              xs: "26px",
-              md: "32px",
-            },
+      <Typography
+        component="p"
+        sx={{
+          maxWidth: "760px",
 
-            lineHeight: 1.25,
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
-            color: "#1769C2",
-          }}
-        >
-          {children}
-        </Typography>
-      </Box>
+          fontSize: {
+            xs: "23px",
+            sm: "26px",
+            md: "30px",
+          },
+
+          fontWeight: 500,
+
+          letterSpacing: {
+            xs: "-0.6px",
+            md: "-0.9px",
+          },
+
+          lineHeight: 1.3,
+
+          color: COLORS.accent,
+        }}
+      >
+        {children}
+      </Typography>
     </Box>
   );
 }
@@ -694,6 +734,8 @@ function ProblemStatement({ children }: { children: React.ReactNode }) {
 function ContributionGrid() {
   const contributions = [
     {
+      number: "01",
+
       title: "Product design",
 
       description:
@@ -701,6 +743,8 @@ function ContributionGrid() {
     },
 
     {
+      number: "02",
+
       title: "Development",
 
       description:
@@ -708,6 +752,8 @@ function ContributionGrid() {
     },
 
     {
+      number: "03",
+
       title: "Experimentation",
 
       description:
@@ -715,6 +761,8 @@ function ContributionGrid() {
     },
 
     {
+      number: "04",
+
       title: "Growth UX",
 
       description:
@@ -733,27 +781,56 @@ function ContributionGrid() {
         },
 
         gap: {
-          xs: "44px",
-          md: "56px 72px",
+          xs: "48px",
+          md: "56px 80px",
         },
       }}
     >
       {contributions.map((item) => (
-        <Box key={item.title}>
-          {/* Title = Bootzy */}
+        <Box
+          key={item.title}
+          sx={{
+            pt: "20px",
+
+            borderTop: `1px solid ${COLORS.border}`,
+          }}
+        >
+          <Typography
+            component="p"
+            sx={{
+              fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+              fontSize: "11px",
+
+              fontWeight: 600,
+
+              letterSpacing: "0.04em",
+
+              color: COLORS.accent,
+
+              mb: "22px",
+            }}
+          >
+            {item.number}
+          </Typography>
 
           <Typography
             component="h3"
-            variant="h3"
             sx={{
+              fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
               fontSize: {
-                xs: "27px",
-                md: "31px",
+                xs: "21px",
+                md: "23px",
               },
 
-              lineHeight: 1.2,
+              fontWeight: 600,
 
-              color: "#202A36",
+              letterSpacing: "-0.4px",
+
+              lineHeight: 1.25,
+
+              color: COLORS.primary,
 
               mb: "12px",
             }}
@@ -761,20 +838,19 @@ function ContributionGrid() {
             {item.title}
           </Typography>
 
-          {/* Description = Arial */}
-
           <Typography
             component="p"
-            variant="body1"
             sx={{
+              maxWidth: "430px",
+
               fontSize: {
-                xs: "16px",
-                md: "17px",
+                xs: "15px",
+                md: "16px",
               },
 
               lineHeight: 1.65,
 
-              color: "#858D96",
+              color: COLORS.body,
             }}
           >
             {item.description}
@@ -794,7 +870,7 @@ function OutcomeGrid() {
     {
       value: "65%+",
 
-      title: "faster quote generation",
+      title: "Faster quote generation",
 
       description:
         "Redesigned and built the quote estimator alongside sales and engineering.",
@@ -803,7 +879,7 @@ function OutcomeGrid() {
     {
       value: "+20%",
 
-      title: "lead-to-sale conversion",
+      title: "Lead-to-sale conversion",
 
       description:
         "Improved the path from quote submission to qualified sales lead.",
@@ -812,36 +888,10 @@ function OutcomeGrid() {
     {
       value: "+12%",
 
-      title: "completion rate",
+      title: "Completion rate",
 
       description:
         "A/B testing showed that a simplified estimator layout improved completion.",
-    },
-
-    {
-      value: "+40%",
-
-      title: "organic traffic flow",
-
-      description:
-        "Built search and filtering to improve content discovery for high-intent visitors.",
-    },
-
-    {
-      value: "-60%",
-
-      title: "content retrieval time",
-
-      description: "Made relevant moving content faster and easier to find.",
-    },
-
-    {
-      value: "+50%",
-
-      title: "organic traffic",
-
-      description:
-        "Improved mobile UX and aligned patterns across 40+ city pages.",
     },
   ];
 
@@ -852,72 +902,80 @@ function OutcomeGrid() {
 
         gridTemplateColumns: {
           xs: "1fr",
+          sm: "1fr 1fr",
           md: "repeat(3, 1fr)",
         },
 
         columnGap: {
-          md: "48px",
+          sm: "48px",
+          md: "56px",
         },
 
         rowGap: {
           xs: "52px",
-          md: "72px",
+          md: "68px",
         },
       }}
     >
       {outcomes.map((outcome) => (
-        <Box key={`${outcome.value}-${outcome.title}`}>
-          {/* Metric = Arial */}
+        <Box
+          key={`${outcome.value}-${outcome.title}`}
+          sx={{
+            pt: "20px",
 
+            borderTop: `1px solid ${COLORS.border}`,
+          }}
+        >
           <Typography
+            component="p"
             sx={{
-              fontFamily: "Arial, Helvetica, sans-serif",
+              fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
               fontSize: {
-                xs: "34px",
-                md: "38px",
+                xs: "36px",
+                md: "40px",
               },
 
               lineHeight: 1,
 
-              letterSpacing: "-0.6px",
+              letterSpacing: "-1.5px",
 
-              fontWeight: 400,
+              fontWeight: 600,
 
-              color: "#202A36",
+              color: COLORS.accent,
 
-              mb: "12px",
+              mb: "20px",
             }}
           >
             {outcome.value}
           </Typography>
 
-          {/* Outcome title = Bootzy */}
-
           <Typography
             component="h3"
-            variant="h3"
             sx={{
+              fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
               fontSize: {
-                xs: "24px",
-                md: "27px",
+                xs: "19px",
+                md: "21px",
               },
 
-              lineHeight: 1.2,
+              fontWeight: 600,
 
-              color: "#303A46",
+              letterSpacing: "-0.4px",
 
-              mb: "14px",
+              lineHeight: 1.3,
+
+              color: COLORS.primary,
+
+              mb: "10px",
             }}
           >
             {outcome.title}
           </Typography>
 
-          {/* Description = Arial */}
-
           <Typography
             component="p"
-            variant="body1"
             sx={{
               fontSize: {
                 xs: "15px",
@@ -926,7 +984,7 @@ function OutcomeGrid() {
 
               lineHeight: 1.65,
 
-              color: "#89919A",
+              color: COLORS.body,
             }}
           >
             {outcome.description}
@@ -944,6 +1002,8 @@ function OutcomeGrid() {
 function ReflectionGrid() {
   const reflections = [
     {
+      number: "01",
+
       title: "Test behaviour, not assumptions.",
 
       description:
@@ -951,6 +1011,8 @@ function ReflectionGrid() {
     },
 
     {
+      number: "02",
+
       title: "Design and business outcomes are connected.",
 
       description:
@@ -958,6 +1020,8 @@ function ReflectionGrid() {
     },
 
     {
+      number: "03",
+
       title: "Building made me a better designer.",
 
       description:
@@ -965,6 +1029,8 @@ function ReflectionGrid() {
     },
 
     {
+      number: "04",
+
       title: "Small improvements compound.",
 
       description:
@@ -983,54 +1049,176 @@ function ReflectionGrid() {
         },
 
         gap: {
-          xs: "52px",
-          md: "72px 64px",
+          xs: "48px",
+          md: "64px 80px",
         },
       }}
     >
       {reflections.map((reflection) => (
-        <Box key={reflection.title}>
-          {/* Reflection title = Bootzy */}
+        <Box
+          key={reflection.title}
+          sx={{
+            pt: "20px",
+
+            borderTop: `1px solid ${COLORS.border}`,
+          }}
+        >
+          <Typography
+            component="p"
+            sx={{
+              fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+              fontSize: "11px",
+
+              fontWeight: 600,
+
+              letterSpacing: "0.04em",
+
+              color: COLORS.accent,
+
+              mb: "22px",
+            }}
+          >
+            {reflection.number}
+          </Typography>
 
           <Typography
             component="h3"
-            variant="h3"
             sx={{
+              maxWidth: "470px",
+
+              fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
               fontSize: {
-                xs: "28px",
-                md: "34px",
+                xs: "21px",
+                sm: "22px",
+                md: "24px",
               },
 
-              lineHeight: 1.2,
+              fontWeight: 600,
 
-              color: "#202A36",
+              letterSpacing: "-0.5px",
 
-              mb: "18px",
+              lineHeight: 1.3,
+
+              color: COLORS.primary,
+
+              mb: "14px",
             }}
           >
             {reflection.title}
           </Typography>
 
-          {/* Reflection paragraph = Arial */}
-
           <Typography
             component="p"
-            variant="body1"
             sx={{
+              maxWidth: "500px",
+
               fontSize: {
-                xs: "16px",
-                md: "17px",
+                xs: "15px",
+                md: "16px",
               },
 
               lineHeight: 1.7,
 
-              color: "#89919A",
+              color: COLORS.body,
             }}
           >
             {reflection.description}
           </Typography>
         </Box>
       ))}
+    </Box>
+  );
+}
+
+// ============================================================
+// END CARD
+// ============================================================
+
+function EndCard() {
+  return (
+    <Box
+      sx={{
+        mt: {
+          xs: "24px",
+          md: "48px",
+        },
+
+        mb: {
+          xs: "64px",
+          md: "100px",
+        },
+
+        py: {
+          xs: "52px",
+          md: "68px",
+        },
+
+        px: {
+          xs: "28px",
+          md: "44px",
+        },
+
+        bgcolor: COLORS.accentSoft,
+
+        border: "1px solid #D5E4F7",
+
+        borderRadius: {
+          xs: "12px",
+          md: "16px",
+        },
+      }}
+    >
+      <Typography
+        component="p"
+        sx={{
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+          fontSize: {
+            xs: "11px",
+            md: "12px",
+          },
+
+          fontWeight: 600,
+
+          letterSpacing: "0.09em",
+
+          textTransform: "uppercase",
+
+          color: COLORS.accent,
+
+          mb: "16px",
+        }}
+      >
+        End of case study
+      </Typography>
+
+      <Typography
+        component="h2"
+        sx={{
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+          fontSize: {
+            xs: "38px",
+            sm: "44px",
+            md: "50px",
+          },
+
+          fontWeight: 500,
+
+          letterSpacing: {
+            xs: "-1.1px",
+            md: "-1.6px",
+          },
+
+          lineHeight: 1.05,
+
+          color: COLORS.primary,
+        }}
+      >
+        Thanks for reading.
+      </Typography>
     </Box>
   );
 }

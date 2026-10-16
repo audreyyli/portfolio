@@ -14,7 +14,7 @@ const CaseStudySection = ({
       component="section"
       id={id}
       sx={{
-        scrollMarginTop: "60px",
+        scrollMarginTop: "80px",
 
         py: {
           xs: "72px",
@@ -26,101 +26,168 @@ const CaseStudySection = ({
     >
       {/* ======================================================
           SECTION LABEL
-          Utility typography similar to CareerTimeline year
       ====================================================== */}
 
-      <Typography
-        component="p"
-        sx={{
-          fontFamily: "monospace",
+      {eyebrow && (
+        <Typography
+          component="p"
+          sx={{
+            fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
-          fontSize: {
-            xs: "9px",
-            sm: "10px",
-          },
+            fontSize: {
+              xs: "11px",
+              md: "12px",
+            },
 
-          lineHeight: 1.4,
+            fontWeight: 600,
 
-          letterSpacing: "0.4px",
+            lineHeight: 1.4,
 
-          textTransform: "uppercase",
+            letterSpacing: "0.09em",
 
-          color: "#999999",
+            textTransform: "uppercase",
 
-          mb: "18px",
-        }}
-      >
-        {eyebrow}
-      </Typography>
+            color: "#1B56A0",
+
+            mb: {
+              xs: "18px",
+              md: "20px",
+            },
+          }}
+        >
+          {eyebrow}
+        </Typography>
+      )}
 
       {/* ======================================================
-          TITLE
-          Same Bootzy treatment as CareerTimeline company names
+          SECTION TITLE
       ====================================================== */}
 
-      <Typography
-        component="h2"
-        variant="h2"
-        sx={{
-          maxWidth: "760px",
+      {title && (
+        <Typography
+          component="h2"
+          sx={{
+            maxWidth: "780px",
 
-          fontFamily: "Bootzy, sans-serif",
+            fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
-          fontSize: {
-            xs: "34px",
-            sm: "40px",
-            md: "46px",
-          },
+            fontSize: {
+              xs: "34px",
+              sm: "40px",
+              md: "46px",
+            },
 
-          lineHeight: 0.9,
+            fontWeight: 500,
 
-          letterSpacing: "1px",
+            lineHeight: {
+              xs: 1.12,
+              md: 1.08,
+            },
 
-          fontWeight: 400,
+            letterSpacing: {
+              xs: "-0.9px",
+              sm: "-1.1px",
+              md: "-1.4px",
+            },
 
-          color: "#464F5B",
+            color: "#29323D",
 
-          mb: {
-            xs: "30px",
-            md: "36px",
-          },
-        }}
-      >
-        {title}
-      </Typography>
+            m: 0,
+
+            mb: {
+              xs: "30px",
+              md: "36px",
+            },
+          }}
+        >
+          {title}
+        </Typography>
+      )}
 
       {/* ======================================================
-          BODY
-          Same Arial treatment as CareerTimeline descriptions
+          BODY CONTENT
       ====================================================== */}
 
       <Box
         sx={{
           maxWidth: "720px",
 
-          "& p": {
-            fontFamily: "Arial, sans-serif",
+          /*
+           * Only style paragraphs that are DIRECT children.
+           *
+           * This means components nested inside this Box,
+           * such as ProblemStatement, can control their own
+           * typography without these styles overriding them.
+           */
+          "& > p": {
+            fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
             fontSize: {
-              xs: "15px",
-              sm: "16px",
-              md: "17px",
+              xs: "16px",
+              sm: "17px",
+              md: "18px",
             },
-
-            lineHeight: 1.65,
-
-            letterSpacing: "-0.35px",
 
             fontWeight: 400,
 
-            color: "#808080",
+            lineHeight: {
+              xs: 1.65,
+              md: 1.7,
+            },
+
+            letterSpacing: "-0.2px",
+
+            color: "#737C87",
 
             mt: 0,
 
-            mb: "22px",
+            mb: {
+              xs: "20px",
+              md: "24px",
+            },
           },
 
-          "& p:last-child": {
+          "& > p:last-of-type": {
+            mb: 0,
+          },
+
+          // ==================================================
+          // LINKS
+          // ==================================================
+
+          "& a": {
+            color: "#1B56A0",
+
+            fontWeight: 500,
+
+            textDecorationColor: "#AFC8E8",
+
+            textUnderlineOffset: "3px",
+          },
+
+          "& a:hover": {
+            textDecorationColor: "#1B56A0",
+          },
+
+          // ==================================================
+          // LISTS
+          // ==================================================
+
+          "& ul, & ol": {
+            fontFamily: '"Google Sans Flex", Arial, sans-serif',
+
+            color: "#737C87",
+
+            lineHeight: 1.7,
+
+            pl: "22px",
+          },
+
+          "& li": {
+            mb: "8px",
+          },
+
+          "& li:last-child": {
             mb: 0,
           },
         }}

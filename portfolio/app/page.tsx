@@ -7,7 +7,6 @@ import React from "react";
 
 import ProfileCard from "./components/profileCard/profileCard";
 import WorksCard from "./components/worksCard/worksCard";
-import CustomCursor from "./components/customercursor/customcursor";
 
 const theme = createTheme({
   typography: {
@@ -44,7 +43,6 @@ function MyApp() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <CustomCursor />
 
       <Box
         sx={{

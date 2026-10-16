@@ -156,21 +156,15 @@ body {
   font-display: swap;
 }
 
-.carousel-scroll {
-  padding-bottom: 30px;
-}
+/* ==========================================================
+     GOOGLE SANS FLEX
+     ========================================================== */
 
-.carousel-scroll::-webkit-scrollbar {
-  height: 2px;
-  width: 3px;
-}
-.carousel-scroll::-webkit-scrollbar-track {
-  background-color: rgba(170, 170, 170, 0.2);
-  border-radius: 5px;
-  margin: 0 250px;
-}
-.carousel-scroll::-webkit-scrollbar-thumb {
-  background-color: rgba(68, 68, 68, 0.3);
-  border-radius: 5px;
-  margin: 0 5000px;
+@font-face {
+  font-family: "Google Sans Flex";
+  src: url("/fonts/Google_Sans_Flex/GoogleSansFlex-VariableFont_GRAD,ROND,opsz,slnt,wdth,wght.ttf")
+    format("truetype");
+  font-weight: 100 1000;
+  font-style: normal;
+  font-display: swap;
 }

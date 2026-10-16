@@ -299,7 +299,7 @@ const AudreyProfileCard = () => {
 
           <Box
             component="a"
-            href="YOUR_RESUME_LINK_HERE"
+            href="https://drive.google.com/file/d/1p83SWg3OjQIJtBgRMxnJXCNOaQXyRIYl/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             sx={{

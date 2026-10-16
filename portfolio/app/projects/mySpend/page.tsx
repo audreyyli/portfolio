@@ -15,64 +15,81 @@ import ArrowOutward from "@mui/icons-material/ArrowOutward";
 
 import Hero from "../../components/hero/hero.js";
 import CaseStudyLayout from "../../components/caseStudy/caseStudyLayout.js";
-import CaseStudySection from "../../components/caseStudy/caseStudySection.js";
 import ProjectInfo from "../../components/hero/projectHero.js";
 
 // ============================================================
+// COLOURS
+// ============================================================
+
+const COLORS = {
+  primary: "#29323D",
+  body: "#737C87",
+  muted: "#969DA6",
+
+  border: "#E4E6E8",
+  softBackground: "#F5F6F7",
+
+  green: "#1A5336",
+  greenMuted: "#52705E",
+  greenBackground: "#D3E9D4",
+  greenSoft: "#F3F6F3",
+  greenBorder: "#DCE7DE",
+};
+
+// ============================================================
+// SIDEBAR NAVIGATION
+// ============================================================
+
+const NAV_ITEMS = [
+  { label: "Overview", id: "overview" },
+  { label: "Problem", id: "problem" },
+  { label: "Research", id: "research" },
+  { label: "Opportunity", id: "opportunity" },
+  { label: "Solution", id: "solution" },
+  { label: "Strategy", id: "strategy" },
+  { label: "Outcome", id: "outcomes" },
+  { label: "Reflection", id: "reflection" },
+];
+
+// ============================================================
 // THEME
-// Matches CareerTimeline typography
 // ============================================================
 
 const theme = createTheme({
   typography: {
-    fontFamily: "Arial, sans-serif",
+    fontFamily: '"Google Sans Flex", Arial, sans-serif',
 
     h1: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+      fontWeight: 500,
+      letterSpacing: "-1.5px",
+      lineHeight: 1.05,
     },
 
     h2: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+      fontWeight: 500,
+      letterSpacing: "-1.2px",
+      lineHeight: 1.08,
     },
 
     h3: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-    },
-
-    h4: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-    },
-
-    h5: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
-    },
-
-    h6: {
-      fontFamily: "Bootzy, sans-serif",
-      fontWeight: 400,
-      letterSpacing: "1px",
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
+      fontWeight: 500,
+      letterSpacing: "-0.6px",
+      lineHeight: 1.15,
     },
 
     body1: {
-      fontFamily: "Arial, sans-serif",
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
       fontWeight: 400,
-      letterSpacing: "-0.35px",
+      letterSpacing: "-0.2px",
     },
 
     body2: {
-      fontFamily: "Arial, sans-serif",
+      fontFamily: '"Google Sans Flex", Arial, sans-serif',
       fontWeight: 400,
-      letterSpacing: "-0.3px",
+      letterSpacing: "-0.1px",
     },
   },
 
@@ -82,8 +99,8 @@ const theme = createTheme({
     },
 
     text: {
-      primary: "#464F5B",
-      secondary: "#808080",
+      primary: COLORS.primary,
+      secondary: COLORS.body,
     },
   },
 
@@ -101,19 +118,13 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          fontFamily: "Arial, sans-serif",
-          color: "#464F5B",
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
+          color: COLORS.primary,
+          backgroundColor: "#FFFFFF",
         },
 
-        p: {
-          fontFamily: "Arial, sans-serif",
-          letterSpacing: "-0.35px",
-        },
-
-        "h1, h2, h3, h4, h5, h6": {
-          fontFamily: "Bootzy, sans-serif",
-          fontWeight: 400,
-          letterSpacing: "1px",
+        "h1, h2, h3, h4, h5, h6, p": {
+          fontFamily: '"Google Sans Flex", Arial, sans-serif',
         },
       },
     },
@@ -129,28 +140,20 @@ export default function MySpend() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
 
-      {/* ======================================================
-          HERO
-      ====================================================== */}
-
       <Hero
         image="/images/MySpend/mySpendMock.png"
         company="TD"
-        backgroundColor="#D3E9D4"
+        backgroundColor={COLORS.greenBackground}
       />
 
-      {/* ======================================================
-          CASE STUDY
-      ====================================================== */}
-
-      <CaseStudyLayout>
+      <CaseStudyLayout navItems={NAV_ITEMS}>
         {/* ====================================================
             PROJECT INFORMATION
         ==================================================== */}
 
         <ProjectInfo
           company="TD · ProdX Case Competition"
-          title="Improving Gen Z's financial well-being with TD MySpend"
+          title="Designing short-term financial management tools for TD MySpend"
           role={
             <>
               Product Manager
@@ -160,18 +163,18 @@ export default function MySpend() {
           timeline="March 2025"
           team={
             <>
-              Product Strategy
+              4-person
               <br />
-              Product Design
+              product team
             </>
           }
           skills={
             <>
               User Research
               <br />
-              Prototyping
-              <br />
               Product Strategy
+              <br />
+              Prototyping
             </>
           }
         />
@@ -182,29 +185,32 @@ export default function MySpend() {
             OVERVIEW
         ==================================================== */}
 
-        <CaseStudySection
-          id="overview"
-          eyebrow="Overview"
-          title="Helping Gen Z turn everyday spending into better financial habits."
-        >
-          <Typography>
-            ProdX is Ivey Product Society&apos;s product case competition. My
-            team was challenged to rethink TD&apos;s mobile banking experience
-            for Gen Z users.
-          </Typography>
+        <EditorialSection id="overview">
+          <Eyebrow>Overview</Eyebrow>
 
-          <Typography>
-            We re-envisioned TD MySpend around short-term financial planning,
-            giving users clearer ways to understand spending, manage budgets,
-            and stay engaged with their financial well-being.
-          </Typography>
-        </CaseStudySection>
+          <SectionHeading>
+            Helping Gen Z make everyday financial management simpler and more
+            actionable.
+          </SectionHeading>
+
+          <BodyCopy>
+            For Ivey Product Society&apos;s ProdX case competition, our team
+            explored how TD MySpend could better support Gen Z users as they
+            transition toward more responsible financial management.
+          </BodyCopy>
+
+          <BodyCopy>
+            We proposed a MySpend Dashboard built around short-term financial
+            management tools: budgeting, planning upcoming spending, and
+            reflecting on financial progress.
+          </BodyCopy>
+        </EditorialSection>
 
         {/* ====================================================
-            PROJECT SNAPSHOT
+            CONTEXT
         ==================================================== */}
 
-        <ProjectSnapshot />
+        <ContextCallout />
 
         <SectionDivider />
 
@@ -212,37 +218,28 @@ export default function MySpend() {
             PROBLEM
         ==================================================== */}
 
-        <CaseStudySection
-          id="problem"
-          eyebrow="The Problem"
-          title="Gen Z wants to manage their money, but existing tools can make the process feel overwhelming."
-        >
-          <Typography>
-            Gen Z users are transitioning from spontaneous spending toward more
-            intentional financial management. They need tools that are clear,
-            accessible, and easy to use regularly.
-          </Typography>
+        <EditorialSection id="problem">
+          <Eyebrow>The Problem</Eyebrow>
 
-          <Typography>
-            TD MySpend already helps users understand spending and saving
-            habits, but we saw an opportunity to provide clearer guidance for
-            what users should do next.
-          </Typography>
+          <SectionHeading>
+            Young users want to manage their money better, but the process can
+            feel manual, unclear, and difficult to maintain.
+          </SectionHeading>
 
-          <ProblemStatement>
-            How might we enable Gen Z users to keep up with their financial
-            well-being on a regular basis?
-          </ProblemStatement>
-        </CaseStudySection>
+          <BodyCopy>
+            Our target user was a university-aged Gen Z customer transitioning
+            from spontaneous spending toward more responsible financial
+            management.
+          </BodyCopy>
 
-        {/* ====================================================
-            JOBS TO BE DONE
-        ==================================================== */}
+          <BodyCopy>
+            We identified three central pain points: manual budget input,
+            limited direction about what to do next, and static financial tools
+            that make it difficult to build an ongoing habit.
+          </BodyCopy>
+        </EditorialSection>
 
-        <CaseStudyImage
-          src="/images/MySpend/jobsToBeDone.png"
-          alt="Jobs to be Done"
-        />
+        <UserNeeds />
 
         <SectionDivider />
 
@@ -250,62 +247,33 @@ export default function MySpend() {
             RESEARCH
         ==================================================== */}
 
-        <CaseStudySection
-          id="research"
-          eyebrow="Research"
-          title="Understanding how Gen Z approaches everyday financial management."
-        >
-          <Typography>
-            We focused our research on young users transitioning toward more
-            responsible financial management and looked at the barriers
-            preventing them from staying engaged.
-          </Typography>
+        <EditorialSection id="research">
+          <Eyebrow>Research</Eyebrow>
 
-          <Typography>
-            The research pointed toward a need for simple, personalized tools
-            that make financial information easier to understand and act on.
-          </Typography>
-        </CaseStudySection>
+          <SectionHeading>
+            Financial stress is high, while trusted and actionable guidance can
+            be difficult to find.
+          </SectionHeading>
 
-        <CaseStudyImage
-          src="/images/MySpend/userResearch.png"
-          alt="MySpend user research"
-        />
+          <BodyCopy>
+            Our research suggested that young consumers are actively looking for
+            accessible financial tools and resources while facing growing
+            anxiety around the cost of living.
+          </BodyCopy>
 
-        {/* ====================================================
-            RESEARCH QUOTE
-        ==================================================== */}
+          <BodyCopy>
+            At the same time, many young users rely on online financial advice.
+            That creates an opportunity for a trusted financial institution to
+            provide guidance that is more personalized and connected to a
+            user&apos;s actual financial behaviour.
+          </BodyCopy>
+        </EditorialSection>
 
-        <Box
-          sx={{
-            py: {
-              xs: "56px",
-              md: "80px",
-            },
-          }}
-        >
-          <CaseStudyImage
-            src="/images/MySpend/quote.png"
-            alt="Research quote"
-          />
-        </Box>
+        <ResearchStats />
 
-        {/* ====================================================
-            PAIN POINTS
-        ==================================================== */}
+        <ResearchTakeaways />
 
-        <Box
-          sx={{
-            pb: {
-              xs: "72px",
-              md: "110px",
-            },
-          }}
-        >
-          <Eyebrow>Key Pain Points</Eyebrow>
-
-          <PainPointGrid />
-        </Box>
+        <CurrentAlternatives />
 
         <SectionDivider />
 
@@ -313,27 +281,34 @@ export default function MySpend() {
             OPPORTUNITY
         ==================================================== */}
 
-        <CaseStudySection
-          id="opportunity"
-          eyebrow="The Opportunity"
-          title="Move beyond tracking money and help users decide what to do next."
-        >
-          <Typography>
-            Our opportunity was to make MySpend feel more actionable. Instead of
-            only showing financial information, the experience could help users
-            plan their spending and understand their progress throughout the
-            month.
-          </Typography>
-        </CaseStudySection>
+        <EditorialSection id="opportunity">
+          <Eyebrow>The Opportunity</Eyebrow>
 
-        {/* ====================================================
-            VALUE PROPOSITION
-        ==================================================== */}
+          <SectionHeading>
+            Move MySpend beyond tracking transactions and toward effortless
+            financial management.
+          </SectionHeading>
 
-        <CaseStudyImage
-          src="/images/MySpend/valueProp.png"
-          alt="TD MySpend value proposition"
-        />
+          <BodyCopy>
+            Existing budgeting alternatives introduced their own friction.
+            Spreadsheet-based budgeting requires manual input and significant
+            setup, while competing banking tools can be limited by customization
+            and platform constraints.
+          </BodyCopy>
+
+          <BodyCopy>
+            We saw an opportunity for TD to build on MySpend&apos;s existing
+            financial data and reduce the amount of work required for users to
+            understand and manage their money.
+          </BodyCopy>
+        </EditorialSection>
+
+        <ProblemStatement>
+          How might we enable Gen Z users to seamlessly keep up with their
+          financial well-being on a regular basis?
+        </ProblemStatement>
+
+        <ValueProposition />
 
         <SectionDivider />
 
@@ -341,247 +316,72 @@ export default function MySpend() {
             SOLUTION
         ==================================================== */}
 
-        <CaseStudySection
-          id="solution"
-          eyebrow="The Solution"
-          title="A MySpend dashboard built around budgeting, planning, and reflection."
-        >
-          <Typography>
-            We designed a dashboard that brings together three views: a budget,
-            a financial calendar, and a personalized MySpend recap.
-          </Typography>
+        <EditorialSection id="solution">
+          <Eyebrow>The Solution</Eyebrow>
 
-          <Typography>
-            Together, these tools give users a more complete view of their
-            short-term financial well-being while keeping the experience
-            approachable and actionable.
-          </Typography>
-        </CaseStudySection>
+          <SectionHeading>
+            A MySpend Dashboard for short-term financial management.
+          </SectionHeading>
+
+          <BodyCopy>
+            We proposed expanding MySpend with tactical tools that help users
+            create, manage, and engage with their short-term financial goals.
+          </BodyCopy>
+
+          <BodyCopy>
+            The concept addresses two gaps we identified in the existing
+            experience: a lack of actionable insights and an unintuitive,
+            incomplete money-management process.
+          </BodyCopy>
+        </EditorialSection>
+
+        <SolutionValue />
 
         {/* ====================================================
-            FINAL DESIGNS
+            FINAL DESIGN
         ==================================================== */}
 
         <Box
+          component="section"
           sx={{
-            pb: {
+            pt: {
               xs: "80px",
               md: "120px",
+            },
+
+            pb: {
+              xs: "96px",
+              md: "140px",
             },
           }}
         >
           <Eyebrow>Final Design</Eyebrow>
 
-          <DesignFeature
-            number="01"
-            title="Build a budget"
-            gif="/images/MySpend/mySpend1.gif"
-          >
-            Users can switch into a budget view and allocate spending across the
-            categories already available in MySpend. Bills and recurring
-            payments can also be incorporated to create a clearer picture of
-            monthly spending.
-          </DesignFeature>
-
-          <DesignFeature
-            number="02"
-            title="Plan the month"
-            gif="/images/MySpend/mySpend2.gif"
-            reverse
-          >
-            The calendar gives users a high-level view of cash inflows,
-            outflows, and upcoming bills, helping them understand how their
-            spending fits into the rest of the month.
-          </DesignFeature>
-
-          <DesignFeature
-            number="03"
-            title="Reflect on progress"
-            gif="/images/MySpend/mySpend3.gif"
-          >
-            MySpend Recap turns financial progress into an engaging summary of
-            savings and completed goals that users can review and share.
-          </DesignFeature>
-        </Box>
-
-        <SectionDivider />
-
-        {/* ====================================================
-            OUTCOME
-        ==================================================== */}
-
-        <Box
-          component="section"
-          id="outcomes"
-          sx={{
-            scrollMarginTop: "80px",
-
-            py: {
-              xs: "80px",
-              md: "120px",
-            },
-          }}
-        >
-          <Eyebrow>Outcome</Eyebrow>
-
-          <Box
-            sx={{
-              display: "grid",
-
-              gridTemplateColumns: {
-                xs: "1fr",
-                md: "0.85fr 1.15fr",
-              },
-
-              gap: {
-                xs: "48px",
-                md: "72px",
-              },
-
-              alignItems: "center",
-            }}
-          >
-            <Box>
-              <Typography
-                component="h2"
-                variant="h2"
-                sx={{
-                  fontSize: {
-                    xs: "38px",
-                    sm: "44px",
-                    md: "52px",
-                  },
-
-                  lineHeight: 1.05,
-
-                  color: "#464F5B",
-
-                  mb: "24px",
-                }}
-              >
-                Placing 2nd overall at ProdX.
-              </Typography>
-
-              <Typography
-                component="p"
-                variant="body1"
-                sx={{
-                  fontSize: {
-                    xs: "15px",
-                    sm: "16px",
-                    md: "17px",
-                  },
-
-                  lineHeight: 1.65,
-
-                  color: "#808080",
-
-                  mb: "28px",
-                }}
-              >
-                Our team presented the MySpend concept to product leaders and
-                placed second overall in the competition.
-              </Typography>
-
-              <Button
-                variant="text"
-                endIcon={<ArrowOutward />}
-                href="https://drive.google.com/file/d/1CyC69mQ5sxbagyYlnLnlSXeNmLEGpnZT/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                disableRipple
-                sx={{
-                  p: 0,
-
-                  minWidth: 0,
-
-                  fontFamily: "Arial, sans-serif",
-
-                  fontSize: {
-                    xs: "14px",
-                    md: "15px",
-                  },
-
-                  fontWeight: 500,
-
-                  letterSpacing: "-0.3px",
-
-                  textTransform: "none",
-
-                  color: "#464F5B",
-
-                  "& .MuiButton-endIcon": {
-                    transition: "transform 0.25s ease",
-                  },
-
-                  "&:hover": {
-                    backgroundColor: "transparent",
-
-                    color: "#2323FF",
-
-                    "& .MuiButton-endIcon": {
-                      transform: "rotate(45deg)",
-                    },
-                  },
-                }}
-              >
-                View our presentation
-              </Button>
-            </Box>
-
-            <Box
-              component="img"
-              src="/images/MySpend/winningPic.png"
-              alt="ProdX competition presentation"
-              sx={{
-                display: "block",
-
-                width: "100%",
-
-                height: "auto",
-
-                borderRadius: {
-                  xs: "14px",
-                  md: "18px",
-                },
-              }}
-            />
-          </Box>
-        </Box>
-
-        <SectionDivider />
-
-        {/* ====================================================
-            REFLECTION
-        ==================================================== */}
-
-        <Box
-          component="section"
-          id="reflection"
-          sx={{
-            scrollMarginTop: "80px",
-
-            py: {
-              xs: "80px",
-              md: "130px",
-            },
-          }}
-        >
-          <Eyebrow>Reflection</Eyebrow>
-
           <Typography
             component="h2"
-            variant="h2"
             sx={{
+              maxWidth: "680px",
+
               fontSize: {
-                xs: "40px",
-                sm: "46px",
-                md: "54px",
+                xs: "34px",
+                sm: "40px",
+                md: "46px",
               },
 
-              lineHeight: 1.05,
+              fontWeight: 500,
 
-              color: "#464F5B",
+              letterSpacing: {
+                xs: "-0.9px",
+                sm: "-1.1px",
+                md: "-1.4px",
+              },
+
+              lineHeight: {
+                xs: 1.12,
+                md: 1.08,
+              },
+
+              color: COLORS.primary,
 
               mb: {
                 xs: "48px",
@@ -589,11 +389,89 @@ export default function MySpend() {
               },
             }}
           >
-            What I learned
+            Three features designed around how users manage money throughout the
+            month.
           </Typography>
 
-          <ReflectionGrid />
+          <DesignFeature
+            number="01"
+            title="Budgeting dashboard"
+            subtitle="Make budgeting easier to set up and maintain."
+            gif="/images/MySpend/mySpend1.gif"
+          >
+            The budgeting dashboard gives users a clearer view of their income,
+            bills, and spending categories in one place. Personalization helps
+            users understand their spending without relying on a manually
+            maintained spreadsheet.
+          </DesignFeature>
+
+          <DesignFeature
+            number="02"
+            title="Spending calendar"
+            subtitle="Understand what's coming before you spend."
+            gif="/images/MySpend/mySpend2.gif"
+            reverse
+          >
+            The spending calendar organizes upcoming financial activity into a
+            more understandable view, helping users anticipate expenses and see
+            how upcoming payments fit into their short-term financial picture.
+          </DesignFeature>
+
+          <DesignFeature
+            number="03"
+            title="MySpend recap"
+            subtitle="Turn spending behaviour into useful insight."
+            gif="/images/MySpend/mySpend3.gif"
+          >
+            The MySpend recap gives users a personalized summary of their
+            financial activity, helping them reflect on spending patterns and
+            better understand their overall financial well-being.
+          </DesignFeature>
         </Box>
+
+        <SectionDivider />
+
+        {/* ====================================================
+            PRODUCT STRATEGY
+        ==================================================== */}
+
+        <ProductStrategy />
+
+        <SectionDivider />
+
+        {/* ====================================================
+            SUCCESS METRICS
+        ==================================================== */}
+
+        <SuccessMetrics />
+
+        {/* ====================================================
+            IMPLEMENTATION
+        ==================================================== */}
+
+        <Implementation />
+
+        {/* ====================================================
+            RISKS
+        ==================================================== */}
+
+        <Risks />
+
+        <SectionDivider />
+
+        {/* ====================================================
+            OUTCOME
+        ==================================================== */}
+
+        <Outcome />
+
+        <SectionDivider />
+
+        {/* ====================================================
+            REFLECTION
+        ==================================================== */}
+
+        <Reflection />
 
         {/* ====================================================
             END
@@ -601,30 +479,57 @@ export default function MySpend() {
 
         <Box
           sx={{
-            pt: {
-              xs: "20px",
-              md: "40px",
+            mt: {
+              xs: "24px",
+              md: "48px",
             },
 
-            pb: {
-              xs: "80px",
-              md: "120px",
+            mb: {
+              xs: "64px",
+              md: "100px",
+            },
+
+            py: {
+              xs: "52px",
+              md: "68px",
+            },
+
+            px: {
+              xs: "28px",
+              md: "44px",
+            },
+
+            bgcolor: COLORS.softBackground,
+
+            border: `1px solid ${COLORS.border}`,
+
+            borderRadius: {
+              xs: "12px",
+              md: "16px",
             },
           }}
         >
+          <Eyebrow>End of case study</Eyebrow>
+
           <Typography
             component="h2"
-            variant="h2"
             sx={{
               fontSize: {
-                xs: "36px",
-                sm: "42px",
-                md: "48px",
+                xs: "38px",
+                sm: "44px",
+                md: "50px",
+              },
+
+              fontWeight: 500,
+
+              letterSpacing: {
+                xs: "-1.1px",
+                md: "-1.6px",
               },
 
               lineHeight: 1.05,
 
-              color: "#464F5B",
+              color: COLORS.primary,
             }}
           >
             Thanks for reading.
@@ -636,8 +541,37 @@ export default function MySpend() {
 }
 
 // ============================================================
+// EDITORIAL SECTION
+// ============================================================
+
+type EditorialSectionProps = {
+  id?: string;
+  children: React.ReactNode;
+};
+
+function EditorialSection({ id, children }: EditorialSectionProps) {
+  return (
+    <Box
+      component="section"
+      id={id}
+      sx={{
+        scrollMarginTop: "80px",
+
+        py: {
+          xs: "80px",
+          md: "120px",
+        },
+
+        maxWidth: "780px",
+      }}
+    >
+      {children}
+    </Box>
+  );
+}
+
+// ============================================================
 // EYEBROW
-// Matches CareerTimeline utility text
 // ============================================================
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -645,22 +579,102 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
     <Typography
       component="p"
       sx={{
-        fontFamily: "monospace",
+        fontSize: {
+          xs: "11px",
+          md: "12px",
+        },
+
+        fontWeight: 600,
+        letterSpacing: "0.09em",
+        textTransform: "uppercase",
+        lineHeight: 1.4,
+        color: COLORS.green,
+        mb: "18px",
+      }}
+    >
+      {children}
+    </Typography>
+  );
+}
+
+// ============================================================
+// SECTION HEADING
+// ============================================================
+
+function SectionHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <Typography
+      component="h2"
+      sx={{
+        maxWidth: "780px",
 
         fontSize: {
-          xs: "9px",
-          sm: "10px",
+          xs: "34px",
+          sm: "40px",
+          md: "46px",
+        },
+
+        fontWeight: 500,
+
+        letterSpacing: {
+          xs: "-0.9px",
+          sm: "-1.1px",
+          md: "-1.4px",
+        },
+
+        lineHeight: {
+          xs: 1.12,
+          md: 1.08,
+        },
+
+        color: COLORS.primary,
+
+        mb: {
+          xs: "30px",
+          md: "36px",
+        },
+      }}
+    >
+      {children}
+    </Typography>
+  );
+}
+
+// ============================================================
+// BODY COPY
+// ============================================================
+
+function BodyCopy({ children }: { children: React.ReactNode }) {
+  return (
+    <Typography
+      component="p"
+      sx={{
+        maxWidth: "700px",
+
+        fontSize: {
+          xs: "16px",
+          sm: "17px",
+          md: "18px",
         },
 
         fontWeight: 400,
+        letterSpacing: "-0.2px",
 
-        letterSpacing: "0.4px",
+        lineHeight: {
+          xs: 1.65,
+          md: 1.7,
+        },
 
-        textTransform: "uppercase",
+        color: COLORS.body,
 
-        color: "#999999",
+        mb: {
+          xs: "20px",
+          md: "24px",
+        },
 
-        mb: "18px",
+        "&:last-child": {
+          mb: 0,
+        },
       }}
     >
       {children}
@@ -678,45 +692,174 @@ function SectionDivider() {
       sx={{
         width: "100%",
         height: "1px",
-        bgcolor: "#E8E8EC",
+        bgcolor: COLORS.border,
       }}
     />
   );
 }
 
 // ============================================================
-// PROJECT SNAPSHOT
+// CONTEXT CALLOUT
 // ============================================================
 
-function ProjectSnapshot() {
+function ContextCallout() {
+  return (
+    <Box
+      component="section"
+      sx={{
+        mb: {
+          xs: "80px",
+          md: "110px",
+        },
+
+        py: {
+          xs: "48px",
+          md: "64px",
+        },
+
+        px: {
+          xs: "28px",
+          sm: "40px",
+          md: "48px",
+        },
+
+        bgcolor: COLORS.greenSoft,
+        border: `1px solid ${COLORS.greenBorder}`,
+
+        borderRadius: {
+          xs: "12px",
+          md: "16px",
+        },
+      }}
+    >
+      <Eyebrow>The Context</Eyebrow>
+
+      <Typography
+        component="p"
+        sx={{
+          maxWidth: "700px",
+
+          fontSize: {
+            xs: "27px",
+            sm: "31px",
+            md: "36px",
+          },
+
+          fontWeight: 500,
+
+          letterSpacing: {
+            xs: "-0.7px",
+            md: "-1px",
+          },
+
+          lineHeight: 1.22,
+
+          color: COLORS.green,
+
+          m: 0,
+        }}
+      >
+        Canadians spend an average of 15 hours per week worrying about money.
+      </Typography>
+    </Box>
+  );
+}
+
+// ============================================================
+// USER NEEDS
+// ============================================================
+
+function UserNeeds() {
   const items = [
     {
-      label: "Challenge",
-      value: "Financial well-being",
+      number: "01",
+      title: "Less manual work",
+      description:
+        "Users need a streamlined money-management experience that reduces the effort required to maintain a budget.",
     },
-
     {
-      label: "Audience",
-      value: "Gen Z",
+      number: "02",
+      title: "Clearer direction",
+      description:
+        "Users need to understand their financial standing and what actions they can take next.",
     },
-
     {
-      label: "Result",
-      value: "2nd Place",
+      number: "03",
+      title: "Habit-forming tools",
+      description:
+        "Financial management needs to feel engaging enough for users to return to it consistently.",
     },
   ];
 
   return (
     <Box
+      component="section"
       sx={{
-        pt: {
-          xs: "12px",
-          md: "20px",
-        },
-
         pb: {
-          xs: "72px",
-          md: "100px",
+          xs: "96px",
+          md: "120px",
+        },
+      }}
+    >
+      <Eyebrow>User Needs</Eyebrow>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(3, 1fr)",
+          },
+
+          gap: {
+            xs: "44px",
+            md: "48px",
+          },
+
+          mt: {
+            xs: "36px",
+            md: "48px",
+          },
+        }}
+      >
+        {items.map((item) => (
+          <InsightCard key={item.number} {...item} />
+        ))}
+      </Box>
+    </Box>
+  );
+}
+
+// ============================================================
+// RESEARCH STATS
+// ============================================================
+
+function ResearchStats() {
+  const stats = [
+    {
+      stat: "32%",
+      description:
+        "of surveyed 18–35 year olds lack a clear strategy for managing money setbacks.",
+    },
+    {
+      stat: "61%",
+      description: "of 18–35 year olds are stressed about their finances.",
+    },
+    {
+      stat: "57%",
+      description:
+        "of individuals aged 18–29 rely on online “finfluencers” for financial advice.",
+    },
+  ];
+
+  return (
+    <Box
+      component="section"
+      sx={{
+        pb: {
+          xs: "96px",
+          md: "120px",
         },
 
         display: "grid",
@@ -727,51 +870,53 @@ function ProjectSnapshot() {
         },
 
         gap: {
-          xs: "32px",
-          sm: "40px",
+          xs: "48px",
+          sm: "28px",
+          md: "48px",
         },
       }}
     >
-      {items.map((item) => (
-        <Box key={item.label}>
+      {stats.map((item) => (
+        <Box
+          key={item.stat}
+          sx={{
+            pt: "22px",
+            borderTop: `1px solid ${COLORS.border}`,
+          }}
+        >
           <Typography
+            component="p"
             sx={{
-              fontFamily: "monospace",
-
               fontSize: {
-                xs: "9px",
-                sm: "10px",
+                xs: "42px",
+                md: "52px",
               },
 
-              letterSpacing: "0.4px",
-
-              textTransform: "uppercase",
-
-              color: "#999999",
-
-              mb: "8px",
+              fontWeight: 600,
+              letterSpacing: "-1.5px",
+              lineHeight: 1,
+              color: COLORS.green,
+              mb: "18px",
             }}
           >
-            {item.label}
+            {item.stat}
           </Typography>
 
           <Typography
+            component="p"
             sx={{
-              fontFamily: "Arial, sans-serif",
+              maxWidth: "330px",
 
               fontSize: {
-                xs: "17px",
-                md: "18px",
+                xs: "15px",
+                md: "16px",
               },
 
-              fontWeight: 500,
-
-              letterSpacing: "-0.3px",
-
-              color: "#464F5B",
+              lineHeight: 1.65,
+              color: COLORS.primary,
             }}
           >
-            {item.value}
+            {item.description}
           </Typography>
         </Box>
       ))}
@@ -780,65 +925,328 @@ function ProjectSnapshot() {
 }
 
 // ============================================================
-// PROBLEM STATEMENT
+// RESEARCH TAKEAWAYS
+// ============================================================
+
+function ResearchTakeaways() {
+  const items = [
+    {
+      number: "01",
+      title: "Accessible tools matter.",
+      description:
+        "Young consumers are looking for financial tools and resources that are easier to access and understand.",
+    },
+    {
+      number: "02",
+      title: "Financial anxiety is growing.",
+      description:
+        "Rising costs of living are increasing the pressure young users feel when managing everyday finances.",
+    },
+    {
+      number: "03",
+      title: "Trust creates an opportunity.",
+      description:
+        "Online advice can be misleading, creating a need for more personalized and trusted financial guidance.",
+    },
+  ];
+
+  return (
+    <Box
+      component="section"
+      sx={{
+        pb: {
+          xs: "96px",
+          md: "120px",
+        },
+      }}
+    >
+      <Eyebrow>What We Learned</Eyebrow>
+
+      <Typography
+        component="h2"
+        sx={{
+          maxWidth: "680px",
+
+          fontSize: {
+            xs: "30px",
+            sm: "36px",
+            md: "42px",
+          },
+
+          fontWeight: 500,
+          letterSpacing: "-1px",
+          lineHeight: 1.12,
+          color: COLORS.primary,
+
+          mb: {
+            xs: "48px",
+            md: "64px",
+          },
+        }}
+      >
+        Three themes shaped the direction of our solution.
+      </Typography>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(3, 1fr)",
+          },
+
+          gap: {
+            xs: "44px",
+            md: "48px",
+          },
+        }}
+      >
+        {items.map((item) => (
+          <InsightCard key={item.number} {...item} />
+        ))}
+      </Box>
+    </Box>
+  );
+}
+
+// ============================================================
+// CURRENT ALTERNATIVES
+// ============================================================
+
+function CurrentAlternatives() {
+  return (
+    <Box
+      component="section"
+      sx={{
+        pb: {
+          xs: "96px",
+          md: "130px",
+        },
+      }}
+    >
+      <Eyebrow>Current Alternatives</Eyebrow>
+
+      <Typography
+        component="h2"
+        sx={{
+          maxWidth: "650px",
+
+          fontSize: {
+            xs: "30px",
+            sm: "36px",
+            md: "42px",
+          },
+
+          fontWeight: 500,
+          letterSpacing: "-1px",
+          lineHeight: 1.12,
+          color: COLORS.primary,
+
+          mb: {
+            xs: "44px",
+            md: "56px",
+          },
+        }}
+      >
+        Existing budgeting tools still leave users doing too much work.
+      </Typography>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "1fr 1fr",
+          },
+
+          gap: {
+            xs: "24px",
+            md: "28px",
+          },
+        }}
+      >
+        <AlternativeCard title="Excel">
+          <AlternativeItem>Requires manual input</AlternativeItem>
+          <AlternativeItem>High setup effort</AlternativeItem>
+          <AlternativeItem>No automatic insights</AlternativeItem>
+        </AlternativeCard>
+
+        <AlternativeCard title="RBC NOMI Budgets">
+          <AlternativeItem>Limited to RBC customers</AlternativeItem>
+          <AlternativeItem>Overspend alerts can be inaccurate</AlternativeItem>
+          <AlternativeItem>
+            Limited manual category customization
+          </AlternativeItem>
+        </AlternativeCard>
+      </Box>
+    </Box>
+  );
+}
+
+function AlternativeCard({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Box
+      sx={{
+        p: {
+          xs: "28px",
+          md: "32px",
+        },
+
+        bgcolor: COLORS.softBackground,
+        border: `1px solid ${COLORS.border}`,
+        borderRadius: "12px",
+      }}
+    >
+      <Typography
+        component="h3"
+        sx={{
+          fontSize: {
+            xs: "20px",
+            md: "22px",
+          },
+
+          fontWeight: 600,
+          color: COLORS.primary,
+          mb: "22px",
+        }}
+      >
+        {title}
+      </Typography>
+
+      <Box>{children}</Box>
+    </Box>
+  );
+}
+
+function AlternativeItem({ children }: { children: React.ReactNode }) {
+  return (
+    <Typography
+      component="p"
+      sx={{
+        position: "relative",
+        pl: "18px",
+
+        fontSize: {
+          xs: "15px",
+          md: "16px",
+        },
+
+        lineHeight: 1.6,
+        color: COLORS.body,
+        mb: "10px",
+
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          left: 0,
+          top: "0.65em",
+          width: "5px",
+          height: "5px",
+          borderRadius: "50%",
+          bgcolor: COLORS.green,
+        },
+
+        "&:last-child": {
+          mb: 0,
+        },
+      }}
+    >
+      {children}
+    </Typography>
+  );
+}
+
+// ============================================================
+// HOW MIGHT WE
 // ============================================================
 
 function ProblemStatement({ children }: { children: React.ReactNode }) {
   return (
     <Box
+      component="section"
       sx={{
-        mt: {
+        my: {
+          xs: "24px",
+          md: "40px",
+        },
+
+        py: {
           xs: "48px",
-          md: "60px",
+          sm: "56px",
+          md: "68px",
         },
 
-        p: {
+        px: {
           xs: "28px",
-          md: "42px",
+          sm: "40px",
+          md: "52px",
         },
 
-        bgcolor: "#D3E9D4",
+        bgcolor: COLORS.greenBackground,
+        border: `1px solid ${COLORS.greenBorder}`,
 
         borderRadius: {
-          xs: "14px",
-          md: "18px",
+          xs: "12px",
+          md: "16px",
         },
       }}
     >
       <Typography
+        component="p"
         sx={{
-          fontFamily: "monospace",
-
           fontSize: {
-            xs: "9px",
-            sm: "10px",
+            xs: "11px",
+            md: "12px",
           },
 
-          letterSpacing: "0.4px",
-
+          fontWeight: 600,
+          letterSpacing: "0.09em",
           textTransform: "uppercase",
+          color: COLORS.green,
+          m: 0,
 
-          color: "#1A5336",
-
-          mb: "20px",
+          mb: {
+            xs: "20px",
+            md: "24px",
+          },
         }}
       >
         How might we
       </Typography>
 
       <Typography
-        component="h3"
-        variant="h3"
+        component="p"
         sx={{
+          maxWidth: "760px",
+
           fontSize: {
             xs: "28px",
-            sm: "32px",
-            md: "36px",
+            sm: "33px",
+            md: "38px",
           },
 
-          lineHeight: 1.15,
+          fontWeight: 500,
 
-          color: "#1A5336",
+          letterSpacing: {
+            xs: "-0.7px",
+            md: "-1.2px",
+          },
+
+          lineHeight: {
+            xs: 1.22,
+            md: 1.18,
+          },
+
+          color: COLORS.green,
+          m: 0,
         }}
       >
         {children}
@@ -848,76 +1256,85 @@ function ProblemStatement({ children }: { children: React.ReactNode }) {
 }
 
 // ============================================================
-// CASE STUDY IMAGE
+// VALUE PROPOSITION
 // ============================================================
 
-type CaseStudyImageProps = {
-  src: string;
-  alt: string;
-};
-
-function CaseStudyImage({ src, alt }: CaseStudyImageProps) {
+function ValueProposition() {
   return (
     <Box
+      component="section"
       sx={{
-        width: "100%",
-
-        overflow: "hidden",
-
-        borderRadius: {
-          xs: "14px",
-          md: "18px",
+        py: {
+          xs: "96px",
+          md: "130px",
         },
 
-        border: "1px solid rgba(0,0,0,0.06)",
+        display: "grid",
 
-        bgcolor: "#F7F7F7",
+        gridTemplateColumns: {
+          xs: "1fr",
+          md: "0.55fr 1.45fr",
+        },
+
+        gap: {
+          xs: "28px",
+          md: "72px",
+        },
+
+        alignItems: "start",
       }}
     >
-      <Box
-        component="img"
-        src={src}
-        alt={alt}
-        sx={{
-          display: "block",
+      <Eyebrow>Product Direction</Eyebrow>
 
-          width: "100%",
+      <Box>
+        <Typography
+          component="h2"
+          sx={{
+            fontSize: {
+              xs: "30px",
+              sm: "36px",
+              md: "42px",
+            },
 
-          height: "auto",
-        }}
-      />
+            fontWeight: 500,
+            letterSpacing: "-1.1px",
+            lineHeight: 1.12,
+            color: COLORS.primary,
+            mb: "24px",
+          }}
+        >
+          Give users short-term tactical tools that make financial management
+          easier to act on.
+        </Typography>
+
+        <Typography
+          component="p"
+          sx={{
+            maxWidth: "650px",
+
+            fontSize: {
+              xs: "16px",
+              md: "17px",
+            },
+
+            lineHeight: 1.7,
+            color: COLORS.body,
+          }}
+        >
+          Rather than creating a separate financial experience, the concept
+          builds on MySpend by connecting users&apos; existing financial data
+          with budgeting, planning, and personalized insights.
+        </Typography>
+      </Box>
     </Box>
   );
 }
 
 // ============================================================
-// PAIN POINTS
+// SOLUTION VALUE
 // ============================================================
 
-function PainPointGrid() {
-  const items = [
-    {
-      title: "Budget fatigue",
-
-      description:
-        "Manually entering and maintaining budget information can make financial planning feel like another task to manage.",
-    },
-
-    {
-      title: "Financial misdirection",
-
-      description:
-        "Users can see financial information but may still be unsure what action they should take next.",
-    },
-
-    {
-      title: "Dull financial tools",
-
-      description:
-        "Static money-management experiences can make it harder for users to stay engaged with their finances.",
-    },
-  ];
-
+function SolutionValue() {
   return (
     <Box
       sx={{
@@ -925,55 +1342,75 @@ function PainPointGrid() {
 
         gridTemplateColumns: {
           xs: "1fr",
-          md: "repeat(3, 1fr)",
+          md: "1fr 1fr",
         },
 
         gap: {
+          xs: "24px",
+          md: "28px",
+        },
+
+        pb: {
           xs: "40px",
-          md: "48px",
+          md: "56px",
         },
       }}
     >
-      {items.map((item) => (
-        <Box key={item.title}>
-          <Typography
-            component="h3"
-            variant="h3"
-            sx={{
-              fontSize: {
-                xs: "22px",
-                sm: "25px",
-                md: "28px",
-              },
+      <Box
+        sx={{
+          p: {
+            xs: "28px",
+            md: "36px",
+          },
 
-              lineHeight: 1.05,
+          border: `1px solid ${COLORS.border}`,
+          borderRadius: "12px",
+        }}
+      >
+        <Eyebrow>Pain Points Resolved</Eyebrow>
 
-              color: "#464F5B",
+        <Typography
+          component="p"
+          sx={{
+            fontSize: "17px",
+            lineHeight: 1.7,
+            color: COLORS.primary,
+          }}
+        >
+          Lack of actionable insights
+          <br />
+          Unintuitive and incomplete money management
+        </Typography>
+      </Box>
 
-              mb: "14px",
-            }}
-          >
-            {item.title}
-          </Typography>
+      <Box
+        sx={{
+          p: {
+            xs: "28px",
+            md: "36px",
+          },
 
-          <Typography
-            component="p"
-            variant="body1"
-            sx={{
-              fontSize: {
-                xs: "15px",
-                md: "16px",
-              },
+          bgcolor: COLORS.greenSoft,
+          border: `1px solid ${COLORS.greenBorder}`,
+          borderRadius: "12px",
+        }}
+      >
+        <Eyebrow>Value Provided</Eyebrow>
 
-              lineHeight: 1.65,
-
-              color: "#808080",
-            }}
-          >
-            {item.description}
-          </Typography>
-        </Box>
-      ))}
+        <Typography
+          component="p"
+          sx={{
+            fontSize: "17px",
+            lineHeight: 1.7,
+            color: COLORS.green,
+          }}
+        >
+          Digital financial tools
+          <br />
+          Short-term insights for a more holistic understanding of financial
+          well-being
+        </Typography>
+      </Box>
     </Box>
   );
 }
@@ -985,6 +1422,7 @@ function PainPointGrid() {
 type DesignFeatureProps = {
   number: string;
   title: string;
+  subtitle: string;
   gif: string;
   reverse?: boolean;
   children: React.ReactNode;
@@ -993,6 +1431,7 @@ type DesignFeatureProps = {
 function DesignFeature({
   number,
   title,
+  subtitle,
   gif,
   reverse = false,
   children,
@@ -1004,26 +1443,24 @@ function DesignFeature({
 
         gridTemplateColumns: {
           xs: "1fr",
-          md: "1fr 1fr",
+          md: "1.15fr 0.85fr",
         },
 
         gap: {
-          xs: "36px",
+          xs: "40px",
           md: "72px",
         },
 
         alignItems: "center",
 
         py: {
-          xs: "48px",
-          md: "72px",
+          xs: "64px",
+          md: "96px",
         },
+
+        borderTop: `1px solid ${COLORS.border}`,
       }}
     >
-      {/* ======================================================
-          GIF
-      ====================================================== */}
-
       <Box
         sx={{
           order: {
@@ -1031,45 +1468,48 @@ function DesignFeature({
             md: reverse ? 2 : 1,
           },
 
-          display: "flex",
+          minHeight: {
+            xs: "420px",
+            sm: "520px",
+            md: "600px",
+          },
 
+          display: "flex",
+          alignItems: "center",
           justifyContent: "center",
 
-          bgcolor: "#F4F7F4",
+          bgcolor: COLORS.greenSoft,
 
           borderRadius: {
-            xs: "16px",
-            md: "20px",
+            xs: "12px",
+            md: "16px",
           },
 
           p: {
-            xs: "24px",
-            md: "36px",
+            xs: "32px",
+            sm: "48px",
+            md: "56px",
           },
         }}
       >
         <Box
           component="img"
           src={gif}
-          alt={title}
+          alt={`${title} interaction`}
           sx={{
             display: "block",
 
             width: {
-              xs: "70%",
-              md: "78%",
+              xs: "72%",
+              sm: "62%",
+              md: "72%",
             },
 
-            maxWidth: "300px",
-
+            maxWidth: "330px",
             height: "auto",
           }}
         />
       </Box>
-
-      {/* ======================================================
-          COPY
-      ====================================================== */}
 
       <Box
         sx={{
@@ -1077,22 +1517,17 @@ function DesignFeature({
             xs: 2,
             md: reverse ? 1 : 2,
           },
+
+          maxWidth: "440px",
         }}
       >
         <Typography
           sx={{
-            fontFamily: "monospace",
-
-            fontSize: {
-              xs: "9px",
-              sm: "10px",
-            },
-
-            letterSpacing: "0.4px",
-
-            color: "#999999",
-
-            mb: "12px",
+            fontSize: "11px",
+            fontWeight: 600,
+            letterSpacing: "0.04em",
+            color: COLORS.green,
+            mb: "20px",
           }}
         >
           {number}
@@ -1100,7 +1535,6 @@ function DesignFeature({
 
         <Typography
           component="h3"
-          variant="h3"
           sx={{
             fontSize: {
               xs: "30px",
@@ -1108,11 +1542,16 @@ function DesignFeature({
               md: "38px",
             },
 
-            lineHeight: 1.05,
+            fontWeight: 500,
 
-            color: "#464F5B",
+            letterSpacing: {
+              xs: "-0.7px",
+              md: "-1px",
+            },
 
-            mb: "18px",
+            lineHeight: 1.08,
+            color: COLORS.primary,
+            mb: "10px",
           }}
         >
           {title}
@@ -1120,16 +1559,31 @@ function DesignFeature({
 
         <Typography
           component="p"
-          variant="body1"
+          sx={{
+            fontSize: {
+              xs: "16px",
+              md: "17px",
+            },
+
+            fontWeight: 600,
+            lineHeight: 1.5,
+            color: COLORS.green,
+            mb: "22px",
+          }}
+        >
+          {subtitle}
+        </Typography>
+
+        <Typography
+          component="p"
           sx={{
             fontSize: {
               xs: "15px",
               md: "16px",
             },
 
-            lineHeight: 1.65,
-
-            color: "#808080",
+            lineHeight: 1.7,
+            color: COLORS.body,
           }}
         >
           {children}
@@ -1140,82 +1594,754 @@ function DesignFeature({
 }
 
 // ============================================================
-// REFLECTION
+// PRODUCT STRATEGY
 // ============================================================
 
-function ReflectionGrid() {
-  const reflections = [
+function ProductStrategy() {
+  const items = [
     {
-      title: "Design around action, not just information.",
-
+      number: "01",
+      title: "Improve retention and MAUs",
       description:
-        "Financial data becomes more useful when users understand what they can do with it. The project pushed me to think beyond displaying information and toward designing actionable next steps.",
+        "Personalized budget and summary features can give users more reasons to return to MySpend regularly.",
     },
-
     {
-      title: "Product decisions need a clear purpose.",
-
+      number: "02",
+      title: "Enable product conversion",
       description:
-        "Working under a competition deadline reinforced the importance of connecting every feature back to a specific user need and a clear product value proposition.",
+        "Relevant TD product recommendations can connect financial behaviour and goals with other products in the TD ecosystem.",
+    },
+    {
+      number: "03",
+      title: "Streamline banking",
+      description:
+        "Spending visualizations and simpler budget setup can make financial information easier to understand and manage.",
     },
   ];
 
   return (
     <Box
+      component="section"
+      id="strategy"
       sx={{
-        display: "grid",
+        scrollMarginTop: "80px",
 
-        gridTemplateColumns: {
-          xs: "1fr",
-          md: "1fr 1fr",
-        },
-
-        gap: {
-          xs: "48px",
-          md: "72px",
+        py: {
+          xs: "96px",
+          md: "130px",
         },
       }}
     >
-      {reflections.map((item) => (
-        <Box key={item.title}>
-          <Typography
-            component="h3"
-            variant="h3"
+      <Eyebrow>Product Strategy</Eyebrow>
+
+      <SectionHeading>
+        Connecting user value to measurable business goals.
+      </SectionHeading>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(3, 1fr)",
+          },
+
+          gap: {
+            xs: "44px",
+            md: "48px",
+          },
+
+          mt: {
+            xs: "52px",
+            md: "68px",
+          },
+        }}
+      >
+        {items.map((item) => (
+          <InsightCard key={item.number} {...item} />
+        ))}
+      </Box>
+    </Box>
+  );
+}
+
+// ============================================================
+// SUCCESS METRICS
+// ============================================================
+
+function SuccessMetrics() {
+  const items = [
+    {
+      title: "Increase user retention",
+      metrics: [
+        "% of users using the new feature",
+        "Feature click-through rate",
+        "Increase in monthly active users",
+      ],
+    },
+    {
+      title: "Increase adoption of TD products",
+      metrics: [
+        "Click-through rate on product promotions",
+        "% of users adopting new products",
+      ],
+    },
+    {
+      title: "Improve Gen Z financial health",
+      metrics: [
+        "% of users spending less than typical",
+        "Qualitative user feedback",
+      ],
+    },
+  ];
+
+  return (
+    <Box
+      component="section"
+      sx={{
+        py: {
+          xs: "96px",
+          md: "130px",
+        },
+      }}
+    >
+      <Eyebrow>Success Metrics</Eyebrow>
+
+      <SectionHeading>
+        Measuring whether the product creates value for users and TD.
+      </SectionHeading>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(3, 1fr)",
+          },
+
+          gap: {
+            xs: "24px",
+            md: "28px",
+          },
+
+          mt: {
+            xs: "48px",
+            md: "64px",
+          },
+        }}
+      >
+        {items.map((item) => (
+          <Box
+            key={item.title}
             sx={{
-              fontSize: {
-                xs: "26px",
-                sm: "28px",
-                md: "30px",
+              p: {
+                xs: "28px",
+                md: "32px",
               },
 
-              lineHeight: 1.15,
-
-              color: "#464F5B",
-
-              mb: "18px",
+              bgcolor: COLORS.softBackground,
+              border: `1px solid ${COLORS.border}`,
+              borderRadius: "12px",
             }}
           >
-            {item.title}
+            <Typography
+              component="h3"
+              sx={{
+                fontSize: {
+                  xs: "19px",
+                  md: "21px",
+                },
+
+                fontWeight: 600,
+                lineHeight: 1.3,
+                color: COLORS.primary,
+                mb: "24px",
+              }}
+            >
+              {item.title}
+            </Typography>
+
+            {item.metrics.map((metric) => (
+              <Typography
+                key={metric}
+                component="p"
+                sx={{
+                  position: "relative",
+                  pl: "17px",
+
+                  fontSize: {
+                    xs: "14px",
+                    md: "15px",
+                  },
+
+                  lineHeight: 1.6,
+                  color: COLORS.body,
+                  mb: "10px",
+
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    left: 0,
+                    top: "0.65em",
+                    width: "5px",
+                    height: "5px",
+                    borderRadius: "50%",
+                    bgcolor: COLORS.green,
+                  },
+
+                  "&:last-child": {
+                    mb: 0,
+                  },
+                }}
+              >
+                {metric}
+              </Typography>
+            ))}
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+}
+
+// ============================================================
+// IMPLEMENTATION
+// ============================================================
+
+function Implementation() {
+  const stages = [
+    {
+      date: "Jul 2025",
+      title: "Pilot",
+      description: "Internal testing with the team.",
+      criteria:
+        "Resolve usage bugs, validate feature discoverability, and ensure the UI is intuitive.",
+    },
+    {
+      date: "Oct 2025",
+      title: "Beta 1",
+      description:
+        "Early testing with the top 5% of MySpend monthly active users.",
+      criteria: "25% product CTR and 10% product MAUs.",
+    },
+    {
+      date: "Dec 2025",
+      title: "Beta 2",
+      description:
+        "Expand testing to the top 20% of MySpend monthly active users.",
+      criteria: "40% product CTR and 30% product MAUs.",
+    },
+    {
+      date: "Mar 2026",
+      title: "Launch",
+      description: "National rollout to Canadian users.",
+      criteria:
+        "Continuously monitor success metrics and average time between visits.",
+    },
+  ];
+
+  return (
+    <Box
+      component="section"
+      sx={{
+        pb: {
+          xs: "96px",
+          md: "130px",
+        },
+      }}
+    >
+      <Eyebrow>Implementation</Eyebrow>
+
+      <Typography
+        component="h2"
+        sx={{
+          maxWidth: "680px",
+
+          fontSize: {
+            xs: "30px",
+            sm: "36px",
+            md: "42px",
+          },
+
+          fontWeight: 500,
+          letterSpacing: "-1.1px",
+          lineHeight: 1.12,
+          color: COLORS.primary,
+
+          mb: {
+            xs: "48px",
+            md: "64px",
+          },
+        }}
+      >
+        Roll out gradually, learn from behaviour, then scale.
+      </Typography>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "1fr 1fr",
+            md: "repeat(4, 1fr)",
+          },
+
+          gap: {
+            xs: "40px",
+            md: "28px",
+          },
+        }}
+      >
+        {stages.map((stage) => (
+          <Box
+            key={stage.title}
+            sx={{
+              pt: "20px",
+              borderTop: `2px solid ${COLORS.green}`,
+            }}
+          >
+            <Typography
+              component="p"
+              sx={{
+                fontSize: "11px",
+                fontWeight: 600,
+                color: COLORS.green,
+                mb: "18px",
+              }}
+            >
+              {stage.date}
+            </Typography>
+
+            <Typography
+              component="h3"
+              sx={{
+                fontSize: "20px",
+                fontWeight: 600,
+                color: COLORS.primary,
+                mb: "12px",
+              }}
+            >
+              {stage.title}
+            </Typography>
+
+            <Typography
+              component="p"
+              sx={{
+                fontSize: "14px",
+                lineHeight: 1.6,
+                color: COLORS.body,
+                mb: "18px",
+              }}
+            >
+              {stage.description}
+            </Typography>
+
+            <Typography
+              component="p"
+              sx={{
+                fontSize: "12px",
+                fontWeight: 500,
+                lineHeight: 1.6,
+                color: COLORS.primary,
+              }}
+            >
+              Exit criteria: {stage.criteria}
+            </Typography>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+}
+
+// ============================================================
+// RISKS
+// ============================================================
+
+function Risks() {
+  const items = [
+    {
+      number: "01",
+      title: "Lack of product awareness",
+      description:
+        "Cross-promote the updated MySpend experience across the TD ecosystem and other products and services.",
+    },
+    {
+      number: "02",
+      title: "Preference for external tools",
+      description:
+        "Use product promotion and referral incentives to encourage Gen Z customers to try the new MySpend features.",
+    },
+    {
+      number: "03",
+      title: "Glitches and integration issues",
+      description:
+        "Use beta testing to identify bugs while supporting users through FAQs, live chat, and contact support.",
+    },
+  ];
+
+  return (
+    <Box
+      component="section"
+      sx={{
+        pb: {
+          xs: "96px",
+          md: "130px",
+        },
+      }}
+    >
+      <Eyebrow>Risks & Mitigations</Eyebrow>
+
+      <Typography
+        component="h2"
+        sx={{
+          maxWidth: "650px",
+
+          fontSize: {
+            xs: "30px",
+            sm: "36px",
+            md: "42px",
+          },
+
+          fontWeight: 500,
+          letterSpacing: "-1px",
+          lineHeight: 1.12,
+          color: COLORS.primary,
+
+          mb: {
+            xs: "48px",
+            md: "64px",
+          },
+        }}
+      >
+        Anticipating what could prevent adoption.
+      </Typography>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(3, 1fr)",
+          },
+
+          gap: {
+            xs: "44px",
+            md: "48px",
+          },
+        }}
+      >
+        {items.map((item) => (
+          <InsightCard key={item.number} {...item} />
+        ))}
+      </Box>
+    </Box>
+  );
+}
+
+// ============================================================
+// REUSABLE INSIGHT CARD
+// ============================================================
+
+function InsightCard({
+  number,
+  title,
+  description,
+}: {
+  number: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <Box
+      sx={{
+        pt: "20px",
+        borderTop: `1px solid ${COLORS.border}`,
+      }}
+    >
+      <Typography
+        sx={{
+          fontSize: "11px",
+          fontWeight: 600,
+          letterSpacing: "0.04em",
+          color: COLORS.green,
+          mb: "22px",
+        }}
+      >
+        {number}
+      </Typography>
+
+      <Typography
+        component="h3"
+        sx={{
+          fontSize: {
+            xs: "20px",
+            md: "22px",
+          },
+
+          fontWeight: 600,
+          letterSpacing: "-0.4px",
+          lineHeight: 1.3,
+          color: COLORS.primary,
+          mb: "12px",
+        }}
+      >
+        {title}
+      </Typography>
+
+      <Typography
+        component="p"
+        sx={{
+          fontSize: {
+            xs: "15px",
+            md: "16px",
+          },
+
+          lineHeight: 1.65,
+          color: COLORS.body,
+        }}
+      >
+        {description}
+      </Typography>
+    </Box>
+  );
+}
+
+// ============================================================
+// OUTCOME
+// ============================================================
+
+function Outcome() {
+  return (
+    <Box
+      component="section"
+      id="outcomes"
+      sx={{
+        scrollMarginTop: "80px",
+
+        py: {
+          xs: "96px",
+          md: "130px",
+        },
+      }}
+    >
+      <Eyebrow>Outcome</Eyebrow>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "0.8fr 1.2fr",
+          },
+
+          gap: {
+            xs: "48px",
+            md: "72px",
+          },
+
+          alignItems: "center",
+        }}
+      >
+        <Box>
+          <Typography
+            component="h2"
+            sx={{
+              fontSize: {
+                xs: "36px",
+                sm: "42px",
+                md: "48px",
+              },
+
+              fontWeight: 500,
+
+              letterSpacing: {
+                xs: "-1px",
+                md: "-1.5px",
+              },
+
+              lineHeight: 1.08,
+              color: COLORS.primary,
+              mb: "24px",
+            }}
+          >
+            Placing 2nd overall at ProdX.
           </Typography>
 
           <Typography
             component="p"
-            variant="body1"
             sx={{
+              maxWidth: "500px",
+
               fontSize: {
-                xs: "15px",
-                md: "16px",
+                xs: "16px",
+                md: "17px",
               },
 
               lineHeight: 1.7,
-
-              color: "#808080",
+              color: COLORS.body,
+              mb: "30px",
             }}
           >
-            {item.description}
+            Our team presented the MySpend Dashboard concept as a product
+            strategy for helping Gen Z users manage their short-term financial
+            well-being.
           </Typography>
+
+          <Button
+            variant="text"
+            endIcon={<ArrowOutward />}
+            href="https://drive.google.com/file/d/1CyC69mQ5sxbagyYlnLnlSXeNmLEGpnZT/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            disableRipple
+            sx={{
+              p: 0,
+              minWidth: 0,
+
+              fontSize: {
+                xs: "14px",
+                md: "15px",
+              },
+
+              fontWeight: 600,
+              letterSpacing: "-0.2px",
+              textTransform: "none",
+              color: COLORS.green,
+
+              "& .MuiButton-endIcon": {
+                transition: "transform 0.25s ease",
+              },
+
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: COLORS.green,
+
+                "& .MuiButton-endIcon": {
+                  transform: "translate(2px, -2px)",
+                },
+              },
+            }}
+          >
+            View our presentation
+          </Button>
         </Box>
-      ))}
+
+        <Box
+          component="img"
+          src="/images/MySpend/winningPic.png"
+          alt="Team presenting the TD MySpend concept at ProdX"
+          sx={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+
+            borderRadius: {
+              xs: "10px",
+              md: "14px",
+            },
+          }}
+        />
+      </Box>
+    </Box>
+  );
+}
+
+// ============================================================
+// REFLECTION
+// ============================================================
+
+function Reflection() {
+  const reflections = [
+    {
+      number: "01",
+      title: "Start with the underlying job.",
+      description:
+        "Mapping the jobs users were trying to accomplish helped us move beyond individual features and think about the broader financial-management experience.",
+    },
+
+    {
+      number: "02",
+      title: "Connect user value to product value.",
+      description:
+        "The strongest product direction was not only useful to users; it also connected to retention, engagement, product adoption, and TD&apos;s broader ecosystem.",
+    },
+
+    {
+      number: "03",
+      title: "A concept needs a path to market.",
+      description:
+        "Thinking through success metrics, rollout stages, exit criteria, and risks made the proposal feel like a product strategy rather than only a design concept.",
+    },
+  ];
+
+  return (
+    <Box
+      component="section"
+      id="reflection"
+      sx={{
+        scrollMarginTop: "80px",
+
+        py: {
+          xs: "96px",
+          md: "130px",
+        },
+      }}
+    >
+      <Eyebrow>Reflection</Eyebrow>
+
+      <Typography
+        component="h2"
+        sx={{
+          fontSize: {
+            xs: "34px",
+            sm: "40px",
+            md: "46px",
+          },
+
+          fontWeight: 500,
+
+          letterSpacing: {
+            xs: "-0.9px",
+            md: "-1.4px",
+          },
+
+          lineHeight: 1.08,
+          color: COLORS.primary,
+
+          mb: {
+            xs: "52px",
+            md: "68px",
+          },
+        }}
+      >
+        What I learned
+      </Typography>
+
+      <Box
+        sx={{
+          display: "grid",
+
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(3, 1fr)",
+          },
+
+          gap: {
+            xs: "48px",
+            md: "48px",
+          },
+        }}
+      >
+        {reflections.map((item) => (
+          <InsightCard key={item.number} {...item} />
+        ))}
+      </Box>
     </Box>
   );
 }

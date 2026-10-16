@@ -41,7 +41,6 @@ const WorkItem = ({
             md: "15px",
           },
 
-          // No movement or shadow
           transform: "none",
           boxShadow: "none",
         }}
@@ -96,9 +95,10 @@ const WorkItem = ({
       {/* INFO */}
       <Box
         sx={{
+          // More space between image and title
           pt: {
-            xs: 1.2,
-            md: 1.5,
+            xs: "16px",
+            md: "20px",
           },
 
           px: {
@@ -112,23 +112,8 @@ const WorkItem = ({
           },
 
           display: "flex",
-
-          flexDirection: {
-            xs: "column",
-            sm: "row",
-          },
-
-          justifyContent: "space-between",
-
-          alignItems: {
-            xs: "flex-start",
-            sm: "baseline",
-          },
-
-          gap: {
-            xs: 0.5,
-            sm: 2,
-          },
+          flexDirection: "column",
+          alignItems: "flex-start",
         }}
       >
         {/* TITLE */}
@@ -137,19 +122,15 @@ const WorkItem = ({
             fontFamily: "Arial, sans-serif",
 
             fontSize: {
-              xs: "14px",
-              sm: "16px",
-              md: "18px",
-              lg: "20px",
+              xs: "20px",
+              sm: "20px",
+              md: "22px",
+              lg: "26px",
             },
 
             lineHeight: 1,
-
             letterSpacing: "-0.6px",
-
             color: "#464F5B",
-
-            flexShrink: 0,
           }}
         >
           {title}
@@ -158,34 +139,47 @@ const WorkItem = ({
         {/* COMPANY / STATUS / YEAR */}
         <Typography
           sx={{
-            fontFamily: "Arial, sans-serif",
-
-            fontSize: {
+            // More space between title and metadata
+            mt: {
               xs: "9px",
-              sm: "10px",
               md: "10px",
             },
 
+            fontFamily: "Arial, sans-serif",
+
+            fontSize: {
+              xs: "10px",
+              sm: "12px",
+              md: "12px",
+            },
             lineHeight: 1.2,
-
             textTransform: "uppercase",
-
             color: "#8E9298",
-
-            textAlign: {
-              xs: "left",
-              sm: "right",
-            },
-
-            whiteSpace: {
-              xs: "normal",
-              sm: "nowrap",
-            },
+            textAlign: "left",
+            whiteSpace: "normal",
           }}
         >
           {company}
-          {status && <> · {status}</>}
-          {year && <> · {year}</>}
+
+          {status && (
+            <>
+              <Box component="span" sx={{ mx: "8px" }}>
+                ·
+              </Box>
+
+              {status}
+            </>
+          )}
+
+          {year && (
+            <>
+              <Box component="span" sx={{ mx: "8px" }}>
+                ·
+              </Box>
+
+              {year}
+            </>
+          )}
         </Typography>
       </Box>
     </Box>

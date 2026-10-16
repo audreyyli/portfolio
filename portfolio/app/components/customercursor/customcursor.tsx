@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 const CustomCursor = () => {
   const isTouchDevice = useMediaQuery("(pointer: coarse)");
@@ -11,6 +11,7 @@ const CustomCursor = () => {
     y: 0,
     visible: false,
     hovering: false,
+    comingSoon: false,
   });
 
   React.useEffect(() => {
@@ -28,11 +29,16 @@ const CustomCursor = () => {
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
 
+      // Detect Kiyoko / coming soon cards
+      const comingSoon = target.closest("[data-coming-soon]");
+
+      // Detect regular interactive elements
       const interactive = target.closest("a, button, [data-cursor-hover]");
 
       setCursor((prev) => ({
         ...prev,
-        hovering: !!interactive,
+        comingSoon: !!comingSoon,
+        hovering: !!interactive && !comingSoon,
       }));
     };
 
@@ -40,6 +46,8 @@ const CustomCursor = () => {
       setCursor((prev) => ({
         ...prev,
         visible: false,
+        hovering: false,
+        comingSoon: false,
       }));
     };
 
@@ -50,10 +58,7 @@ const CustomCursor = () => {
       }));
     };
 
-    /*
-     * Completely remove the native cursor
-     * everywhere on desktop.
-     */
+    // Hide native cursor on desktop
     const style = document.createElement("style");
 
     style.innerHTML = `
@@ -83,6 +88,17 @@ const CustomCursor = () => {
 
   if (isTouchDevice) return null;
 
+  // ============================================================
+  // CURSOR STATES
+  // ============================================================
+
+  const isComingSoon = cursor.comingSoon;
+  const isHovering = cursor.hovering;
+
+  const cursorWidth = isComingSoon ? "136px" : isHovering ? "28px" : "14px";
+
+  const cursorHeight = isComingSoon ? "38px" : isHovering ? "28px" : "14px";
+
   return (
     <Box
       sx={{
@@ -91,72 +107,137 @@ const CustomCursor = () => {
         top: cursor.y,
         left: cursor.x,
 
+        // ====================================================
+        // CIRCLE → PILL
+        // ====================================================
+
+        width: cursorWidth,
+        height: cursorHeight,
+
+        borderRadius: "999px",
+
         /*
-         * NORMAL:
-         * small blue circle
+         * Normal cursor is centered on mouse.
          *
-         * HOVER:
-         * larger glass circle
+         * Coming soon pill anchors its LEFT edge
+         * at the mouse position, so it expands RIGHT.
          */
-        width: cursor.hovering ? "28px" : "14px",
-        height: cursor.hovering ? "28px" : "14px",
+        transform: isComingSoon
+          ? "translate(0, -50%)"
+          : "translate(-50%, -50%)",
 
-        borderRadius: "50%",
+        transformOrigin: "left center",
 
-        /*
-         * Very important:
-         * cursor can't block clicks.
-         */
         pointerEvents: "none",
-
         zIndex: 999999,
-
-        transform: "translate(-50%, -50%)",
 
         opacity: cursor.visible ? 1 : 0,
 
-        /*
-         * NORMAL BLUE CURSOR
-         */
-        backgroundColor: cursor.hovering
-          ? "rgba(255, 255, 255, 0.16)"
-          : "#2323FF",
+        // ====================================================
+        // BACKGROUND
+        // ====================================================
 
-        /*
-         * GLASS BORDER
-         */
-        border: cursor.hovering ? "1px solid rgba(255,255,255,0.70)" : "none",
+        background: isComingSoon
+          ? "linear-gradient(135deg, rgba(255,255,255,0.82), rgba(255,255,255,0.42))"
+          : isHovering
+            ? "rgba(255,255,255,0.16)"
+            : "#2323FF",
 
-        /*
-         * SHADOW
-         */
-        boxShadow: cursor.hovering
+        // ====================================================
+        // GLASS BORDER
+        // ====================================================
+
+        border:
+          isComingSoon || isHovering
+            ? "1px solid rgba(255,255,255,0.75)"
+            : "1px solid transparent",
+
+        // ====================================================
+        // GLASS SHADOW
+        // ====================================================
+
+        boxShadow: isComingSoon
           ? `
+              inset 0 1px 0 rgba(255,255,255,0.95),
+              inset 0 -1px 0 rgba(255,255,255,0.25),
+              0 4px 18px rgba(35,35,255,0.12),
+              0 8px 28px rgba(0,0,0,0.06)
+            `
+          : isHovering
+            ? `
               inset 0 1px 1px rgba(255,255,255,0.85),
               inset 0 -1px 1px rgba(255,255,255,0.20),
               0 3px 10px rgba(35,35,255,0.12)
             `
-          : "0 0 0 3px rgba(35,35,255,0.10)",
+            : "0 0 0 3px rgba(35,35,255,0.10)",
 
-        /*
-         * GLASS EFFECT
-         */
-        backdropFilter: cursor.hovering ? "blur(6px) saturate(180%)" : "none",
+        // ====================================================
+        // BACKDROP BLUR
+        // ====================================================
 
-        WebkitBackdropFilter: cursor.hovering
-          ? "blur(6px) saturate(180%)"
-          : "none",
+        backdropFilter:
+          isComingSoon || isHovering ? "blur(18px) saturate(180%)" : "none",
+
+        WebkitBackdropFilter:
+          isComingSoon || isHovering ? "blur(18px) saturate(180%)" : "none",
+
+        // ====================================================
+        // CONTENT ALIGNMENT
+        // ====================================================
+
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+
+        overflow: "hidden",
+
+        // ====================================================
+        // ANIMATION
+        // ====================================================
 
         transition: `
-          width 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-          height 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-          background-color 0.2s ease,
-          border 0.2s ease,
-          box-shadow 0.2s ease,
+          width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+          background 0.25s ease,
+          border 0.25s ease,
+          box-shadow 0.25s ease,
+          backdrop-filter 0.25s ease,
           opacity 0.15s ease
         `,
       }}
-    />
+    >
+      {/* ====================================================
+          COMING SOON TEXT
+      ==================================================== */}
+
+      <Typography
+        component="span"
+        sx={{
+          fontFamily: "Arial, sans-serif",
+
+          fontSize: "10px",
+          fontWeight: 600,
+
+          letterSpacing: "0.9px",
+
+          color: "#2323FF",
+
+          whiteSpace: "nowrap",
+
+          opacity: isComingSoon ? 1 : 0,
+
+          transform: isComingSoon ? "translateX(0)" : "translateX(-8px)",
+
+          transition: `
+            opacity 0.2s ease ${isComingSoon ? "0.14s" : "0s"},
+            transform 0.3s ease
+          `,
+        }}
+      >
+        COMING SOON
+      </Typography>
+    </Box>
   );
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Link from "next/link";
 
 import WorkItem from "../workItem/workItem";
@@ -17,6 +17,7 @@ const WorksCarousel = ({ items }) => {
    * 2 → left
    * 3 → right
    */
+
   const leftItems = items
     .map((item, index) => ({
       ...item,
@@ -35,6 +36,7 @@ const WorksCarousel = ({ items }) => {
    * Different heights create
    * the gallery / masonry feeling.
    */
+
   const getCardHeight = (index) => {
     const heights = [
       {
@@ -62,8 +64,104 @@ const WorksCarousel = ({ items }) => {
     return heights[index % heights.length];
   };
 
+  // ============================================================
+  // RENDER CARD
+  // ============================================================
+
   const renderCard = (item) => {
     const index = item.originalIndex;
+
+    const isComingSoon = item.comingSoon === true;
+
+    const cardContent = (
+      <WorkItem
+        {...item}
+        cardHeight={getCardHeight(index)}
+        isHovered={hoveredIndex === index}
+      />
+    );
+
+    // ============================================================
+    // KIYOKO — NON-CLICKABLE
+    // ============================================================
+
+    if (isComingSoon) {
+      return (
+        <Box
+          key={`${item.company}-${item.title}`}
+          data-coming-soon
+          onMouseEnter={() => setHoveredIndex(index)}
+          onMouseLeave={() => setHoveredIndex(null)}
+          sx={{
+            display: "block",
+            width: "100%",
+
+            position: "relative",
+
+            borderRadius: {
+              xs: "24px",
+              md: "30px",
+            },
+          }}
+        >
+          {cardContent}
+
+          {/* MOBILE BADGE */}
+
+          <Box
+            sx={{
+              display: {
+                xs: "flex",
+                md: "none",
+              },
+
+              position: "absolute",
+              bottom: "20px",
+              left: "20px",
+
+              px: "14px",
+              py: "9px",
+
+              borderRadius: "999px",
+
+              background:
+                "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.5))",
+
+              backdropFilter: "blur(18px) saturate(180%)",
+              WebkitBackdropFilter: "blur(18px) saturate(180%)",
+
+              border: "1px solid rgba(255,255,255,0.85)",
+
+              boxShadow: "0 4px 18px rgba(35,35,255,0.1)",
+
+              color: "#2323FF",
+
+              alignItems: "center",
+              justifyContent: "center",
+
+              pointerEvents: "none",
+              zIndex: 10,
+            }}
+          >
+            <Typography
+              component="span"
+              sx={{
+                fontFamily: "Arial, sans-serif",
+                fontSize: "10px",
+                fontWeight: 600,
+                letterSpacing: "0.8px",
+              }}
+            >
+              COMING SOON
+            </Typography>
+          </Box>
+        </Box>
+      );
+    }
+
+    // ============================================================
+    // NORMAL CLICKABLE PROJECT
+    // ============================================================
 
     return (
       <Box
@@ -83,11 +181,7 @@ const WorksCarousel = ({ items }) => {
           },
         }}
       >
-        <WorkItem
-          {...item}
-          cardHeight={getCardHeight(index)}
-          isHovered={hoveredIndex === index}
-        />
+        {cardContent}
       </Box>
     );
   };
@@ -183,6 +277,7 @@ const WorksCarousel = ({ items }) => {
             /*
              * Slight offset for the editorial look.
              */
+
             pt: {
               md: 5,
               lg: 7,

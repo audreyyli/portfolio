@@ -28,12 +28,16 @@ const photoStickers = [
     images: [
       "/images/MyPics/4.JPG",
       "/images/MyPics/3.jpg",
+      "/images/MyPics/7.JPEG",
+      "/images/MyPics/9.JPG",
+      "/images/MyPics/10.JPG",
+      "/images/MyPics/8.jpg",
+      "/images/MyPics/12.JPG",
+      "/images/MyPics/13.jpg",
+      "/images/MyPics/11.jpg",
       "/images/MyPics/5.JPEG",
       "/images/MyPics/6.JPG",
-      "/images/MyPics/7.JPEG",
-      "/images/MyPics/8.jpg",
-      "/images/MyPics/9.JPG",
-      "/images/MyPics/10.JPEG",
+      "/images/MyPics/2.jpg",
     ],
 
     desktop: {
@@ -72,6 +76,7 @@ const photoStickers = [
       "/images/FoodPics/5.jpg",
       "/images/FoodPics/6.jpg",
       "/images/FoodPics/7.jpg",
+      "/images/FoodPics/8.jpeg",
     ],
 
     desktop: {
@@ -109,6 +114,7 @@ const photoStickers = [
       "/images/MatchaPics/4.jpg",
       "/images/MatchaPics/5.jpg",
       "/images/MatchaPics/6.jpg",
+      "/images/MatchaPics/7.jpg",
     ],
 
     desktop: {
@@ -139,7 +145,11 @@ const photoStickers = [
 
     description: "Really love a good pickle.",
 
-    images: ["/images/PicklePics/1.jpg", "/images/PicklePics/2.JPG"],
+    images: [
+      "/images/PicklePics/1.jpg",
+      "/images/PicklePics/2.JPG",
+      "/images/PicklePics/3.JPG",
+    ],
 
     desktop: {
       bottom: "8%",
@@ -615,6 +625,7 @@ const BentoBoxGrid = () => {
         return (
           <Box
             key={sticker.id}
+            data-cursor-hover
             onMouseEnter={() => setHoveredSticker(sticker.id)}
             onMouseLeave={() => setHoveredSticker(null)}
             onClick={() => {
@@ -821,6 +832,7 @@ const BentoBoxGrid = () => {
         return (
           <Box
             key={sticker.id}
+            data-cursor-hover
             onMouseEnter={() => setHoveredSticker(sticker.id)}
             onMouseLeave={() => setHoveredSticker(null)}
             onClick={() => {
@@ -1153,6 +1165,7 @@ const BentoBoxGrid = () => {
 
             {sticker.type === "circle" && (
               <Box
+                data-cursor-hover
                 sx={{
                   position: "relative",
 
